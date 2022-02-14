@@ -77,6 +77,8 @@ class ClientForm(ModelForm):
         widgets = {
             "name": TextInput(attrs={
                 'class': 'form-control',
+                'type': 'text',
+               ' data-parsley-min' : ' 6',
                 'placeholder': 'Имя'
             }),
             "surname": TextInput(attrs={
@@ -99,12 +101,12 @@ class ClientForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Орган выдал документ'
             }),
-            "post_mail": TextInput(attrs={
+            "post_mail": EmailInput(attrs={
                 'class': 'form-control',
                 'parsley-type' : "email",
                 'placeholder': 'Эл.почта',
             }),
-            "link_social": TextInput(attrs={
+            "link_social": URLInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Соц.Адрес'
             }),

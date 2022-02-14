@@ -5,6 +5,9 @@ import time
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404
 from io import BytesIO
+
+from xhtml2pdf import pisa
+
 from client.models import *
 from .models import Document, Body_doc
 # from xhtml2pdf import pisa
@@ -205,6 +208,7 @@ def pdf_contract_expert(request, client_id):
 
 def pdf_contract_arbit(request, client_id):
     """Функция создание pdf файла и записи его в бд   Договор арбитражный суд"""
+
     form = ClientForm(request.POST, )
     if form.is_valid():
         client = form.save(commit=False)

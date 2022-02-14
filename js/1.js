@@ -15,20 +15,20 @@ function my_click(e) {
 btn.addEventListener('click', my_click)
 
 
-let age = 44;
-
-function fun(age) {
-    console.log(age)
-
-    let a = [1, 2, 3, 4]
-
-    for (let i, i < a.length, i++) {
-        console.log(i)
-    }
-    if (age === 55) {
-        let s;
-    }
-}
+// let age = 44;
+//
+// function fun(age) {
+//     console.log(age)
+//
+//     let a = [1, 2, 3, 4]
+//
+//     for (let i, i < a.length, i++) {
+//         console.log(i)
+//     }
+//     if (age === 55) {
+//         let s;
+//     }
+// }
 
 
 // fun()
