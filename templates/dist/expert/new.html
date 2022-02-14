@@ -1,0 +1,187 @@
+{% extends 'dist/index.html' %}
+{% load static %}
+
+
+
+{% block content %}
+  <style>
+    hr {
+      border: none; /* Убираем границу */
+      background-color: red; /* Цвет линии */
+      color: red; /* Цвет линии для IE6-7 */
+      height: 2px; /* Толщина линии */
+    }
+  </style>
+
+  <div class="main-content">
+    <div class="page-content" align="center">
+      <div class="container-fluid">
+        <hr>
+      </div>
+      <div class="page-title-box d-flex align-items-center justify-content-between">
+        <div class="btn-group me-1 mt-2">
+          <button
+              class="btn btn-primary w-md" id="contract" type="button">ДОГОВОР
+          </button>
+          <button
+              type="button" id="expert" href="#" class="btn btn-primary waves-effect waves-light">ЭКСПЕРТИЗА
+          </button>
+          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false">ОСТАЛЬНОЕ<i class="mdi mdi-chevron-down"></i>
+            <span class="sr-only">Другие</span>
+          </button>
+          <div class="dropdown-menu">
+            <ul>
+              <a id="contract1" class="dropdown-item" href="#">Список </a>
+              <a id="contract_one" class="dropdown-item" href="#">Договор первичн</a>
+              <a id="assignment" class="dropdown-item" href="#">Увед. цессия</a>
+              <div class="dropdown-divider"></div>
+              <a id="pdf_contract_one_add" class="dropdown-item" href="#">Доп соглашение</a>
+            </ul>
+          </div>
+        </div>
+        <div class="page-title-right">
+          <ol class="breadcrumb m-0">
+            <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <form method="POST" action="" class="form-control"
+            enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+          <div class="row">
+            <hr>
+
+            <div class="col-lg-5">
+              <label class="form-label" for="formrow-firstname-input">Выбор Заказчика</label>
+              {{ expert.client }}
+            </div>
+
+            <div class="col-lg-5">
+              <label class="form-label" for="formrow-firstname-input">ТС Заказчика</label>
+              {{ expert.car }}
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+
+
+          <div class="mt-6">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="mb-3">
+                  <label>Контрагент:</label>
+                  {{ expert.contragent }}
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Стоимость</label>
+                  {{ expert.summa_exp }}
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" for="formrow-firstname-input">Дата завершение ЭО</label>
+                  {{ expert.data_out }}
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="col-md-15">
+                  <div class="col-lg-6">
+                    <label>Прикрепить экспертизу</label>
+                    {{ expert.file_expert }}
+                  </div>
+                  <div class="col-lg-6">
+                    <label>Прикрепить скан чека</label>
+                    {{ expert.file_invoce }}
+                  </div>
+                  <div class="col-lg-6">
+                    <label class="form-label" for="formrow-firstname-input">Вид оценки</label>
+                    {{ expert.type }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-nowrap table-hover mb-0">
+                <thead>
+                <tr>
+                  <th scope="col">№</th>
+                  <th scope="col">Тип расчета</th>
+                  <th scope="col">Сумма</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <th scope="row">01</th>
+                  <td><a href="#" class="text-dark">Востановительный ремонт без износа</a>
+                  </td>
+                  <td>
+                    {{ expert.price_nwear }}
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">02</th>
+                  <td><a href="#" class="text-dark">Востановительный ремонт с износом</a>
+                  </td>
+                  <td>
+                    {{ expert.price_wwear }}
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">03</th>
+                  <td><a href="#" class="text-dark">Средняя цена по рынку</a></td>
+                  <td>
+                    {{ expert.price_mmarket }}
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">04</th>
+                  <td><a href="#" class="text-dark">Годные остатки</a></td>
+                  <td>
+                    {{ expert.price_uleftovers }}
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">05</th>
+                  <td><a href="#" class="text-dark">Сумма утраченной товарной
+                    стоимости</a>
+                  </td>
+                  <td>
+                    {{ expert.price_uts }}
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">06</th>
+                  <td><a href="#" class="text-dark">Сумма ущерба</a></td>
+                  <td>
+                    {{ expert.price_nwear }}
+                  </td>
+                </tr>
+                </tr>
+                </tbody>
+              </table>
+              <div class="row mb-4">
+                <label class="form-label" for="formrow-firstname-input">Комментарий к экспертному заключению</label>
+                {{ expert.comment }}
+              </div>
+              <hr>
+              <div class="col-15">
+                <ol class="breadcrumb m-0">
+                  <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+                  </li>
+                </ol>
+              </div>
+            </div>
+      </form>
+    </div> <!-- container-fluid -->
+  </div>
+  </div>
+  </div>
+  </div>
+
+
+{% endblock content %}

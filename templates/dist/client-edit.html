@@ -1,0 +1,333 @@
+{% extends 'dist/index.html' %}
+{% load static %}
+
+
+{% block content %}
+
+  <div class="main-content">
+
+    <div class="page-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+              <h4 class="mb-0"></h4>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title mb-4">КАРТА КЛИЕНТА</h4>
+                <form method="post" id="form-doc">
+                  {% csrf_token %}
+                  <div class="page-title-box d-flex align-items-center justify-content-between">
+
+                    <h4 class="mb-0">
+
+
+                      <div class="btn-group me-1 mt-2">
+                        <button
+                            class="btn btn-primary w-md" id="contract" type="button">ДОГОВОР
+                        </button>
+
+                        <button
+                            type="button" id="expert" href="#" class="btn btn-primary waves-effect waves-light">
+                          ЭКСПЕРТИЗА
+                        </button>
+
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">ОСТАЛЬНОЕ<i class="mdi mdi-chevron-down"></i>
+                          <span class="sr-only">Toggle Dropdown</span>
+
+                        </button>
+                        <div class="dropdown-menu">
+                          <ul>
+                            <a id="contract1" class="dropdown-item" href="#">Договор</a>
+                            <a id="contract_one" class="dropdown-item" href="#">Договор первичн</a>
+                            <a id="assignment" class="dropdown-item" href="#">Увед. цессия</a>
+                            <div class="dropdown-divider"></div>
+                            <a id="pdf_contract_one_add" class="dropdown-item" href="#">Доп соглашение</a>
+                          </ul>
+                        </div>
+                      </div>
+
+
+                    </h4>
+
+
+                    <div class="page-title-right">
+                      <ol class="breadcrumb m-0">
+                        <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+                        </li>
+                      </ol>
+                    </div>
+
+                  </div>
+
+                  <div id="basic-example">
+                    <!-- Client Details -->
+
+                    <section>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+
+                            {{ form.name }}
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+
+                            {{ form.surname }}
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+
+                            {{ form.midlename }}
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.link_social }}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.phone }}
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.post_mail }}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="mb-3">
+                            {# {{ form.Comment }}#}
+
+                          </div>
+
+                          <span>{{ error }}</span>
+                        </div>
+
+                      </div>
+
+
+                    </section>
+
+                    <!-- Company Document -->
+                    <h3>Паспортные данные</h3>
+                    <section>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.serial_pass }}
+                          </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.number_pass }}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.point_birth|date:"d-m-Y" }}
+                          </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.date_birth|date:"d-m-Y" }}
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.enter_org }}
+                          </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.data_create }}
+                          </div>
+                        </div>
+
+                      </div>
+                      <div class="row">
+
+                        <div class="col-lg-12">
+                          <div class="mb-3">
+                            {{ form.adress_reg }}
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </section>
+
+                    <!-- Bank Details -->
+                    <h3>Водительское удостоверение</h3>
+                    <section>
+                      <div>
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <div class="mb-3">
+                              {{ form.serial_lic }}
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="mb-3">
+                              {{ form.number_lic }}
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            {{ form.enter_lic }}
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="input-group" id="datepicker2">
+                            <div class="mb-3">
+                              {{ form.create_lic }}
+                            </div>
+                          </div>
+
+                          <div class="col-md-6">
+                            <div class="mb-3">
+
+
+                              <select class="select2 form-control select2-multiple"
+                                      multiple="multiple"
+                                      data-placeholder="Выбрать ...">
+                                <option value="A" selected>A</option>
+                                <option value="B" selected>B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                {# Подключить плагин для корректного выбора полей и не
+                                правлильно указан путь у js/app.js#}
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <form action="#" class="dropzone">
+                            <div class="fallback">
+                              <input name="file" type="file" multiple="multiple">
+                            </div>
+                            <div class="dz-message needsclick">
+                              <div class="mb-3">
+                                <i class="display-4 text-muted uil uil-cloud-upload"></i>
+                              </div>
+
+                              <h4>Перетащите файлы сюда или нажмите, чтобы загрузить.</h4>
+                            </div>
+                          </form>
+                        </div>
+
+                        <div class="text-center mt-4">
+                          <button type="button"
+                                  class="btn btn-primary waves-effect waves-light">
+                            Отправить файл
+                          </button>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end card -->
+      </div>
+      <!-- end col -->
+    </div>  <!-- end row -->
+  </div>
+  </div>
+  <script>
+      let url = window.location.host;
+
+
+      let contract = document.getElementById('contract');
+      contract.addEventListener('click', function () {
+          let form = document.getElementById('form-doc');
+          let csrftoken = Cookies.get('csrftoken');
+          let res = fetch('http://' + url + '{% url "pdf_contract" client %}',
+              {
+                  method: 'POST',
+                  body: new FormData(form),
+              }
+          ).then(res => res.blob())
+              .then(blob => {
+                  var file = window.URL.createObjectURL(blob);
+                  window.location.assign(file);
+              });
+      });
+
+
+      let contract_one = document.getElementById('contract_one');
+      contract_one.addEventListener('click', function () {
+          let form = document.getElementById('form-doc');
+          let csrftoken = Cookies.get('csrftoken');
+          let res = fetch('http://' + url + '{% url "pdf_contract_one" client %}', {
+                  method: 'POST',
+                  body: new FormData(form),
+              }
+          ).then(res => res.blob())
+              .then(blob => {
+                  var file = window.URL.createObjectURL(blob);
+                  window.location.assign(file);
+              });
+      })
+
+
+      let assignment = document.getElementById('assignment');
+      assignment.addEventListener('click', function () {
+          console.log('Yahoo!');
+          let form = document.getElementById('form-doc');
+          let res = fetch('http://127.0.0.1:8000{% url "pdf_assignment" client %}', {
+                  method: 'POST',
+                  body: new FormData(form),
+              }
+          ).then(res => res.blob())
+              .then(blob => {
+                  var file = window.URL.createObjectURL(blob);
+                  window.location.assign(file);
+              });
+      })
+
+
+      let expert = document.getElementById('expert');
+      expert.addEventListener('click', function () {
+          console.log('Yahoo!');
+          let form = document.getElementById('form-doc');
+          let csrftoken = Cookies.get('csrftoken');
+          let res = fetch('http://127.0.0.1:8000{% url 'pdf_expert' client %}', {
+                  method: 'POST',
+                  headers: {"X-CSRFToken": csrftoken},
+                  body: new FormData(form),
+              }
+          ).then(res => res.blob())
+              .then(blob => {
+                  var file = window.URL.createObjectURL(blob);
+                  window.location.assign(file);
+              });
+      })
+
+
+      $(document).ready(function () {
+          $(".dropdown-toggle-js").dropdown();
+      });
+  </script>
+
+{% endblock content %}

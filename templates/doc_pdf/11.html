@@ -1,0 +1,107 @@
+<style>
+    .form {
+    margin: 1em 0;
+}
+    .form .field {
+        margin: 0 0 .8em;
+    }
+    .form label {
+        display: block;
+        font-weight: 700
+    }
+    .form .text {
+        width: 100%;
+        padding: 3px 5px;
+    }
+    .form textarea {
+        height: 150px;
+    }
+    .form .choice label {
+        display: inline;
+    }
+    .form .submit {
+        text-align: center;
+    }
+        .form .submit input {
+            padding: 5px 10px;
+        }
+    .grid-left-500 label,
+    .grid-right-500 label {
+        float: left;
+        width: 180px;
+        overflow: hidden;
+    }
+    .grid-right-500 label {
+        float: right;
+    }
+    .grid-left-500 .text,
+    .grid-right-500 .text {
+        float: right;
+        width: 300px;
+    }
+    .grid-right-500 .text {
+        float: left;
+    }
+    .grid-left-500 .choice {
+        margin-left: 185px;
+    }
+    .grid-right-500 .choice {
+        margin-left: 0;
+        padding-right: 185px;
+    }
+        .grid-left-500 .choice label,
+        .grid-right-500 .choice label {
+            float: none;
+            width: auto;
+        }
+    .grid-left-500 .submit {
+        text-align: left;
+        padding-left: 185px;
+    }
+    .grid-right-500 .submit {
+        text-align: left;
+    }
+    .grid-left-500 select {
+        margin-left: 5px;
+    }
+    .grid-right-500 select {
+        float: right;
+        margin-right: 5px;
+    }
+
+
+</style>
+
+
+<form class="form" action="">
+  <fieldset class="field">
+    <label for="default-text">Some input[type=text]</label>
+    <input type="text" id="default-text" class="text" />
+  </fieldset>
+  <fieldset class="field choice">
+    <fieldset>
+      <input type="radio" id="default-radio" checked="checked" />
+      <label for="default-radio">Some input[type=radio]</label>
+    </fieldset>
+    <fieldset>
+      <input type="checkbox" id="default-checkbox" checked="checked" />
+      <label for="default-checkbox">Some input[type=checkbox]</label>
+    </fieldset>
+  </fieldset>
+    <fieldset class="field">
+    <label for="default-textarea">Some textarea</label>
+    <textarea class="text" rows="10" cols="40" id="default-textarea"></textarea>
+  </fieldset>
+  <fieldset class="field">
+    <label for="default-select">Some select</label>
+    <select id="default-select">
+      <option>variant 1</option>
+      <option>variant 2</option>
+      <option>variant 3</option>
+    </select>
+  </fieldset>
+  <fieldset class="field submit">
+    <input type="submit" value="Send" />
+    <input type="reset" value="Clear" />
+  </fieldset>
+</form>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://unpkg.com/mustard-ui@latest/dist/css/mustard-ui.min.css">
+</head>
+<body>
+<div class="wrap">
+    <h1 class="h1">live search</h1>
+    <input type="text" id="input" class="input"/>
+    <div>
+        <ol class="ul">
+            <li>яблоко</li>
+            <li>банан</li>
+            <li>апельсин</li>
+            <li>груша</li>
+            <li>виноград</li>
+            <li>лимон</li>
+            <li>арбуз</li>
+            <li>дыня</li>
+            <li>помидор</li>
+            <li>огурец</li>
+            <li>морковь</li>
+        </ol>
+    </div>
+</div>
+<script>
+    document.querySelector('#input').oninput = function () {
+        let val = this.value.trim();
+        let inputItem = document.querySelectorAll('.input li');
+        if (val != '') {
+            inputItem.forEach(function (elem) {
+                if (elem.innerText.search(val) == -1) {
+                    elem.classList.add('hide');
+                    elem.innerHTML = elem.innerText;
+                }
+                else {
+                    elem.classList.remove('hide');
+                    let str =elem.innerText;
+                    elem.innerHTML = insertMark(str, elem.innerText, search(val).search(val), val.length)
+                }
+
+            });
+        } else {
+            inputItem.forEach(function (elem) {
+                elem.classList.remove('hide')
+                let str = elem.innerText;
+                elem.innerHTML = insertMark(str, elem.innerText, search(val), val.length)
+            });
+        }
+    }
+
+    function insertMark(string, pos) {
+        return string.slice(0, pos) + 'mark' + string.slice(pos, pos + len) + '/mark' + string.slice(pos + len);
+
+
+    }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+{% extends 'dist/index.html' %}
+{% load static %}
+
+
+
+{% block content %}
+  <div class="main-content">
+
+  <div class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h4 class="mb-0"></h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title mb-4">КАРТА КОНТРАГЕНТА</h4>
+
+              <div id="basic-example">
+                <form method="post">
+                  {% csrf_token %}
+                  <!-- Client Details -->
+
+
+                  <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <h4 class="mb-0">
+                      <button class="btn btn-primary w-md" type="submit">Печать</button>
+                    </h4>
+
+                    <div class="page-title-right">
+                      <ol class="breadcrumb m-0">
+                        <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        {{ form.name }}
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="mb-3">
+                        {{ form.full_name }}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.nalog_number }}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.nalog_main }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.nalog_registr }}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.director_name }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.mail_adress }}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.site_url }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="mb-3">
+                        {{ form.company_adress }}
+                      </div>
+                    </div>
+                    <!-- Company Document -->
+                    <h6>БАНКОВСКИЕ РЕКВИЗИТЫ</h6>
+                    <section>
+                      <form>
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <div class="mb-3">
+                              {{ form.bank_name }}
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <div class="mb-3">
+                              {{ form.bank_bik }}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <div class="mb-3">
+                              {{ form.bank_adress }}
+                            </div>
+                          </div>
+
+                          <div class="col-lg-6">
+                            <div class="mb-3">
+                              {{ form.bank_invoice }}
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="mb-3">
+                              {{ form.bank_edit_invoice }}
+                            </div>
+                          </div>
+
+                          {#                                                    <div class="col-lg-6">#}
+                          {#                                                        <div class="mb-3">#}
+                          {#                                                            <label for="basicpill-servicetax-input">ПУСТОЕ ПОЛЕ</label>#}
+                          {#                                                            <input type="text" class="form-control"#}
+                          {#                                                                   id="basicpill-servicetax-input">#}
+                          {#                                                        </div>#}
+                          {#                                                    </div>#}
+
+
+                        </div>
+                        <div class="row">
+                          <!-- SK Company Auto -->
+                          <h3>Прикрепленные документы</h3>
+                          <section>
+                            <div>
+                              <form class="repeater" enctype="multipart/form-data">
+                                <div data-repeater-list="group-a">
+                                  <div data-repeater-item class="row">
+                                    <div class="mb-3 col-lg-2">
+                                      <label class="form-label" for="name">Тип
+                                        док</label>
+                                      <input type="text" id="email"
+                                             class="form-control"/>
+
+                                    </div>
+
+                                    <div class="mb-3 col-lg-2">
+                                      <label class="form-label" for="email">Описание</label>
+                                      <input type="email" id="email"
+                                             class="form-control"/>
+                                    </div>
+
+
+                                    <div class="mb-3 col-lg-2">
+                                      <label class="form-label" for="resume">Скан
+                                        документа</label>
+                                      <input type="file" class="form-control-file"
+                                             id="resume">
+                                    </div>
+
+
+                                    <div class="col-lg-2 align-self-center d-grid">
+                                      <input data-repeater-delete type="button"
+                                             class="btn btn-primary btn-block"
+                                             value="Удалить"/>
+                                    </div>
+                                  </div>
+
+                                </div>
+                                <input data-repeater-create type="button"
+                                       class="btn btn-success mt-3 mt-lg-0"
+                                       value="Добавить"/>
+
+
+                            </div>
+                          </section>
+
+
+                          <div class="col-lg-12">
+                            <div class="mb-3">
+                              <label for="basicpill-address-input">Комментарий</label>
+                              <textarea id="basicpill-address-input" class="form-control"
+                                        rows="2"></textarea>
+                            </div>
+                          </div>
+                        </div>
+
+
+                      </form>
+                    </section>
+
+
+                    <div class="page-title-box d-flex align-items-center justify-content-between">
+                      <h4 class="mb-0">
+                        <button class="btn btn-primary w-md" type="submit">Печать</button>
+                      </h4>
+
+                      <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                          <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+                          </li>
+                        </ol>
+                      </div>
+                    </div>
+                  </div>
+
+              </div>
+              <!-- end card body -->
+            </div>
+            <!-- end card -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+

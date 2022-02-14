@@ -1,0 +1,158 @@
+{% extends 'dist/index.html' %}
+{% load static %}
+
+
+
+{% block content %}
+  <style>
+    hr {
+      border: none; /* Убираем границу */
+      background-color: red; /* Цвет линии */
+      color: red; /* Цвет линии для IE6-7 */
+      height: 2px; /* Толщина линии */
+    }
+  </style>
+  <div class="main-content">
+    <div class="page-content" align="center">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="page-title-box d-flex align-items-center justify-content-between">
+            <div class="btn-group me-1 mt-2">
+              <div class="mb-3">
+                <a href="{% url 'accident-new' %}" class="btn btn-success waves-effect waves-light">
+                  </i> Данные ДТП</a>
+              </div>
+            </div>
+            <div class="mb-3">
+              <a href="{% url 'expert-new' %}" class="btn btn-success waves-effect waves-light">
+                </i> Данные экспертизы</a>
+            </div>
+            <div class="mb-3">
+              <a href="{% url 'court-new' %}" class="btn btn-success waves-effect waves-light">
+                </i> Произвоство по делу</a>
+            </div>
+            <div class="mb-3">
+              <a href="{% url 'accident_list_doc' %}" class="btn btn-success waves-effect waves-light">
+                </i> Документы</a>
+            </div>
+            <div class="mb-3">
+              <a href="{% url 'price-court-cash-accident' %}" class="btn btn-primary w-md">
+                </i> Судебные расходы</a>
+            </div>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="page-title-box d-flex align-items-center justify-content-between">
+        <div class="btn-group me-1 mt-2">
+          <button
+              class="btn btn-primary w-md" id="contract" type="button">Расходный лист
+          </button>
+          <div class="dropdown-menu">
+            <ul>
+            </ul>
+          </div>
+        </div>
+        <div class="page-title-right">
+          <ol class="breadcrumb m-0">
+            <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <hr>
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title mb-4">Форма добавления оказанных услуг</h4>
+            <form class="repeater" enctype="multipart/form-data">
+              <div data-repeater-list="group-a">
+                <div data-repeater-item="" class="row">
+                  <div class="mb-3 col-lg-2">
+                    <label class="form-label" for="subject">Номенклатура</label>
+                    <select class="form-select">
+                      <option selected>Выбор</option>
+                      <option value="1">Составление претензии СК</option>
+                      <option value="2">Явка на судебное заседание</option>
+                      <option value="3">Составление ходотайства</option>
+                      <option value="4">Составление претензии в СК</option>
+                      <option value="4">Ответ СК на притензию</option>
+                    </select>
+                  </div>
+                  <div class="mb-3 col-lg-2">
+                    <label class="form-label" for="subject">Исполнитель</label>
+                    <select class="form-select">
+                      <option selected>Выбор</option>
+                      <option value="1">Матвеева И.М.</option>
+                      <option value="2">Казерский С.И.</option>
+                    </select>
+                  </div>
+                  <div class="mb-3 col-lg-2">
+                    <label class="form-label" for="name">Сумма</label>
+                    <input type="text" id="name" name="group-a[0][untyped-input]" class="form-control">
+                  </div>
+                  <div class="mb-3 col-lg-2">
+                    <label class="form-label" for="name">Ссылка на действие</label>
+                    <input type="text" id="name" name="group-a[0][untyped-input]" class="form-control">
+                  </div>
+                  <div class="mb-3 col-lg-2">
+                    <label class="form-label" for="resume">Скан БСО</label>
+                    <input type="file" class="form-control" id="resume">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <input data-repeater-delete="" type="button" class="btn btn-primary btn-block" value="Добавить">
+        </div>
+      </div>
+      <hr>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Сводная ведомость оказанных услуг</h4>
+          <div class="table-responsive">
+            <table class="table mb-0">
+              <thead class="table-light">
+              <tr>
+                <th>№</th>
+                <th>Номенклатура</th>
+                <th>Цена</th>
+                <th>Исполнитель</th>
+                <th>Дата добавления</th>
+                <th>Ссылка действие</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Составление претензии СК</td>
+                <td>5000 руб</td>
+                <td>Матвеева Т.А.</td>
+                <td>20.10.2021</td>
+                <td>/doc/претензия_01.02.21.doc</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Явка на судебное заседание</td>
+                <td>6000 руб</td>
+                <td>Матвеева Т.А.</td>
+                <td>25.10.2021</td>
+                <td>/audio/аудиозапись_25.10.2021.MP3</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Экспертиза ТС</td>
+                <td>18000 руб.</td>
+                <td>Галичин И.А.</td>
+                <td>20.11.2021</td>
+                <td>/doc/Expert_auto_01001332.pdf</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <input data-repeater-delete="" type="button" class="btn btn-primary btn-block" value="Добавить и Сохранить">
+    </div>
+  </div>
+{% endblock content %}
