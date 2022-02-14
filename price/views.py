@@ -8,7 +8,7 @@ from price.forms import *
 # Список услуг прайса  общий
 def price_list(request):
     price = models.Price.objects.all()
-    return render(request, 'dist/price-list.html', {'results': price})
+    return render(request, 'dist/price/price-list.html', {'results': price})
 
 
 

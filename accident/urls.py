@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import *
-from price.urls import *
+from accident.views import *
 from expert.urls import *
 
 

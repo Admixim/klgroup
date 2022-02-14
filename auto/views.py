@@ -10,9 +10,9 @@ def auto_list(request):
     # Список ТС общий
 
     auto = Car.objects.all()
-    q = request.GET.get('find')
-    if q:
-        auto = models.Car.objects.filter(number=q)
+    # q = request.GET.get('find')
+    # if q:
+    #     auto = models.Car.objects.filter(number=q)
     return render(request, 'dist/auto-list.html', {'results': auto})
 
 
