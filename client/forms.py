@@ -11,10 +11,10 @@ class PartnerForm(ModelForm):
         model = Partner
         fields = ['status',
                   'type',
-                  #'accident',
+                  # 'accident',
                   'client',
                   'car',
-                  #'comment',
+                  # 'comment',
                   ]
 
         widgets = {
@@ -47,6 +47,7 @@ class PartnerForm(ModelForm):
 
 class ClientForm(ModelForm):
     # Форма клиента
+
     class Meta:
         model = Client
         fields = [
@@ -98,10 +99,9 @@ class ClientForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Орган выдал документ'
             }),
-            "post_mail": EmailField(attrs={
-                'class': 'form-control input-mask',
-                'data - inputmask': "'alias': 'email'",
-                'placeholder': 'Эл.почта'
+            "post_mail": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Эл.почта',
             }),
             "link_social": TextInput(attrs={
                 'class': 'form-control',
@@ -127,7 +127,6 @@ class ClientForm(ModelForm):
                     'data-provide': 'datepicker',
                     'data-date-autoclose': 'true',
                     'data-date-format': 'dd/mm/yyyy',
-
 
                 }),
             "point_birth": TextInput(attrs={

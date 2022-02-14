@@ -1,15 +1,11 @@
 # coding: utf-8
 
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import AccidentForm, AccidentAddPartnerForm
 from client.models import Client, Partner
-from client.forms import PartnerForm, ClientForm
-from datetime import *
+from client.forms import  PartnerForm, ClientForm
 
-from auto.models import Car
 
 
 def accident_list(request):

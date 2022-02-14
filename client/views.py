@@ -1,7 +1,7 @@
 # coding: utf-8
 from django.shortcuts import render, redirect, get_object_or_404
 from . import models
-from .forms import ClientForm, CompanyForm
+from client.forms import ClientForm, CompanyForm
 from datetime import datetime
 
 

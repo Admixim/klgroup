@@ -52,7 +52,7 @@ var DEFAULTS = {
   // A element (or selector) for triggering the datepicker
   trigger: null,
   // The ISO language code (built-in: en-US)
-  language: '',
+  language: 'ru',
   // The date string format
   format: 'mm/dd/yyyy',
   // The initial date
@@ -73,15 +73,15 @@ var DEFAULTS = {
   // A string suffix to the year number.
   yearSuffix: '',
   // Days' name of the week.
-  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  days: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
   // Shorter days' name
-  daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+  daysShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
   // Shortest days' name
-  daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+  daysMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
   // Months' name
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
   // Shorter months' name
-  monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  monthsShort: ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'],
   // A element tag for each item of years, months and days
   itemTag: 'li',
   // A class (CSS) for muted date item
