@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Client, Company, Partner
 
-from django.forms import ModelForm, TextInput, Textarea, DateInput, Select, FileField, URLField, EmailField, \
+from django.forms import ModelForm, TextInput, Textarea, DateInput, Select, EmailInput, URLInput, FileField, URLField, EmailField, \
     IntegerField
 
 
@@ -101,6 +101,7 @@ class ClientForm(ModelForm):
             }),
             "post_mail": TextInput(attrs={
                 'class': 'form-control',
+                'parsley-type' : "email",
                 'placeholder': 'Эл.почта',
             }),
             "link_social": TextInput(attrs={
@@ -111,7 +112,7 @@ class ClientForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Телефон'
             }),
-            "data_create": DateInput(attrs={
+            "data_create": DateInput(format='%d/%m/%Y',attrs={
                 'class': 'form-control',
                 'placeholder': 'Дата выдачи',
                 'data-date-container': '#datepicker2',
@@ -119,8 +120,7 @@ class ClientForm(ModelForm):
                 'data-date-autoclose': 'true',
                 'data-date-format': 'dd/mm/yyyy',
             }),
-            "date_birth": DateInput(
-                attrs={
+            "date_birth": DateInput(format='%d/%m/%Y', attrs={
                     'class': 'form-control',
                     'placeholder': 'Дата  рождения',
                     'data-date-container': '#datepicker2',

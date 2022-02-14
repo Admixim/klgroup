@@ -17,17 +17,17 @@ def client_new(request):
 
     error = ''
     if request.method == 'POST':
-        form = ClientForm(request.POST, prefix='test')
-
+        form = ClientForm(request.POST, prefix='client')
+        print('test до валидации', form)
         if form.is_valid():
-            print(form.cleaned_data)
+            print('test после валидации успешно пройден',form.cleaned_data)
             form = form.save(commit=False)
             form.save()
             return redirect('/client/')
         else:
             error = ' Форма не верно заполнена'
 
-    form = ClientForm(prefix='test')
+    form = ClientForm(prefix='client')
     data = {'form': form,
             'error': error
             }

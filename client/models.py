@@ -196,7 +196,7 @@ class Client(models.Model):
         max_length=24,
         blank=True,
         null=True,
-        default=None,
+
         verbose_name='Адрес Эл.почты')
 
     link_social = models.URLField(

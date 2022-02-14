@@ -119,18 +119,21 @@ class AccidentAddPartnerForm(ModelForm):
                 'readonly': 'True',
                 'placeholder': 'Место ДТП'
             }),
-            "data": DateInput(attrs={
+            "data": DateInput(format='%d/%m/%Y',attrs={
                 'class': 'form-control',
                 # 'readonly': 'True',
                 'placeholder': 'Дата  ДТП',
                 'data-date-container': '#datepicker2',
                 'data-provide': 'datepicker',
                 'data-date-autoclose': 'true',
+
             }),
 
             "time": TimeInput(attrs={
                 'class': 'form-control',
                 'readonly': 'True',
+                'type':'time',
+                'id': 'example-time-input',
                 'placeholder': 'Время ДТП'
             }),
             "dtp_doc": Select(attrs={
