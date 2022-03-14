@@ -1,9 +1,3 @@
-// $('.form-row').formset({
-//     prefix: '{{ form.prefix }}',
-//     addText: '+',
-//     deleteText: '-'
-// });
-
 function updateElementIndex(el, prefix, ndx) {
     var id_regex = new RegExp('(' + prefix + '-\\d+)');
     var replacement = prefix + '-' + ndx;
@@ -55,7 +49,7 @@ function deleteForm(prefix, btn) {
 //let bt = document.getElementById('plus');
 let bt = document.querySelector('.add-form-row');
 console.log(bt)
-    bt.addEventListener('click', function (e) {
+bt.addEventListener('click', function (e) {
     console.log('yahoo');
     e.preventDefault();
     cloneMore('.form-row:last', 'form');

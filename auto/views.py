@@ -13,13 +13,13 @@ def auto_list(request):
     # q = request.GET.get('find')
     # if q:
     #     auto = models.Car.objects.filter(number=q)
-    return render(request, 'dist/auto-list.html', {'results': auto})
+    return render(request, 'dist/handbk/auto/auto-list.html', {'results': auto})
 
 
 
 
 def auto_new(request):
-    template_name = 'dist/auto-files.html'
+    template_name = 'dist/handbk/auto/auto-files.html'
     if request.method == 'GET':
         autoform = AutoForm(request.GET or None)
         formset = FileFormset(queryset=File.objects.none())
@@ -43,7 +43,7 @@ def auto_new(request):
 
 
 def edit_auto_new(request, pk):
-    template_name = 'dist/auto-files.html'
+    template_name = 'dist/handbk/auto/auto-files.html'
     auto = Car.objects.get(id=pk)
     if request.method == 'GET':
 
@@ -83,7 +83,7 @@ def auto_edit(request, pk):
             return redirect('/auto/')
     else:
         form = AutoForm(instance=auto)
-        template_name = 'dist/auto-edit.html'
+        template_name = 'dist/handbk/auto/auto-edit.html'
         data = {
             'form': form,
         }

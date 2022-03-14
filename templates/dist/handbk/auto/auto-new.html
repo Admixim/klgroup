@@ -4,7 +4,6 @@
 
 {% block content %}
   <div class="main-content">
-
     <div class="page-content">
       <div class="container-fluid">
         <div class="row">
@@ -22,9 +21,7 @@
                 <form method="post">
                   {% csrf_token %}
                   <!-- Auto Details -->
-
                   <section>
-
                     <div class="page-title-box d-flex align-items-center justify-content-between">
                       <h4 class="mb-0"></h4>
 
@@ -57,27 +54,22 @@
                         </div>
                       </div>
                     </div>
-
                     <div class="row">
                       <div class="col-lg-6">
                         <div class="mb-3">
                           {{ autoform.vin }}
                         </div>
                       </div>
-
                       <div class="col-lg-6">
                         <div class="mb-3">
                           {{ autoform.date_made }}
-
                         </div>
                       </div>
                     </div>
-
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="mb-3">
                           {{ autoform.Comment }}
-
                         </div>
                       </div>
                     </div>
@@ -95,14 +87,12 @@
 
                   <!-- Auto Document -->
                   <h3>Данные документов</h3>
-
                   <div class="row">
                     <div class="col-lg-6">
                       <div class="mb-3">
                         {{ autoform.pts_s }}
                       </div>
                     </div>
-
                     <div class="col-lg-6">
                       <div class="mb-3">
                         {{ autoform.sts_s }}
@@ -113,8 +103,6 @@
                     <div class="col-lg-6">
                       {{ autoform.pts_n }}
                     </div>
-
-
                     <div class="col-lg-6">
                       <div class="mb-3">
                         {{ autoform.sts_n }}
@@ -126,7 +114,6 @@
                           {{ autoform.pts_data }}
                         </div>
                       </div>
-
                       <div class="col-lg-6">
                         <div class="mb-3">
                           {{ autoform.sts_data }}
@@ -139,7 +126,6 @@
                           {{ autoform.pts_date }}
                         </div>
                       </div>
-
                       <div class="col-lg-6">
                         <div class="mb-3">
                           {{ autoform.sts_date }}
@@ -147,8 +133,6 @@
                       </div>
                     </div>
                     <div class="row">
-
-
                       <!-- SK Company Auto -->
 
 
@@ -203,36 +187,24 @@
                                   <div class="mb-3 col-lg-2">
                                     <label class="form-label" for="name">Тип полиса</label>
                                     {{ form.types }}
-
-
                                   </div>
-
                                   <div class="mb-3 col-lg-2">
                                     <label class="form-label" for="email">Описание</label>
                                     {{ form.description }}
-
-
                                   </div>
                                   <div class="mb-3 col-lg-2">
                                     <label class="form-label" for="resume">Скан
                                       документа</label>
                                     {{ form.scan_doc }}
                                   </div>
-
-
                                   <div class="col-lg-2 align-self-center d-grid">
-                                    <button id="plus" type="button" type="button"
-                                            class="btn btn-primary btn-block">+
+                                    <button id="plus" type="button" class="btn btn-primary btn-block">+
                                     </button>
-
                                   </div>
                                 </div>
-
                               </div>
-                              <input data-repeater-create type="button"
-                                     class="btn btn-success mt-3 mt-lg-0"
+                              <input data-repeater-create type="button" class="btn btn-success mt-3 mt-lg-0"
                                      value="Добавить"/>
-
                             </form>
                           {% endfor %}
                           <div class="row spacer">
@@ -241,95 +213,82 @@
                               </button>
                             </div>
                           </div>
+                        </div>
+                      </section>
+                    </div>
+                  </div>
                 </form>
-
               </div>
             </div>
           </div>
-
-          <div class="page-title-box d-flex align-items-center justify-content-between">
-            <h4 class="mb-0">
-            </h4>
-          </div>
-
+          </form>
         </div>
       </div>
-      <h3>Данные страхования ТС</h3>
-      <section>
-        <div>
-          <form class="repeater" enctype="multipart/form-data">
-            <div data-repeater-list="group-a">
-              <div data-repeater-item class="row">
-                <div class="mb-3 col-lg-2">
-                  <label class="form-label" for="name">Тип полиса</label>
-
-                  <select class="form-select">
-                    <option>Выбор</option>
-                    <option>Осаго</option>
-                    <option>Каско</option>
-                    <option>Доп.полис</option>
-                  </select>
-
-                </div>
-
-                <div class="mb-3 col-lg-2">
-                  <label class="form-label" for="email">Страховщик</label>
-                  <input type="email" id="email" class="form-control"/>
-                </div>
-
-                <div class="mb-3 col-lg-2">
-                  <label class="form-label" for="subject">№ полиса</label>
-                  <input type="text" id="subject" class="form-control"/>
-                </div>
-                <div class="mb-3 col-lg-2">
-                  <label class="form-label" type="date">Дата
-                    Страхования</label>
-                  <input type="date" class="form-control"
-                         id="basicpill-servicetax-input">
-
-                </div>
-
-                <div class="mb-3 col-lg-2">
-                  <label class="form-label" for="resume">Скан
-                    документа</label>
-                  <input type="file" class="form-control-file"
-                         id="resume">
-                </div>
-
-
-                <div class="col-lg-2 align-self-center d-grid">
-                  <input data-repeater-delete type="button"
-                         class="btn btn-primary btn-block"
-                         value="Удалить"/>
-                </div>
-              </div>
-
-            </div>
-            <input data-repeater-create type="button"
-                   class="btn btn-success mt-3 mt-lg-0"
-                   value="Добавить"/>
-
-          </form>
-
-        </div>
-
-        <div class="page-title-box d-flex align-items-center justify-content-between">
-          <h4 class="mb-0">
-          </h4>
-
-          <div class="page-title-right">
-            <ol class="breadcrumb m-0">
-              <button class="btn btn-primary w-md" type="submit">Сохранить
-              </button>
-              </li>
-            </ol>
-            </button>
-
-          </div>
-
-        </div>
     </div>
-    <!-- end card body -->
+  </div>
+
+  <div class="page-title-box d-flex align-items-center justify-content-between">
+    <h4 class="mb-0">
+    </h4>
+  </div>
+  </div>
+  </div>
+  <h3>Данные страхования ТС</h3>
+  <section>
+    <div>
+      <form class="repeater" enctype="multipart/form-data">
+        <div data-repeater-list="group-a">
+          <div data-repeater-item class="row">
+            <div class="mb-3 col-lg-2">
+              <label class="form-label" for="name">Тип полиса</label>
+              <select class="form-select">
+                <option>Выбор</option>
+                <option>Осаго</option>
+                <option>Каско</option>
+                <option>Доп.полис</option>
+              </select>
+            </div>
+            <div class="mb-3 col-lg-2">
+              <label class="form-label" for="email">Страховщик</label>
+              <input type="email" id="email" class="form-control"/>
+            </div>
+            <div class="mb-3 col-lg-2">
+              <label class="form-label" for="subject">№ полиса</label>
+              <input type="text" id="subject" class="form-control"/>
+            </div>
+            <div class="mb-3 col-lg-2">
+              <label class="form-label" type="date">Дата
+                Страхования</label>
+              <input type="date" class="form-control" id="basicpill-servicetax-input">
+            </div>
+            <div class="mb-3 col-lg-2">
+              <label class="form-label" for="resume">Скан
+                документа</label>
+              <input type="file" class="form-control-file" id="resume">
+            </div>
+            <div class="col-lg-2 align-self-center d-grid">
+              <input data-repeater-delete type="button" class="btn btn-primary btn-block" value="Удалить"/>
+            </div>
+          </div>
+        </div>
+        <input data-repeater-create type="button" class="btn btn-success mt-3 mt-lg-0" value="Добавить"/>
+      </form>
+    </div>
+  </section>
+  <div class="page-title-box d-flex align-items-center justify-content-between">
+    <h4 class="mb-0">
+    </h4>
+    <div class="page-title-right">
+      <ol class="breadcrumb m-0">
+        <button class="btn btn-primary w-md" type="submit">Сохранить
+        </button>
+        </li>
+      </ol>
+      </button>
+    </div>
+  </div>
+  </div>
+  <!-- end card body -->
   </div>
   <!-- end card -->
   </div>

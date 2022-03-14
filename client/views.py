@@ -9,7 +9,7 @@ def client_list(request):
     """Список клиентов общий"""
 
     clients = models.Client.objects.all()
-    return render(request, 'dist/client-list.html', {'results': clients})
+    return render(request, 'dist/handbk/person/client-list.html', {'results': clients})
 
 
 def client_new(request):
@@ -31,7 +31,7 @@ def client_new(request):
     data = {'form': form,
             'error': error
             }
-    template_name = 'dist/client-new.html'
+    template_name = 'dist/handbk/person/client-new.html'
     return render(request, template_name, data)
 
 
@@ -54,7 +54,7 @@ def client_edit(request, pk):
 
     else:
         form = ClientForm(instance=client)
-        template_name = 'dist/client-edit.html'
+        template_name = 'dist/handbk/person/client-edit.html'
     return render(request, template_name, {'form': form,
                                            'client': pk
                                            }
@@ -65,7 +65,7 @@ def company_list(request):
     """Список контрагентов общий"""
 
     company = models.Company.objects.all()
-    return render(request, 'dist/company-list.html', {'results': company}
+    return render(request, 'dist/handbk/contractor/company-list.html', {'results': company}
                   )
 
 
@@ -85,7 +85,7 @@ def company_new(request):
     data = {'form': form,
             'error': error
             }
-    template_name = 'dist/company-new.html'
+    template_name = 'dist/handbk/contractor/company-new.html'
     return render(request, template_name, data)
 
 
@@ -101,7 +101,7 @@ def company_edit(request, pk):
             return redirect('/client/company/')
     else:
         form = CompanyForm(instance=company, prefix='company')
-        template_name = 'dist/company-edit.html'
+        template_name = 'dist/handbk/contractor/company-edit.html'
     return render(request, template_name, {'form': form
                                            }
                   )

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Car, Model, Brend, File
 
-from django.forms import ModelForm, TextInput, Textarea, DateInput, Select, FileInput,ClearableFileInput
+from django.forms import ModelForm, TextInput, Textarea, DateInput, Select, FileInput, ClearableFileInput
 from django.forms import formset_factory
 from django.forms import modelformset_factory
 from django import forms
@@ -188,11 +188,29 @@ FileFormset = modelformset_factory(
     fields=('files', 'types', 'description', 'scan_doc'),
     extra=1,
     widgets={
-        'name': forms.TextInput(
+        'files': forms.TextInput(
             attrs={
                 'class': 'form-control',
                 'placeholder': 'Enter Author Name here'
             }
-        )
+        ),
+        'types': forms.Select(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter Author Name here'
+            }
+        ),
+        'description': forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter Author Name here'
+            }
+        ),
+        'scan_doc': forms.FileInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter Author Name here'
+            }
+        ),
     }
 )
