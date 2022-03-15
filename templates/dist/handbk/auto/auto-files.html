@@ -1,65 +1,41 @@
 {% extends 'dist/index.html' %}
 {% load static %}
 
-
-
 {% block content %}
   <div class="main-content">
     <div class="page-content">
       <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
         {{ autoform.number }}
-        {{ formset.management_form }}
-        {% for form in formset %}
-          <div class="row form-row spacer">
-            <div class="col-2">
-              <label>{{ form.files.label }}</label>
-            </div>
-            {#                  <div class="col-4">#}
-            {#                    <div class="input-group">#}
-            {#                      Car - {{ form.files }}#}
-            {#                    </div>#}
-            {#                  </div>#}
-            <div class="col-4">
-              <div class="input-group">
-                Type - {{ form.types }}
+        <div data-repeater-item class="row">
+          {{ formset.management_form }}
+          {% for form in formset %}
+            <div class="row form-row">
+              <div class="col-2">
+              </div>
+              <div class="mb-3 col-lg-2">
+                {{ form.types }}
+              </div>
+              <div class="mb-3 col-lg-2">
+                {{ form.description }}
+              </div>
+              <div class="mb-3 col-lg-4">
+                {{ form.scan_doc }}
+              </div>
+              <div class="mb-3 col-lg-2">
+                <button id="minus" type="button" class="btn btn-success remove-form-row">-</button>
               </div>
             </div>
-            <div class="col-4">
-              <div class="input-group">
-                Desc - {{ form.description }}
-              </div>
-            </div>
-
-            <div class="col-4">
-              <div class="input-group">
-                File -{{ form.scan_doc }}
-              </div>
-
-              {#                <div class="col-4">#}
-              {#                  <div class="input-group">#}
-              {#                    {{ form.files }}#}
-              {#                    ------#}
-              {#                  </div>#}
-              {#                </div>#}
-              <div class="input-group-append">
-                <button id="plus" type="button" class="btn btn-success add-form-row">Добавить</button>
-              </div>
-            </div>
-
             <div class="input-group-append">
-              <button id="minus" type="button" class="btn btn-success remove-form-row">Удалить</button>
+              <button id="plus" type="button" class="btn btn-success add-form-row">Добавить</button>
             </div>
+          {% endfor %}
+          <div class="mb-3 col-lg-2">
+            <button type="submit" class="btn btn-soft-danger">Сохранить</button>
           </div>
-        {% endfor %}
-
-        <div class="col-4 offset-2">
-          <button type="submit" class="btn-block">Сохранить</button>
         </div>
       </form>
-
     </div>
-  </div>
   </div>
   <script src="/static/js/formset.js"></script>
 {% endblock content %}

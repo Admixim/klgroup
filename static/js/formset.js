@@ -46,7 +46,7 @@ function deleteForm(prefix, btn) {
     }
     return false;
 }
-//let bt = document.getElementById('plus');
+// let bt = document.getElementById('plus');
 let bt = document.querySelector('.add-form-row');
 console.log(bt)
 bt.addEventListener('click', function (e) {
@@ -62,7 +62,7 @@ $(document).on('click', '.add-form-row', function (e) {
     cloneMore('.form-row:last', 'form');
     return false;
 });
-$(document).on('click', '.remove-form-row', function (e) {
+$(document).on('click', '.form-row', function (e) {
     e.preventDefault();
     deleteForm('form', $(this));
     return false;

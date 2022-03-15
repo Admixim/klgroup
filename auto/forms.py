@@ -197,19 +197,19 @@ FileFormset = modelformset_factory(
         'types': forms.Select(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Enter Author Name here'
+                'placeholder': 'Тип файла'
             }
         ),
         'description': forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Enter Author Name here'
+                'placeholder': 'Описание к файлу'
             }
         ),
         'scan_doc': forms.FileInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Enter Author Name here'
+                'placeholder': 'Файл'
             }
         ),
     }

@@ -19,7 +19,9 @@ def auto_list(request):
 
 
 def auto_new(request):
-    template_name = 'dist/handbk/auto/auto-files.html'
+    template_name = 'dist/handbk/auto/auto-new.html'
+
+    # template_name = 'dist/handbk/auto/auto-files.html'
     if request.method == 'GET':
         autoform = AutoForm(request.GET or None)
         formset = FileFormset(queryset=File.objects.none())
