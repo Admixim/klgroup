@@ -1,8 +1,17 @@
 from django.shortcuts import render
 from .models import Client, Company, Partner
 
-from django.forms import ModelForm, TextInput, Textarea, DateInput, Select, EmailInput, URLInput, FileField, URLField, EmailField, \
-    IntegerField
+from django.forms import (
+    NumberInput,
+    ModelForm,
+    TextInput,
+    Textarea,
+    DateInput,
+    Select,
+    EmailInput,
+    URLInput,
+    FileInput,
+)
 
 
 class PartnerForm(ModelForm):
@@ -89,11 +98,11 @@ class ClientForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Отчество'
             }),
-            "serial_pass": TextInput(attrs={
+            "serial_pass": NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Серия паспорта'
             }),
-            "number_pass": TextInput(attrs={
+            "number_pass": NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Номер паспорта'
             }),
@@ -110,11 +119,11 @@ class ClientForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Соц.Адрес'
             }),
-            "phone": TextInput(attrs={
+            "phone": NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Телефон'
             }),
-            "data_create": DateInput(format='%d/%m/%Y',attrs={
+            "data_create": DateInput(format='%d/%m/%Y', attrs={
                 'class': 'form-control',
                 'placeholder': 'Дата выдачи',
                 'data-date-container': '#datepicker2',
@@ -123,14 +132,13 @@ class ClientForm(ModelForm):
                 'data-date-format': 'dd/mm/yyyy',
             }),
             "date_birth": DateInput(format='%d/%m/%Y', attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Дата  рождения',
-                    'data-date-container': '#datepicker2',
-                    'data-provide': 'datepicker',
-                    'data-date-autoclose': 'true',
-                    'data-date-format': 'dd/mm/yyyy',
-
-                }),
+                'class': 'form-control',
+                'placeholder': 'Дата  рождения',
+                'data-date-container': '#datepicker2',
+                'data-provide': 'datepicker',
+                'data-date-autoclose': 'true',
+                'data-date-format': 'dd/mm/yyyy',
+            }),
             "point_birth": TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Место рождение'
@@ -143,11 +151,11 @@ class ClientForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Факт адрес'
             }),
-            "serial_lic": TextInput(attrs={
+            "serial_lic": NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Серия'
             }),
-            "number_lic": TextInput(attrs={
+            "number_lic": NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Номер'
             }),
@@ -163,12 +171,13 @@ class ClientForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Категории прав'
             }),
-            "create_lic": DateInput(attrs={
+            "create_lic": DateInput(format='%d/%m/%Y', attrs={
                 'class': 'form-control',
                 'placeholder': 'Дата выдачи',
                 'data-date-container': '#datepicker2',
                 'data-provide': 'datepicker',
                 'data-date-autoclose': 'true',
+                'data-date-format': 'dd/mm/yyyy',
             }),
 
         }
@@ -207,32 +216,31 @@ class CompanyForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Полное наименование компании'
             }),
-            "nalog_number": TextInput(attrs={
+            "nalog_number": NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'ИНН'
             }),
-            "nalog_main": TextInput(attrs={
+            "nalog_main": NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'ОГРН'
             }),
-            "nalog_registr": TextInput(attrs={
+            "nalog_registr": NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'КПП'
             }),
             "company_adress": Textarea(attrs={
-
                 'class': 'form-control',
                 'placeholder': 'Адрес юридический'
             }),
-            "number_phone": TextInput(attrs={
+            "number_phone": NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Адрес эл.почты'
             }),
-            "site_url": TextInput(attrs={
+            "site_url": URLInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Ссылка на сайт'
             }),
-            "mail_adress": TextInput(
+            "mail_adress": EmailInput(
                 attrs={'class': 'form-control',
                        'placeholder': 'Эл.Почта'
                        }),
@@ -244,7 +252,7 @@ class CompanyForm(ModelForm):
                 attrs={'class': 'form-control',
                        'placeholder': 'Наименование банка'
                        }),
-            "bank_bik": TextInput(
+            "bank_bik": NumberInput(
                 attrs={'class': 'form-control',
                        'placeholder': 'БИК банка'
                        }),
@@ -252,7 +260,7 @@ class CompanyForm(ModelForm):
                 attrs={'class': 'form-control',
                        'placeholder': 'Юр.адрес банка'
                        }),
-            "bank_invoice": TextInput(
+            "bank_invoice": NumberInput(
                 attrs={'class': 'form-control',
                        'placeholder': 'Расчетный счет'
                        }),

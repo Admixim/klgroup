@@ -20,7 +20,7 @@ def client_new(request):
         form = ClientForm(request.POST, prefix='client')
         print('test до валидации', form)
         if form.is_valid():
-            print('test после валидации успешно пройден',form.cleaned_data)
+            print('test после валидации успешно пройден', form.cleaned_data)
             form = form.save(commit=False)
             form.save()
             return redirect('/client/')
@@ -44,21 +44,21 @@ def client_edit(request, pk):
         if form.is_valid():
             # date_birth = (datetime.strptime(str(form.cleaned_data['date_birth']), '%Y-%m-%d')).strftime("%d-%m-%Y" )
             client = form.save(commit=False)
-            print('row ', form.cleaned_data['data_create'])
-            print('strptime ', datetime.strptime(str(form.cleaned_data['data_create']), '%Y-%m-%d'))
-            _data_create = form.cleaned_data['data_create'] #(datetime.strptime(str(form.cleaned_data['data_create']), '%Y-%m-%d')).strftime("%d-%m-%Y")
-            print('_date_create ', _data_create)
-            client.data_create = _data_create
+            # print('row ', form.cleaned_data['data_create'])
+            # print('strptime', datetime.strptime(str(form.cleaned_data['data_create']), '%Y-%m-%d'))
+            # _data_create = form.cleaned_data['data_create'] #(datetime.strptime(str(form.cleaned_data['data_create']), '%Y-%m-%d')).strftime("%d-%m-%Y")
+            # print('_date_create ', _data_create)
+            # client.data_create = _data_create
             client.save()
             return redirect('/client/')
 
     else:
         form = ClientForm(instance=client)
         template_name = 'dist/handbk/person/client-edit.html'
-    return render(request, template_name, {'form': form,
-                                           'client': pk
-                                           }
-                  )
+        return render(request, template_name, {'form': form,
+                                               'client': pk
+                                               }
+                      )
 
 
 def company_list(request):

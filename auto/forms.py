@@ -50,7 +50,8 @@ class AutoForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Цвет ТС'
             }),
-            "date_made": DateInput(attrs={
+            "date_made": DateInput(format='%Y', attrs={
+                'data-date-format': 'yyyy',
                 'class': 'form-control',
                 'placeholder': 'Дата выпуска',
                 'data-date-container': '#datepicker2',
@@ -66,7 +67,8 @@ class AutoForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Серия СТС'
             }),
-            "sts_date": DateInput(attrs={
+            "sts_date": DateInput(format='%d/%m/%Y', attrs={
+                'data-date-format': 'dd/mm/yyyy',
                 'class': 'form-control',
                 'placeholder': 'Дата выдачи СТС',
                 'data-date-container': '#datepicker2',
@@ -81,13 +83,15 @@ class AutoForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Серия ПТС'
             }),
-            "pts_date": DateInput(attrs={
+            "pts_date": DateInput(format='%d/%m/%Y', attrs={
                 'class': 'form-control',
                 'placeholder': 'Дата выдачи ПТС',
                 'data-date-container': '#datepicker2',
                 'data-provide': 'datepicker',
                 'data-date-autoclose': 'true',
+                'data-date-format': 'dd/mm/yyyy',
             }),
+
             "vin": TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'VIN/Кузов Номер'
@@ -96,7 +100,8 @@ class AutoForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': '№ Страх.Пол.'
             }),
-            "insurance_date": DateInput(attrs={
+            "insurance_date": DateInput(format='%d/%m/%Y', attrs={
+                'data-date-format': 'dd/mm/yyyy',
                 'class': 'form-control',
                 'placeholder': 'Дата  выдачи СтрахПол.',
                 'data-date-container': '#datepicker2',
@@ -115,7 +120,8 @@ class AutoForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': '№ Страх.Пол.КАСКО'
             }),
-            "insurance_datek": DateInput(attrs={
+            "insurance_datek": DateInput(format='%d/%m/%Y', attrs={
+                'data-date-format': 'dd/mm/yyyy',
                 'class': 'form-control',
                 'placeholder': 'Дата  выдачи СтрахПол. КАСКО',
                 'data-date-container': '#datepicker2',
@@ -164,23 +170,6 @@ class FileForm(ModelForm):
 
 
 # FileFormset = formset_factory(FileForm, extra=2)
-
-
-class FileModelForm(forms.ModelForm):
-    class Meta:
-        model = File
-        fields = ('files', )
-        labels = {
-            'files': 'File Name'
-        }
-        widgets = {
-            'files': forms.TextInput(attrs={
-                'class': 'form-control',
-
-                'placeholder': 'Enter Book Name here'
-                }
-            )
-        }
 
 
 FileFormset = modelformset_factory(
