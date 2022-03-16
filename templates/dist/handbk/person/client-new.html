@@ -13,177 +13,154 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <h4 class="card-title mb-4">КАРТА КЛИЕНТА</h4>
-            <form method="post">
-              {% csrf_token %}
-              <div class="page-title-box d-flex align-items-center justify-content-between">
-                <h3 class="mb-0"> Анкетные данные</h3>
-                <div class="page-title-right">
-                  <ol class="breadcrumb m-0">
-                    <button class="btn btn-primary w-md" type="submit">Сохранить</button>
-                    </li>
-                  </ol>
-                </div>
-              </div>
-              <div id="basic-example">
-                <!-- Client Details -->
-
-                <section>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        {{ form.surname }}
-                      </div>
-                      <div class="mb-3">
-                        {{ form.name }}
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        {{ form.midlename }}
-                      </div>
-                      <div class="mb-3">
-                        {{ form.link_social }}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="mb-3" type="tel" id="example-tel-input">
-                        {{ form.phone }}
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        {{ form.post_mail }}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="mb-3">
-                        {{ form.Comment }}
-                      </div>
-                      <span>{{ error }}</span>
-                    </div>
-                  </div>
-                </section>
-
-                <!-- Company Document -->
-                <h3>Паспортные данные</h3>
-                <section>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        {{ form.serial_pass }}
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        {{ form.number_pass }}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        {{ form.point_birth }}
-                      </div>
-                    </div>
-                    <div class="col-lg-6" id="datepicker2">
-                      <div class="mb-3">
-                        {{ form.date_birth }}
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        {{ form.enter_org }}
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        {{ form.data_create }}
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-lg-12">
-                      <div class="mb-3">
-                        {{ form.adress_reg }}
-                      </div>
-                    </div>
-                  </div>
-                </section>
-                <!-- Bank Details -->
-                <h2>Водительское удостоверение</h2>
-                <div>
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        {{ form.serial_lic }}
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <div class="mb-3">
-                        {{ form.number_lic }}
-                      </div>
-                    </div>
-                    <div class="mb-3">
-                      {{ form.enter_lic }}
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="mb-3">
-                      {{ form.create_lic }}
-                    </div>
-                  </div>
-                  {#                  <div class="col-md-6">#}
-                  {#                    <div class="mb-3">#}
-
-
-                  {#                      <select class="select2 form-control select2-multiple"#}
-                  {#                              multiple="multiple"#}
-                  {#                              data-placeholder="Выбрать ...">#}
-                  {#                        <option value="A" selected>A</option>#}
-                  {#                        <option value="B" selected>B</option>#}
-                  {#                        <option value="C">C</option>#}
-                  {#                        <option value="D">D</option>#}
-                  {#                        <option value="E">E</option>#}
-                  {# Подключить плагин для корректного выбора полей и не
-                  {#                        правлильно указан путь у js/app.js#}
-                  {#                      </select></div>#}
-                  {#                  </div>#}
-                </div>
-                {#                <div class="text-center mt-4">#}
-                {#                  <button type="button" class="btn btn-primary waves-effect waves-light">#}
-                {#                    Отправить файл#}
-                {#                  </button>#}
-              </div>
-              <div class="page-title-box d-flex align-items-center justify-content-between">
-                <h4 class="mb-0">
-                </h4>
-                <div class="page-title-right">
-                  <ol class="breadcrumb m-0">
-                    <button class="btn btn-primary w-md" type="submit">Сохранить
-                    </button>
-                    </li>
-                  </ol>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div> <!-- end col -->
       </div>
-      <div class="page-title-box d-flex align-items-center justify-content-between">
-        <h4 class="mb-0"></h4>
-        <div class="page-title-right">
-        </div>
+      <div class="col-lg-12">
+        <h4 class="card-title mb-4">КАРТА КЛИЕНТА</h4>
+        <form method="POST" action="" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="page-title-box d-flex align-items-center justify-content-between">
+            <h3 class="mb-0"> Анкетные данные</h3>
+            <div class="page-title-right">
+              <ol class="breadcrumb m-0">
+                <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+                </li>
+              </ol>
+            </div>
+          </div>
+          <div id="basic-example">
+            <!-- Client Details -->
+
+            <section>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    {{ form.surname }}
+                  </div>
+                  <div class="mb-3">
+                    {{ form.name }}
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    {{ form.midlename }}
+                  </div>
+                  <div class="mb-3">
+                    {{ form.link_social }}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3" type="tel" id="example-tel-input">
+                    {{ form.phone }}
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    {{ form.post_mail }}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="mb-3">
+                    {{ form.Comment }}
+                  </div>
+                  <span>{{ error }}</span>
+                </div>
+              </div>
+            </section>
+
+            <!-- Company Document -->
+            <h3>Паспортные данные</h3>
+            <section>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    {{ form.serial_pass }}
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    {{ form.number_pass }}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    {{ form.point_birth }}
+                  </div>
+                </div>
+                <div class="col-lg-6" id="datepicker2">
+                  <div class="mb-3">
+                    {{ form.date_birth }}
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    {{ form.enter_org }}
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    {{ form.data_create }}
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="mb-3">
+                    {{ form.adress_reg }}
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- Bank Details -->
+            <h2>Водительское удостоверение</h2>
+            <div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    {{ form.serial_lic }}
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="mb-3">
+                    {{ form.number_lic }}
+                  </div>
+                </div>
+                <div class="mb-3">
+                  {{ form.enter_lic }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="mb-3">
+                  {{ form.create_lic }}
+                </div>
+              </div>
+            </div>
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+              <h4 class="mb-0">
+              </h4>
+              <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                  <button class="btn btn-primary w-md" type="submit">Сохранить
+                  </button>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- end col -->
+
+    <div class="page-title-box d-flex align-items-center justify-content-between">
+      <h4 class="mb-0"></h4>
+      <div class="page-title-right">
       </div>
     </div>
   </div>
-
-
-
 {% endblock content %}

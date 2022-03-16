@@ -1,13 +1,78 @@
 from django.contrib import admin
 from client.models import *
-from django.contrib.auth.models import Group,User
-
-
-
+from django.contrib.auth.models import Group, User
 
 """Отключение пользователей в админ панели"""
 admin.site.unregister(User)
 admin.site.unregister(Group)
+
+
+class InFilesClient(admin.StackedInline):
+    """Таблица с  файлами физ лица """
+
+    model = FilePerson
+    show_change_link = True
+    extra = 0
+    fieldsets = (
+        ('Вложенные файлы', {
+            'fields': (
+                ("types", ("files_person"),
+                 ),
+                ("description", "scan_doc"),
+            )
+        }
+         ),)
+
+
+class InFilesComp(admin.StackedInline):
+    """Таблица прикрепелнными файлами документов Юр. лиц """
+
+    model = FileCompany
+    show_change_link = True
+    extra = 0
+
+    fieldsets = (
+        ('Вложенные файлы', {
+            'fields': (
+                ("types", ("files_comp"),
+                 ),
+                ("description", "scan_doc"),
+            )
+        }
+         ),)
+
+
+@admin.register(FilePerson)
+class FileAdmin(admin.ModelAdmin):
+    """Таблица прикрепелнными файлами документов Физ лиц """
+
+    list_display = (
+        "id",
+        "files_person",
+        "types",
+        "description",
+        "scan_doc"
+    )
+    list_display_links = ("id", "description")
+    save_on_top = True
+    search_fields = ("id", "description",)
+
+
+@admin.register(FileCompany)
+class FileAdmin(admin.ModelAdmin):
+    """Таблица прикрепелнными файлами документов Юр.лиц """
+
+    list_display = (
+        "id",
+        "files_comp",
+        "types",
+        "description",
+        "scan_doc"
+    )
+    list_display_links = ("id", "description")
+    save_on_top = True
+    search_fields = ("id", "description",)
+
 
 @admin.register(Status)
 class StatusAdmin(admin.ModelAdmin):
@@ -18,7 +83,7 @@ class StatusAdmin(admin.ModelAdmin):
         "comment",
         "created",
         "updated",)
-    list_display_links = ("id","comment")
+    list_display_links = ("id", "comment")
     list_filter = ("id",)
     search_fields = ("id",)
 
@@ -40,7 +105,7 @@ class PartnerAdmin(admin.ModelAdmin):
         "comment",
         "created",
         "updated",)
-    list_display_links = ("status","type","comment")
+    list_display_links = ("status", "type", "comment")
     list_filter = ("id", "status",)
     search_fields = ("id", "status",)
 
@@ -51,13 +116,9 @@ class ClientAdmin(admin.ModelAdmin):
 
     list_display = (
         "id",
-
-
-
         "name",
         "surname",
         "midlename",
-
         "phone",
         "post_mail",
         "attorney",
@@ -70,6 +131,7 @@ class ClientAdmin(admin.ModelAdmin):
         "created")
     list_display_links = ("id", "name", "surname", "phone", "midlename")
     save_on_top = True
+    inlines = [InFilesClient]
     search_fields = ("id", "name", "surname", "phone")
 
     fieldsets = (
@@ -158,5 +220,4 @@ class CompanyAdmin(admin.ModelAdmin):
     list_display_links = ("id", "name", "full_name", "nalog_number")
     search_fields = ("id", "name", "full_name", "nalog_number",)
     save_on_top = True
-
-
+    inlines = [InFilesComp]

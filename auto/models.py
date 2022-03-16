@@ -242,5 +242,5 @@ class File(models.Model):
         null=True,
         default=None,
         blank=True,
-        verbose_name="Скан  ПТС"
+        verbose_name="Файл"
     )

@@ -240,6 +240,7 @@ class Client(models.Model):
         ordering = ['-created']
 
 
+
 class Company(models.Model):
     """Таблица Контрагента  """
 
@@ -425,5 +426,72 @@ class Partner(models.Model):
         return self.client
 
     def get_client(self):
-        return  self.accident.partner_accident.filter(type=True).first()
+        return self.accident.partner_accident.filter(type=True).first()
 
+
+class FileCompany(models.Model):
+    """Таблица прикрепить файлы документов Юр лица"""
+    TYPES = (
+        (1, 'Выписка ОГРН'),
+        (2, 'Реквезиты'),
+        (3, 'Доверенность'),
+
+    )
+    files_comp = models.ForeignKey(
+        Company,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name='files_company',
+        null=True,
+        verbose_name='Прикрепленные файлы (Company)'
+    )
+    types = models.PositiveSmallIntegerField(choices=TYPES, verbose_name='Тип')
+    description = models.CharField(max_length=100, verbose_name='Описание')
+    scan_doc = models.FileField(
+        upload_to='media/company/',
+        null=True,
+        default=None,
+        blank=True,
+        verbose_name="Файл"
+    )
+
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    class Meta:
+        verbose_name = 'Файл Юр.лиц'
+        verbose_name_plural = 'Файлы Юр.лиц'
+
+
+class FilePerson(models.Model):
+    """Таблица прикрепить файлы документов физ лица """
+    TYPES = (
+        (1, 'Паспорт'),
+        (2, 'Вод.Удост'),
+        (3, 'Реквизиты'),
+        (4, 'Доверенность'),
+    )
+    files_person = models.ForeignKey(
+        Client,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name='files_persons',
+        null=True,
+        verbose_name='Прикрепленные файлы (Client)'
+    )
+    types = models.PositiveSmallIntegerField(choices=TYPES, verbose_name='Тип')
+    description = models.CharField(max_length=100, verbose_name='Описание')
+    scan_doc = models.FileField(
+        upload_to='media/person/',
+        null=True,
+        default=None,
+        blank=True,
+        verbose_name="Файл"
+    )
+
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    class Meta:
+        verbose_name = 'Файл Физ.лиц'
+        verbose_name_plural = 'Файлы Физ.лиц'
