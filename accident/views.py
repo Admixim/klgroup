@@ -57,7 +57,7 @@ def accident_add_partner(request, pk):
     list_partner = accident.partner_accident.all()
     if request.method == "POST":
         #form = AccidentAddPartnerForm(request.POST,request.FILES or None, prefix='accident',instance=accident)
-        form = PartnerForm(request.POST,request.FILES or None, prefix='partners')
+        form = PartnerForm(request.POST, request.FILES or None, prefix='partners')
         if form.is_valid():
             # _date = form.cleaned_data['data']
             # print(_date)

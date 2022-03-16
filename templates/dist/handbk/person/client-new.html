@@ -140,6 +140,34 @@
                 </div>
               </div>
             </div>
+            <div class="row">
+              <!-- Document Person -->
+              <h3>Документы ТС</h3>
+              <div data-repeater-item class="row">
+                {{ formset.management_form }}
+                {% for file in formset %}
+                  <div class="row form-row">
+                    <div>
+                    </div>
+                    <div class="mb-3 col-lg-2">
+                      {{ file.types }}
+                    </div>
+                    <div class="mb-3 col-lg-2">
+                      {{ file.description }}
+                    </div>
+                    <div class="mb-3 col-lg-4">
+                      {{ file.scan_doc }}
+                    </div>
+                    <div class="mb-3 col-lg-2">
+                      <button id="minus" type="button" class="btn btn-success remove-form-row">-</button>
+                    </div>
+                  </div>
+                  <div class="input-group-append">
+                    <button id="plus" type="button" class="btn btn-success add-form-row">Добавить</button>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
             <div class="page-title-box d-flex align-items-center justify-content-between">
               <h4 class="mb-0">
               </h4>
@@ -163,4 +191,5 @@
       </div>
     </div>
   </div>
+  <script src="/static/js/formset.js"></script>
 {% endblock content %}

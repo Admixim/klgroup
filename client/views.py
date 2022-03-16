@@ -1,64 +1,70 @@
 # coding: utf-8
 from django.shortcuts import render, redirect, get_object_or_404
-from . import models
-from client.forms import ClientForm, CompanyForm
+
+from client.forms import *
 from datetime import datetime
 
 
 def client_list(request):
     """Список клиентов общий"""
 
-    clients = models.Client.objects.all()
+    clients = Client.objects.all()
     return render(request, 'dist/handbk/person/client-list.html', {'results': clients})
 
 
 def client_new(request):
     """Создание-добавление  нового клиента"""
 
+    template_name = 'dist/handbk/person/client-new.html'
     error = ''
-    if request.method == 'POST':
-        form = ClientForm(request.POST, prefix='client')
-        print('test до валидации', form)
-        if form.is_valid():
-            print('test после валидации успешно пройден', form.cleaned_data)
-            form = form.save(commit=False)
-            form.save()
+    if request.method == 'GET':
+        clientform = ClientForm(request.GET or None)
+        formset = FilePersonFormset(queryset=FilePerson.objects.none())
+    elif request.method == 'POST':
+        clientform = ClientForm(request.POST)
+        formset = FilePersonFormset(request.POST, request.FILES)
+        if clientform.is_valid() and formset.is_valid():
+            person = clientform.save()
+            for form in formset:
+                file = form.save(commit=False)
+                file.files = person
+                file.save()
             return redirect('/client/')
         else:
-            error = ' Форма не верно заполнена'
-
-    form = ClientForm(prefix='client')
-    data = {'form': form,
-            'error': error
-            }
-    template_name = 'dist/handbk/person/client-new.html'
-    return render(request, template_name, data)
+            print('Форма не верно заполнена')
+    return render(request, template_name, {
+        'form': clientform,
+        'formset': formset,
+    })
 
 
 def client_edit(request, pk):
-    """"Редактирования  данных клиента"""
-
-    client = get_object_or_404(models.Client, pk=pk)
+    """Редактирования  данных  Физ лица"""
+    person = get_object_or_404(Client, pk=pk)
+    list_files = person.files_persons.all()
+    formset = FilePersonFormset(queryset=FilePerson.objects.none())
+    person = get_object_or_404(Client, pk=pk)
     if request.method == "POST":
-        form = ClientForm(request.POST, instance=client)
-        if form.is_valid():
-            # date_birth = (datetime.strptime(str(form.cleaned_data['date_birth']), '%Y-%m-%d')).strftime("%d-%m-%Y" )
-            client = form.save(commit=False)
-            # print('row ', form.cleaned_data['data_create'])
-            # print('strptime', datetime.strptime(str(form.cleaned_data['data_create']), '%Y-%m-%d'))
-            # _data_create = form.cleaned_data['data_create'] #(datetime.strptime(str(form.cleaned_data['data_create']), '%Y-%m-%d')).strftime("%d-%m-%Y")
-            # print('_date_create ', _data_create)
-            # client.data_create = _data_create
-            client.save()
+        clientform = ClientForm(request.POST, instance=person)
+        formset = FilePersonFormset(request.POST, request.FILES)
+        if clientform.is_valid() and formset.is_valid():
+            person = clientform.save()
+            for form in formset:
+                file = form.save(commit=False)
+                file.files = person
+                file.save()
             return redirect('/client/')
-
     else:
-        form = ClientForm(instance=client)
+        form = ClientForm(instance=person)
+        list_files = person.files_persons.all()
         template_name = 'dist/handbk/person/client-edit.html'
-        return render(request, template_name, {'form': form,
-                                               'client': pk
-                                               }
-                      )
+        data = {
+            'form': form,
+            'client': pk,
+            'files': list_files,
+            'formset': formset,
+        }
+        return render(request, template_name, data)
 
 
 def company_list(request):

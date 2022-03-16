@@ -64,7 +64,7 @@ def edit_auto_new(request, pk):
                 file.save()
                 return redirect('/auto/')
         else:
-            print('You have error')
+            print('Упала из за ошибки')
     return render(request, template_name, {
         'autoform': autoform,
         'formset': formset,
@@ -89,4 +89,4 @@ def auto_edit(request, pk):
         data = {
             'form': form,
         }
-    return render(request, template_name, data)
+        return render(request, template_name, data)

@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Client, Company, Partner
-
+from .models import Client, Company, Partner, FilePerson, FileCompany
+from django.forms import modelformset_factory
 from django.forms import (
     NumberInput,
     ModelForm,
@@ -274,3 +274,67 @@ class CompanyForm(ModelForm):
                        }),
 
         }
+
+
+class FilePersonForm(ModelForm):
+    class Meta:
+        model = FilePerson
+        fields = ["id",
+                  "files_person",
+                  "types",
+                  "description",
+                  "scan_doc",
+
+                  ]
+
+        widgets = {
+
+            "files_person": Select(attrs={
+                'class': 'form-control',
+                'placeholder': 'Физ лицо'
+            }),
+            "description": TextInput(attrs={
+                'class': 'form-control',
+                'type': 'text',
+                'placeholder': 'Описание',
+
+            }),
+            "scan_doc": FileInput(attrs={
+                'class': 'form-control'}),
+            'placeholder': 'Файл',
+        }
+
+
+# FileFormset = formset_factory(FileForm, extra=2)
+
+
+FilePersonFormset = modelformset_factory(FilePerson,
+                                         fields=('files_person', 'types', 'description', 'scan_doc'),
+                                         extra=1,
+                                         widgets={
+                                             'files_person': TextInput(
+                                                 attrs={
+                                                     'class': 'form-control',
+                                                     'placeholder': 'Enter Author Name here'
+                                                 }
+                                             ),
+                                             'types': Select(
+                                                 attrs={
+                                                     'class': 'form-control',
+                                                     'placeholder': 'Тип файла'
+                                                 }
+                                             ),
+                                             'description': TextInput(
+                                                 attrs={
+                                                     'class': 'form-control',
+                                                     'placeholder': 'Описание к файлу'
+                                                 }
+                                             ),
+                                             'scan_doc': FileInput(
+                                                 attrs={
+                                                     'class': 'form-control',
+                                                     'placeholder': 'Файл'
+                                                 }
+                                             ),
+                                         }
+                                         )

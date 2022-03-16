@@ -1,7 +1,7 @@
 import uuid
 
 from django.db import models
-from court.models import  *
+from court.models import *
 
 # from crm_kl import *
 
