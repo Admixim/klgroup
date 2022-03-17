@@ -42,8 +42,11 @@ def client_edit(request, pk):
     """Редактирования  данных  Физ лица"""
     person = get_object_or_404(Client, pk=pk)
     list_files = person.files_persons.all()
+
+    for item in list_files:
+        print(item.types, item.description, item.scan_doc)
+
     formset = FilePersonFormset(queryset=FilePerson.objects.none())
-    person = get_object_or_404(Client, pk=pk)
     if request.method == "POST":
         clientform = ClientForm(request.POST, instance=person)
         formset = FilePersonFormset(request.POST, request.FILES)
@@ -61,7 +64,7 @@ def client_edit(request, pk):
         data = {
             'form': form,
             'client': pk,
-            'files': list_files,
+            'list_files': list_files,
             'formset': formset,
         }
         return render(request, template_name, data)
@@ -70,7 +73,7 @@ def client_edit(request, pk):
 def company_list(request):
     """Список контрагентов общий"""
 
-    company = models.Company.objects.all()
+    company = Company.objects.all()
     return render(request, 'dist/handbk/contractor/company-list.html', {'results': company}
                   )
 
