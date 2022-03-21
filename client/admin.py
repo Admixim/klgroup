@@ -51,9 +51,11 @@ class FileAdmin(admin.ModelAdmin):
         "files_person",
         "types",
         "description",
-        "scan_doc"
+        "scan_doc",
+        "created",
+        "updated",
     )
-    list_display_links = ("id", "description")
+    list_display_links = ("id", "description",)
     save_on_top = True
     search_fields = ("id", "description",)
 
@@ -67,9 +69,11 @@ class FileAdmin(admin.ModelAdmin):
         "files_comp",
         "types",
         "description",
-        "scan_doc"
+        "scan_doc",
+        "created",
+        "updated",
     )
-    list_display_links = ("id", "description")
+    list_display_links = ("id", "description",)
     save_on_top = True
     search_fields = ("id", "description",)
 

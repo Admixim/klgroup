@@ -18,8 +18,8 @@ def court_new(request):
     """Создание-добавление  новой судопроизводства"""
     error = ''
     if request.method == 'POST':
-        infoform = CourtInfoForm(request.POST,request.FILES, prefix=InfoCourt)
-        courtform = CourtForm(request.POST,request.FILES, prefix=Court)
+        infoform = CourtInfoForm(request.POST, request.FILES, prefix=InfoCourt)
+        courtform = CourtForm(request.POST, request.FILES, prefix=Court)
         if infoform.is_valid() and courtform.is_valid():
             infoform.save()
             courtform.save()

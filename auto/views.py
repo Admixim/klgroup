@@ -19,16 +19,15 @@ def auto_list(request):
 
 
 def auto_new(request):
-    template_name = 'dist/handbk/auto/auto-new.html'
+    """Создание-добавление  нового  ТС """
 
-    # template_name = 'dist/handbk/auto/auto-files.html'
+    template_name = 'dist/handbk/auto/auto-new.html'
     if request.method == 'GET':
         autoform = AutoForm(request.GET or None)
         formset = FileFormset(queryset=File.objects.none())
     elif request.method == 'POST':
-        autoform = AutoForm(request.POST)
-        formset = FileFormset(request.POST, request.FILES)
-
+        autoform = AutoForm(request.POST, )
+        formset = FileFormset(request.POST, request.FILES, )
         if autoform.is_valid() and formset.is_valid():
             auto = autoform.save()
             for form in formset:

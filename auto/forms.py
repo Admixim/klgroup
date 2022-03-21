@@ -180,7 +180,7 @@ FileFormset = modelformset_factory(
         'files': forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Enter Author Name here'
+                'placeholder': 'Файлы ТС'
             }
         ),
         'types': forms.Select(

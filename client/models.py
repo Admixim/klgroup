@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from accident.models import *
 from auto.models import Car
@@ -445,7 +446,12 @@ class FileCompany(models.Model):
         null=True,
         verbose_name='Прикрепленные файлы (Company)'
     )
-    types = models.PositiveSmallIntegerField(choices=TYPES, verbose_name='Тип')
+    types = models.PositiveSmallIntegerField(choices=TYPES,
+                                             verbose_name='Тип',
+                                             null=True,
+                                             default=None,
+                                             blank=True,
+                                             )
     description = models.CharField(max_length=100, verbose_name='Описание')
     scan_doc = models.FileField(
         upload_to='media/company/',
@@ -454,7 +460,7 @@ class FileCompany(models.Model):
         blank=True,
         verbose_name="Файл"
     )
-
+    author = models.OneToOneField(User, on_delete=models.CASCADE, db_column='user', blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
@@ -479,7 +485,13 @@ class FilePerson(models.Model):
         null=True,
         verbose_name='Прикрепленные файлы (Client)'
     )
-    types = models.PositiveSmallIntegerField(choices=TYPES, verbose_name='Тип')
+    types = models.PositiveSmallIntegerField(
+        choices=TYPES,
+        verbose_name='Тип',
+        null=True,
+        default=None,
+        blank=True,
+    )
     description = models.CharField(max_length=100, verbose_name='Описание')
     scan_doc = models.FileField(
         upload_to='media/person/',
@@ -488,7 +500,7 @@ class FilePerson(models.Model):
         blank=True,
         verbose_name="Файл"
     )
-
+    author = models.OneToOneField(User, db_column='user', on_delete=models.CASCADE, blank=True, null=True, )
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 

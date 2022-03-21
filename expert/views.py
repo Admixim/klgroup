@@ -37,7 +37,7 @@ def expert_new(request):
     template_name = 'dist/expert/new.html'
     error = ''
     if request.method == 'POST':
-        expert =ExpertNewForm(request.POST,request.FILES or None,)
+        expert = ExpertNewForm(request.POST, request.FILES or None, )
         if expert.is_valid():
             expert.save()
 
@@ -69,7 +69,7 @@ def expert_new_pk(request, pk):
         else:
             error = ' Форма не верно заполнена'
     expert_list = Expert.objects.filter(accident_id=pk)
-    client = Partner.objects.filter(accident_id=pk,type='True').first()
+    client = Partner.objects.filter(accident_id=pk, type='True').first()
 
     accident_pk =Accident.objects.get(pk=pk)
     expert = ExpertForm()

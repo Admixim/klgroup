@@ -16,46 +16,41 @@ def client_new(request):
     """Создание-добавление  нового клиента"""
 
     template_name = 'dist/handbk/person/client-new.html'
-    error = ''
     if request.method == 'GET':
-        clientform = ClientForm(request.GET or None)
+        personform = ClientForm(request.GET or None)
         formset = FilePersonFormset(queryset=FilePerson.objects.none())
     elif request.method == 'POST':
-        clientform = ClientForm(request.POST)
-        formset = FilePersonFormset(request.POST, request.FILES)
-        if clientform.is_valid() and formset.is_valid():
-            person = clientform.save()
+        personform = ClientForm(request.POST, )
+        formset = FilePersonFormset(request.POST, request.FILES, )
+        if personform.is_valid() and formset.is_valid():
+            person = personform.save()
             for form in formset:
-                file = form.save(commit=False)
-                file.files = person
-                file.save()
+                instance = form.save(commit=False)
+                instance.files_person = person
+                instance.save()
             return redirect('/client/')
         else:
             print('Форма не верно заполнена')
     return render(request, template_name, {
-        'form': clientform,
+        'form': personform,
         'formset': formset,
     })
 
 
 def client_edit(request, pk):
     """Редактирования  данных  Физ лица"""
+
     person = get_object_or_404(Client, pk=pk)
-    list_files = person.files_persons.all()
-
-    for item in list_files:
-        print(item.types, item.description, item.scan_doc)
-
     formset = FilePersonFormset(queryset=FilePerson.objects.none())
     if request.method == "POST":
-        clientform = ClientForm(request.POST, instance=person)
-        formset = FilePersonFormset(request.POST, request.FILES)
+        clientform = ClientForm(request.POST, instance=person, )
+        formset = FilePersonFormset(request.POST, request.FILES, prefix=FilePerson)
         if clientform.is_valid() and formset.is_valid():
             person = clientform.save()
             for form in formset:
-                file = form.save(commit=False)
-                file.files = person
-                file.save()
+                instance = form.save(commit=False)
+                instance.files_person = person
+                instance.save()
             return redirect('/client/')
     else:
         form = ClientForm(instance=person)

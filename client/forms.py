@@ -285,6 +285,7 @@ class FilePersonForm(ModelForm):
                   "description",
                   "scan_doc",
 
+
                   ]
 
         widgets = {
@@ -309,13 +310,13 @@ class FilePersonForm(ModelForm):
 
 
 FilePersonFormset = modelformset_factory(FilePerson,
-                                         fields=('files_person', 'types', 'description', 'scan_doc'),
+                                         fields=('files_person', 'types', 'description', 'scan_doc',),
                                          extra=1,
                                          widgets={
                                              'files_person': TextInput(
                                                  attrs={
                                                      'class': 'form-control',
-                                                     'placeholder': 'Enter Author Name here'
+                                                     'placeholder': 'Файл физ.лица'
                                                  }
                                              ),
                                              'types': Select(
