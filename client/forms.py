@@ -15,7 +15,8 @@ from django.forms import (
 
 
 class PartnerForm(ModelForm):
-    # Форма  тип участия  в ДТП
+    """Форма  тип участия  в ДТП"""
+
     class Meta:
         model = Partner
         fields = ['status',
@@ -55,7 +56,7 @@ class PartnerForm(ModelForm):
 
 
 class ClientForm(ModelForm):
-    # Форма клиента
+    """Форма клиента"""
 
     class Meta:
         model = Client
@@ -304,9 +305,6 @@ class FilePersonForm(ModelForm):
                 'class': 'form-control'}),
             'placeholder': 'Файл',
         }
-
-
-# FileFormset = formset_factory(FileForm, extra=2)
 
 
 FilePersonFormset = modelformset_factory(FilePerson,

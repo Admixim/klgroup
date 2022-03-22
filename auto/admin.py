@@ -1,10 +1,10 @@
 from django.contrib import admin
-from auto.models import Car, Brend, Model, File
+from auto.models import Car, Brend, Model, AutoFiles
 
 
 
 class InFiles(admin.StackedInline):
-    model = File
+    model = AutoFiles
     show_change_link = True
     extra = 0
     fieldsets = (
@@ -34,7 +34,7 @@ class BrendAdmin(admin.ModelAdmin):
     search_fields = ("id", "name",)
 
 
-@admin.register(File)
+@admin.register(AutoFiles)
 class FileAdmin(admin.ModelAdmin):
     """Таблица прикрепелнными файлами документов """
 
@@ -88,7 +88,6 @@ class CarAdmin(admin.ModelAdmin):
         "pts_n",
         "Comment",
         "sts_n",
-        "doc_pass",
         "driver",
         "updated",
         "created")
@@ -116,16 +115,7 @@ class CarAdmin(admin.ModelAdmin):
         ('Документ ТС', {
             'fields': ((("sts_s", "sts_n", "sts_date",),
                         ("pts_n", "pts_s", "pts_date",),
-                        "vin", "doc_pass",))
-        },
-
-         ),
-        ('Страховой полис ТС', {
-            'fields': ((("insurance_number", "insurance_date"),
-                        ( "insurance_doc"),
-                        ("insurance_numberk", "insurance_datek"),
-                        ( "insurance_dock")
-                        ))
+                        "vin",))
         },
 
          ),

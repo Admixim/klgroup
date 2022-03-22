@@ -24,10 +24,10 @@ def auto_new(request):
     template_name = 'dist/handbk/auto/auto-new.html'
     if request.method == 'GET':
         autoform = AutoForm(request.GET or None)
-        formset = FileFormset(queryset=File.objects.none())
+        formset = FileAutoFormset(queryset=AutoFiles.objects.none())
     elif request.method == 'POST':
         autoform = AutoForm(request.POST, )
-        formset = FileFormset(request.POST, request.FILES, )
+        formset = FileAutoFormset(request.POST, request.FILES, prefix=AutoFiles)
         if autoform.is_valid() and formset.is_valid():
             auto = autoform.save()
             for form in formset:
@@ -43,17 +43,45 @@ def auto_new(request):
     })
 
 
+def auto_edit(request, pk):
+    """Редактирования  данных ТС"""
+
+    auto = get_object_or_404(Car, pk=pk)
+    formset = FileAutoFormset(queryset=AutoFiles.objects.none())
+    if request.method == "POST":
+        autoform = AutoForm(request.POST, instance=auto)
+        formset = FileAutoFormset(request.POST, request.FILES, prefix=None)
+        if autoform.is_valid() and formset.is_valid():
+            auto = autoform.save()
+            for form in formset:
+                instance = form.save(commit=False)
+                instance.files = auto
+                instance.save()
+            return redirect('/auto/')
+    else:
+        autoform = AutoForm(instance=auto)
+        list_files = auto.files_auto.all()
+        print(list_files)
+        template_name = 'dist/handbk/auto/auto-edit.html'
+        data = {
+            'autoform': autoform,
+            'formset': formset,
+            'list_files': list_files,
+            'auto': pk,
+        }
+        return render(request, template_name, data)
+
+
 def edit_auto_new(request, pk):
     template_name = 'dist/handbk/auto/auto-files.html'
     auto = Car.objects.get(id=pk)
     if request.method == 'GET':
-
         autoform = AutoForm(instance=auto)
         print('Yo', auto)
         # formset = FileFormset(queryset=File.objects.none())
     elif request.method == 'POST':
         autoform = AutoForm(request.POST, instance=auto)
-        formset = FileFormset(request.POST, request.FILES)
+        formset = FileAutoFormset(request.POST, request.FILES)
 
         if autoform.is_valid() and formset.is_valid():
             auto = autoform.save()
@@ -70,22 +98,4 @@ def edit_auto_new(request, pk):
     })
 
 
-def auto_edit(request, pk):
-    """Редактирования  данных ТС"""
 
-    auto = get_object_or_404(Car, pk=pk)
-    if request.method == "POST":
-        form = AutoForm(request.POST, instance=auto)
-        if form.is_valid():
-            auto = form.save(commit=False)
-            auto.save()
-            p = form.cleaned_data
-            print(p)
-            return redirect('/auto/')
-    else:
-        form = AutoForm(instance=auto)
-        template_name = 'dist/handbk/auto/auto-edit.html'
-        data = {
-            'form': form,
-        }
-        return render(request, template_name, data)

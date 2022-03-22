@@ -1,6 +1,5 @@
 # coding: utf-8
 from django.shortcuts import render, redirect, get_object_or_404
-
 from client.forms import *
 from datetime import datetime
 
@@ -44,12 +43,14 @@ def client_edit(request, pk):
     formset = FilePersonFormset(queryset=FilePerson.objects.none())
     if request.method == "POST":
         clientform = ClientForm(request.POST, instance=person, )
-        formset = FilePersonFormset(request.POST, request.FILES, prefix=FilePerson)
+        formset = FilePersonFormset(request.POST, request.FILES, prefix=None)
         if clientform.is_valid() and formset.is_valid():
+            print(formset)
             person = clientform.save()
             for form in formset:
                 instance = form.save(commit=False)
                 instance.files_person = person
+                print(instance)
                 instance.save()
             return redirect('/client/')
     else:

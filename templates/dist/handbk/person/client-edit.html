@@ -197,7 +197,7 @@
               </th>
               <th>ID файла</th>
               <th>Дата создание</th>
-              <th>Название файла</th>
+              <th>Тип файла</th>
               <th>Описание</th>
               <th>Владелец</th>
               <th>Скачать файл</th>
@@ -235,9 +235,7 @@
                   <a href="{{ item.scan_doc.url }}" class="px-3 text-primary"><i
                       class="uil uil-pen font-size-18"></i></a>
                   <a href="javascript:void(0);" class="px-3 text-danger"><i class="uil uil-trash-alt font-size-18"></i></a>
-                  {% for post in file %}
-                    <a href="{{ file.adminupload.url }}" download="{{ file.adminupload.url }}">Download</a>
-                  {% endfor %}
+
                 </td>
               </tr>
             {% endfor %}

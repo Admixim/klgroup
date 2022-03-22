@@ -387,7 +387,6 @@ class Partner(models.Model):
         related_name='partner_accident',
         verbose_name='ДТП ')
 
-
     client = models.ForeignKey(
         Client,
         on_delete=models.CASCADE,

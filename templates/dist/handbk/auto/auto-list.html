@@ -57,9 +57,9 @@
                     <thead>
                     <tr>
                       <th scope="col">id</th>
+                      <th scope="col">Гос.номер</th>
                       <th scope="col">Марка</th>
                       <th scope="col">Модель</th>
-                      <th scope="col">Гос.номер</th>
                       <th scope="col">Vin</th>
                       <th scope="col">Дата Выпуска</th>
                       <th scope="col" style="width: 200px;">Действие</th>
@@ -69,11 +69,13 @@
                     {% for item in results %}
                       <tr>
                         <td>
-                          <a href="#" class="text-body">{{ item.id }}</a>
+                          <a href="/auto/edit/{{ item.id }}/" class="text-body">{{ item.id }}</a>
+                        </td>
+                        <td>
+                          <a href="/auto/edit/{{ item.id }}/" class="text-body">{{ item.number }}</a>
                         </td>
                         <td>{{ item.marka }}</td>
                         <td>{{ item.model }}</td>
-                        <td>{{ item.number }}</td>
                         <td>{{ item.color }}</td>
                         <td>{{ item.date_made }}</td>
                         <td>

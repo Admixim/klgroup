@@ -1,10 +1,17 @@
 from django.shortcuts import render
-from .models import Car, Model, Brend, File
-
-from django.forms import ModelForm, TextInput, Textarea, DateInput, Select, FileInput, ClearableFileInput
-from django.forms import formset_factory
+from .models import Car, Model, Brend, AutoFiles
 from django.forms import modelformset_factory
-from django import forms
+from django.forms import (
+    NumberInput,
+    ModelForm,
+    TextInput,
+    Textarea,
+    DateInput,
+    Select,
+    EmailInput,
+    URLInput,
+    FileInput,
+)
 
 
 class AutoForm(ModelForm):
@@ -23,14 +30,7 @@ class AutoForm(ModelForm):
                   "pts_s",
                   "pts_date",
                   "vin",
-                  "insurance_number",
-                  "insurance_date",
-                  # "insurance_company",
-                  "insurance_doc",
-                  "insurance_numberk",
-                  "insurance_datek",
-                  # "insurance_companyk",
-                  "insurance_dock",
+
                 ]
 
         widgets = {
@@ -96,109 +96,67 @@ class AutoForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'VIN/Кузов Номер'
             }),
-            "insurance_number": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': '№ Страх.Пол.'
-            }),
-            "insurance_date": DateInput(format='%d/%m/%Y', attrs={
-                'data-date-format': 'dd/mm/yyyy',
-                'class': 'form-control',
-                'placeholder': 'Дата  выдачи СтрахПол.',
-                'data-date-container': '#datepicker2',
-                'data-provide': 'datepicker',
-                'data-date-autoclose': 'true',
-            }),
-            # "insurance_company": TextInput(attrs={
-            #     'class': 'form-control',
-            #     'placeholder': 'Страховая Компания'
-            # }),
-            "insurance_doc": Textarea(attrs={
-                'class': 'form-control',
-                'placeholder': 'Скан-файл СтрахПолиса'
-            }),
-            "insurance_numberk": Textarea(attrs={
-                'class': 'form-control',
-                'placeholder': '№ Страх.Пол.КАСКО'
-            }),
-            "insurance_datek": DateInput(format='%d/%m/%Y', attrs={
-                'data-date-format': 'dd/mm/yyyy',
-                'class': 'form-control',
-                'placeholder': 'Дата  выдачи СтрахПол. КАСКО',
-                'data-date-container': '#datepicker2',
-                'data-provide': 'datepicker',
-                'data-date-autoclose': 'true',
-
-            }),
-            # "insurance_companyk": TextInput(attrs={
-            #     'class': 'form-control',
-            #     'placeholder': 'Страховая Компания КАСКО'
-            # }),
-            "insurance_dock": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Скан-файл СтрахПолисаКАСКО'
-            }),
-
         }
 
 
 class FileForm(ModelForm):
     class Meta:
-        model = File
+        model = AutoFiles
         fields = ["id",
                   "files",
                   "types",
                   "description",
                   "scan_doc",
-
                   ]
 
         widgets = {
 
             "files": Select(attrs={
                 'class': 'form-control',
-                'placeholder': 'Страховая Компания КАСКО'
+                'placeholder': 'Файл ТС'
             }),
             "description": TextInput(attrs={
                 'class': 'form-control',
                 'type': 'text',
-                'placeholder': 'Комментарий',
+                'placeholder': 'Описание',
 
             }),
             "scan_doc": FileInput(attrs={
                 'class': 'form-control'}),
+            'placeholder': 'Файл',
         }
 
 
 # FileFormset = formset_factory(FileForm, extra=2)
 
 
-FileFormset = modelformset_factory(
-    File,
+FileAutoFormset = modelformset_factory(
+    AutoFiles,
     fields=('files', 'types', 'description', 'scan_doc'),
     extra=1,
     widgets={
-        'files': forms.TextInput(
+        'files': TextInput(
             attrs={
                 'class': 'form-control',
                 'placeholder': 'Файлы ТС'
             }
         ),
-        'types': forms.Select(
+        'types': Select(
             attrs={
                 'class': 'form-control',
                 'placeholder': 'Тип файла'
             }
         ),
-        'description': forms.TextInput(
+        'description': TextInput(
             attrs={
                 'class': 'form-control',
                 'placeholder': 'Описание к файлу'
             }
         ),
-        'scan_doc': forms.FileInput(
+        'scan_doc': FileInput(
             attrs={
                 'class': 'form-control',
-                'placeholder': 'Файл'
+                'placeholder': 'Файл',
             }
         ),
     }

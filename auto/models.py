@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 # from client.models import Company
 
 
@@ -134,72 +135,14 @@ class Car(models.Model):
         null=True,
         default=None,
         verbose_name='VIN номер')
-    insurance_number = models.CharField(
-        max_length=24,
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Номер полиса страхования ОСАГО'
-    )
-    insurance_date = models.DateField(
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Дата выдачи полиса ОСАГО'
-    )
-    # insurance_company = models.ForeignKey(
-    #     Company,
-    #     blank=True,
-    #     on_delete=models.CASCADE,
-    #     related_name='insurance_company',
-    #     null=True,
-    #     verbose_name='Страховая компания ОСАГО'
-    # )
-    insurance_doc = models.FileField(
-        upload_to='upload/auto/insurance_osago/',
-        null=True, default=None,
-        blank=True,
-        verbose_name="Скан полиса ОСАГО"
-    )
-    insurance_numberk = models.CharField(
-        max_length=24,
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Номер полиса страхования КАСКО'
-    )
-    insurance_datek = models.DateField(
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Дата выдачи полиса КАСКО'
-    )
-    # insurance_companyk = models.ForeignKey(
-    #     Company,
-    #     on_delete=models.CASCADE,
-    #     related_name='insurance_companyk',
-    #     null=True, blank=True,
-    #     verbose_name='Страховая компания КАСКО'
-    # )
-    insurance_dock = models.FileField(
-        upload_to='upload/auto/insurance_kasko/',
-        null=True, default=None,
-        blank=True,
-        verbose_name="Скан полиса КАСКО"
-    )
+
     driver = models.CharField(
         max_length=24,
         blank=True,
         null=True,
         default=None,
         verbose_name='Сделать ссылку на клиента ')
-    doc_pass = models.FileField(
-        upload_to='upload/client/pasport/',
-        null=True,
-        default=None,
-        blank=True,
-        verbose_name="Фото ПТС"
-    )
+
     Comment = models.CharField(
         max_length=500,
         blank=True, null=True,
@@ -219,23 +162,25 @@ class Car(models.Model):
         ordering = ['-created']
 
 
-class File(models.Model):
-    """Таблица прикрепить файлы документов """
+class AutoFiles(models.Model):
+    """Таблица прикрепленных файлов ТС """
+
     TYPES = (
         (1, 'ПТС'),
         (2, 'СТС'),
         (3, 'Договор КП'),
-        (4, ''),
+        (4, 'ОСАГО'),
+        (5, 'КАСКО'),
     )
     files = models.ForeignKey(
         Car,
         blank=True,
         on_delete=models.CASCADE,
-        related_name='files1',
+        related_name='files_auto',
         null=True,
         verbose_name='Прикрепленные файлы (Car)'
     )
-    types = models.PositiveSmallIntegerField(choices=TYPES,)
+    types = models.PositiveSmallIntegerField(choices=TYPES, )
     description = models.CharField(max_length=100, verbose_name='Описание')
     scan_doc = models.FileField(
         upload_to='media/auto/',
@@ -244,3 +189,10 @@ class File(models.Model):
         blank=True,
         verbose_name="Файл"
     )
+    author = models.OneToOneField(User, db_column='user', on_delete=models.CASCADE, blank=True, null=True, )
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    class Meta:
+        verbose_name = 'Файл ТС'
+        verbose_name_plural = 'Файлы ТС'
