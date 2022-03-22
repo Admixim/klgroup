@@ -241,7 +241,6 @@ class Client(models.Model):
         ordering = ['-created']
 
 
-
 class Company(models.Model):
     """Таблица Контрагента  """
 
@@ -337,13 +336,6 @@ class Company(models.Model):
         null=True,
         default=None,
         verbose_name='Кор/счет')
-    doc_image = models.FileField(
-        upload_to='upload/company/contragent/',
-        null=True,
-        default=None,
-        blank=True,
-        help_text="Прикрепленный файл",
-        verbose_name="Файл карточка компании")
     Comment = models.TextField(
         max_length=400,
         blank=True,
@@ -435,6 +427,7 @@ class FileCompany(models.Model):
         (1, 'Выписка ОГРН'),
         (2, 'Реквезиты'),
         (3, 'Доверенность'),
+        (4, 'Карточка контрагента'),
 
     )
     files_comp = models.ForeignKey(

@@ -205,7 +205,7 @@ class CompanyForm(ModelForm):
             "bank_adress",
             "bank_invoice",
             "bank_edit_invoice",
-            "doc_image",
+
         ]
 
         widgets = {
@@ -277,6 +277,35 @@ class CompanyForm(ModelForm):
         }
 
 
+class FileCompanyForm(ModelForm):
+    class Meta:
+        model = FileCompany
+        fields = ["id",
+                  "files_comp",
+                  "types",
+                  "description",
+                  "scan_doc",
+
+                  ]
+
+        widgets = {
+
+            "files_comp": Select(attrs={
+                'class': 'form-control',
+                'placeholder': 'Физ лицо'
+            }),
+            "description": TextInput(attrs={
+                'class': 'form-control',
+                'type': 'text',
+                'placeholder': 'Описание',
+
+            }),
+            "scan_doc": FileInput(attrs={
+                'class': 'form-control'}),
+            'placeholder': 'Файл',
+        }
+
+
 class FilePersonForm(ModelForm):
     class Meta:
         model = FilePerson
@@ -307,17 +336,50 @@ class FilePersonForm(ModelForm):
         }
 
 
-FilePersonFormset = modelformset_factory(FilePerson,
-                                         fields=('files_person', 'types', 'description', 'scan_doc',),
-                                         extra=1,
-                                         widgets={
-                                             'files_person': TextInput(
-                                                 attrs={
-                                                     'class': 'form-control',
-                                                     'placeholder': 'Файл физ.лица'
-                                                 }
-                                             ),
-                                             'types': Select(
+FileCompanyFormset = modelformset_factory(
+    FileCompany,
+    fields=('files_comp', 'types', 'description', 'scan_doc',),
+    extra=1,
+    widgets={
+        'files_comp': TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Файл Юр.лица'
+            }
+        ),
+        'types': Select(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Тип файла'
+            }
+        ),
+        'description': TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Описание к файлу'
+            }
+        ),
+        'scan_doc': FileInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Файл'
+            }
+        ),
+    }
+)
+
+FilePersonFormset = modelformset_factory(
+    FilePerson,
+    fields=('files_person', 'types', 'description', 'scan_doc',),
+    extra=1,
+    widgets={
+        'files_person': TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Файл физ.лица'
+            }
+        ),
+        'types': Select(
                                                  attrs={
                                                      'class': 'form-control',
                                                      'placeholder': 'Тип файла'

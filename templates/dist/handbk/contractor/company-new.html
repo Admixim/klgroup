@@ -22,16 +22,13 @@
                 <h4 class="card-title mb-4">КАРТА КОНТРАГЕНТА</h4>
 
                 <div id="basic-example">
-                  <form method="post">
+                  <form method="POST" action="" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <!-- Client Details -->
-
-
+                    <!-- Company Details -->
                     <div class="page-title-box d-flex align-items-center justify-content-between">
                       <h4 class="mb-0">
                         <button class="btn btn-primary w-md" type="submit">Печать</button>
                       </h4>
-
                       <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                           <button class="btn btn-primary w-md" type="submit">Сохранить</button>
@@ -93,126 +90,89 @@
                       </div>
                       <!-- Company Document -->
                       <h6>БАНКОВСКИЕ РЕКВИЗИТЫ</h6>
-                      <section>
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              {{ form.bank_name }}
-                            </div>
-                          </div>
-
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              {{ form.bank_bik }}
-                            </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.bank_name }}
                           </div>
                         </div>
-                        <div class="row">
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              {{ form.bank_adress }}
-                            </div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.bank_bik }}
                           </div>
-
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              {{ form.bank_invoice }}
-                            </div>
-                          </div>
-                          <div class="col-lg-6">
-                            <div class="mb-3">
-                              {{ form.bank_edit_invoice }}
-                            </div>
-                          </div>
-
-                          {#                                                    <div class="col-lg-6">#}
-                          {#                                                        <div class="mb-3">#}
-                          {#                                                            <label for="basicpill-servicetax-input">ПУСТОЕ ПОЛЕ</label>#}
-                          {#                                                            <input type="text" class="form-control"#}
-                          {#                                                                   id="basicpill-servicetax-input">#}
-                          {#                                                        </div>#}
-                          {#                                                    </div>#}
-
-
                         </div>
-                        <div class="row">
-                          <!-- SK Company Auto -->
-                          <h3>Прикрепленные документы</h3>
-                          <section>
-                            <div>
-                              <form class="repeater" enctype="multipart/form-data">
-                                <div data-repeater-list="group-a">
-                                  <div data-repeater-item class="row">
-                                    <div class="mb-3 col-lg-2">
-                                      <label class="form-label" for="name">Тип
-                                        док</label>
-                                      <input type="text" id="email"
-                                             class="form-control"/>
-
-                                    </div>
-
-                                    <div class="mb-3 col-lg-2">
-                                      <label class="form-label" for="email">Описание</label>
-                                      <input type="email" id="email"
-                                             class="form-control"/>
-                                    </div>
-
-
-                                    <div class="mb-3 col-lg-2">
-                                      <label class="form-label" for="resume">Скан
-                                        документа</label>
-                                      <input type="file" class="form-control-file"
-                                             id="resume">
-                                    </div>
-
-
-                                    <div class="col-lg-2 align-self-center d-grid">
-                                      <input data-repeater-delete type="button"
-                                             class="btn btn-primary btn-block"
-                                             value="Удалить"/>
-                                    </div>
-                                  </div>
-
-                                </div>
-                                <input data-repeater-create type="button"
-                                       class="btn btn-success mt-3 mt-lg-0"
-                                       value="Добавить"/>
-                            </div>
-
-                            <div class="col-lg-12">
-                              <div class="mb-3">
-                                <label for="basicpill-address-input">Комментарий</label>
-                                <textarea id="basicpill-address-input" class="form-control"
-                                          rows="2"></textarea>
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.bank_adress }}
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.bank_invoice }}
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.bank_edit_invoice }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <!-- SK Company Auto -->
+                      <div class="row">
+                        <!-- Document Person -->
+                        <h3>Документы Контрагента</h3>
+                        <div data-repeater-item class="row">
+                          {{ formset.management_form }}
+                          {% for file in formset %}
+                            <div class="row form-row">
+                              <div>
+                              </div>
+                              <div class="mb-3 col-lg-2">
+                                {{ file.types }}
+                              </div>
+                              <div class="mb-3 col-lg-2">
+                                {{ file.description }}
+                              </div>
+                              <div class="mb-3 col-lg-4">
+                                {{ file.scan_doc }}
+                              </div>
+                              <div class="mb-3 col-lg-2">
+                                <button id="minus" type="button" class="btn btn-success remove-form-row">-</button>
                               </div>
                             </div>
+                            <div class="input-group-append">
+                              <button id="plus" type="button" class="btn btn-success add-form-row">Добавить</button>
+                            </div>
+                          {% endfor %}
                         </div>
-                  </form>
-                  <div class="page-title-box d-flex align-items-center justify-content-between">
-                    <h4 class="mb-0">
-                      <button class="btn btn-primary w-md" type="submit">Печать</button>
-                    </h4>
-
-                    <div class="page-title-right">
-                      <ol class="breadcrumb m-0">
-                        <button class="btn btn-primary w-md" type="submit">Сохранить</button>
-                        </li>
-                      </ol>
+                      </div>
+                      <div class="page-title-box d-flex align-items-center justify-content-between">
+                        <h4 class="mb-0">
+                          <button class="btn btn-primary w-md" type="submit">Печать</button>
+                        </h4>
+                        <div class="page-title-right">
+                          <ol class="breadcrumb m-0">
+                            <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+                            </li>
+                          </ol>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </form>
                 </div>
-
               </div>
-              <!-- end card body -->
             </div>
-            <!-- end card -->
           </div>
-          <!-- end col -->
         </div>
-        <!-- end row -->
       </div>
     </div>
   </div>
 
+
+  <script src="/static/js/formset.js"></script>
 {% endblock content %}
 

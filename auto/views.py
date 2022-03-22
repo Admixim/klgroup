@@ -37,10 +37,10 @@ def auto_new(request):
             return redirect('/auto/')
         else:
             print('You have error')
-    return render(request, template_name, {
-        'autoform': autoform,
-        'formset': formset,
-    })
+        return render(request, template_name, {
+            'autoform': autoform,
+            'formset': formset,
+        })
 
 
 def auto_edit(request, pk):

@@ -20,7 +20,7 @@ def client_new(request):
         formset = FilePersonFormset(queryset=FilePerson.objects.none())
     elif request.method == 'POST':
         personform = ClientForm(request.POST, )
-        formset = FilePersonFormset(request.POST, request.FILES, )
+        formset = FilePersonFormset(request.POST, request.FILES, prefix=FilePerson)
         if personform.is_valid() and formset.is_valid():
             person = personform.save()
             for form in formset:
@@ -70,43 +70,76 @@ def company_list(request):
     """Список контрагентов общий"""
 
     company = Company.objects.all()
-    return render(request, 'dist/handbk/contractor/company-list.html', {'results': company}
-                  )
+    return render(
+        request,
+        'dist/handbk/contractor/company-list.html',
+        {'company': company}
+    )
 
 
 def company_new(request):
     """Создание-добавление  нового контрагента"""
 
-    error = ''
     if request.method == 'POST':
-        form = CompanyForm(request.POST)
-        if form.is_valid():
-            form.save()
+        companyform = CompanyForm(request.POST, prefix=Company)
+        formset = FileCompanyFormset(request.POST, request.FILES)
+        if companyform.is_valid() and formset.is_valid():
+            company = companyform.save()
+            for form in formset:
+                instance = form.save(commit=False)
+                instance.files_comp = company
+                instance.save()
             return redirect('/client/company/')
-        else:
-            error = ' Форма не верно заполнена'
-
-    form = CompanyForm()
-    data = {'form': form,
-            'error': error
-            }
-    template_name = 'dist/handbk/contractor/company-new.html'
-    return render(request, template_name, data)
+    else:
+        companyform = CompanyForm(request.POST, prefix=Company)
+        formset = FileCompanyFormset(queryset=FileCompany.objects.none())
+        template_name = 'dist/handbk/contractor/company-new.html'
+        return render(request, template_name, {
+            'form': companyform,
+            'formset': formset,
+        })
 
 
 def company_edit(request, pk):
     """Редактирование данных контрагента"""
 
-    company = get_object_or_404(models.Company, pk=pk)
+    company = get_object_or_404(Company, pk=pk)
+    formset = FileCompanyFormset(queryset=FileCompany.objects.none())
     if request.method == "POST":
-        form = CompanyForm(request.POST, instance=company, prefix='blabla')
-        if form.is_valid():
-            company = form.save(commit=False)
-            company.save()
+        compform = CompanyForm(request.POST, instance=company, )
+        formset = FileCompanyFormset(request.POST, request.FILES, prefix=None)
+        if compform.is_valid() and formset.is_valid():
+            print(formset)
+            company = compform.save()
+            for form in formset:
+                instance = form.save(commit=False)
+                instance.files_comp = company
+                print(instance)
+                instance.save()
             return redirect('/client/company/')
     else:
-        form = CompanyForm(instance=company, prefix='company')
+        compform = CompanyForm(instance=company)
+        list_files = company.files_company.all()
         template_name = 'dist/handbk/contractor/company-edit.html'
-    return render(request, template_name, {'form': form
-                                           }
-                  )
+        data = {
+            'form': compform,
+            'client': pk,
+            'formset': formset,
+            'list_files': list_files,
+
+        }
+        return render(request, template_name, data)
+
+    # company = get_object_or_404(Company, pk=pk)
+    # if request.method == "POST":
+    #     form = CompanyForm(request.POST, instance=company, prefix='blabla')
+    #     if form.is_valid():
+    #         company = form.save(commit=False)
+    #         company.save()
+    #         return redirect('/client/company/')
+    # else:
+    #     form = CompanyForm(instance=company, prefix='company')
+    #     template_name = 'dist/handbk/contractor/company-edit.html'
+    # return render(request, template_name, {'form': form
+    #                                        }
+    #               )

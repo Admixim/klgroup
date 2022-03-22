@@ -206,7 +206,6 @@ class CompanyAdmin(admin.ModelAdmin):
                 "number_phone",
                 "mail_adress",
                 "director_name",
-                "doc_image",
                 "site_url",
                 "number_phone",
                 "mail_adress",
