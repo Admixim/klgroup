@@ -14,26 +14,24 @@ def client_list(request):
 def client_new(request):
     """Создание-добавление  нового клиента"""
 
-    template_name = 'dist/handbk/person/client-new.html'
-    if request.method == 'GET':
-        personform = ClientForm(request.GET or None)
-        formset = FilePersonFormset(queryset=FilePerson.objects.none())
-    elif request.method == 'POST':
-        personform = ClientForm(request.POST, )
-        formset = FilePersonFormset(request.POST, request.FILES, prefix=FilePerson)
-        if personform.is_valid() and formset.is_valid():
-            person = personform.save()
+    if request.method == 'POST':
+        performer = ClientForm(request.POST, prefix=Client, )
+        formset = FilePersonFormset(request.POST, request.FILES,)
+        if performer.is_valid() and formset.is_valid():
+            person = performer.save()
             for form in formset:
                 instance = form.save(commit=False)
                 instance.files_person = person
                 instance.save()
             return redirect('/client/')
-        else:
-            print('Форма не верно заполнена')
-    return render(request, template_name, {
-        'form': personform,
-        'formset': formset,
-    })
+    else:
+        template_name = 'dist/handbk/person/client-new.html'
+        performer = ClientForm(prefix=Client)
+        formset = FilePersonFormset(queryset=FilePerson.objects.none())
+        return render(request, template_name, {
+                                                'form': performer,
+                                                'formset': formset,
+                                                })
 
 
 def client_edit(request, pk):
