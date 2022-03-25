@@ -5,16 +5,15 @@
 
 {% block content %}
   <style>
-    hr {
-      border: none; /* Убираем границу */
-      background-color: red; /* Цвет линии */
-      color: red; /* Цвет линии для IE6-7 */
-      height: 2px; /* Толщина линии */
-    }
+      hr {
+          border: none; /* Убираем границу */
+          background-color: red; /* Цвет линии */
+          color: red; /* Цвет линии для IE6-7 */
+          height: 2px; /* Толщина линии */
+      }
   </style>
 
   <div class="main-content">
-
     <div class="page-content" align="center">
       <div class="container-fluid">
         <div class="row">
@@ -41,27 +40,21 @@
               <a href="{% url 'price-court-cash-accident' %}" class="btn btn-success waves-effect waves-light">
                 </i> Судебные расходы</a>
             </div>
-
           </div>
         </div>
         <hr>
       </div>
       <div class="page-title-box d-flex align-items-center justify-content-between">
-
-
         <div class="btn-group me-1 mt-2">
           <button
               class="btn btn-primary w-md" id="contract" type="button">ДОГОВОР
           </button>
-
           <button
               type="button" id="expert" href="#" class="btn btn-primary waves-effect waves-light">ЭКСПЕРТИЗА
           </button>
-
           <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
                   aria-haspopup="true" aria-expanded="false">ОСТАЛЬНОЕ<i class="mdi mdi-chevron-down"></i>
             <span class="sr-only">Другие</span>
-
           </button>
           <div class="dropdown-menu">
             <ul>
@@ -73,8 +66,6 @@
             </ul>
           </div>
         </div>
-
-
         <div class="page-title-right">
           <ol class="breadcrumb m-0">
             <button class="btn btn-primary w-md" type="submit">Сохранить</button>
@@ -83,7 +74,6 @@
         </div>
       </div>
       <div class="row">
-
         <div class="row">
           <div class="col-lg-5">
             <div class="mt-4">
@@ -113,7 +103,6 @@
               </form>
             </div>
           </div>
-
           <div class="col-lg-6 ms-lg-auto">
             <div class="mt-5 mt-lg-4">
               <form>
@@ -130,9 +119,7 @@
             <input type="button" class="btn btn-primary btn-block inner" value="Создать экспертизу">
           </div>
         </div>
-
         <div class="row">
-
           <div class="col-lg-5">
             <hr>
             <div class="mt-4">
@@ -149,7 +136,6 @@
                       </select>
                     </div>
                   </div>
-
                   <div class="col-md-6">
                     <div class="mb-3">
                       <label class="form-label">Стоимость экспертизы</label>
@@ -157,7 +143,6 @@
                     </div>
                   </div>
                 </div>
-
                 <div class="mb-3">
                   <label class="form-label" for="formrow-firstname-input">Дата исполнения</label>
                   <input type="text" class="form-control" value="20.11.2021г">
@@ -173,7 +158,6 @@
                     <label class="form-label" for="resume">Прикрепить экспертизу</label>
                     <input type="file" class="form-control" align="center" placeholder="Файл">
                   </div>
-
                 </div>
               </div>
               <div class="col-md-15">
@@ -196,7 +180,6 @@
               <th scope="col">Тип расчета</th>
               <th scope="col">Сумма</th>
               <th scope="col">Статус</th>
-
             </tr>
             </thead>
             <tbody>
@@ -204,7 +187,6 @@
               <th scope="row">01</th>
               <td><a href="#" class="text-dark">Востановительный ремонт без износа</a>
               </td>
-
               <td>
                 {{ form.price_nwear }}
               </td>
@@ -212,7 +194,6 @@
                 <span class="badge bg-soft-primary font-size-12"> </span>
               </td>
               <td>
-
               </td>
             </tr>
             <tr>
@@ -226,7 +207,6 @@
                 <span class="badge bg-soft-primary font-size-12"> </span>
               </td>
               <td>
-
               </td>
             </tr>
             <tr>
@@ -239,7 +219,6 @@
                 <span class="badge bg-soft-primary font-size-12"> </span>
               </td>
               <td>
-
               </td>
             </tr>
             <tr>
@@ -252,7 +231,6 @@
                 <span class="badge bg-soft-primary font-size-12"> </span>
               </td>
               <td>
-
               </td>
             </tr>
             <tr>
@@ -267,7 +245,6 @@
                 <span class="badge bg-soft-primary font-size-12"> </span>
               </td>
               <td>
-
               </td>
             </tr>
             <tr>
@@ -280,10 +257,8 @@
                 <span class="badge bg-soft-primary font-size-12"> </span>
               </td>
               <td>
-
               </td>
             </tr>
-
             </tr>
             </tbody>
           </table>
@@ -293,7 +268,6 @@
               <textarea id="formmessage" class="form-control" rows="5"></textarea>
             </div>
           </div>
-
           <hr>
           <div class="col-lg-10">
             <input data-repeater-delete="" type="button" class="btn btn-primary btn-block" value="Добавить и Сохранить">

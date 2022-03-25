@@ -3,22 +3,17 @@
 
 {% block content %}
   <div class="main-content">
-
     <div class="page-content" align="center">
       <div class="container-fluid">
         <div class="row">
-
-
           <hr>
           <div class="col-lg-10">
             <input data-repeater-delete="" type="button" class="btn btn-primary btn-block" value="Добавить и Сохранить">
             <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
                     data-bs-target=".bs-example-modal-xl">модальное окно
             </button>
-
           </div>
         </div>
-
       </div>
     </div>
     <form method="post">
@@ -44,7 +39,6 @@
                         {{ expert.contragent }}
                       </div>
                     </div>
-
                     <div class="col-md-6">
                       <div class="mb-3">
                         {{ expert.summa_exp }}
@@ -66,16 +60,12 @@
                     </div>
                   </div>
                 </div>
-
               </div>
               <div class="col-lg-8 ">
                 <div class="mt-5 mt-lg-6">
-
                 </div>
               </div>
             </div>
-
-
             <div class="table-responsive">
               <table class="table table-nowrap table-hover mb-0">
                 <thead>
@@ -83,8 +73,6 @@
                   <th scope="col">№</th>
                   <th scope="col">Наименование</th>
                   <th scope="col">Сумма</th>
-
-
                 </tr>
                 </thead>
                 <tbody>
@@ -92,13 +80,10 @@
                   <th scope="row">01</th>
                   <td><a href="#" class="text-dark">Востановительный ремонт без износа</a>
                   </td>
-
                   <td>
                     {{ expert.price_nwear }}
                   </td>
-
                   <td>
-
                   </td>
                 </tr>
                 <tr>
@@ -108,9 +93,7 @@
                   <td>
                     {{ expert.price_wwear }}
                   </td>
-
                   <td>
-
                   </td>
                 </tr>
                 <tr>
@@ -119,9 +102,7 @@
                   <td>
                     {{ expert.price_mmarket }}
                   </td>
-
                   <td>
-
                   </td>
                 </tr>
                 <tr>
@@ -130,9 +111,7 @@
                   <td>
                     {{ expert.price_uleftovers }}
                   </td>
-
                   <td>
-
                   </td>
                 </tr>
                 <tr>
@@ -143,9 +122,7 @@
                   <td>
                     {{ expert.price_uts }}
                   </td>
-
                   <td>
-
                   </td>
                 </tr>
                 <tr>
@@ -155,13 +132,10 @@
                     {{ expert.price_nwear }}
                   </td>
                   <td>
-
                   </td>
                   <td>
-
                   </td>
                 </tr>
-
                 </tr>
                 </tbody>
               </table>
@@ -170,13 +144,9 @@
                 <div class="col-mb-8">
                   {{ expert.comment }}
                 </div>
-
                 <div class="col-lg-10">
-
                 </div>
-
               </div>
-
             </div><!-- /.modal-content -->
             <input data-repeater-delete="" type="button" class="btn btn-primary btn-block"
                    value="Добавить и Сохранить">
@@ -184,5 +154,5 @@
         </div>
       </div><!-- /.modal -->
     </form>
-
+  </div>
 {% endblock content %}

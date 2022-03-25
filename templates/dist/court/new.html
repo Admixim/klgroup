@@ -10,12 +10,12 @@
 <!-- ============================================================== -->
 {% block content %}
   <style>
-    hr {
-      border: none; /* Убираем границу */
-      background-color: red; /* Цвет линии */
-      color: red; /* Цвет линии для IE6-7 */
-      height: 2px; /* Толщина линии */
-    }
+      hr {
+          border: none; /* Убираем границу */
+          background-color: red; /* Цвет линии */
+          color: red; /* Цвет линии для IE6-7 */
+          height: 2px; /* Толщина линии */
+      }
   </style>
   <!-- ============================================================== -->
   <!-- Start right Content hre -->
@@ -26,7 +26,6 @@
         <div class="row">
           <div class="page-title-box d-flex align-items-center justify-content-between">
             <div class="btn-group me-4 mt-4">
-
               <div class="mb-3">
                 <a class="btn btn-primary w-md">
                   </i> Произвоство по делу</a>
@@ -74,17 +73,13 @@
                       {{ court_info.data_reg }}
                     </div>
                   </div>
-
                   <div class="col-lg-6">
                     <div class="mb-3">
                       <label>Судебный участок:</label>
                       {{ court_info.location }}
                     </div>
-
                   </div>
-
                 </div>
-
                 <div class="row">
                   <div class="col-lg-6">
                     <div class="mb-3">
@@ -92,7 +87,6 @@
                       {{ court_info.case_number }}
                     </div>
                   </div>
-
                   <div class="col-lg-6">
                     <div class="mb-3">
                       <label>Судья:</label>
@@ -104,7 +98,6 @@
                   <div class="col-lg-6">
                     <div class="mb-3">
                       <label>UID дела:</label>
-
                       {{ court_info.uid_number }}
                     </div>
                   </div>
@@ -127,7 +120,6 @@
                     {{ courtform.procedure }}
                   </div>
                 </div>
-
                 <div class="col-lg-6">
                   <div class="mb-3">
                     <label for="basicpill-namecard-input">Отвественный</label>
@@ -139,15 +131,11 @@
                 <div class="col-lg-6">
                   <div class="mb-3">
                     <label for="basicpill-namecard-input">Срок исполнения</label>
-
-
                   </div>
                 </div>
-
                 <div class="col-lg-6">
                   <div class="mb-3">
                     <label for="basicpill-namecard-input">конец исполения</label>
-
                   </div>
                 </div>
               </div>
@@ -156,14 +144,11 @@
                 <div class="col-sm-12">
                   {{ courtform.message }}
                 </div>
-
-
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="mb-3">
                     <label class="form-label" for="resume"></label>
-
                   </div>
                 </div>
                 <div class="col-lg-6">
@@ -172,11 +157,11 @@
                     <input type="file" class="form-control-file" id="resume">
                   </div>
                 </div>
-
               </div>
             </div>
           </form>
         </div>
       </div>
     </div>
+  </div>
 {% endblock content %}

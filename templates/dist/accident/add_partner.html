@@ -7,17 +7,18 @@
 {% endblock %}
 {% block content %}
   <style>
-    hr {
-      border: none; /* Убираем границу */
-      background-color: red; /* Цвет линии */
-      color: red; /* Цвет линии для IE6-7 */
-      height: 2px; /* Толщина линии */
-    }
+      hr {
+          border: none; /* Убираем границу */
+          background-color: red; /* Цвет линии */
+          color: red; /* Цвет линии для IE6-7 */
+          height: 2px; /* Толщина линии */
+      }
 
-    .colorclient {
-      color: red;
+      .colorclient {
+          color: red;
+      }
 
-    /* Красный цвет выделения */
+      /* Красный цвет выделения */
   </style>
 
   <!-- ============================================================== -->
@@ -33,8 +34,6 @@
               <div class="mb-3">
                 <a class="btn btn-primary w-md">
                   </i> Данные ДТП <br> Добавление участников</a>
-
-
               </div>
             </div>
             <div class="mb-3">
@@ -156,8 +155,7 @@
             </div>
             <div>
               <div class="mb-3 col-lg-3">
-                <input type="submit" class="btn btn-primary btn-block"
-                       value="Сохранить">
+                <input type="submit" class="btn btn-primary btn-block" value="Сохранить">
               </div>
               <div class="mb-3 col-lg-4">
                 <a href="/accident/edit/{{ accident_pk }}/" type="submit" class="btn btn-primary btn-block">
@@ -174,16 +172,11 @@
         <form method="POST" action="" class="form-control"
               enctype="multipart/form-data">
           {% csrf_token %}
-
           <h4 class="card-title mb-2">Признак клиента</h4>
           {{ add_partner.type }}
-
           <div class="mb-3 col-lg-5">
-
-
             <h4 class="card-title mb-2">Вид участия</h4>
             {{ add_partner.status }}
-            <
             <div class="row">
               <div class="mb-6 col-lg-9">
                 <h4 class="card-title mb-2">Прикрепить физ лицо</h4>
@@ -204,10 +197,10 @@
                    class="btn btn-primary waves-effect waves-light"
                    data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">Добавить физ.лицо</a>
                 <!-- Modal button  for window form create new object -->
-                    <button type="button"  action="{% url 'client-new'  %}"class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
-                            data-bs-target=".bs-example-modal-xl">Добавить ТС modal
-                    </button>
-
+                <button type="button" action="{% url 'client-new' %}" class="btn btn-primary waves-effect waves-light"
+                        data-bs-toggle="modal"
+                        data-bs-target=".bs-example-modal-xl">Добавить ТС modal
+                </button>
               </div>
               <div class="mb-3 col-lg-5">
                 <input type="submit" class="btn btn-primary btn-block"
@@ -237,10 +230,10 @@
           </thead>
           <tbody>
           <tr>
-{#                        <td>aaaaaa {{ list.get_fullname }}</td>#}
-{#                        <th>{{ list.get_client.car.model}} {{ list.get_client.car.number}}{{ list.get_client.car.color}}11</th>#}
+            {#                        <td>aaaaaa {{ list.get_fullname }}</td>#}
+            {#                        <th>{{ list.get_client.car.model}} {{ list.get_client.car.number}}{{ list.get_client.car.color}}11</th>#}
             {##}
-{#                        <th>{{ list.get_expert_client.name }}</th>#}
+            {#                        <th>{{ list.get_expert_client.name }}</th>#}
             <th>{{ list.id }}  </th>
             <td> {% if list.type %}<span class="colorclient">Клиент</span>{% else %} -----{% endif %}</td>
             <td>{{ list.status.name }}</td>
@@ -255,8 +248,6 @@
       </div>
     </div>
     <hr>
-  </div>
-  </div>
   </div>
   <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
@@ -279,212 +270,189 @@
             </div>
           </form>
         </div>
-
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+      </div>
+    </div>
+  </div>
   <!-- Modal window form create new object -->
-    <form method="POST" action="" class="form-control"
-          enctype="multipart/form-data">
-      {% csrf_token %}
-      <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
-           aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title mt-0" id="myExtraLargeModalLabel">Создать клиента</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="col-lg-5">
-                <hr>
-                <div class="mt-4">
+  <form method="POST" action="" class="form-control"
+        enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+         aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title mt-0" id="myExtraLargeModalLabel">Создать клиента</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="col-lg-5">
+              <hr>
+              <div class="mt-4">
 
-                  <div id="basic-example">
-                                    <!-- Client Details -->
-
-                                    <section>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    {# <label for="basicpill-firstname-input">Имя</label>#}
-                                                    {{ form.name }}
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="mb-3">
-                                                        {# <label for="basicpill-lastname-input">Фамилия</label>#}
-                                                        {{ form.surname }}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    {# <label for="basicpill-lastname-input">Отчество</label>#}
-                                                    {{ form.midlename }}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    {{ form.link_social }}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    {{ form.phone }}
-                                                </div>
-                                            </div>
-
-
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    {{ form.post_mail }}
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="mb-3">
-                                                    {{ form.Comment }}
-
-                                                </div>
-
-                                                <span>{{ error }}</span>
-                                            </div>
-
-                                        </div>
-
-
-                                    </section>
-
-                                    <!-- Company Document -->
-                                    <h3>Паспортные данные</h3>
-                                    <section>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    {{ form.serial_pass }}
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    {{ form.number_pass }}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    {{ form.point_birth }}
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    {{ form.date_birth }}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    {{ form.enter_org }}
-                                                </div>
-                                            </div>
-
-                                            <div class="col-lg-6">
-                                                <div class="mb-3">
-                                                    {{ form.data_create }}
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <div class="row">
-
-                                            <div class="col-lg-12">
-                                                <div class="mb-3">
-                                                    {{ form.adress_reg }}
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                    </section>
-
-                                    <!-- Bank Details -->
-                                    <h3>Водительское удостоверение</h3>
-                                    <section>
-                                        <div>
-
-                                            <div class="row">
-                                                <div class="col-lg-6">
-                                                    <div class="mb-3">
-                                                        {{ form.serial_lic }}
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="mb-3">
-                                                        {{ form.number_lic }}
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3">
-                                                    {{ form.enter_lic }}
-                                                </div>
-
-
-                                            </div>
-                                            <div class="row">
-                                                <div class="input-group" id="datepicker2">
-                                                    <div class="mb-3">
-                                                        {{ form.create_lic }}
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="mb-3">
-
-
-                                                        <select class="select2 form-control select2-multiple"
-                                                                multiple="multiple"
-                                                                data-placeholder="Выбрать ...">
-                                                            <option value="A" selected>A</option>
-                                                            <option value="B" selected>B</option>
-                                                            <option value="C">C</option>
-                                                            <option value="D">D</option>
-                                                            <option value="E">E</option>
-                                                            {# Подключить плагин для корректного выбора полей и не
-                                                            правлильно указан путь у js/app.js#}
-                                                        </select></div>
-                                                </div>
-                                            </div>
-                                            <div class="text-center mt-4">
-                                                <button type="button" class="btn btn-primary waves-effect waves-light">
-                                                    Отправить файл
-                                                </button>
-                                            </div>
-                                            <div class="page-title-box d-flex align-items-center justify-content-between">
-                                                <h4 class="mb-0">
-                                                </h4>
-                                                <div class="page-title-right">
-                                                    <ol class="breadcrumb m-0">
-                                                        <button class="btn btn-primary w-md" type="submit">Сохранить
-                                                        </button>
-                                                        </li>
-                                                    </ol>
-                                                </div>
-
-                                            </div>
-
-                            </form>
+                <div id="basic-example">
+                  <!-- Client Details -->
+                  <section>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {# <label for="basicpill-firstname-input">Имя</label>#}
+                          {{ form.name }}
                         </div>
-          </div><!-- /.modal-dialog -->
+                      </div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {# <label for="basicpill-lastname-input">Фамилия</label>#}
+                            {{ form.surname }}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {# <label for="basicpill-lastname-input">Отчество</label>#}
+                          {{ form.midlename }}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.link_social }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.phone }}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.post_mail }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="mb-3">
+                          {{ form.Comment }}
+                        </div>
+                        <span>{{ error }}</span>
+                      </div>
+                    </div>
+                  </section>
+                  <!-- Company Document -->
+                  <h3>Паспортные данные</h3>
+                  <section>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.serial_pass }}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.number_pass }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.point_birth }}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.date_birth }}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.enter_org }}
+                        </div>
+                      </div>
+                      <div class="col-lg-6">
+                        <div class="mb-3">
+                          {{ form.data_create }}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="mb-3">
+                          {{ form.adress_reg }}
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <!-- Bank Details -->
+
+                  <h3>Водительское удостоверение</h3>
+                  <section>
+                    <div>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.serial_lic }}
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            {{ form.number_lic }}
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          {{ form.enter_lic }}
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group" id="datepicker2">
+                          <div class="mb-3">
+                            {{ form.create_lic }}
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <div class="mb-3">
+                            <select class="select2 form-control select2-multiple"
+                                    multiple="multiple"
+                                    data-placeholder="Выбрать ...">
+                              <option value="A" selected>A</option>
+                              <option value="B" selected>B</option>
+                              <option value="C">C</option>
+                              <option value="D">D</option>
+                              <option value="E">E</option>
+                              {# Подключить плагин для корректного выбора полей и не
+                              правлильно указан путь у js/app.js#}
+                            </select></div>
+                        </div>
+                      </div>
+                      <div class="text-center mt-4">
+                        <button type="button" class="btn btn-primary waves-effect waves-light">
+                          Отправить файл
+                        </button>
+                      </div>
+                      <div class="page-title-box d-flex align-items-center justify-content-between">
+                        <h4 class="mb-0">
+                        </h4>
+                        <div class="page-title-right">
+                          <ol class="breadcrumb m-0">
+                            <button class="btn btn-primary w-md" type="submit">Сохранить
+                            </button>
+                          </ol>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div><!-- /.modal -->
+      </div>
+    </div>
+  </form>
 
 {% endblock content %}
 

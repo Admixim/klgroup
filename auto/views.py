@@ -85,11 +85,12 @@ def edit_auto_new(request, pk):
 
         if autoform.is_valid() and formset.is_valid():
             auto = autoform.save()
-            for form in formset:
+            for form in formset.is_bound:
                 file = form.save(commit=False)
                 file.files = auto
                 file.save()
                 return redirect('/auto/')
+
         else:
             print('Упала из за ошибки')
     return render(request, template_name, {
