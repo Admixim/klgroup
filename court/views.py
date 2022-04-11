@@ -85,7 +85,7 @@ def court_new_pk(request, pk):
             error = 'Форма не верно заполнена'
     accident_pk = Accident.objects.get(pk=pk)
     form = CourtInfoForm
-    """Сделать лист  судебных операций court_list к данному ДТП  """
+    """Сделать лист  судебных операций court_list к данному ДТП ееее """
     template_name = 'dist/court/new_pk.html'
 
     data = {
