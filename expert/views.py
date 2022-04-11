@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 
 from client.models import Partner
 from .models import *
@@ -11,11 +11,12 @@ def expert_list(request):
     expert_list = Expert.objects.all()
     return render(request, 'dist/expert/list.html', {'results': expert_list})
 
+
 def expert_modal_new(request):
-    """Создание-добавление  новой экспертизы в модальном окне"""
+    """Создание-добавление  новой экспертизы в модальном окне Образец"""
     error = ''
     if request.method == 'POST':
-        form = ExpertForm(request.POST,request.FILES or None,)
+        form = ExpertForm(request.POST, request.FILES or None, )
         if form.is_valid():
             print(form.cleaned_data)
             form = form.save(commit=False)
@@ -29,7 +30,8 @@ def expert_modal_new(request):
             'error': error
             }
     template_name = 'dist/expert/modal_new.html'
-    return render(request, template_name,data)
+    return render(request, template_name, data)
+
 
 def expert_new(request):
     """Создание-добавление  новой экспертизы без привязки к ДТП"""
@@ -40,16 +42,15 @@ def expert_new(request):
         expert = ExpertNewForm(request.POST, request.FILES or None, )
         if expert.is_valid():
             expert.save()
-
-            return  redirect('/expert/')
+            return redirect('/expert/')
     else:
         error = ' Форма не верно заполнена'
         expert = ExpertNewForm()
-        data = {'expert':expert,
-            'error':error
-            }
+        data = {'expert': expert,
+                'error': error
+                }
 
-    return render(request, template_name,data)
+    return render(request, template_name, data)
 
 
 def expert_new_pk(request, pk):
@@ -57,34 +58,36 @@ def expert_new_pk(request, pk):
 
     error = ''
     if request.method == 'POST':
-        form =ExpertForm(request.POST, request.FILES)
-
+        form = ExpertForm(request.POST, request.FILES)
         if form.is_valid():
             print(form.cleaned_data)
             inst = form.save(commit=False)
-
             inst.accident_id = pk
             inst.save()
-            return  redirect('/expert/expert-new-pk/%d/' % pk)
+            return redirect('/expert/expert-new-pk/%d/' % pk)
         else:
             error = ' Форма не верно заполнена'
     expert_list = Expert.objects.filter(accident_id=pk)
     client = Partner.objects.filter(accident_id=pk, type='True').first()
-
-    accident_pk =Accident.objects.get(pk=pk)
+    accident_pk = Accident.objects.get(pk=pk)
+    ccc = expert_list.get(contragent='1')
+    aaa = expert_list.get(contragent='7')
+    delta = ccc.price_nwear - aaa.price_nwear
+    print("Сумма расчета", delta)
+    print(ccc)
+    print(aaa)
     expert = ExpertForm()
     template_name = 'dist/expert/new_pk.html'
-    data = {'expert':expert,
-            'error':error,
-            'accident_pk':accident_pk,
-            'expert_list':expert_list,
-            'client':client,
-            'pk':pk
+    data = {'expert': expert,
+            'error': error,
+            'accident_pk': accident_pk,
+            'expert_list': expert_list,
+            'client': client,
+            'pk': pk,
+            'delta': delta,
             }
 
-
-    return render(request, template_name,data)
-
+    return render(request, template_name, data)
 
 
 def expert_edit(request, pk):
@@ -105,7 +108,7 @@ def expert_edit(request, pk):
     expert_edit_form = ExpertNewForm(instance=expert)
     template_name = 'dist/expert/edit.html'
     return render(request, template_name, {'expert_edit': expert_edit_form,
-                                           'pk':pk
+                                           'pk': pk
                                            }
                   )
 

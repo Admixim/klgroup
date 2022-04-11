@@ -56,26 +56,48 @@ def court_edit(request, pk ):
             infoform.save()
             courtform.save()
 
-
-            return  redirect('/court/court-edit/%d/' % (pk))
+            return redirect('/court/court-edit/%d/' % (pk))
     else:
         error = ' Форма не верно заполнена'
     court_info = CourtInfoForm(prefix=InfoCourt)
     courtform = CourtForm(prefix=Court)
     template_name = 'dist/court/new_pk.html'
-    data = {'court_info':court_info,
-            'courtform':courtform,
-            'error':error,
-            'pk':pk,
+    data = {'court_info': court_info,
+            'courtform': courtform,
+            'error': error,
+            'pk': pk,
+            }
 
-                }
+    return render(request, template_name, data)
 
-    return render(request, template_name,data)
+
+def court_new_pk(request, pk):
+    """Создание добавление нового судопрозводства к ДТП"""
+    error = ''
+    if request.method == 'POST':
+        form = CourtInfoForm(request.POST, request.FILES)
+        if form.is_valid():
+            inst = form.save(commit=False)
+            inst.accident_id = pk
+            inst.save()
+            return redirect('/court/court-new-pk/%d/' % pk)
+        else:
+            error = 'Форма не верно заполнена'
+    accident_pk = Accident.objects.get(pk=pk)
+    form = CourtInfoForm
+    """Сделать лист  судебных операций court_list к данному ДТП  """
+    template_name = 'dist/court/new_pk.html'
+
+    data = {
+        'error': error,
+        'accident_pk': accident_pk,
+    }
+    return render(request, template_name, data)
+
 
 def court_list_doc(request):
-
     template_name = 'dist/court/court-list-doc.html'
-    return render(request,template_name)
+    return render(request, template_name)
 
 
 def price_court_cash_new(request):

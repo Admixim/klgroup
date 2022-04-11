@@ -71,9 +71,10 @@ class ExpertForm(ModelForm):
             "data_out": DateInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Дата завершение ЭО',
-                'data-date-container':'#datepicker2',
+                'data-date-container': '#datepicker2',
                 'data-provide': 'datepicker',
-                'data - date - autoclose': 'true',
+                'data-date-autoclose': 'true',
+                'data-date-format': 'dd/mm/yyyy'
 
             }),
             "price_nwear": NumberInput(attrs={

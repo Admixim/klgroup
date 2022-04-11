@@ -46,7 +46,8 @@ class AccidentForm(ModelForm):
 
             "time": TimeInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Время ДТП'
+                'placeholder': 'Время ДТП',
+                'type': 'time',
             }),
             "dtp_doc": Select(attrs={
                 'class': 'form-control',

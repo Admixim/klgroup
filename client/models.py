@@ -358,8 +358,8 @@ class Company(models.Model):
 class Partner(models.Model):
     """Таблица сторон ДТП"""
 
-    type  = models.BooleanField(default=False,
-                                  verbose_name='Клиент ')
+    type = models.BooleanField(default=False,
+                               verbose_name='Клиент ')
 
     status = models.ForeignKey(
         Status,

@@ -234,8 +234,6 @@ class ListCourt(models.Model):
 class InfoCourt(models.Model):
     """Информация о деле"""
 
-
-
     status = models.ForeignKey(
         Status,
         on_delete=models.CASCADE,
@@ -359,7 +357,6 @@ class ListEnd(models.Model):
 
 class Court(models.Model):
     """Таблица основных  данных о судебных процессе """
-
 
     info_court = models.ForeignKey(
         InfoCourt,

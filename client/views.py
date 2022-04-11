@@ -83,11 +83,16 @@ def company_new(request):
         formset = FileCompanyFormset(request.POST, request.FILES)
         if companyform.is_valid() and formset.is_valid():
             company = companyform.save()
-            for form in formset:
-                instance = form.save(commit=False)
-                instance.files_comp = company
-                instance.save()
-            return redirect('/client/company/')
+            if formset.is_bound == True:
+                for form in formset:
+                    print('ЗАПОЛНЕННЫЙ СПИСОК', formset)
+                    instance = form.save(commit=False)
+                    instance.files_comp = company
+                    instance.save()
+                return redirect('/client/company/')
+            else:
+                print('ПУСТОЙ СПИСОК', formset)
+
     else:
         companyform = CompanyForm(request.POST, prefix=Company)
         formset = FileCompanyFormset(queryset=FileCompany.objects.none())

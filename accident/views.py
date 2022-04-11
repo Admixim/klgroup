@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import AccidentForm, AccidentAddPartnerForm
 from client.models import Client, Partner
-from client.forms import  PartnerForm, ClientForm
+from client.forms import PartnerForm, ClientForm
 
 
 
@@ -12,13 +12,10 @@ def accident_list(request):
     # Список ДТП общий
 
     accident = Accident.objects.all()
-    for b in accident:
-        b= accident.select_related('status').get(pk=2)
-        print(b, 'В листе список Список ДТП общий')
+    print(accident)
     return render(request,
                   'dist/accident/list.html',
                   {'accident': accident,
-
                    }
                   )
 
@@ -101,7 +98,7 @@ def accident_edit(request, pk):
             _date = form.cleaned_data['data']
             print(_date)
             _date = '10.01.2022'
-            print('Дата форматирования', _date )
+            print('Дата форматирования', _date)
 
             accident = form.save(commit=False)
             list_partner = add_partner.save(commit=False)

@@ -21,12 +21,8 @@ def auto_list(request):
 def auto_new(request):
     """Создание-добавление  нового  ТС """
 
-    template_name = 'dist/handbk/auto/auto-new.html'
-    if request.method == 'GET':
-        autoform = AutoForm(request.GET or None)
-        formset = FileAutoFormset(queryset=AutoFiles.objects.none())
-    elif request.method == 'POST':
-        autoform = AutoForm(request.POST, )
+    if request.method == 'POST':
+        autoform = AutoForm(request.POST, prefix=Car)
         formset = FileAutoFormset(request.POST, request.FILES, prefix=AutoFiles)
         if autoform.is_valid() and formset.is_valid():
             auto = autoform.save()
@@ -35,8 +31,10 @@ def auto_new(request):
                 file.files = auto
                 file.save()
             return redirect('/auto/')
-        else:
-            print('You have error')
+    else:
+        template_name = 'dist/handbk/auto/auto-new.html'
+        autoform = AutoForm(prefix=Car)
+        formset = FileAutoFormset(queryset=AutoFiles.objects.none(), prefix=AutoFiles)
         return render(request, template_name, {
             'autoform': autoform,
             'formset': formset,

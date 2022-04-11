@@ -1,10 +1,6 @@
 from django.urls import path
 from expert import views
 
-
-
-
-
 urlpatterns = [
     path('', views.expert_list, name='expert-list'),
     path('edit/<int:pk>/', views.expert_edit, name='expert-edit'),

@@ -69,9 +69,10 @@
                     {% for item in results %}
                       <tr>
                         <td>
-                          <a href="#" class="text-body">{{ item.id }}</a>
+                          <a href="/expert/edit/{{ item.id }}/" class="text-body">{{ item.id }}</a>
                         </td>
-                        <td>{{ item.accident.id }}</td>
+                        <td><a href="/expert/edit/{{ item.id }}/" class="text-body">{{ item.accident.id }}</a>
+                        </td>
                         <td>{{ item.num_doc }}</td>
                         <td>{{ item.data_in |date:"d-m-Y" }}</td>
                         <td>{{ item.data_out|date:"d-m-Y" }}</td>
