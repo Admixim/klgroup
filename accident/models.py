@@ -185,7 +185,6 @@ class Accident(models.Model):
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-
     def __str__(self):
         # return "%s" % self.id
         return 'id {}, номер {}, место дтп {}, клиент{}'.format(self.id, self.number, self.location_accident,
@@ -196,6 +195,7 @@ class Accident(models.Model):
         verbose_name_plural = "ДТП"
         ordering = ['-created']
     # Сохранение файлов  в  модлеи джанго
+
     def save(self, *args, **kwargs):
         if self.file_doc:
             # save file for get path
@@ -206,4 +206,4 @@ class Accident(models.Model):
     def get_accident(self):
         b = self.partner_accident.filter(type='True').first()
 
-        return HttpResponse (f'{b.car.model}')
+        return HttpResponse(f'{b.car.model}')

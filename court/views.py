@@ -73,11 +73,9 @@ def court_edit(request, pk):
 
 def court_new_pk(request, pk):
     """Создание добавление нового судопрозводства к ДТП"""
-    accident_pk = (Accident.objects.get(id=pk)).pk
-    print('aaaaa', accident_pk)
-    # print(InfoCourt.objects.values_list('status', 'case_number', 'message'))
-    # list_court = court.court_info.all()
-    error = ''
+    accident = Accident.objects.get(id=pk)
+    accident_pk = accident.pk
+    error = 'Ошибка'
     if request.method == 'POST':
         form = CourtInfoForm(request.POST, request.FILES)
         if form.is_valid():
@@ -88,15 +86,18 @@ def court_new_pk(request, pk):
         else:
             error = 'Форма не верно заполнена'
 
-    # list_court = court.court_info.all()
+    list_court = accident.court_info.info_courts.all()
+    court_info = get_object_or_404(InfoCourt, id = accident_pk)
+    print(court_info)
     form = CourtInfoForm
     """Сделать лист  судебных операций court_list к данному ДТП ееее """
     template_name = 'dist/court/new_pk.html'
-
     data = {
         'error': error,
         'accident_pk': accident_pk,
-    }
+        'list_court': list_court,
+        'court_info': court_info,
+            }
     return render(request, template_name, data)
 
 

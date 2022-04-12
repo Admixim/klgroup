@@ -299,7 +299,6 @@ class InfoCourt(models.Model):
         return self.location.name
 
 
-
 class Procedure(models.Model):
     """Таблица операций   судебного процесса """
 
@@ -357,12 +356,12 @@ class ListEnd(models.Model):
 
 
 class Court(models.Model):
-    """Таблица основных  данных о судебных процессе """
+    """Таблица оперций связанных с  судебным процессом """
 
     info_court = models.ForeignKey(
         InfoCourt,
         on_delete=models.CASCADE,
-        related_name='info_court',
+        related_name='info_courts',
         blank=True,
         null=True,
         default=None,

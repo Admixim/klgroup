@@ -144,23 +144,24 @@
             <th>№</th>
             <th>Тип события</th>
             <th>Ответственный</th>
-            <th>Срок исполения</th>
-            <th>Факт исполения</th>
-            <th>Файл</th>
+            <th>Срок исполения2</th>
+            <th>Факт исполения3</th>
+            <th>Статус</th>
             <th>Коментарий</th>
           </tr>
           </thead>
           <tbody>
           <tr>
-            {#                        <td>aaaaaa {{ list.get_fullname }}</td>#}
+            {#                        <td>aaaaaa {{ list.procedure }}</td>#}
             {#                        <th>{{ list.get_client.car.model}} {{ list.get_client.car.number}}{{ list.get_client.car.color}}11</th>#}
             {##}
             {#                        <th>{{ list.get_expert_client.name }}</th>#}
-            <th>{{ list.procedure}}  </th>
-            <td> {% if list.worker %}<span class="colorclient">Ответственный</span>{% else %} -----{% endif %}</td>
-            <td>{{ list.data_finish }}</td>
+            <th>{{ list.pk }}  </th>
+            <td> {{ list.procedure }}</td>
+            <td>{{ list.worker }}</td>
+            <td>{{ list.date_start }}&nbsp;</td>
             <td>{{ list.date_stop }}&nbsp;</td>
-            <td>{{ list.file_paste }}&nbsp;</td>
+            <td>{{ list.akt_end}}</td>
             <td>{{ list.message}}</td>
           </tr>
           </tbody>
