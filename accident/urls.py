@@ -12,10 +12,10 @@ urlpatterns = [
     # Создание  нового дела о ДТП
     path('accident-new/', accident_new, name='accident-new'),
     # Добавлние участников в ДТП
-    path('accident-add-partner/<int:accident_pk>/', accident_edit, name='accident-edit-add'),
+    # path('accident-add-partner/<int:accident_pk>/', accident_edit, name='accident-edit-add'),
 
-    # Редактирования дела о  ДТП
-    path('edit/<int:pk>/', accident_add_partner, name='accident-edit'),
+    # Добавление участников   редактирование ДТП
+    path('accident-add-partner/<int:pk>/', accident_add_partner, name='accident-edit'),
 
     # Список  документов о   ДТП в деле
     path('accident-list-doc/', accident_list_doc, name='accident_list_doc'),

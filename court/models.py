@@ -288,7 +288,7 @@ class InfoCourt(models.Model):
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
     def __str__(self):
-        return "%s"  % self.uid_number
+        return "%s" % self.uid_number
 
     class Meta:
         verbose_name = "Информация дела"
@@ -297,6 +297,7 @@ class InfoCourt(models.Model):
 
     def get_list(self):
         return self.location.name
+
 
 
 class Procedure(models.Model):

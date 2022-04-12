@@ -70,12 +70,12 @@ def expert_new_pk(request, pk):
     expert_list = Expert.objects.filter(accident_id=pk)
     client = Partner.objects.filter(accident_id=pk, type='True').first()
     accident_pk = Accident.objects.get(pk=pk)
-    ccc = expert_list.get(contragent='1')
-    aaa = expert_list.get(contragent='7')
-    delta = ccc.price_nwear - aaa.price_nwear
-    print("Сумма расчета", delta)
-    print(ccc)
-    print(aaa)
+    # ccc = expert_list.get(contragent='1')
+    # aaa = expert_list.get(contragent='7')
+    # delta = ccc.price_nwear - aaa.price_nwear
+    # print("Сумма расчета", delta)
+    # print(ccc)
+    # print(aaa)
     expert = ExpertForm()
     template_name = 'dist/expert/new_pk.html'
     data = {'expert': expert,
@@ -84,7 +84,7 @@ def expert_new_pk(request, pk):
             'expert_list': expert_list,
             'client': client,
             'pk': pk,
-            'delta': delta,
+
             }
 
     return render(request, template_name, data)

@@ -1,6 +1,6 @@
 # coding: utf-8
 from django.shortcuts import render,redirect, get_object_or_404
-from .models import Court,InfoCourt
+from .models import Court, InfoCourt
 from .forms import CourtInfoForm, CourtForm
 from accident.models import Accident
 
@@ -39,7 +39,7 @@ def court_new(request):
     return render(request, template_name, data)
 
 
-def court_edit(request, pk ):
+def court_edit(request, pk):
     """Создание-добавление  нового клиента"""
 
     # В шаблоне столит id 28 для ДТП и Экспертизы вывести в форму id  для корреткного перехода )
@@ -49,7 +49,7 @@ def court_edit(request, pk ):
     accident = Accident.objects.all()
     error = ''
     if request.method == 'POST':
-        infoform =CourtInfoForm(request.POST, prefix=InfoCourt )
+        infoform =CourtInfoForm(request.POST, prefix=InfoCourt)
         courtform = CourtForm(request.POST,  prefix=Court)
         print(infoform, '1d')
         if infoform.is_valid() and courtform.is_valid():
@@ -73,6 +73,9 @@ def court_edit(request, pk ):
 
 def court_new_pk(request, pk):
     """Создание добавление нового судопрозводства к ДТП"""
+    # court = get_object_or_404(InfoCourt, pk)
+    print(InfoCourt.objects.values_list('status', 'case_number', 'message'))
+    # list_court = court.court_info.all()
     error = ''
     if request.method == 'POST':
         form = CourtInfoForm(request.POST, request.FILES)
@@ -83,14 +86,17 @@ def court_new_pk(request, pk):
             return redirect('/court/court-new-pk/%d/' % pk)
         else:
             error = 'Форма не верно заполнена'
-    accident_pk = Accident.objects.get(pk=pk)
+
+    # list_court = court.court_info.all()
     form = CourtInfoForm
     """Сделать лист  судебных операций court_list к данному ДТП ееее """
+
+
     template_name = 'dist/court/new_pk.html'
 
     data = {
         'error': error,
-        'accident_pk': accident_pk,
+        # 'list_court': list_court,
     }
     return render(request, template_name, data)
 

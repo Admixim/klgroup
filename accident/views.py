@@ -7,7 +7,6 @@ from client.models import Client, Partner
 from client.forms import PartnerForm, ClientForm
 
 
-
 def accident_list(request):
     # Список ДТП общий
 
@@ -20,9 +19,6 @@ def accident_list(request):
                   )
 
 
-
-
-
 def accident_new(request):
     # Создание-добавление  нового ДТП
 
@@ -31,9 +27,8 @@ def accident_new(request):
         form = AccidentForm(request.POST, request.FILES)
         if form.is_valid():
             inst = form.save(commit=False)
-            # поле которое необходимо заполнить датой 'data'
             inst.save()
-            return redirect('/accident/edit/%d/' %(inst.pk))
+            return redirect('/accident/accident-add-partner/%d/' %(inst.pk))
     else:
         error = ' Форма не верно заполнена'
     form = AccidentForm()
@@ -46,6 +41,7 @@ def accident_new(request):
                   template_name,
                   data
                   )
+
 
 def accident_add_partner(request, pk):
     # Добавление участников  в дело о  ДТП
@@ -68,7 +64,7 @@ def accident_add_partner(request, pk):
             print(form, 'f')
             print(type(form))
             # return redirect('/accident/edit/%d/accident-add-partner/' % (pk)+ str(form.id)+ '/')
-            return redirect('/accident/edit/%d/' % (pk), '/')
+            return redirect('/accident/accident-add-partner/%d/' % (pk), '/')
 
     else:
         form = AccidentAddPartnerForm(prefix='accident', instance=accident)
@@ -80,12 +76,12 @@ def accident_add_partner(request, pk):
                                         'add_partner': add_partner,
                                         'list_partner': list_partner,
                                         'accident_pk': pk,
-                                       }
-              )
+                                            }
+                 )
 
 
 def accident_edit(request, pk):
-    # Редактирования  данных ДТП
+    """Редактирования  данных ДТП"""
 
     accident = get_object_or_404(Accident, pk=pk)
     list_partner = accident.partner_accident.all()
@@ -126,7 +122,7 @@ def accident_edit(request, pk):
 
 
 def accident_main1(request):
-    # ТЕСТОВЫЙ ВАРИАНТ С ШАБЛОНОМ Главная страница по ДТП добавление данных изменение данных
+    """ТЕСТОВЫЙ ВАРИАНТ С ШАБЛОНОМ Главная страница по ДТП добавление данных изменение данных"""
 
     error = ''
     if request.method == 'POST':
@@ -153,7 +149,7 @@ def accident_main1(request):
 
 
 def accident_list_doc(request):
-    # ТЕСТОВЫЙ ВАРИАНТ С ШАБЛОНОМ  Документы
+    """ТЕСТОВЫЙ ВАРИАНТ С ШАБЛОНОМ  Документы"""
 
     error = ''
     if request.method == 'POST':
@@ -183,7 +179,7 @@ def accident_list_doc(request):
 
 
 def accident_edit1(request, pk):
-    # Редактирования  данных ДТП
+    """Редактирования  данных ДТП"""
 
     accident = get_object_or_404(Accident, pk=pk)
     accident.get_accident()

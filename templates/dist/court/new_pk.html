@@ -27,12 +27,12 @@
           <div class="page-title-box d-flex align-items-center justify-content-between">
             <div class="btn-group me-1 mt-2">
               <div class="mb-3">
-                <a href="{% url 'accident-edit' 28 %}" class="btn btn-success waves-effect waves-light">
+                <a href="{% url 'accident-edit' 1 %}" class="btn btn-success waves-effect waves-light">
                   </i> Данные ДТП</a>
               </div>
             </div>
             <div class="mb-3">
-              <a href="{% url 'expert-new-pk' 28 %}" class="btn btn-success waves-effect waves-light">
+              <a href="{% url 'expert-new-pk' 1 %}" class="btn btn-success waves-effect waves-light">
                 </i> Данные экспертизы</a>
             </div>
             <div class="mb-3">
@@ -83,7 +83,8 @@
 
       <!-- Bank Details -->
       <h3>Данные по судебному делу</h3>
-      <form method="POST" class="form-control" enctype="multipart/form-data">{% csrf_token %}
+      <form method="POST" class="form-control" enctype="multipart/form-data">
+        {% csrf_token %}
         <div>
           <form>
             <div class="row">
@@ -131,6 +132,42 @@
             </div>
             <div class="col-md-10">
               <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+
+               <div class="row">
+      <h4 class="card-title">События по делу</h4>
+      <hr>
+      {% for list in list_court %}
+        <div class="table-responsive">
+        <table class="table mb-2">
+          <thead>
+          <tr>
+            <th>№</th>
+            <th>Тип события</th>
+            <th>Ответственный</th>
+            <th>Срок исполения</th>
+            <th>Факт исполения</th>
+            <th>Файл</th>
+            <th>Коментарий</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            {#                        <td>aaaaaa {{ list.get_fullname }}</td>#}
+            {#                        <th>{{ list.get_client.car.model}} {{ list.get_client.car.number}}{{ list.get_client.car.color}}11</th>#}
+            {##}
+            {#                        <th>{{ list.get_expert_client.name }}</th>#}
+            <th>{{ list.procedure}}  </th>
+            <td> {% if list.worker %}<span class="colorclient">Ответственный</span>{% else %} -----{% endif %}</td>
+            <td>{{ list.data_finish }}</td>
+            <td>{{ list.date_stop }}&nbsp;</td>
+            <td>{{ list.file_paste }}&nbsp;</td>
+            <td>{{ list.message}}</td>
+          </tr>
+          </tbody>
+        </table>
+      {% endfor %}
+      </div>
+    </div>
               <input type="button" class="btn btn-primary btn-block inner" value="Создать событие">
             </div>
           </form>
