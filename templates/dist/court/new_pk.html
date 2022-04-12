@@ -27,12 +27,12 @@
           <div class="page-title-box d-flex align-items-center justify-content-between">
             <div class="btn-group me-1 mt-2">
               <div class="mb-3">
-                <a href="{% url 'accident-edit' 1 %}" class="btn btn-success waves-effect waves-light">
+                <a href="{% url 'accident-edit' accident_pk %}" class="btn btn-success waves-effect waves-light">
                   </i> Данные ДТП</a>
               </div>
             </div>
             <div class="mb-3">
-              <a href="{% url 'expert-new-pk' 1 %}" class="btn btn-success waves-effect waves-light">
+              <a href="{% url 'expert-new-pk' accident_pk %}" class="btn btn-success waves-effect waves-light">
                 </i> Данные экспертизы</a>
             </div>
             <div class="mb-3">
