@@ -28,14 +28,14 @@ def accident_new(request):
         if form.is_valid():
             inst = form.save(commit=False)
             inst.save()
-            return redirect('/accident/accident-add-partner/%d/' %(inst.pk))
+            return redirect('/accident/accident-add-partner/%d/' % (inst.pk))
     else:
         error = ' Форма не верно заполнена'
     form = AccidentForm()
     data = {
-                'form': form,
-                'error': error
-                }
+        'form': form,
+        'error': error
+    }
     template_name = 'dist/accident/new.html'
     return render(request,
                   template_name,
@@ -48,36 +48,31 @@ def accident_add_partner(request, pk):
 
     accident = get_object_or_404(Accident, pk=pk)
     list_partner = accident.partner_accident.all()
+    court = accident.court_info
     if request.method == "POST":
-        #form = AccidentAddPartnerForm(request.POST,request.FILES or None, prefix='accident',instance=accident)
+        # form = AccidentAddPartnerForm(request.POST,request.FILES or None, prefix='accident',instance=accident)
         form = PartnerForm(request.POST, request.FILES or None, prefix='partners')
         if form.is_valid():
-            # _date = form.cleaned_data['data']
-            # print(_date)
             form = form.save(commit=False)
             # Сохранение связей ДТП
             form.accident = accident
-            #pforms =pform.save(commit=False)
+            # pforms =pform.save(commit=False)
             form.save()
-            #pform.save()
-            print(pk)
-            print(form, 'f')
-            print(type(form))
+            # pform.save()
             # return redirect('/accident/edit/%d/accident-add-partner/' % (pk)+ str(form.id)+ '/')
-            return redirect('/accident/accident-add-partner/%d/' % (pk), '/')
+            return redirect('/accident/accident-add-partner/%d/' % pk, '/')
 
     else:
         form = AccidentAddPartnerForm(prefix='accident', instance=accident)
         add_partner = PartnerForm(prefix='partners')
         list_partner = accident.partner_accident.all()
     template_name = 'dist/accident/add_partner.html'
-
     return render(request, template_name, {'form': form,
-                                        'add_partner': add_partner,
-                                        'list_partner': list_partner,
-                                        'accident_pk': pk,
-                                            }
-                 )
+                                           'add_partner': add_partner,
+                                           'list_partner': list_partner,
+                                           'accident_pk': pk,
+                                           }
+                  )
 
 
 def accident_edit(request, pk):
@@ -90,16 +85,10 @@ def accident_edit(request, pk):
         client = ClientForm(request.POST, request.FILES, prefix='client')
         add_partner = PartnerForm(request.POST, request.FILES, prefix='partners')
         if form.is_valid() and add_partner.is_valid() and client.is_valid():
-            print(form)
             _date = form.cleaned_data['data']
-            print(_date)
-            _date = '10.01.2022'
-            print('Дата форматирования', _date)
-
             accident = form.save(commit=False)
             list_partner = add_partner.save(commit=False)
             print('Список экспертиз ДТП', accident.expert_set)
-
             client = client.save()
             accident.save()
             list_partner.save()
@@ -109,7 +98,7 @@ def accident_edit(request, pk):
         add_partner = PartnerForm(prefix='partners')
         list_partner = accident.partner_accident.all()
         client = ClientForm(request.POST, request.FILES, prefix='client')
-        template_name = 'dist/accident/edit.html'
+    template_name = 'dist/accident/edit.html'
 
     return render(request, template_name, {'form': form,
                                            'Accident': Accident,
@@ -124,10 +113,9 @@ def accident_edit(request, pk):
 def accident_main1(request):
     """ТЕСТОВЫЙ ВАРИАНТ С ШАБЛОНОМ Главная страница по ДТП добавление данных изменение данных"""
 
-    error = ''
+    error = 'Ошибка'
     if request.method == 'POST':
         form = AccidentForm(request.POST)
-
         if form.is_valid():
             print(form.cleaned_data)
             form = form.save(commit=False)
@@ -135,12 +123,11 @@ def accident_main1(request):
             return redirect('/Accident/')
         else:
             error = ' Форма не верно заполнена'
-
     form = AccidentForm()
     data = {
-        'form': form,
-        'error': error
-    }
+            'form': form,
+            'error': error
+            }
     template_name = 'dist/accident-main1.html'
     return render(request,
                   template_name,
@@ -176,8 +163,6 @@ def accident_list_doc(request):
                   )
 
 
-
-
 def accident_edit1(request, pk):
     """Редактирования  данных ДТП"""
 
@@ -203,13 +188,10 @@ def accident_edit1(request, pk):
                   )
 
 
-
-
 def test(request):
     acc = Partner.objects.filter(accident_id=1).first()
     acc1 = Partner.objects.filter(accident_id=1)
     print(acc1[0].car.number)
     print(acc.car.model)
-    #self.partner_accident.filter(type='True').first()
+    # self.partner_accident.filter(type='True').first()
     return HttpResponse(f'{acc.car.model}')
-

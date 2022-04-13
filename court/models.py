@@ -436,5 +436,5 @@ class Court(models.Model):
     class Meta:
         verbose_name = "Оперция судопроизводства"
         verbose_name_plural = "Оперции судопроизводства"
-        ordering = ['-created']
+        ordering = ['created']
 

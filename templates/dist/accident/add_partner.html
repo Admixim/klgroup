@@ -37,14 +37,22 @@
               </div>
             </div>
             <div class="mb-3">
+              {% if  expert %}
               <a href="{% url 'expert-new-pk' accident_pk %}" class="btn btn-success waves-effect waves-light">
                 </i> Данные экспертизы</a>
-              {#              <a href="{% url 'expert-new'  %}" class="btn btn-success waves-effect waves-light">#}
-              {#                </i> Данные экспертизы new</a>#}
+              {% else %}
+              <a href="{% url 'expert-new-pk' accident_pk %}" class="btn btn-success waves-effect waves-light">
+              </i> Создание экспертизы</a>
+              {% endif %}
             </div>
             <div class="mb-3">
-              <a href="{% url 'court-edit' accident_pk %}" class="btn btn-success waves-effect waves-light">
+              {% if  court == None %}
+              <a href="{% url 'court-new' %}" class="btn btn-success waves-effect waves-light">
+                </i> Создание Произвоства по делу</a>
+              {% else %}
+              <a href="{% url 'court-new-pk' accident_pk %}" class="btn btn-success waves-effect waves-light">
                 </i> Произвоство по делу</a>
+              {% endif %}
             </div>
             <div class="mb-3">
               <a href="{% url 'accident_list_doc' %}" class="btn btn-success waves-effect waves-light">

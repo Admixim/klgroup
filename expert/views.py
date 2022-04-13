@@ -55,6 +55,11 @@ def expert_new(request):
 
 def expert_new_pk(request, pk):
     """Создание-добавление  новой экспертизы к ДТП"""
+    accident = get_object_or_404(Accident, id=pk)
+    accident_id = accident.id
+    expert = accident.expert_accident.all()
+    court = accident.court_info.id
+    print(expert, "СУД ИД ", court, "DTP id", accident.id)
 
     error = ''
     if request.method == 'POST':
@@ -62,6 +67,7 @@ def expert_new_pk(request, pk):
         if form.is_valid():
             print(form.cleaned_data)
             inst = form.save(commit=False)
+
             inst.accident_id = pk
             inst.save()
             return redirect('/expert/expert-new-pk/%d/' % pk)
@@ -80,11 +86,12 @@ def expert_new_pk(request, pk):
     template_name = 'dist/expert/new_pk.html'
     data = {'expert': expert,
             'error': error,
-            'accident_pk': accident_pk,
+            'accident_pk': accident_id,
             'expert_list': expert_list,
             'client': client,
-            'pk': pk,
+            'court': court,
 
+           
             }
 
     return render(request, template_name, data)

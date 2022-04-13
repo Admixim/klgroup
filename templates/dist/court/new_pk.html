@@ -3,223 +3,243 @@
 
 
 <head xmlns="http://www.w3.org/1999/html">
-  <meta>
+    <meta>
 </head>
 <!-- ============================================================== -->
 <!-- Start right Content here -->
 <!-- ============================================================== -->
 {% block content %}
-  <style>
+<style>
     hr {
-      border: none; /* Убираем границу */
-      background-color: red; /* Цвет линии */
-      color: red; /* Цвет линии для IE6-7 */
-      height: 2px; /* Толщина линии */
+        border: none; /* Убираем границу */
+        background-color: red; /* Цвет линии */
+        color: red; /* Цвет линии для IE6-7 */
+        height: 2px; /* Толщина линии */
     }
-  </style>
-  <!-- ============================================================== -->
-  <!-- Start right Content hre -->
-  <!-- ============================================================== -->
-  <div class="main-content">
+</style>
+<!-- ============================================================== -->
+<!-- Start right Content hre -->
+<!-- ============================================================== -->
+<div class="main-content">
     <div class="page-content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="page-title-box d-flex align-items-center justify-content-between">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="page-title-box d-flex align-items-center justify-content-between">
+                    <div class="btn-group me-1 mt-2">
+                        <div class="mb-3">
+                            <a href="{% url 'accident-edit' accident_pk %}"
+                               class="btn btn-success waves-effect waves-light">
+                                </i> Данные ДТП</a>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <a href="{% url 'expert-new-pk' accident_pk %}"
+                           class="btn btn-success waves-effect waves-light">
+                            </i> Данные экспертизы</a>
+                    </div>
+                    <div class="mb-3">
+                        <a class="btn btn-primary w-md">
+                            </i> Произвоство по делу</a>
+                    </div>
+                    <div class="mb-3">
+                        <a href="{% url 'accident_list_doc' %}" class="btn btn-success waves-effect waves-light">
+                            </i> Документы</a>
+                    </div>
+                    <div class="mb-3">
+                        <a href="{% url 'price-court-cash-accident' %}"
+                           class="btn btn-success waves-effect waves-light">
+                            </i> Судебные расходы</a>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <p>ШАБЛОНЫ PDF ПРЕТЕНЗИИ,ФИН УПОЛНОМОЧЕНОМУ ПРИТЕНЗИЮ, ДОГОВОР ЮР УСЛУГ</p>
+        <div class="page-title-box d-flex align-items-center justify-content-between">
             <div class="btn-group me-1 mt-2">
-              <div class="mb-3">
-                <a href="{% url 'accident-edit' accident_pk %}" class="btn btn-success waves-effect waves-light">
-                  </i> Данные ДТП</a>
-              </div>
+                <button
+                        class="btn btn-primary w-md" id="contract" type="button">ДОГОВОР
+                </button>
+                <button
+                        type="button" id="expert" href="#" class="btn btn-primary waves-effect waves-light">ЭКСПЕРТИЗА
+                </button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">ОСТАЛЬНОЕ<i class="mdi mdi-chevron-down"></i>
+                    <span class="sr-only">Другие</span>
+                </button>
+                <div class="dropdown-menu">
+                    <ul>
+                        <a id="contract1" class="dropdown-item" href="#">Список </a>
+                        <a id="contract_one" class="dropdown-item" href="#">Договор первичн</a>
+                        <a id="assignment" class="dropdown-item" href="#">Увед. цессия</a>
+                        <div class="dropdown-divider"></div>
+                        <a id="pdf_contract_one_add" class="dropdown-item" href="#">Доп соглашение</a>
+                    </ul>
+                </div>
             </div>
-            <div class="mb-3">
-              <a href="{% url 'expert-new-pk' accident_pk %}" class="btn btn-success waves-effect waves-light">
-                </i> Данные экспертизы</a>
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                </ol>
             </div>
-            <div class="mb-3">
-              <a class="btn btn-primary w-md">
-                </i> Произвоство по делу</a>
-            </div>
-            <div class="mb-3">
-              <a href="{% url 'accident_list_doc' %}" class="btn btn-success waves-effect waves-light">
-                </i> Документы</a>
-            </div>
-            <div class="mb-3">
-              <a href="{% url 'price-court-cash-accident' %}" class="btn btn-success waves-effect waves-light">
-                </i> Судебные расходы</a>
-            </div>
-          </div>
         </div>
         <hr>
-      </div>
-      <p>ШАБЛОНЫ PDF ПРЕТЕНЗИИ,ФИН УПОЛНОМОЧЕНОМУ ПРИТЕНЗИЮ, ДОГОВОР ЮР УСЛУГ</p>
-      <div class="page-title-box d-flex align-items-center justify-content-between">
-        <div class="btn-group me-1 mt-2">
-          <button
-              class="btn btn-primary w-md" id="contract" type="button">ДОГОВОР
-          </button>
-          <button
-              type="button" id="expert" href="#" class="btn btn-primary waves-effect waves-light">ЭКСПЕРТИЗА
-          </button>
-          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">ОСТАЛЬНОЕ<i class="mdi mdi-chevron-down"></i>
-            <span class="sr-only">Другие</span>
-          </button>
-          <div class="dropdown-menu">
-            <ul>
-              <a id="contract1" class="dropdown-item" href="#">Список </a>
-              <a id="contract_one" class="dropdown-item" href="#">Договор первичн</a>
-              <a id="assignment" class="dropdown-item" href="#">Увед. цессия</a>
-              <div class="dropdown-divider"></div>
-              <a id="pdf_contract_one_add" class="dropdown-item" href="#">Доп соглашение</a>
-            </ul>
-          </div>
-        </div>
-        <div class="page-title-right">
-          <ol class="breadcrumb m-0">
-          </ol>
-        </div>
-      </div>
-      <hr>
 
-      <!-- Bank Details -->
-      <h3>Данные по судебному делу</h3>
-      <form method="POST" class="form-control" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div>
-          <form>
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="mb-3">
-                  <label for="basicpill-namecard-input">Дата регистрации дела:</label>
-                  {{ court_info.data_reg }}
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="mb-3">
-                  <label>Судебный участок:</label>
-                  {{ court_info.location }}
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="mb-3">
-                  <label for="basicpill-expiration-input">№ дела</label>
-                  {{ court_info.case_number }}
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="mb-3">
-                  <label>Судья:</label>
-                  {{ court_info.judge }}
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-6">
-                <div class="mb-3">
-                  <label>UID дела:</label>
+        <!-- Bank Details -->
+        <h3>Данные по судебному делу</h3>
+        <form method="POST" class="form-control" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label class="form-label"  for="basicpill-namecard-input">Дата регистрации дела:</label>
+                                {{ court_info.data_reg }}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label>Судебный участок:</label>
+                                {{ court_info.location }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label for="basicpill-expiration-input">№ дела</label>
+                                {{ court_info.case_number }}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label>Судья:</label>
+                                {{ court_info.judge }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label>UID дела:</label>
 
-                  {{ court_info.uid_number }}
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="mb-3">
-                  <label for="basicpill-namecard-input">Статус дела:</label>
-                  {{ court_info.status }}
-                </div>
-              </div>
-            </div>
-            <div class="col-md-10">
-              <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+                                {{ court_info.uid_number }}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mb-3">
+                                <label for="basicpill-namecard-input">Статус дела:</label>
+                                {{ court_info.status }}
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="col-md-15">
+                    <button class="btn btn-primary w-md" type="submit">Сохранить</button>
 
-               <div class="row">
-      <h4 class="card-title">События по делу</h4>
-      <hr>
-      {% for list in list_court %}
-        <div class="table-responsive">
-        <table class="table mb-2">
-          <thead>
-          <tr>
-            <th>№</th>
-            <th>Тип события</th>
-            <th>Ответственный</th>
-            <th>Срок исполения2</th>
-            <th>Факт исполения3</th>
-            <th>Статус</th>
-            <th>Коментарий</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            {#                        <td>aaaaaa {{ list.procedure }}</td>#}
-            {#                        <th>{{ list.get_client.car.model}} {{ list.get_client.car.number}}{{ list.get_client.car.color}}11</th>#}
-            {##}
-            {#                        <th>{{ list.get_expert_client.name }}</th>#}
-            <th>{{ list.pk }}  </th>
-            <td> {{ list.procedure }}</td>
-            <td>{{ list.worker }}</td>
-            <td>{{ list.date_start }}&nbsp;</td>
-            <td>{{ list.date_stop }}&nbsp;</td>
-            <td>{{ list.akt_end}}</td>
-            <td>{{ list.message}}</td>
-          </tr>
-          </tbody>
-        </table>
-      {% endfor %}
-      </div>
+                    <div class="row">
+                        <h4 class="card-title">События по делу</h4>
+                        <hr>
+
+                        <div class="table-responsive">
+                            <table class="table mb-2">
+                                <thead>
+                                <tr>
+                                    <th>№</th>
+                                    <th>Тип события</th>
+                                    <th>Ответственный</th>
+                                    <th>Срок исполения2</th>
+                                    <th>Факт исполения3</th>
+                                    <th>Статус</th>
+                                    <th>Коментарий</th>
+                                    <th>Скачать файл</th>
+                                    <th style="width: 120px;">Действия</th>
+                                  </tr>
+                                </tr>
+                                </thead>
+                                {% for list in list_court %}
+                                <tbody>
+
+                                <tr>
+                                    <!--           <td>aaaaaa {{ list.procedure }}</td>-->
+                                    <!--           <th>{{ list.get_client.car.model}} {{ list.get_client.car.number}}{{ list.get_client.car.color}}</th>-->
+                                    <!--           <th>{{ list.get_expert_client.name }}</th>-->
+                                    <th>{{ list.pk }}</th>
+                                    <td> {{ list.procedure }}</td>
+                                    <td>{{ list.worker }}</td>
+                                    <td>{{ list.date_start|date:'d-m-Y г. H:i:s' }}</td>
+                                    <td>{{ list.date_stop|date:'d-m-Y г. H:i:s' }}</td>
+                                    <td>{{ list.akt_end}}</td>
+                                    <td>{{ list.message}}</td>
+                                    <td>
+
+                                          <a class="btn btn-light btn-sm w-xs" href="{{ list.file_paste }}" target="_blank">файл<i
+                                              class="uil uil-download-alt ms-2"></i></a>
+
+                                    </td>
+                                     <td>
+                                        <a href="{{ list.file_paste }}" class="px-3 text-primary"><i
+                                            class="uil uil-pen font-size-18"></i></a>
+                                        <a href="javascript:void(0);" class="px-3 text-danger"><i
+                                            class="uil uil-trash-alt font-size-18"></i></a>
+                                     </td>
+                                </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    <input type="button" class="btn btn-primary btn-block inner" value="Создать событие">
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label>Событие:</label>
+                            {{ courtform.procedure }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label for="basicpill-namecard-input">Отвественный</label>
+                            {{ courtform.worker }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label for="basicpill-namecard-input">Срок исполнения</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label for="basicpill-namecard-input">конец исполения</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <label class="form-label" for="formrow-firstname-input">Комментарий для события</label>
+                    <div class="col-sm-12">
+                        {{ courtform.message }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label class="form-label" for="resume"></label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label class="form-label" for="resume">Прикрепить</label>
+                            <input type="file" class="form-control-file" id="resume">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
-              <input type="button" class="btn btn-primary btn-block inner" value="Создать событие">
-            </div>
-          </form>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <label>Событие:</label>
-                {{ courtform.procedure }}
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <label for="basicpill-namecard-input">Отвественный</label>
-                {{ courtform.worker }}
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <label for="basicpill-namecard-input">Срок исполнения</label>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <label for="basicpill-namecard-input">конец исполения</label>
-              </div>
-            </div>
-          </div>
-          <div class="row mb-4">
-            <label class="form-label" for="formrow-firstname-input">Комментарий для события</label>
-            <div class="col-sm-12">
-              {{ courtform.message }}
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <label class="form-label" for="resume"></label>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="mb-3">
-                <label class="form-label" for="resume">Прикрепить</label>
-                <input type="file" class="form-control-file" id="resume">
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+</div>
 
 {% endblock content %}

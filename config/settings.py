@@ -129,6 +129,7 @@ USE_L10N = False
 USE_TZ = True
 
 DATE_INPUT_FORMATS = ['%d/%m/%Y']
+TIME_INPUT_FORMATS = [ '%H:%M']
 
 USE_THOUSAND_SEPARATOR = True
 

@@ -67,7 +67,7 @@
                     {% for item in accident %}
                       <tr>
                         <td>
-                          <a href="/accident/edit/{{ item.id }}/">{{ item.id }}</a>
+                          <a href="/accident/accident-add-partner/{{ item.id }}/">{{ item.id }}</a>
                         </td>
                         <td>{{ item.status }}</td>
                         <td>{{ item.number }}</td>
@@ -78,7 +78,7 @@
                         <td>
                           <ul class="list-inline mb-0">
                             <li class="list-inline-item">
-                              <a href="/accident/edit/{{ item.id }}/">
+                              <a href="/accident/accident-add-partner/{{ item.id }}/">
                                 <i class="uil uil-pen font-size-18"></i></a>
                             </li>
                           </ul>

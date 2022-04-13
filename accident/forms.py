@@ -1,6 +1,13 @@
 from django.shortcuts import render
 from .models import *
-from django.forms import ModelForm, TextInput, Textarea, DateInput,TimeInput,Select,FileInput,SelectDateWidget
+from django.forms import ModelForm,\
+                        TextInput,\
+                        Textarea,\
+                        DateInput, \
+                        TimeInput, \
+                        Select, \
+                        FileInput, \
+                        SelectDateWidget
 
 
 class AccidentForm(ModelForm):
@@ -26,7 +33,7 @@ class AccidentForm(ModelForm):
         widgets = {
             "number": TextInput(attrs={
                 'class': 'form-control',
-                'type' : 'text',
+                'type': 'text',
                 'placeholder': 'Номер протокола'
 
             }),
@@ -44,10 +51,11 @@ class AccidentForm(ModelForm):
 
             }),
 
-            "time": TimeInput(attrs={
+            "time": TimeInput(format='%H:%M', attrs={
                 'class': 'form-control',
                 'placeholder': 'Время ДТП',
-                'type': 'time',
+                # 'type': 'time',
+                'data-time-format': '%H:%M',
             }),
             "dtp_doc": Select(attrs={
                 'class': 'form-control',
