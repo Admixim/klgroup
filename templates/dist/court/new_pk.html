@@ -84,57 +84,70 @@
         </div>
         <hr>
 
-        <!-- Bank Details -->
-        <h3>Данные по судебному делу</h3>
-        <form method="POST" class="form-control" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div>
-                <div class="row">
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label class="form-label"  for="basicpill-namecard-input">Дата регистрации дела:</label>
-                                {{ court_info.data_reg }}
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label>Судебный участок:</label>
-                                {{ court_info.location }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label for="basicpill-expiration-input">№ дела</label>
-                                {{ court_info.case_number }}
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label>Судья:</label>
-                                {{ court_info.judge }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label>UID дела:</label>
 
-                                {{ court_info.uid_number }}
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <label for="basicpill-namecard-input">Статус дела:</label>
-                                {{ court_info.status }}
-                            </div>
-                        </div>
-                    </div>
-                </form>
-                <div class="col-md-15">
-                    <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+
+
+
+        <!-- Bank Details -->
+                {% if court_info is not None %}
+                    {% include "dist/court/new_form.html" %}
+                {% else %}
+
+        <h4 > Вставить ссылку на шаблон с данные о судебном деле, так как нет данных о деле</h4>
+
+                {% endif %}
+
+
+<!--        <h3>Данные по судебному делу</h3>-->
+<!--        <form method="POST" class="form-control" enctype="multipart/form-data">-->
+<!--            {% csrf_token %}-->
+<!--            <div>-->
+<!--                <div class="row">-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <div class="mb-3">-->
+<!--                                <label class="form-label"  for="basicpill-namecard-input">Дата регистрации дела:</label>-->
+<!--                                {{ court_info.data_reg }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <div class="mb-3">-->
+<!--                                <label>Судебный участок:</label>-->
+<!--                                {{ court_info.location }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <div class="mb-3">-->
+<!--                                <label for="basicpill-expiration-input">№ дела</label>-->
+<!--                                {{ court_info.case_number }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <div class="mb-3">-->
+<!--                                <label>Судья:</label>-->
+<!--                                {{ court_info.judge }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <div class="mb-3">-->
+<!--                                <label>UID дела:</label>-->
+
+<!--                                {{ court_info.uid_number }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-6">-->
+<!--                            <div class="mb-3">-->
+<!--                                <label for="basicpill-namecard-input">Статус дела:</label>-->
+<!--                                {{ court_info.status }}-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--                <div class="col-md-15">-->
+<!--                    <button class="btn btn-primary w-md" type="submit">Сохранить</button>-->
 
                     <div class="row">
                         <h4 class="card-title">События по делу</h4>

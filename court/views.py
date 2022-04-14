@@ -77,15 +77,13 @@ def court_new_pk(request, pk):
     accident = Accident.objects.get(id=pk)
     accident_pk = accident.pk
     court_info = accident.court_info
-    court_list = []
+    court_list:list = []
     if court_info is not None:
-        court_list = court_info.info_courts.all()
+        court_list:list = court_info.info_courts.all()
     else:
-        court_list =[]
-
-
-    # print('TEST', court_info.info_courts)
-    error = 'Ошибка'
+        court_list:list = []
+        error = 'Операции по  судопроизводсту нет'
+    print(error)
     if request.method == 'POST':
         courtinfo = CourtInfoForm(request.POST, request.FILES or None, prefix='court-info')
         court = CourtForm(request.POST, request.FILES or None, prefix='court')
