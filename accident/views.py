@@ -48,7 +48,9 @@ def accident_add_partner(request, pk):
 
     accident = get_object_or_404(Accident, pk=pk)
     list_partner = accident.partner_accident.all()
+    expert_list = accident.expert_accident.all()
     court = accident.court_info
+    print(court)
     if request.method == "POST":
         # form = AccidentAddPartnerForm(request.POST,request.FILES or None, prefix='accident',instance=accident)
         form = PartnerForm(request.POST, request.FILES or None, prefix='partners')
@@ -68,9 +70,10 @@ def accident_add_partner(request, pk):
         list_partner = accident.partner_accident.all()
     template_name = 'dist/accident/add_partner.html'
     return render(request, template_name, {'form': form,
-                                           'add_partner': add_partner,
                                            'list_partner': list_partner,
                                            'accident_pk': pk,
+                                           'expert_list': expert_list,
+                                           'court': court,
                                            }
                   )
 

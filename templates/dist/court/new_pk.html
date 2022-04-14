@@ -156,34 +156,45 @@
                                   </tr>
                                 </tr>
                                 </thead>
-                                {% for list in list_court %}
-                                <tbody>
 
-                                <tr>
-                                    <!--           <td>aaaaaa {{ list.procedure }}</td>-->
-                                    <!--           <th>{{ list.get_client.car.model}} {{ list.get_client.car.number}}{{ list.get_client.car.color}}</th>-->
-                                    <!--           <th>{{ list.get_expert_client.name }}</th>-->
-                                    <th>{{ list.pk }}</th>
-                                    <td> {{ list.procedure }}</td>
-                                    <td>{{ list.worker }}</td>
-                                    <td>{{ list.date_start|date:'d-m-Y г. H:i:s' }}</td>
-                                    <td>{{ list.date_stop|date:'d-m-Y г. H:i:s' }}</td>
-                                    <td>{{ list.akt_end}}</td>
-                                    <td>{{ list.message}}</td>
-                                    <td>
+                                {% if court_list  %}
+                                    {% for list in court_list %}
+                                        <tbody>
 
-                                          <a class="btn btn-light btn-sm w-xs" href="{{ list.file_paste }}" target="_blank">файл<i
-                                              class="uil uil-download-alt ms-2"></i></a>
+                                        <tr>
+                                            <!--           <td>aaaaaa {{ list.procedure }}</td>-->
+                                            <!--           <th>{{ list.get_client.car.model}} {{ list.get_client.car.number}}{{ list.get_client.car.color}}</th>-->
+                                            <!--           <th>{{ list.get_expert_client.name }}</th>-->
+                                            <th>{{ list.pk }}</th>
+                                            <td> {{ list.procedure }}</td>
+                                            <td>{{ list.worker }}</td>
+                                            <td>{{ list.date_start|date:'d-m-Y г. H:i:s' }}</td>
+                                            <td>{{ list.date_stop|date:'d-m-Y г. H:i:s' }}</td>
+                                            <td>{{ list.akt_end}}</td>
+                                            <td>{{ list.message}}</td>
+                                            <td>
 
-                                    </td>
-                                     <td>
-                                        <a href="{{ list.file_paste }}" class="px-3 text-primary"><i
-                                            class="uil uil-pen font-size-18"></i></a>
-                                        <a href="javascript:void(0);" class="px-3 text-danger"><i
-                                            class="uil uil-trash-alt font-size-18"></i></a>
-                                     </td>
-                                </tr>
-                                {% endfor %}
+                                                  <a class="btn btn-light btn-sm w-xs" href="{{ list.file_paste }}" target="_blank">файл<i
+                                                      class="uil uil-download-alt ms-2"></i></a>
+
+                                            </td>
+                                             <td>
+                                                <a href="{{ list.file_paste }}" class="px-3 text-primary"><i
+                                                    class="uil uil-pen font-size-18"></i></a>
+                                                <a href="javascript:void(0);" class="px-3 text-danger"><i
+                                                    class="uil uil-trash-alt font-size-18"></i></a>
+                                             </td>
+                                        </tr>
+                                          {% endfor %}
+                                        {% else %}
+                                         <li>Пока нет добавленных  событий в деле.</li>
+                                        {% endif %}
+
+
+
+
+
+
                                 </tbody>
                             </table>
 

@@ -37,7 +37,7 @@
               </div>
             </div>
             <div class="mb-3">
-              {% if  expert %}
+              {% if  expert_list %}
               <a href="{% url 'expert-new-pk' accident_pk %}" class="btn btn-success waves-effect waves-light">
                 </i> Данные экспертизы</a>
               {% else %}
@@ -47,7 +47,7 @@
             </div>
             <div class="mb-3">
               {% if  court == None %}
-              <a href="{% url 'court-new' %}" class="btn btn-success waves-effect waves-light">
+              <a href="{% url 'court-new-pk' accident_pk %}"class="btn btn-success waves-effect waves-light">
                 </i> Создание Произвоства по делу</a>
               {% else %}
               <a href="{% url 'court-new-pk' accident_pk %}" class="btn btn-success waves-effect waves-light">

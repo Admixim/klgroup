@@ -76,9 +76,15 @@ def court_new_pk(request, pk):
 
     accident = Accident.objects.get(id=pk)
     accident_pk = accident.pk
-    court_info = get_object_or_404(InfoCourt, id=accident_pk)
-    print('инфо суда', court_info)
-    print('инфо суда1', court_info.info_courts.all())
+    court_info = accident.court_info
+    court_list = []
+    if court_info is not None:
+        court_list = court_info.info_courts.all()
+    else:
+        court_list =[]
+
+
+    # print('TEST', court_info.info_courts)
     error = 'Ошибка'
     if request.method == 'POST':
         courtinfo = CourtInfoForm(request.POST, request.FILES or None, prefix='court-info')
@@ -87,23 +93,15 @@ def court_new_pk(request, pk):
             inst = courtinfo.save(commit=False)
             inst.accident_id = pk
             inst.save()
-
-
             return redirect('/court/court-new-pk/%d/' % pk)
         else:
             error = 'Форма не верно заполнена'
-            courtinfo = CourtInfoForm(prefix='court-info')
-            court = CourtForm(prefix='court')
-            
-    list_court = accident.court_info.info_courts.all()
-    court_info = get_object_or_404(InfoCourt, id=accident_pk)
-    print(court_info)
     template_name = 'dist/court/new_pk.html'
     data = {
         'error': error,
         'accident_pk': accident_pk,
-        'list_court': list_court,
         'court_info': court_info,
+        'court_list': court_list,
             }
     return render(request, template_name, data)
 

@@ -35,7 +35,7 @@
                     </div>
                     <div class="mb-3">
                         {% if court == None %}
-                        <a href="{% url 'court-new' %}" class="btn btn-success waves-effect waves-light">
+                        <a href="{% url 'court-new-pk'  accident_pk %}" class="btn btn-success waves-effect waves-light">
                             </i> Создание Произвоства по делу</a>
                         {% else %}
                         <a href="{% url 'court-new-pk'  accident_pk %}" class="btn btn-success waves-effect waves-light">
@@ -102,15 +102,12 @@
                                 <div class="mb-4">
                                     <label class="form-label" for="formrow-firstname-input">Информация о
                                         ДТП </label><br>
-                                    Номер ДТП:&nbsp {{ accident_pk.number }}<br>Дата ДТП:&nbsp {{ accident_pk.data
-                                    }}<br>
-                                    Место ДТП: &nbsp{{ accident_pk.location_accident }}<br>
+                                    Номер ДТП:&nbsp {{ accident.number }}<br>Дата ДТП:&nbsp {{accident.data}}<br>
+                                    Место ДТП: &nbsp{{ accident.location_accident }}<br>
                                     ТС
-                                    Клиента:&nbsp{{ client.car.marka }}&nbsp {{ client.car.model }}&nbsp {{
-                                    client.car.number }}<br>
+                                    Клиента:&nbsp{{ client.car.marka }}&nbsp {{ client.car.model }}&nbsp {{client.car.number}}<br>
                                     ФИО
-                                    :&nbsp{{ client.client.name }}&nbsp{{ client.client.surname }}&nbsp{{
-                                    client.client.name }}<br>
+                                    :&nbsp{{ client.client.name }}&nbsp{{client.client.surname }}&nbsp {{client.client.midlename}}<br>
                                     Телефон клиента: &nbsp {{ client.client.phone }}
                                     <div class="col-md-6">
                                     </div>

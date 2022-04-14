@@ -46,9 +46,9 @@ def expert_new(request):
     else:
         error = ' Форма не верно заполнена'
         expert = ExpertNewForm()
-        data = {'expert': expert,
-                'error': error
-                }
+    data = {'expert': expert,
+            'error': error
+           }
 
     return render(request, template_name, data)
 
@@ -56,11 +56,9 @@ def expert_new(request):
 def expert_new_pk(request, pk):
     """Создание-добавление  новой экспертизы к ДТП"""
     accident = get_object_or_404(Accident, id=pk)
-    accident_id = accident.id
-    expert = accident.expert_accident.all()
-    court = accident.court_info.id
-    print(expert, "СУД ИД ", court, "DTP id", accident.id)
-
+    accident_pk = accident.id
+    expert_list = accident.expert_accident.all()
+    court = accident.court_info
     error = ''
     if request.method == 'POST':
         form = ExpertForm(request.POST, request.FILES)
@@ -68,32 +66,21 @@ def expert_new_pk(request, pk):
             print(form.cleaned_data)
             inst = form.save(commit=False)
 
-            inst.accident_id = pk
+            inst.accident_pk = pk
             inst.save()
             return redirect('/expert/expert-new-pk/%d/' % pk)
         else:
             error = ' Форма не верно заполнена'
-    expert_list = Expert.objects.filter(accident_id=pk)
-    client = Partner.objects.filter(accident_id=pk, type='True').first()
-    accident_pk = Accident.objects.get(pk=pk)
-    # ccc = expert_list.get(contragent='1')
-    # aaa = expert_list.get(contragent='7')
-    # delta = ccc.price_nwear - aaa.price_nwear
-    # print("Сумма расчета", delta)
-    # print(ccc)
-    # print(aaa)
-    expert = ExpertForm()
+    partner = Partner.objects.filter(accident_id=pk, type='True').first()
     template_name = 'dist/expert/new_pk.html'
-    data = {'expert': expert,
+    data = {
             'error': error,
-            'accident_pk': accident_id,
+            'accident': accident,
+            'accident_pk': accident_pk,
             'expert_list': expert_list,
-            'client': client,
+            'client': partner,
             'court': court,
-
-           
             }
-
     return render(request, template_name, data)
 
 
