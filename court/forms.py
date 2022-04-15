@@ -1,5 +1,5 @@
 # coding: utf-8
-from django.forms import ModelForm, TextInput, Textarea, DateInput,URLField,EmailField,Select,FileInput
+from django.forms import ModelForm, TextInput, Textarea, DateInput, DateTimeInput, URLField, EmailField, Select, FileInput, CheckboxInput
 from .models import *
 
 
@@ -19,6 +19,8 @@ class CourtInfoForm(ModelForm):
                  ]
 
         widgets = {
+
+
                     "case_number": TextInput(attrs={
                         'class': 'form-control',
                         'type': 'text',
@@ -69,17 +71,20 @@ class CourtForm(ModelForm):
         fields = [
                 "procedure",
                 "worker",
-                "message",
-                "file_paste",
                 "date_start",
                 "data_finish",
                 "akt_end",
+                "message",
+                "file_paste",
+
                 ]
 
         widgets = {
-            "message": TextInput(attrs={
+
+            "message": Textarea(attrs={
                 'class': 'form-control',
-                'type': 'text',
+                'name': "area",
+                'id': "elm1",
                 'placeholder': 'Результат,коментарий события '
 
             }),
@@ -90,17 +95,16 @@ class CourtForm(ModelForm):
 
                 }),
 
-            "date_start": DateInput(format='%d/%m/%Y', attrs={
+            "date_start": DateInput(attrs={
                         'class': 'form-control',
                         'placeholder': 'Начало исполнения ',
                         'data-date-container': '#datepicker2',
                         'data-provide': 'datepicker',
                         'data-date-autoclose': 'true',
                         'data-date-format': 'dd/mm/yyyy',
-
                         }),
 
-            "data_finish": DateInput(format='%d/%m/%Y',attrs={
+            "data_finish": DateInput(attrs={
                         'class': 'form-control',
                         'placeholder': 'Срок исполнения ',
                         'data-date-container': '#datepicker2',
@@ -123,6 +127,7 @@ class CourtForm(ModelForm):
                 'placeholder': 'Отв-ный'
 
             })
+
 
         }
 

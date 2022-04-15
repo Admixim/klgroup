@@ -1,10 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% load static %}
+<div class="row">
+    <div class="col-lg-6">
+        <div class="mb-3">
+            <label>Событие:</label>
+            {{ courtform.procedure }}
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="mb-3">
+            <label for="basicpill-namecard-input">Отвественный</label>
+            {{ courtform.worker }}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="mb-3">
+            <label for="basicpill-namecard-input">Срок исполнения</label>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="mb-3">
+            <label for="basicpill-namecard-input">конец исполения</label>
+        </div>
+    </div>
+</div>
+<div class="row mb-4">
+    <label class="form-label" for="formrow-firstname-input">Комментарий для события</label>
+    <div class="col-sm-12">
+        {{ courtform.message }}
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="mb-3">
+            <label class="form-label" for="resume"></label>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="mb-3">
+            <label class="form-label" for="resume">Прикрепить</label>
+            <input type="file" class="form-control-file" id="resume">
+        </div>
+    </div>
+</div>
+</div>

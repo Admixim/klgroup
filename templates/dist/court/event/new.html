@@ -1,14 +1,15 @@
+{% load static %}
 <div class="row">
     <div class="col-lg-6">
         <div class="mb-3">
             <label>Событие:</label>
-            {{ courtform.procedure }}
+            {{ court.procedure }}
         </div>
     </div>
     <div class="col-lg-6">
         <div class="mb-3">
             <label for="basicpill-namecard-input">Отвественный</label>
-            {{ courtform.worker }}
+            {{ court.worker }}
         </div>
     </div>
 </div>
@@ -27,7 +28,7 @@
 <div class="row mb-4">
     <label class="form-label" for="formrow-firstname-input">Комментарий для события</label>
     <div class="col-sm-12">
-        {{ courtform.message }}
+        {{ court.message }}
     </div>
 </div>
 <div class="row">

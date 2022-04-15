@@ -420,7 +420,7 @@ class Court(models.Model):
         null=True,
         default=None,
         verbose_name='Номер кабинета заседания')
-    message = models.TextField(
+    message = models.CharField(
         max_length=50000,
         blank=True,
         null=True,

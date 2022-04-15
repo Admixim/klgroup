@@ -1,22 +1,21 @@
 {% load static %}
 <div class="row">
-    <h4 class="card-title">События по делу</h4>
+    <h4 class="card-title" align="center">События по делу</h4>
     <hr>
     <div class="table-responsive">
         <table class="table mb-2">
             <thead>
-            <tr>
-                <th>№</th>
-                <th>Тип события</th>
-                <th>Ответственный</th>
-                <th>Срок исполения2</th>
-                <th>Факт исполения3</th>
-                <th>Статус</th>
-                <th>Коментарий</th>
-                <th>Скачать файл</th>
-                <th style="width: 120px;">Действия</th>
-            </tr>
-            </tr>
+                <tr>
+                    <th>№</th>
+                    <th>Тип события</th>
+                    <th>Ответственный</th>
+                    <th>Срок исполения2</th>
+                    <th>Факт исполения3</th>
+                    <th>Статус</th>
+                    <th>Коментарий</th>
+                    <th>Скачать файл</th>
+                    <th style="width: 120px;">Действия</th>
+                </tr>
             </thead>
 
             {% for list in court_list %}
@@ -38,14 +37,18 @@
                             class="uil uil-download-alt ms-2"></i></a>
                 </td>
                 <td>
-                    <a href="{{ list.file_paste }}" class="px-3 text-primary"><i
-                            class="uil uil-pen font-size-18"></i></a>
-                    <a href="javascript:void(0);" class="px-3 text-danger"><i
-                            class="uil uil-trash-alt font-size-18"></i></a>
+                    <a href="{{ list.file_paste }}" class="px-3 text-primary">
+                        <i class="uil uil-pen font-size-18"></i>
+                    </a>
+                    <a href="javascript:void(0);" class="px-3 text-danger">
+                        <i  class="uil uil-trash-alt font-size-18"></i></a>
                 </td>
             </tr>
             {% endfor %}
             </tbody>
         </table>
-    </div>
+            </div>
+
+
 </div>
+

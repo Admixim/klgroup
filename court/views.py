@@ -80,9 +80,12 @@ def court_new_pk(request, pk):
     court_list:list = []
     if court_info is not None:
         court_list:list = court_info.info_courts.all()
+        court_info = CourtInfoForm(prefix='court-info', instance=court_info)
+        court = CourtForm(instance=Court, prefix='court')
     else:
         court_list:list = []
-        court_info = CourtInfoForm(request.POST, request.FILES or None, prefix='court-info', instance=court_info)
+        court_info = CourtInfoForm(prefix='court-info', instance=court_info)
+        court = CourtForm(instance=Court, prefix='court')
         error = 'Операции по  судопроизводсту нет'
     if request.method == 'POST':
         courtinfo = CourtInfoForm(request.POST, request.FILES or None, prefix='court-info')
@@ -95,13 +98,13 @@ def court_new_pk(request, pk):
     else:
         error = 'Форма не верно заполнена'
 
-
     template_name = 'dist/court/new_pk.html'
     data = {
             'error': error,
             'accident_pk': accident_pk,
             'court_info': court_info,
             'court_list': court_list,
+            'court': court,
             }
     return render(request, template_name, data)
 
