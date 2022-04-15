@@ -1,13 +1,12 @@
 {% load static %}
-<!-- Bank Details -->
-<h3>Создание судебного  дела</h3>
+<h3>Данные по судебному делу</h3>-->
 <form method="POST" class="form-control" enctype="multipart/form-data">
     {% csrf_token %}
     <div>
         <div class="row">
             <div class="col-lg-6">
                 <div class="mb-3">
-                    <label id="datepicker2" for="basicpill-namecard-input">Дата регистрации дела:</label>
+                    <label class="form-label" for="basicpill-namecard-input">Дата регистрации дела:</label>
                     {{ court_info.data_reg }}
                 </div>
             </div>
@@ -46,8 +45,8 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary w-md" type="submit">Сохранить</button>
-        <div class="col-md-10">
-        </div>
     </div>
 </form>
+<div class="col-md-15">
+    <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+</div>

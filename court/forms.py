@@ -2,11 +2,14 @@
 from django.forms import ModelForm, TextInput, Textarea, DateInput,URLField,EmailField,Select,FileInput
 from .models import *
 
+
 class CourtInfoForm(ModelForm):
     """Форма справочной информации о судебном деле"""
+
     class Meta:
         model = InfoCourt
-        fields =["case_number",
+        fields =[
+                 "case_number",
                  "uid_number",
                  "data_reg",
                  "location",

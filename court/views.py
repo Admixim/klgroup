@@ -82,8 +82,8 @@ def court_new_pk(request, pk):
         court_list:list = court_info.info_courts.all()
     else:
         court_list:list = []
+        court_info = CourtInfoForm(request.POST, request.FILES or None, prefix='court-info', instance=court_info)
         error = 'Операции по  судопроизводсту нет'
-    print(error)
     if request.method == 'POST':
         courtinfo = CourtInfoForm(request.POST, request.FILES or None, prefix='court-info')
         court = CourtForm(request.POST, request.FILES or None, prefix='court')
@@ -92,14 +92,16 @@ def court_new_pk(request, pk):
             inst.accident_id = pk
             inst.save()
             return redirect('/court/court-new-pk/%d/' % pk)
-        else:
-            error = 'Форма не верно заполнена'
+    else:
+        error = 'Форма не верно заполнена'
+
+
     template_name = 'dist/court/new_pk.html'
     data = {
-        'error': error,
-        'accident_pk': accident_pk,
-        'court_info': court_info,
-        'court_list': court_list,
+            'error': error,
+            'accident_pk': accident_pk,
+            'court_info': court_info,
+            'court_list': court_list,
             }
     return render(request, template_name, data)
 

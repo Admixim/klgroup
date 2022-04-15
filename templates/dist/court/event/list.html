@@ -1,0 +1,51 @@
+{% load static %}
+<div class="row">
+    <h4 class="card-title">События по делу</h4>
+    <hr>
+    <div class="table-responsive">
+        <table class="table mb-2">
+            <thead>
+            <tr>
+                <th>№</th>
+                <th>Тип события</th>
+                <th>Ответственный</th>
+                <th>Срок исполения2</th>
+                <th>Факт исполения3</th>
+                <th>Статус</th>
+                <th>Коментарий</th>
+                <th>Скачать файл</th>
+                <th style="width: 120px;">Действия</th>
+            </tr>
+            </tr>
+            </thead>
+
+            {% for list in court_list %}
+            <tbody>
+
+            <tr>
+                <!--           <td>aaaaaa {{ list.procedure }}</td>-->
+                <!--           <th>{{ list.get_client.car.model}} {{ list.get_client.car.number}}{{ list.get_client.car.color}}</th>-->
+                <!--           <th>{{ list.get_expert_client.name }}</th>-->
+                <th>{{ list.pk }}</th>
+                <td> {{ list.procedure }}</td>
+                <td>{{ list.worker }}</td>
+                <td>{{ list.date_start|date:'d-m-Y г. H:i:s' }}</td>
+                <td>{{ list.date_stop|date:'d-m-Y г. H:i:s' }}</td>
+                <td>{{ list.akt_end}}</td>
+                <td>{{ list.message}}</td>
+                <td>
+                    <a class="btn btn-light btn-sm w-xs" href="{{ list.file_paste }}" target="_blank">файл<i
+                            class="uil uil-download-alt ms-2"></i></a>
+                </td>
+                <td>
+                    <a href="{{ list.file_paste }}" class="px-3 text-primary"><i
+                            class="uil uil-pen font-size-18"></i></a>
+                    <a href="javascript:void(0);" class="px-3 text-danger"><i
+                            class="uil uil-trash-alt font-size-18"></i></a>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>

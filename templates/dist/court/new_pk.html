@@ -85,185 +85,27 @@
         <hr>
 
 
+        <!-- Информация о судебном  деле-->
 
+        {% if court_info is not None %}
+        {% include "dist/court/new_form.html" %}
 
+          <!-- События в судебном  деле-->
+        {% if court_list %}
+            {% include "dist/court/event/list.html" %}
+            {% else %}
+            <div align="center"><h4>Пока нет добавленных событий в деле. Сделать кнопку модального окна создания события</h4></div>
+            <input type="button" class="btn btn-primary btn-block inner" value="Создать событие">
 
-        <!-- Bank Details -->
-                {% if court_info is not None %}
-                    {% include "dist/court/new_form.html" %}
-                {% else %}
-
-        <h4 > Вставить ссылку на шаблон с данные о судебном деле, так как нет данных о деле</h4>
-
-                {% endif %}
-
-
-<!--        <h3>Данные по судебному делу</h3>-->
-<!--        <form method="POST" class="form-control" enctype="multipart/form-data">-->
-<!--            {% csrf_token %}-->
-<!--            <div>-->
-<!--                <div class="row">-->
-<!--                        <div class="col-lg-6">-->
-<!--                            <div class="mb-3">-->
-<!--                                <label class="form-label"  for="basicpill-namecard-input">Дата регистрации дела:</label>-->
-<!--                                {{ court_info.data_reg }}-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-6">-->
-<!--                            <div class="mb-3">-->
-<!--                                <label>Судебный участок:</label>-->
-<!--                                {{ court_info.location }}-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-lg-6">-->
-<!--                            <div class="mb-3">-->
-<!--                                <label for="basicpill-expiration-input">№ дела</label>-->
-<!--                                {{ court_info.case_number }}-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-6">-->
-<!--                            <div class="mb-3">-->
-<!--                                <label>Судья:</label>-->
-<!--                                {{ court_info.judge }}-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-lg-6">-->
-<!--                            <div class="mb-3">-->
-<!--                                <label>UID дела:</label>-->
-
-<!--                                {{ court_info.uid_number }}-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                        <div class="col-lg-6">-->
-<!--                            <div class="mb-3">-->
-<!--                                <label for="basicpill-namecard-input">Статус дела:</label>-->
-<!--                                {{ court_info.status }}-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--                <div class="col-md-15">-->
-<!--                    <button class="btn btn-primary w-md" type="submit">Сохранить</button>-->
-
-                    <div class="row">
-                        <h4 class="card-title">События по делу</h4>
-                        <hr>
-
-                        <div class="table-responsive">
-                            <table class="table mb-2">
-                                <thead>
-                                <tr>
-                                    <th>№</th>
-                                    <th>Тип события</th>
-                                    <th>Ответственный</th>
-                                    <th>Срок исполения2</th>
-                                    <th>Факт исполения3</th>
-                                    <th>Статус</th>
-                                    <th>Коментарий</th>
-                                    <th>Скачать файл</th>
-                                    <th style="width: 120px;">Действия</th>
-                                  </tr>
-                                </tr>
-                                </thead>
-
-                                {% if court_list  %}
-                                    {% for list in court_list %}
-                                        <tbody>
-
-                                        <tr>
-                                            <!--           <td>aaaaaa {{ list.procedure }}</td>-->
-                                            <!--           <th>{{ list.get_client.car.model}} {{ list.get_client.car.number}}{{ list.get_client.car.color}}</th>-->
-                                            <!--           <th>{{ list.get_expert_client.name }}</th>-->
-                                            <th>{{ list.pk }}</th>
-                                            <td> {{ list.procedure }}</td>
-                                            <td>{{ list.worker }}</td>
-                                            <td>{{ list.date_start|date:'d-m-Y г. H:i:s' }}</td>
-                                            <td>{{ list.date_stop|date:'d-m-Y г. H:i:s' }}</td>
-                                            <td>{{ list.akt_end}}</td>
-                                            <td>{{ list.message}}</td>
-                                            <td>
-
-                                                  <a class="btn btn-light btn-sm w-xs" href="{{ list.file_paste }}" target="_blank">файл<i
-                                                      class="uil uil-download-alt ms-2"></i></a>
-
-                                            </td>
-                                             <td>
-                                                <a href="{{ list.file_paste }}" class="px-3 text-primary"><i
-                                                    class="uil uil-pen font-size-18"></i></a>
-                                                <a href="javascript:void(0);" class="px-3 text-danger"><i
-                                                    class="uil uil-trash-alt font-size-18"></i></a>
-                                             </td>
-                                        </tr>
-                                          {% endfor %}
-                                        {% else %}
-                                         <li>Пока нет добавленных  событий в деле.</li>
-                                        {% endif %}
-
-
-
-
-
-
-                                </tbody>
-                            </table>
-
-                        </div>
-                    </div>
-                    <input type="button" class="btn btn-primary btn-block inner" value="Создать событие">
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label>Событие:</label>
-                            {{ courtform.procedure }}
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label for="basicpill-namecard-input">Отвественный</label>
-                            {{ courtform.worker }}
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label for="basicpill-namecard-input">Срок исполнения</label>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label for="basicpill-namecard-input">конец исполения</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <label class="form-label" for="formrow-firstname-input">Комментарий для события</label>
-                    <div class="col-sm-12">
-                        {{ courtform.message }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label class="form-label" for="resume"></label>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="mb-3">
-                            <label class="form-label" for="resume">Прикрепить</label>
-                            <input type="file" class="form-control-file" id="resume">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
+            {% endif %}
+        </div>
     </div>
-</div>
+
+    {% else %}
+    {% include "dist/court/edit_form.html" %}
+    {% endif %}
+
+
+
 
 {% endblock content %}
