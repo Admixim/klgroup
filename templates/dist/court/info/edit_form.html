@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="mb-3">
-                    <label class="form-label" for="basicpill-namecard-input">Дата регистрации дела:</label>
+                    <label class="form-label" id="datepicker2">Дата регистрации дела:</label>
                     {{ court_info.data_reg }}
                 </div>
             </div>
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="mb-3">
-                    <label for="basicpill-expiration-input">№ дела</label>
+                    <label >№ дела</label>
                     {{ court_info.case_number }}
                 </div>
             </div>
@@ -40,13 +40,13 @@
             </div>
             <div class="col-lg-6">
                 <div class="mb-3">
-                    <label for="basicpill-namecard-input">Статус дела:</label>
+                    <label >Статус дела:</label>
                     {{ court_info.status }}
                 </div>
             </div>
         </div>
     </div>
-</form>
-<div class="col-md-15">
+    <div class="col-md-15">
     <button class="btn btn-primary w-md" type="submit">Сохранить</button>
 </div>
+</form>
