@@ -57,6 +57,7 @@ def accident_add_partner(request, pk):
         if form.is_valid():
             form = form.save(commit=False)
             # Сохранение связей ДТП
+
             form.accident = accident
             # pforms =pform.save(commit=False)
             form.save()
@@ -68,8 +69,11 @@ def accident_add_partner(request, pk):
         form = AccidentAddPartnerForm(prefix='accident', instance=accident)
         add_partner = PartnerForm(prefix='partners')
         list_partner = accident.partner_accident.all()
+    add_partner = PartnerForm(prefix='partners')
+    form = AccidentAddPartnerForm(prefix='accident', instance=accident)
     template_name = 'dist/accident/add_partner.html'
     return render(request, template_name, {'form': form,
+                                           'add_partner': add_partner,
                                            'list_partner': list_partner,
                                            'accident_pk': pk,
                                            'expert_list': expert_list,

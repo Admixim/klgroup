@@ -77,6 +77,8 @@ def court_new_pk(request, pk):
     accident = Accident.objects.get(id=pk)
     accident_pk = accident.pk
     court_info = accident.court_info
+    # court_info1 = get_object_or_404(Court, id=accident.court_info.pk)
+    # print(court_info1)
     court_list:list = []
     if court_info is not None:
         court_list:list = court_info.info_courts.all()
@@ -91,8 +93,8 @@ def court_new_pk(request, pk):
         courtinfo = CourtInfoForm(request.POST, request.FILES or None, prefix='court-info')
         court = CourtForm(request.POST, request.FILES or None, prefix='court')
         if courtinfo.is_valid() and court.is_valid():
-            inst = courtinfo.save(commit=False)
-            inst.accident_id = pk
+            inst = court.save(commit=False)
+            # inst.info_court = court_info1
             inst.save()
             return redirect('/court/court-new-pk/%d/' % pk)
     else:

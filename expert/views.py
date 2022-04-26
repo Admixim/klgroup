@@ -60,20 +60,29 @@ def expert_new_pk(request, pk):
     expert_list = accident.expert_accident.all()
     court = accident.court_info
     error = ''
+    partner = Partner.objects.filter(accident_id=pk, type='True').first()
     if request.method == 'POST':
         form = ExpertForm(request.POST, request.FILES)
         if form.is_valid():
             print(form.cleaned_data)
             inst = form.save(commit=False)
-
-            inst.accident_pk = pk
+            print(accident_pk)
+            print(inst)
+            inst.accident_id = pk
+            inst.client_id = partner.client_id
+            inst.car_id = partner.car_id
+            print('ID  партнера', partner.client_id)
+            print(pk)
+            print('После присвоения', inst)
             inst.save()
             return redirect('/expert/expert-new-pk/%d/' % pk)
         else:
             error = ' Форма не верно заполнена'
-    partner = Partner.objects.filter(accident_id=pk, type='True').first()
+    expert = ExpertForm()
+
     template_name = 'dist/expert/new_pk.html'
     data = {
+            'expert': expert,
             'error': error,
             'accident': accident,
             'accident_pk': accident_pk,

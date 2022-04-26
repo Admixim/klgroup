@@ -65,7 +65,7 @@ class CourtInfoForm(ModelForm):
 
 
 class CourtForm(ModelForm):
-    """Форма справочной информации о судебном деле"""
+    """Форма оперций связанных с  судебным процессом """
     class Meta:
         model = Court
         fields = [

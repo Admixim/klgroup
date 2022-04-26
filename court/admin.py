@@ -151,47 +151,47 @@ class InCourt(admin.StackedInline):
     # )
 
 
-# @admin.register(Court)
-# class CurtAdmin(admin.ModelAdmin):
-#     """Таблица основных данных о Судебном процессе в  админ панели """
-#
-#     list_display = (
-#         ('procedure'),
-#         ('worker'),
-#         "serves_hot_dogs",
-#         "data_finish",
-#         "file_paste",
-#         "date_start",
-#         "date_stop",
-#         ('akt_end'),
-#         "time_stop",
-#         "curt_hall",
-#         "message",
-#
-#     )
-#     list_display_links = ("curt_hall",)
-#     save_on_top = True
-#
-#     fieldsets = (
-#         ('Сведения о процессе', {
-#             'fields': (),
-#
-#         },
-#
-#          ),
-#
-#         ('Временное окно', {
-#             "classes": ("collapse",),
-#             'fields': (
-#                 ("procedure", "worker", "data_finish",),
-#                 ("curt_hall"),
-#                 ("date_start", "date_stop"),
-#                 ("akt_end"),
-#                 ("message", "file_paste",)
-#             )
-#         }
-#          ),
-#     )
+@admin.register(Court)
+class CurtAdmin(admin.ModelAdmin):
+    """Таблица основных данных о Судебном процессе в  админ панели """
+
+    list_display = (
+        ('procedure'),
+        ('worker'),
+        "serves_hot_dogs",
+        "data_finish",
+        "file_paste",
+        "date_start",
+        "date_stop",
+        ('akt_end'),
+        "time_stop",
+        "curt_hall",
+        "message",
+
+    )
+    list_display_links = ("curt_hall",)
+    save_on_top = True
+
+    fieldsets = (
+        ('Сведения о процессе', {
+            'fields': (),
+
+        },
+
+         ),
+
+        ('Временное окно', {
+            "classes": ("collapse",),
+            'fields': (
+                ("procedure", "worker", "data_finish",),
+                ("curt_hall"),
+                ("date_start", "date_stop"),
+                ("akt_end"),
+                ("message", "file_paste",)
+            )
+        }
+         ),
+    )
 
 @admin.register(InfoCourt)
 class InfoCourtAdmin(admin.ModelAdmin):
