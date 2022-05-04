@@ -2,6 +2,7 @@ from django.db import models
 
 
 
+
 class Status(models.Model):
     """Таблица статусов  судебный операций"""
 
@@ -297,6 +298,7 @@ class InfoCourt(models.Model):
 
     def get_list(self):
         return self.location.name
+
 
 
 class Procedure(models.Model):

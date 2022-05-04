@@ -1,7 +1,8 @@
 # coding: utf-8
-from django.shortcuts import render,redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Court, InfoCourt
 from .forms import CourtInfoForm, CourtForm
+
 from accident.models import Accident
 
 
@@ -71,6 +72,9 @@ def court_edit(request, pk):
     return render(request, template_name, data)
 
 
+
+
+
 def court_new_pk(request, pk):
     """Создание добавление нового судопрозводства к ДТП"""
 
@@ -82,39 +86,34 @@ def court_new_pk(request, pk):
     court_list:list = []
     # court:list = []
     if court_info is not None:
-        court_list:list = court_info.info_courts.all()
+        court_list: list = court_info.info_courts.all()
         # court_info = CourtInfoForm(prefix='court-info', instance=court_info)
         # court = CourtForm(instance=Court, prefix='court')
-        print('Случай court_info is not None', )
+        print('Случай нет информации о деле', )
     else:
         court_list:list = []
         # court_info = CourtInfoForm(prefix='court-info', instance=court_info)
         # court = CourtForm(instance=Court, prefix='court')
         error = 'Операции по  судопроизводсту нет'
-        print('Случай court_list:list = ', )
+        print('Случай есть информация о деле, список операций  по делу пустой', )
     if request.method == 'POST':
         courtinfo = CourtInfoForm(request.POST, request.FILES or None, prefix='court-info', instance=court_info)
         court = CourtForm(request.POST, request.FILES or None, prefix='court', instance=Court)
         if courtinfo.is_valid():
             inst = courtinfo.save(commit=False)
-            # inst = accident.court_info
-            print('Форма инст.id', inst.pk)
-            print('Форма инст', courtinfo)
             inst.save()
-            print(inst.pk)
-            accident.court_info_id = inst.pk
-            # print(accident.court_info)
-            print('Случай if courtinfo.is_valid() and court.is_valid():', )
+            accident.court_info = inst
+            accident.save()
+            print(' Форма заполнена успешно и сохранена с привязкой к ДТП', inst.pk)
             return redirect('/court/court-new-pk/%d/' % pk)
         else:
             error = 'Форма не верно заполнена'
-            print('Случай error = Форма не верно заполнен', )
 
     court_info = CourtInfoForm(prefix='court-info', )
     court = CourtForm(prefix='court')
     template_name = 'dist/court/new_pk.html'
     data = {
-            'error': error,
+            # 'error': error,
             'accident_pk': accident_pk,
             'court_info': court_info,
             'court_list': court_list,
