@@ -174,19 +174,19 @@ class AutoFiles(models.Model):
     )
     files = models.ForeignKey(
         Car,
-        blank=True,
+
         on_delete=models.CASCADE,
         related_name='files_auto',
-        null=True,
+
         verbose_name='Прикрепленные файлы (Car)'
     )
     types = models.PositiveSmallIntegerField(choices=TYPES, )
     description = models.CharField(max_length=100, verbose_name='Описание')
     scan_doc = models.FileField(
         upload_to='media/auto/',
-        null=True,
-        default=None,
-        blank=True,
+
+
+
         verbose_name="Файл"
     )
     author = models.OneToOneField(User, db_column='user', on_delete=models.CASCADE, blank=True, null=True, )

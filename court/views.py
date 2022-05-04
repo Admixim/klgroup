@@ -93,6 +93,7 @@ def court_new_pk(request, pk):
     else:
         court_list:list = []
         # court_info = CourtInfoForm(prefix='court-info', instance=court_info)
+        # court_info = CourtInfoForm(prefix='court-info', instance=court_info)
         # court = CourtForm(instance=Court, prefix='court')
         error = 'Операции по  судопроизводсту нет'
         print('Случай есть информация о деле, список операций  по делу пустой', )
@@ -109,8 +110,8 @@ def court_new_pk(request, pk):
         else:
             error = 'Форма не верно заполнена'
 
-    court_info = CourtInfoForm(prefix='court-info', )
-    court = CourtForm(prefix='court')
+    court_info = CourtInfoForm(prefix='court-info', instance=court_info)
+    court = CourtForm(prefix='court',)
     template_name = 'dist/court/new_pk.html'
     data = {
             # 'error': error,

@@ -31,11 +31,11 @@ def auto_new(request):
                 file.files = auto
                 file.save()
             return redirect('/auto/')
-    else:
-        template_name = 'dist/handbk/auto/auto-new.html'
-        autoform = AutoForm(prefix=Car)
-        formset = FileAutoFormset(queryset=AutoFiles.objects.none(), prefix=AutoFiles)
-        return render(request, template_name, {
+
+    template_name = 'dist/handbk/auto/auto-new.html'
+    autoform = AutoForm(prefix=Car)
+    formset = FileAutoFormset(queryset=AutoFiles.objects.none(), prefix=AutoFiles)
+    return render(request, template_name, {
             'autoform': autoform,
             'formset': formset,
         })
