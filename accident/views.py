@@ -11,10 +11,12 @@ def accident_list(request):
     # Список ДТП общий
 
     accident = Accident.objects.all()
+
     print(accident)
     return render(request,
                   'dist/accident/list.html',
                   {'accident': accident,
+
                    }
                   )
 
@@ -178,7 +180,6 @@ def accident_edit1(request, pk):
     partner = get_object_or_404(Partner)
     if request.method == "POST":
         form = AccidentAddPartnerForm(request.POST, instance=accident)
-
         if form.is_valid():
             # _date = form.cleaned_data['date_birth']
             # print(_date)

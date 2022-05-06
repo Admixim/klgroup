@@ -366,13 +366,9 @@ class Court(models.Model):
         related_name='info_courts',
         blank=True,
         null=True,
-        default=None,
         verbose_name='Список юр.оперций '
             )
 
-    serves_hot_dogs = models.BooleanField(
-        default=False,
-        verbose_name='Исполнен')
     procedure = models.ForeignKey(
         Procedure,
         on_delete=models.CASCADE,
@@ -401,7 +397,6 @@ class Court(models.Model):
     akt_end = models.ForeignKey(
         ListEnd,
         on_delete=models.CASCADE,
-        null=True,
         default=None,
         related_name='akt_end',
         verbose_name='Событие утверждения')

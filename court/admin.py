@@ -156,9 +156,9 @@ class CurtAdmin(admin.ModelAdmin):
     """Таблица основных данных о Судебном процессе в  админ панели """
 
     list_display = (
+        "id",
         ('procedure'),
         ('worker'),
-        "serves_hot_dogs",
         "data_finish",
         "file_paste",
         "date_start",
@@ -169,18 +169,11 @@ class CurtAdmin(admin.ModelAdmin):
         "message",
 
     )
-    list_display_links = ("curt_hall",)
+    list_display_links = ("curt_hall", "procedure",)
     save_on_top = True
 
     fieldsets = (
-        ('Сведения о процессе', {
-            'fields': (),
-
-        },
-
-         ),
-
-        ('Временное окно', {
+            ('Временное окно', {
             "classes": ("collapse",),
             'fields': (
                 ("procedure", "worker", "data_finish",),
@@ -210,4 +203,4 @@ class InfoCourtAdmin(admin.ModelAdmin):
         "updated")
     save_on_top = True
     search_fields = ("id",)
-    list_display_links = ("id","case_number")
+    list_display_links = ("id", "case_number")

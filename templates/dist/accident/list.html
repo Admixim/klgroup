@@ -55,12 +55,12 @@
                     <thead>
                     <tr>
                       <th scope="col">id</th>
-                      <th scope="col">Статус дела</th>
+                      <th scope="col">Статус ДТП</th>
                       <th scope="col">Номер ДТП</th>
                       <th scope="col">Дата ДТП</th>
-                      <th scope="col">Марка ТС</th>
-                      <th scope="col">Дата Выпуска</th>
-                      <th scope="col" style="width: 200px;">Статус</th>
+                      <th scope="col">Суд информ</th>
+                      <th scope="col">Суд статус</th>
+                      <th scope="col" style="width: 200px;">Клиент</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -72,9 +72,9 @@
                         <td>{{ item.status }}</td>
                         <td>{{ item.number }}</td>
                         <td>{{ item.data |date:"d-m-Y" }}</td>
-                        <td>{{ item.client.name }}</td>
-                        <td>{{ item.car.date_made }}</td>
-                        <td>{{ item.car.data_reg|date:"d-m-Y" }}</td>
+                        <td>{{ item.court_info}} </td>
+                        <td>{{ item.court_info.status }}</td>
+                        <td>{{ item.partner_accident }}</td>
                         <td>
                           <ul class="list-inline mb-0">
                             <li class="list-inline-item">
@@ -87,7 +87,7 @@
                     {% endfor %}
                     </tbody>
                   </table>
-                </div>
+                 </div>
               </div>
             </div>
           </div>

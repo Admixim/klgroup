@@ -72,7 +72,11 @@
                       <div class="badge bg-pill bg-soft-success font-size-12">{{ item.status }}</div>
                     </td>
                     <td>
-                      <a href="/court/edit/{{ item.id }}/"><i class="uil uil-pen font-size-18"></i></a>
+                      {% if court_info. != None %}
+
+
+                      {% endif %}
+                      <a href="/court/court-event-add/{{ item.id }}/"><i class="uil uil-pen font-size-18"></i></a>
                       <a href="javascript:void(0);" class="px-3 text-danger"><i
                           class="uil uil-trash-alt font-size-18"></i></a>
                     </td>

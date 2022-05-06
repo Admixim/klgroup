@@ -174,10 +174,8 @@ class AutoFiles(models.Model):
     )
     files = models.ForeignKey(
         Car,
-
         on_delete=models.CASCADE,
         related_name='files_auto',
-
         verbose_name='Прикрепленные файлы (Car)'
     )
     types = models.PositiveSmallIntegerField(choices=TYPES, )

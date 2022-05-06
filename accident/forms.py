@@ -177,62 +177,6 @@ class AccidentAddPartnerForm(ModelForm):
                 'placeholder': 'Прикрепить'
             }),
 
-
-            "human": Select(attrs={
-                'class': 'form-control',
-                'placeholder': 'Участник ДТП'
-            }),
-            "car": Select(attrs={
-                'class': 'form-control',
-                'placeholder': 'Автомобиль участника'
-            }),
-            "date_birth": DateInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Дата  рождения',
-                    'data-date-container': '#datepicker2',
-                    'data-provide': 'datepicker',
-                    'data-date-autoclose': 'true',
-                }),
-            "point_birth": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Место рождение'
-            }),
-            "adress_reg": Textarea(attrs={
-                'class': 'form-control',
-                'placeholder': 'Адрес регистрации'
-            }),
-            "adress_home": Textarea(attrs={
-                'class': 'form-control',
-                'placeholder': 'Факт адрес'
-            }),
-            "serial_lic": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Серия'
-            }),
-            "number_lic": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Номер'
-            }),
-            "enter_lic": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Кем выдан'
-            }),
-            "adress_lic": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Место выдачи'
-            }),
-            "category ": TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Категории прав'
-            }),
-            "create_lic": DateInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Дата выдачи',
-                'data-date-container': '#datepicker2',
-                'data-provide': 'datepicker',
-                'data-date-autoclose': 'true',
-            }),
             # "Comment": TextInput(
             #     attrs={'class': 'form-control',
             #            'placeholder': 'Комментарий'

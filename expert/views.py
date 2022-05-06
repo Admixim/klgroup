@@ -29,7 +29,7 @@ def expert_modal_new(request):
     data = {'form': form,
             'error': error
             }
-    template_name = 'dist/expert/modal_new.html'
+    template_name = 'dist/expert/modal_event.html'
     return render(request, template_name, data)
 
 

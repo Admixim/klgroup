@@ -1,0 +1,111 @@
+{% extends 'dist/index.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="main-content">
+    <div class="page-content" align="center">
+      <div class="container-fluid">
+        <div class="row">
+          <hr>
+          <div class="col-lg-10">
+            <input data-repeater-delete="" type="button" class="btn btn-primary btn-block" value="Добавить и Сохранить">
+            <button type="button" class="btn btn-primary waves-effect waves-light" data-bs-toggle="modal"
+                    data-bs-target=".bs-example-modal-xl">модальное окно
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      <div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title mt-0" id="myExtraLargeModalLabel">Тест модального окна</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="col-lg-5">
+                <hr>
+                <div class="mt-4">
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        <label>Контрагент:</label>
+                        {{ court.procedure }}
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="mb-3">
+                        {{ court.worker }}
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" for="formrow-firstname-input">Дата исполнения</label>
+                      {{ court.akt_end }}
+                    </div>
+                    <div class="col-md-12">
+                      <div class="col-md-15">
+                        <div class="mb-6">
+                          <label class="form-label" for="resume">Прикрепить экспертизу</label>
+                          {{ court.curt_hall }}
+                          <label class="form-label" for="resume">Прикрепить скан чека</label>
+                          {{ court.serves_hot_dogs }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-8 ">
+                <div class="mt-5 mt-lg-6">
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-nowrap table-hover mb-0">
+                <thead>
+                <tr>
+                  <th scope="col">№</th>
+                  <th scope="col">Наименование</th>
+                  <th scope="col">Сумма</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <th scope="row">01</th>
+                  <td><a href="#" class="text-dark">Востановительный ремонт без износа</a>
+                  </td>
+                  <td>
+                    {{ court.message }}
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">02</th>
+                  <td><a href="#" class="text-dark">Востановительный ремонт с износом</a>
+                  </td>
+                  <td>
+                    {{ court.serves_hot_dogs }}
+                  </td>
+                  <td>
+                  </td>
+                </tr>
+
+                </tbody>
+              </table>
+
+            </div><!-- /.modal-content -->
+            <input data-repeater-delete="" type="submit" class="btn btn-primary btn-block"
+                   value="Сохранить">
+          </div><!-- /.modal-dialog -->
+        </div>
+      </div><!-- /.modal -->
+    </form>
+  </div>
+{% endblock content %}

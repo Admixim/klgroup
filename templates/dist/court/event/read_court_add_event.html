@@ -82,50 +82,7 @@
             </div>
             <form method="POST" action="" enctype="multipart/form-data">
                 {% csrf_token %}
-              <div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label class="form-label" id="datepicker2">Наименование события:</label>
-                    {{ court.procedure }}
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label>Ответственный</label>
-                    {{ court.worker }}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label >Событие утверждения</label>
-                    {{ court.akt_end}}
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label>Срок исполнения С</label>
-                    {{ court.data_finish }}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label>Завершения исполнения С</label>
-                    {{ court.date_start }}
-                </div>
-            </div>
-              <div class="col-lg-10">
-                <div class="mb-3">
-                    <label >Результат,коментарий события</label>
-                    {{ court.message }}
-                </div>
-            </div>
-
-            {{court.file_paste}}
+             {{court.as_p}}
 
         </div>
 
@@ -138,5 +95,5 @@
 
     </div><!-- /.modal -->
 </div>
-</div>
+
 {% endblock content %}
