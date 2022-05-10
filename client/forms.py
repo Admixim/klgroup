@@ -21,10 +21,9 @@ class PartnerForm(ModelForm):
         model = Partner
         fields = ['status',
                   'type',
-                  # 'accident',
                   'client',
                   'car',
-                  # 'comment',
+
                   ]
 
         widgets = {

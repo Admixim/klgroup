@@ -67,7 +67,7 @@ def expert_new_pk(request, pk):
             print(form.cleaned_data)
             inst = form.save(commit=False)
             print(accident_pk)
-            print(inst)
+            print('AAAAA', inst)
             inst.accident_id = pk
             inst.client_id = partner.client_id
             inst.car_id = partner.car_id

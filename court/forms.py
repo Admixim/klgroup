@@ -143,17 +143,8 @@ class CourtForm(ModelForm):
 
     class Meta:
         model = Court
-        fields = [
-            "procedure",
-            "worker",
-            "date_start",
-            "data_finish",
-            "akt_end",
-            "message",
-            "file_paste",
-            "curt_hall",
 
-        ]
+        exclude =["message"]
 
         widgets = {
 

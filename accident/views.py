@@ -55,9 +55,9 @@ def accident_add_partner(request, pk):
     print(court)
     if request.method == "POST":
         # form = AccidentAddPartnerForm(request.POST,request.FILES or None, prefix='accident',instance=accident)
-        form = PartnerForm(request.POST, request.FILES or None, prefix='partners')
-        if form.is_valid():
-            form = form.save(commit=False)
+        add_partner = PartnerForm(request.POST, request.FILES or None, prefix='partners')
+        if add_partner.is_valid():
+            form = add_partner.save(commit=False)
             # Сохранение связей ДТП
 
             form.accident = accident
@@ -68,8 +68,6 @@ def accident_add_partner(request, pk):
             return redirect('/accident/accident-add-partner/%d/' % pk, '/')
 
     else:
-        form = AccidentAddPartnerForm(prefix='accident', instance=accident)
-        add_partner = PartnerForm(prefix='partners')
         list_partner = accident.partner_accident.all()
     add_partner = PartnerForm(prefix='partners')
     form = AccidentAddPartnerForm(prefix='accident', instance=accident)
