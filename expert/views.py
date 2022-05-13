@@ -64,16 +64,10 @@ def expert_new_pk(request, pk):
     if request.method == 'POST':
         form = ExpertForm(request.POST, request.FILES)
         if form.is_valid():
-            print(form.cleaned_data)
             inst = form.save(commit=False)
-            print(accident_pk)
-            print('AAAAA', inst)
             inst.accident_id = pk
             inst.client_id = partner.client_id
             inst.car_id = partner.car_id
-            print('ID  партнера', partner.client_id)
-            print(pk)
-            print('После присвоения', inst)
             inst.save()
             return redirect('/expert/expert-new-pk/%d/' % pk)
         else:

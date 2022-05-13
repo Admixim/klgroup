@@ -80,6 +80,7 @@ class CourtInfoAddForm(ModelForm):
             "status",
             "message",
             ("judge"),
+
         ]
 
         widgets = {

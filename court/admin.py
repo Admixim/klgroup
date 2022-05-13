@@ -157,6 +157,7 @@ class CurtAdmin(admin.ModelAdmin):
 
     list_display = (
         "id",
+
         ('procedure'),
         ('worker'),
         "data_finish",
@@ -169,22 +170,10 @@ class CurtAdmin(admin.ModelAdmin):
         "message",
 
     )
-    list_display_links = ("curt_hall", "procedure",)
+    list_display_links = ("id", "curt_hall", "procedure",)
     save_on_top = True
 
-    fieldsets = (
-            ('Временное окно', {
-            "classes": ("collapse",),
-            'fields': (
-                ("procedure", "worker", "data_finish",),
-                ("curt_hall"),
-                ("date_start", "date_stop"),
-                ("akt_end"),
-                ("message", "file_paste",)
-            )
-        }
-         ),
-    )
+
 
 @admin.register(InfoCourt)
 class InfoCourtAdmin(admin.ModelAdmin):
