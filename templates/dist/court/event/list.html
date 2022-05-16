@@ -9,11 +9,11 @@
                     <th>№</th>
                     <th>Тип события</th>
                     <th>Ответственный</th>
-                    <th>Срок исполения2</th>
-                    <th>Факт исполения3</th>
+                    <th>Срок</th>
+                    <th>Факт</th>
                     <th>Статус</th>
                     <th>Коментарий</th>
-                    <th>Скачать файл</th>
+                    <th>Скачать</th>
                     <th style="width: 120px;">Действия</th>
                 </tr>
             </thead>
@@ -40,9 +40,11 @@
                     <a href="{{ list.file_paste }}" class="px-3 text-primary">
                         <i class="uil uil-pen font-size-18"></i>
                     </a>
-                    <a href="javascript:void(0);" class="px-3 text-danger">
-                        <i  class="uil uil-trash-alt font-size-18"></i></a>
+                     <a href="{{ list.file_paste }}" class="px-3 text-danger">
+                        <i  class="uil uil-trash-alt font-size-18"></i>
+                    </a>
                 </td>
+
             </tr>
             {% endfor %}
             </tbody>

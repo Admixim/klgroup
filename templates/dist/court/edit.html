@@ -70,8 +70,8 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="mb-3">
-                    <label for="basicpill-namecard-input">Дата регистрации дела:</label>
-                    {{ court_info.data_reg }}
+                    <label for="basicpill-namecard-input">Дата регистрации дела1:</label>
+                    {{ court_info.data_reg |date:"d- m - Y" }}
                   </div>
                 </div>
                 <div class="col-lg-6">

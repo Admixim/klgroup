@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="mb-3">
-                    <label class="form-label" id="datepicker2">Дата регистрации дела:</label>
-                    {{ court_info.data_reg }}
+                    <label class="form-label" id="datepicker2">Дата регистрации дела2:</label>
+                    {{ court_info.data_reg|date:"d- m - Y"}}
                 </div>
             </div>
             <div class="col-lg-6">
@@ -47,6 +47,8 @@
         </div>
     </div>
     <div class="col-md-15">
-    <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+      <a href="{% url 'accident-edit' accident_pk %}" class="btn btn-primary w-md" > </i> Изменить</a>
+    </div>
+
 </div>
 </form>

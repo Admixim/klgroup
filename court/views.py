@@ -46,11 +46,10 @@ def court_event_add(request, pk):
     accident = Accident.objects.get(id=pk)
     accident_pk = accident.pk
     court_info = accident.court_info
-    court_list =Court.objects.all(court_info=pk)
+    court_list =court_info.info_courts.all()
 
     if request.method == 'POST':
         form = CourtForm(request.POST, request.FILES)
-        print('CourtForm', form)
         if form.is_valid():
             print('До', form.cleaned_data)
             court = form.save(commit=False)
