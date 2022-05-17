@@ -16,11 +16,11 @@ module.exports = function (grunt) {
             },
             test : {
                 src : 'test/index.pre.html',
-                dest : 'test/index.html'
+                dest : 'test/base.html'
             },
             index: {
                 src: 'index.pre.html',
-                dest: 'index.html'
+                dest: 'base.html'
             }
         },
 
@@ -54,7 +54,7 @@ module.exports = function (grunt) {
                 '--web-security': false,
                 '--local-to-remote-url-access': true
             },
-            all: ['test/index.html']
+            all: ['test/base.html']
         },
 
         watch: {

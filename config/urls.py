@@ -26,7 +26,7 @@ admin.site.index_title = "CRM KLGroup"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('calendar/', calendar, name ='calendar'),
+    path('calendar/', calendar, name='calendar'),
     path('src/', src),
     path('accident/', include('accident.urls')),
     path('client/', include('client.urls')),

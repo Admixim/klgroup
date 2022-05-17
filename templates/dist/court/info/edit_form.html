@@ -1,54 +1,91 @@
 {% load static %}
-<h3>Данные по судебному делу</h3>
-<form method="POST" class="form-control" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label class="form-label" id="datepicker2">Дата регистрации дела2:</label>
-                    {{ court_info.data_reg|date:"d- m - Y"}}
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label>Судебный участок:</label>
-                    {{ court_info.location }}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label >№ дела</label>
-                    {{ court_info.case_number }}
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label>Судья:</label>
-                    {{ court_info.judge }}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label>UID дела:</label>
-                    {{ court_info.uid_number }}
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="mb-3">
-                    <label >Статус дела:</label>
-                    {{ court_info.status }}
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-15">
-      <a href="{% url 'accident-edit' accident_pk %}" class="btn btn-primary w-md" > </i> Изменить</a>
-    </div>
 
+{% block content %}
+<div class="main-content">
+    <div class="page-content">
+
+        {% include "dist/include/menu.html" %}
+
+        <p>ШАБЛОНЫ PDF ПРЕТЕНЗИИ,ФИН УПОЛНОМОЧЕНОМУ ПРИТЕНЗИЮ, ДОГОВОР ЮР УСЛУГ</p>
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <div class="btn-group me-1 mt-2">
+                <button
+                        class="btn btn-primary w-md" id="contract" type="button">ДОГОВОР
+                </button>
+                <button
+                        type="button" id="expert" href="#" class="btn btn-primary waves-effect waves-light">ЭКСПЕРТИЗА
+                </button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">ОСТАЛЬНОЕ<i class="mdi mdi-chevron-down"></i>
+                    <span class="sr-only">Другие</span>
+                </button>
+                <div class="dropdown-menu">
+                    <ul>
+                        <a id="contract1" class="dropdown-item" href="#">Список </a>
+                        <a id="contract_one" class="dropdown-item" href="#">Договор первичн</a>
+                        <a id="assignment" class="dropdown-item" href="#">Увед. цессия</a>
+                        <div class="dropdown-divider"></div>
+                        <a id="pdf_contract_one_add" class="dropdown-item" href="#">Доп соглашение</a>
+                    </ul>
+                </div>
+            </div>
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                </ol>
+            </div>
+        </div>
+        <hr>
+        <h3>Данные по судебному делу</h3>
+        <form method="POST" class="form-control" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label class="form-label" id="datepicker2">Дата регистрации дела2:</label>
+                            {{ court_info.data_reg|date:"d- m - Y"}}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label>Судебный участок:</label>
+                            {{ court_info.location }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label>№ дела</label>
+                            {{ court_info.case_number }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label>Судья:</label>
+                            {{ court_info.judge }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label>UID дела:</label>
+                            {{ court_info.uid_number }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label>Статус дела:</label>
+                            {{ court_info.status }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-15">
+                <a href="{% url 'court-info-edit' accident_pk %}" class="btn btn-primary w-md"> </i> Изменить</a>
+            </div>
+        </form>
+    </div>
 </div>
-</form>
+{% endblock content %}

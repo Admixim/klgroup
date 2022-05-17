@@ -55,9 +55,9 @@ def court_event_add(request, pk):
             court = form.save(commit=False)
             court.info_court = court_info
             court.save()
-
-
             return redirect('/')
+        else:
+            return print('Ваша форма заполнена не првильно')
     CourtForms = CourtForm()
     template_name = 'dist/court/event/read_court_add_event.html'
     data = {'court_info': court_info,
@@ -66,6 +66,29 @@ def court_event_add(request, pk):
             'accident_pk': accident_pk
             }
 
+    return render(request, template_name, data)
+
+
+def court_info_edit(request, pk):
+    """Редактирование информации о судебном процессе"""
+    accident = Accident.objects.get(id=pk)
+    accident_pk = accident.pk
+    court_info = InfoCourt.objects.get(id =accident.court_info.pk)
+    template_name = 'dist/court/info/edit_form.html'
+
+    if request.method == 'POST':
+        form = CourtInfoForm(request.POST, request.FILES, instance=court_info)
+        if form.is_valid():
+            form.save()
+
+    form =CourtInfoForm(instance=court_info)
+    data = {
+        'accident_pk': accident_pk,
+        'court_info': form,
+
+
+
+            }
     return render(request, template_name, data)
 
 
