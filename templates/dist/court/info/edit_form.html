@@ -2,40 +2,8 @@
 
 {% block content %}
 <div class="main-content">
-    <div class="page-content">
-
-        {% include "dist/include/menu.html" %}
-
-        <p>ШАБЛОНЫ PDF ПРЕТЕНЗИИ,ФИН УПОЛНОМОЧЕНОМУ ПРИТЕНЗИЮ, ДОГОВОР ЮР УСЛУГ</p>
-        <div class="page-title-box d-flex align-items-center justify-content-between">
-            <div class="btn-group me-1 mt-2">
-                <button
-                        class="btn btn-primary w-md" id="contract" type="button">ДОГОВОР
-                </button>
-                <button
-                        type="button" id="expert" href="#" class="btn btn-primary waves-effect waves-light">ЭКСПЕРТИЗА
-                </button>
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">ОСТАЛЬНОЕ<i class="mdi mdi-chevron-down"></i>
-                    <span class="sr-only">Другие</span>
-                </button>
-                <div class="dropdown-menu">
-                    <ul>
-                        <a id="contract1" class="dropdown-item" href="#">Список </a>
-                        <a id="contract_one" class="dropdown-item" href="#">Договор первичн</a>
-                        <a id="assignment" class="dropdown-item" href="#">Увед. цессия</a>
-                        <div class="dropdown-divider"></div>
-                        <a id="pdf_contract_one_add" class="dropdown-item" href="#">Доп соглашение</a>
-                    </ul>
-                </div>
-            </div>
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                </ol>
-            </div>
-        </div>
-        <hr>
-        <h3>Данные по судебному делу</h3>
+<div class="container-fluid">
+        <h3>Данные по судебному делу2</h3>
         <form method="POST" class="form-control" enctype="multipart/form-data">
             {% csrf_token %}
             <div>
@@ -86,6 +54,7 @@
                 <a href="{% url 'court-info-edit' accident_pk %}" class="btn btn-primary w-md"> </i> Изменить</a>
             </div>
         </form>
-    </div>
+
+</div>
 </div>
 {% endblock content %}
