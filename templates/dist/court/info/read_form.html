@@ -1,15 +1,9 @@
-{% extends 'dist/include/base.html' %}
 {% load static %}
 
 {% block content %}
-<div class="main-content">
-        <hr>    <hr>    <hr>
-        {% block menu %}
 
-             {% include "dist/include/menu.html" %}
-        {% endblock %}
     <div class="container-fluid">
-        <h3>Данные по судебному делу2</h3>
+        <h3>Данные по судебному делу5</h3>
         <form method="POST" class="form-control" enctype="multipart/form-data">
             {% csrf_token %}
             <div>
@@ -56,8 +50,9 @@
                     </div>
                 </div>
             </div>
-            <input data-repeater-delete="" type="submit" class="btn btn-primary btn-block"
-                           value="Сохранить">
+            <div class="col-md-15">
+                <a href="{% url 'court-info-edit' accident_pk %}" class="btn btn-primary w-md"> </i> Изменить</a>
+            </div>
         </form>
     </div>
 </div>

@@ -135,6 +135,7 @@ class AccidentAddPartnerForm(ModelForm):
                 'data-date-container': '#datepicker2',
                 'data-provide': 'datepicker',
                 'data-date-autoclose': 'true',
+                'disabled': 'disabled',
 
             }),
 

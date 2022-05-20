@@ -1,14 +1,18 @@
 {% extends 'dist/include/base.html' %}
 {% load static %}
-
+<style>
+    hr {
+        border: none; /* Убираем границу */
+        background-color: red; /* Цвет линии */
+        color: red; /* Цвет линии для IE6-7 */
+        height: 2px; /* Толщина линии */
+    }
+</style>
 
 <!-- ============================================================== -->
 <!-- Start right Content here -->
-<!-- ============================================================== -->
 {% block content %}
-  <div class="main-content">
-    <div class="page-content">
-      <div class="container-fluid">
+      <hr>
         <!-- start page title -->
         <div class="row">
           <div class="col-12">
@@ -90,8 +94,8 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+
 {% endblock content %}
+
                 
 

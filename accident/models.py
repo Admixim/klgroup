@@ -196,12 +196,12 @@ class Accident(models.Model):
         ordering = ['-created']
     # Сохранение файлов  в  модлеи джанго
 
-    def save(self, *args, **kwargs):
-        if self.file_doc:
-            # save file for get path
-            new_path = self.file_doc.name.split(".").pop(1)
-            self.file_doc.name = "my_name"+new_path
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     if self.file_doc:
+    #         # save file for get path
+    #         new_path = self.file_doc.name.split(".").pop(1)
+    #         self.file_doc.name = "my_name"+new_path
+    #     super().save(*args, **kwargs)
 
     def get_accident(self):
         b = self.partner_accident.filter(type='True').first()

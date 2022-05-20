@@ -3,423 +3,95 @@
 
 <!DOCTYPE html>
 <div lang="ru">
-  <head>
-    <meta charset="utf-8"/>
-    <title>CRM | KL Group </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="CRM KLGroup Юридическая компания" name="description"/>
-    <meta content="Themesbrand" name="author"/>
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="/static/assets/images/favicon.ico">
-    {#        <!-- Page Accident style accident.css -->#}
-    {#         <link href="static/css/accident-main.css" rel="stylesheet" type="text/css">#}
+    <head>
+        <meta charset="utf-8"/>
+        <title>CRM | KL Group </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="CRM KLGroup Юридическая компания" name="description"/>
+        <meta content="Themesbrand" name="author"/>
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="/static/assets/images/favicon.ico">
+        {#        <!-- Page Accident style accident.css -->#}
+        {#
+        <link href="static/css/accident-main.css" rel="stylesheet" type="text/css">
+        #}
 
-    <!-- Bootstrap Css -->
-    <link href="/static/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css"/>
-    <link href="/static/assets/libs/@chenfengyuan/datepicker/datepicker.min.css" rel="stylesheet">
-    <link href="/static/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet' %}">
+        <!-- Bootstrap Css -->
+        <link href="/static/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css"/>
+        <link href="/static/assets/libs/@chenfengyuan/datepicker/datepicker.min.css" rel="stylesheet">
+        <link href="/static/assets/libs/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet' %}">
 
-    <!-- Icons Css -->
-    <link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
+        <!-- Icons Css -->
+        <link href="/static/assets/css/icons.min.css" rel="stylesheet" type="text/css"/>
 
-    <!-- select2 css -->
-    <link href="/static/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
+        <!-- select2 css -->
+        <link href="/static/assets/libs/select2/css/select2.min.css" rel="stylesheet" type="text/css"/>
 
-    <!-- select 2 plugin -->
-    <!-- DataTables -->
-    <!--        <link href="/static/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css'" rel="stylesheet">-->
-    <!-- Responsive datatable examples -->
-    <link href="/static/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
-          rel="stylesheet" type="text/css"/>
+        <!-- select 2 plugin -->
+        <!-- DataTables -->
+        <!--        <link href="/static/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css'" rel="stylesheet">-->
+        <!-- Responsive datatable examples -->
+        <link href="/static/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css"
+              rel="stylesheet" type="text/css"/>
 
-    <!-- dropzone plugin -->
-    <script src="/static/assets/libs/dropzone/min/dropzone.min.js"></script>
-    <!-- init js -->
-    <script src="/static/assets/js/pages/ecommerce-add-product.init.js"></script>
-    <!-- App Css-->
-    <link href="/static/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css"/>
-  </head>
-  <body>
+        <!-- dropzone plugin -->
+        <script src="/static/assets/libs/dropzone/min/dropzone.min.js"></script>
+        <!-- init js -->
+        <script src="/static/assets/js/pages/ecommerce-add-product.init.js"></script>
+        <!-- App Css-->
+        <link href="/static/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
 
-  <!-- <body data-layout="horizontal" data-topbar="colored"> -->
+    <!-- <body data-layout="horizontal" data-topbar="colored"> -->
 
-  <!-- Begin page -->
-  <div id="layout-wrapper">
-    <header id="page-topbar">
-      <div class="navbar-header">
-        <div class="d-flex">
-          <!-- LOGO -->
-          <!-- App Miniblech-->
-          <form class="app-search d-none d-lg-block">
-            <div class="position-relative">
-              <input type="text" class="form-control" placeholder="ПОИСК...">
-              <span class="uil-search"></span>
-            </div>
-          </form>
-        </div>
-        <div class="d-flex">
-          <div class="dropdown d-inline-block d-lg-none ms-2">
-            <button type="button" class="btn header-item noti-icon waves-effect"
-                    id="page-header-search-dropdown"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="uil-search"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                 aria-labelledby="page-header-search-dropdown">
-              <form class="p-3">
-                <div class="form-group m-0">
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Поиск ..."
-                           aria-label="Recipient's username">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="submit"><i
-                          class="mdi mdi-magnify"></i>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="dropdown d-none d-lg-inline-block ms-1">
-            <button type="button" class="btn header-item noti-icon waves-effect"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="uil-apps"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-              <div class="px-lg-2">
-                <div class="row g-0">
-                  <div class="col">
-                    <a class="dropdown-icon-item" href="https://krasnoyarsk.arbitr.ru" target="_blank">
-                      <span>Арбитражный суд г.Красноярска</span>
-                    </a>
-                    <a class="dropdown-icon-item" href="http://kraevoy.krk.sudrf.ru" target="_blank">
-                      <span>Краевой суд г.Красноярска</span>
-                    </a>
-                    <a class="dropdown-icon-item" href="https://8kas.sudrf.ru" target="_blank">
-                      <span>8 кассационный суд г.Кемерово</span>
-                    </a>
-                  </div>
-                  <div class="row g-0">
-                    <div class="col">
-                      <a class="dropdown-icon-item" href="http://www.supcourt.ru" target="_blank">
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+        {% block topbar%}
+        {% include "dist/include/topbar.html" %}
+        {% endblock %}
 
-                        <span>Верховный суд г.Москва</span>
-                      </a>
-                      <a class="dropdown-icon-item" href="https://www.mirsud24.ru/start/" target="_blank">
-                        <span>Мировой суд г.Красноярска</span>
-                      </a>
-                      <a class="dropdown-icon-item" href="https://finombudsman.ru" target="_blank">
-                        <span>Омбдусмен г.Москва</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="dropdown d-none d-lg-inline-block ms-1">
-              <button type="button" class="btn header-item noti-icon waves-effect"
-                      data-bs-toggle="fullscreen">
-                <i class="uil-minus-path"></i>
-              </button>
-            </div>
-            <div class="dropdown d-inline-block">
-              <button type="button" class="btn header-item noti-icon waves-effect"
-                      id="page-header-notifications-dropdown"
-                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="uil-bell"></i>
-                <span class="badge bg-danger rounded-pill">3</span>
-              </button>
-              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                   aria-labelledby="page-header-notifications-dropdown">
-                <div class="p-3">
-                  <div class="row align-items-center">
-                    <div class="col">
-                      <h5 class="m-0 font-size-16">Задачи</h5>
-                    </div>
-                    <div class="col-auto">
-                      <a href="#!" class="small">Филаил ул.Кравченко 6А</a>
-                    </div>
-                  </div>
-                </div>
-                <div data-simplebar style="max-height: 230px;">
-                  <a href="" class="text-reset notification-item">
-                    <div class="d-flex align-items-start">
-                      <div class="avatar-xs me-3">
-                            <span class="avatar-title bg-primary rounded-circle font-size-16">
-                             <i class="uil-shopping-basket"></i>
-                            </span>
-                      </div>
-                      <div class="flex-1">
-                        <h6 class="mt-0 mb-1">Составить претензию</h6>
-                        <div class="font-size-12 text-muted">
-                          <p class="mb-1">Дело № ААА1343 Lexus A123BB124</p>
-                          <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 30 мин назад</p>
+        {% block sidebar%}
+        {% include "dist/include/sidebar.html" %}
+        {% endblock %}
+
+        {% block content %}
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+            <div class="page-content">
+                <div class="container-fluid">
+                    <!-- start page title -->
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <h4 class="mb-0">Главная2</h4>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">KLGroup24</a></li>
+                                        <li class="breadcrumb-item active">Главная1</li>
+                                    </ol>
+                                </div>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </a>
-                  <a href="" class="text-reset notification-item">
-                    <div class="d-flex align-items-start">
-                      <img src="{% static 'assets/images/users/avatar-3.jpg' %}"
-                           class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                      <div class="flex-1">
-                        <h6 class="mt-0 mb-1">Предварительное заседание</h6>
-                        <div class="font-size-12 text-muted">
-                          <p class="mb-1">Суд Октябрьского района г.Красноярка Баркова С.С.</p>
-                          <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 1 час назад</p>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="" class="text-reset notification-item">
-                    <div class="d-flex align-items-start">
-                      <div class="avatar-xs me-3">
-                            <span class="avatar-title bg-success rounded-circle font-size-16">
-                              <i class="uil-truck"></i>
-                            </span>
-                      </div>
-                      <div class="flex-1">
-                        <h6 class="mt-0 mb-1">Your item is shipped</h6>
-                        <div class="font-size-12 text-muted">
-                          <p class="mb-1">If several languages coalesce the grammar</p>
-                          <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 3 min ago</p>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="" class="text-reset notification-item">
-                    <div class="d-flex align-items-start">
-                      <img src="{% static 'assets/images/users/avatar-4.jpg' %}"
-                           class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                      <div class="flex-1">
-                        <h6 class="mt-0 mb-1">Salena Layfield</h6>
-                        <div class="font-size-12 text-muted">
-                          <p class="mb-1">As a skeptical Cambridge friend of mine occidental.</p>
-                          <p class="mb-0"><i class="mdi mdi-clock-outline"></i> 1 hours ago</p>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
+                    <!-- end page title -->
+                    <!-- End Page-content -->
+                    {% endblock %}
                 </div>
-                <div class="p-2 border-top d-grid">
-                  <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-                    <i class="uil-arrow-circle-right me-1"></i> View More..
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="dropdown d-inline-block">
-              <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
-                      data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="rounded-circle header-profile-user"
-                     src="{% static 'assets/images/users/avatar-4.jpg' %}"
-                     alt="Header Avatar">
-                <span class="d-none d-xl-inline-block ms-1 fw-medium font-size-15">{{ user.username }}</span>
-                <i class="uil-angle-down d-none d-xl-inline-block font-size-15"></i>
-              </button>
-              <div class="dropdown-menu dropdown-menu-end">
-                <!-- item-->
-                <a class="dropdown-item" href="#"><i
-                    class="uil uil-user-circle font-size-18 align-middle text-muted me-1"></i> <span
-                    class="align-middle">Мой профиль</span></a>
-                <a class="dropdown-item" href="#"><i
-                    class="uil uil-wallet font-size-18 align-middle me-1 text-muted"></i> <span
-                    class="align-middle">Мои задачи</span></a>
-                <a class="dropdown-item d-block" href="#"><i
-                    class="uil uil-cog font-size-18 align-middle me-1 text-muted"></i> <span
-                    class="align-middle">Настройки</span> <span
-                    class="badge bg-soft-success rounded-pill mt-1 ms-2">03</span></a>
-                <a class="dropdown-item" href="#"><i
-                    class="uil uil-sign-out-alt font-size-18 align-middle me-1 text-muted"></i> <span
-                    class="align-middle">Выйти</span></a>
-              </div>
-            </div>
-            <div class="dropdown d-inline-block">
-              <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
-                <i class="uil-cog"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
+                {% block settings %}
+                {% include "dist/include/settings.html" %}
+                {% endblock %}
 
-    <!-- ========== Left Sidebar Start ========== -->
-    <div class="vertical-menu">
-      <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect vertical-menu-btn">
-        <i class="fa fa-fw fa-bars"></i>
-      </button>
-      <div data-simplebar class="sidebar-menu-scroll">
-        <!--- Sidemenu -->
-        <div id="sidebar-menu">
-          <!-- Left Menu Start -->
-          <ul class="metismenu list-unstyled" id="side-menu">
-            <li class="menu-title">Меню</li>
-            <li>
-              <a href="base.html">
-                <i class="uil-home-alt"></i><span class="badge rounded-pill bg-primary float-end"></span>
-                <span>Главная</span>
-              </a>
-            </li>
-            <li class="menu-title">Приложения</li>
-<!--            <li>-->
-<!--              <a href={% url 'calendar' %} class="waves-effect">-->
-<!--                <i class="uil-calender"></i>-->
-<!--                <span>Календарь</span>-->
-<!--              </a>-->
-<!--            </li>-->
-<!--            <li>-->
-<!--              <a href="chat.html" class=" waves-effect">-->
-<!--                <i class="uil-comments-alt"></i>-->
-<!--                <span class="badge rounded-pill bg-warning float-end"></span>-->
-<!--                <span>Чат</span>-->
-<!--              </a>-->
-<!--            </li>-->
-<!--            <li>-->
-<!--              <a href="javascript: void(0);" class="has-arrow waves-effect">-->
-<!--                <i class="uil-envelope"></i>-->
-<!--                <span>Почта</span>-->
-<!--              </a>-->
-<!--              <ul class="sub-menu" aria-expanded="false">-->
-<!--                <li><a href="email-inbox.html">Входящие</a></li>-->
-<!--                <li><a href="email-read.html">Чтение ящика</a></li>-->
-<!--              </ul>-->
-<!--            </li>-->
-            <li>
-              <a href="javascript: void(0);" class="has-arrow waves-effect">
-                <i class="uil-invoice"></i>
-                <span>Экспертиза</span>
-              </a>
-              <ul class="sub-menu" aria-expanded="false">
-                <li><a href={% url 'expert-list' %}>Список экспертиз</a></li>
-                <li><a href={% url 'expert-new' %}>Создание экспертизы</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="javascript: void(0);" class="has-arrow waves-effect">
-                <i class="uil-invoice"></i>
-                <span>Судопроизводство</span>
-              </a>
-              <ul class="sub-menu" aria-expanded="false">
-                <li><a href={% url 'court-list' %}>Список дел</a></li>
-                <li><a href={% url 'court-new' %}>Создание дела</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="javascript: void(0);" class="has-arrow waves-effect">
-                <i class="uil-invoice"></i>
-                <span>ДТП</span>
-              </a>
-              <ul class="sub-menu" aria-expanded="false">
-                <li><a href={% url 'accident-list' %}>Список ДТП</a></li>
-                <li><a href={% url 'accident-new' %}>Создание ДТП</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="javascript: void(0);" class="has-arrow waves-effect">
-                <i class="uil-book-alt"></i>
-                <span>Справочники</span>
-              </a>
-              <ul class="sub-menu" aria-expanded="false">
-                <li><a href={% url 'company-list' %}>Контрагенты</a></li>
-                <li><a href={% url 'client-list' %}>Клиенты</a></li>
-                <li><a href={% url 'auto-list' %}>Автомобили</a></li>
-              </ul>
-            </li>
-            <li>
-              <a href="javascript: void(0);" class="has-arrow waves-effect">
-                <i class="uil-invoice"></i>
-                <span>Договора</span>
-              </a>
-              <ul class="sub-menu" aria-expanded="false">
-                <li><a href={% url 'expert-list' %}>Договора юр услуг</a></li>
-                <li><a href={% url 'expert-list' %}>Договора цессии</a></li>
-                <li><a href={% url 'expert-list' %}>Договора экспертиз</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <!-- Sidebar -->
-      </div>
-    </div>
-    <!-- Left Sidebar End -->
 
-    {% block content %}
-      <!-- ============================================================== -->
-      <!-- Start right Content here -->
-      <!-- ============================================================== -->
-      <div class="main-content">
-      <div class="page-content">
-      <div class="container-fluid">
-      <!-- start page title -->
-
-      <div class="row">
-        <div class="col-12">
-          <div class="page-title-box d-flex align-items-center justify-content-between">
-            <h4 class="mb-0">Главная2</h4>
-            <div class="page-title-right">
-              <ol class="breadcrumb m-0">
-                <li class="breadcrumb-item"><a href="javascript: void(0);">KLGroup24</a></li>
-                <li class="breadcrumb-item active">Главная1</li>
-              </ol>
+                <!-- end slimscroll-menu-->
             </div>
-          </div>
+            <!-- /Right-bar -->
+            <!-- Right bar overlay-->
+            <div class="rightbar-overlay"></div>
         </div>
-      </div>
-      <!-- end page title -->
-      <!-- End Page-content -->
-    {% endblock %}
-    </div>
-    <!-- Right Sidebar -->
-    <div class="right-bar">
-      <div data-simplebar class="h-100">
-        <div class="rightbar-title d-flex align-items-center px-3 py-4">
-          <h5 class="m-0 me-2">Settings</h5>
-          <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
-            <i class="mdi mdi-close noti-icon"></i>
-          </a>
-        </div>
-        <!-- Settings -->
-        <hr class="mt-0"/>
-        <h6 class="text-center mb-0">Choose Layouts</h6>
-        <div class="p-4">
-          <div class="mb-2">
-            <img src="{% static 'assets/images/layouts/layout-1.jpg' %}"
-                 class="img-fluid img-thumbnail" alt="">
-          </div>
-          <div class="form-check form-switch mb-3">
-            <input type="checkbox" class="form-check-input theme-choice" id="light-mode-switch"
-                   checked/>
-            <label class="form-check-label" for="light-mode-switch">Light Mode</label>
-          </div>
-          <div class="mb-2">
-            <img src="{% static 'assets/images/layouts/layout-2.jpg' %}"
-                 class="img-fluid img-thumbnail" alt="">
-          </div>
-          <div class="form-check form-switch mb-3">
-            <input type="checkbox" class="form-check-input theme-choice" id="dark-mode-switch"
-                   data-bsStyle="{% static 'assets/css/bootstrap-dark.min.css' %}"
-                   data-appStyle="{% static " assets/css/app-dark.min.css" %}"/>
-            <label class="form-check-label" for="dark-mode-switch">Dark Mode</label>
-          </div>
-          <div class="mb-2">
-            <img src="{% static 'assets/images/layouts/layout-3.jpg' %}"
-                 class="img-fluid img-thumbnail" alt="">
-          </div>
-          <div class="form-check form-switch mb-5">
-            <input type="checkbox" class="form-check-input theme-choice" id="rtl-mode-switch"
-                   data-appStyle="{% static 'assets/css/app-rtl.min.css' %}"/>
-            <label class="form-check-label" for="rtl-mode-switch">RTL Mode</label>
-          </div>
-        </div>
-      </div>
-      <!-- end slimscroll-menu-->
-    </div>
-    <!-- /Right-bar -->
-    <!-- Right bar overlay-->
-    <div class="rightbar-overlay"></div>
-    </div>
     </div>
     <!-- JAVASCRIPT -->
     <!-- JAVASCRIPT calendar -->
@@ -539,7 +211,7 @@
     <script src="/static/assets/js/pages/calendar.init.js"></script>
     <script src="/static/assets/js/app.js"></script>
 
-  </div>
-  </body>
+</div>
+</body>
 </div>
 </html>

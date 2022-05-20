@@ -5,22 +5,20 @@
     <div class="table-responsive">
         <table class="table mb-2">
             <thead>
-                <tr>
-                    <th>№</th>
-                    <th>Тип события</th>
-                    <th>Ответственный</th>
-                    <th>Срок</th>
-                    <th>Факт</th>
-                    <th>Статус</th>
-                    <th>Коментарий</th>
-                    <th>Скачать</th>
-                    <th style="width: 120px;">Действия</th>
-                </tr>
+            <tr>
+                <th>№</th>
+                <th>Тип события</th>
+                <th>Ответственный</th>
+                <th>Срок</th>
+                <th>Факт</th>
+                <th>Статус</th>
+                <th>Коментарий</th>
+                <th>Скачать</th>
+                <th style="width: 120px;">Действия</th>
+            </tr>
             </thead>
-
             {% for list in court_list %}
             <tbody>
-
             <tr>
                 <!--           <td>aaaaaa {{ list.procedure }}</td>-->
                 <!--           <th>{{ list.get_client.car.model}} {{ list.get_client.car.number}}{{ list.get_client.car.color}}</th>-->
@@ -40,17 +38,14 @@
                     <a href="{{ list.file_paste }}" class="px-3 text-primary">
                         <i class="uil uil-pen font-size-18"></i>
                     </a>
-                     <a href="{{ list.file_paste }}" class="px-3 text-danger">
-                        <i  class="uil uil-trash-alt font-size-18"></i>
+                    <a href="{{ list.file_paste }}" class="px-3 text-danger">
+                        <i class="uil uil-trash-alt font-size-18"></i>
                     </a>
                 </td>
-
             </tr>
             {% endfor %}
             </tbody>
         </table>
-            </div>
-
-
+    </div>
 </div>
 

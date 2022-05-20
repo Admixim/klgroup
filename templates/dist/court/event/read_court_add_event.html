@@ -54,7 +54,7 @@
 
         <!-- Информация о судебном  деле-->
         {% if court_info != None %}
-        {% include "dist/court/info/edit_form.html" %}
+        {% include "dist/court/info/read_form.html" %}
 
         <!-- События в судебном  деле-->
         {% if court_list %}
@@ -82,12 +82,7 @@
             </div>
             <form method="POST" action="" enctype="multipart/form-data">
                 {% csrf_token %}
-<div class="row mb-4">
-    <label class="form-label" for="formrow-firstname-input">Информация о судебном процессе</label>
-    <div class="col-sm-12">
-        {{court.info_court}}
-    </div>
-</div>
+
 
                 <div class="row mb-4">
     <label class="form-label" for="formrow-firstname-input"> Тип операции </label>
