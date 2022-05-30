@@ -420,6 +420,15 @@ class Partner(models.Model):
     def get_client(self):
         return self.accident.partner_accident.filter(type=True).first()
 
+    def get_file_client(self):
+        files = Partner.client.files_persons
+        for item in files.all():
+            print(item)
+            return  item
+
+
+
+
 
 class FileCompany(models.Model):
     """Таблица прикрепить файлы документов Юр лица"""
@@ -449,7 +458,6 @@ class FileCompany(models.Model):
         upload_to='media/company/',
         null=True,
         default=None,
-        blank=True,
         verbose_name="Файл"
     )
     author = models.OneToOneField(User, on_delete=models.CASCADE, db_column='user', blank=True, null=True)
@@ -489,7 +497,6 @@ class FilePerson(models.Model):
         upload_to='media/person/',
         null=True,
         default=None,
-        blank=True,
         verbose_name="Файл"
     )
     author = models.OneToOneField(User, db_column='user', on_delete=models.CASCADE, blank=True, null=True, )

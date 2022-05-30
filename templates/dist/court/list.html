@@ -12,6 +12,9 @@
 <!-- ============================================================== -->
 <!-- Start right Content here -->
 {% block content %}
+  <div class="main-content">
+    <div class="page-content">
+      <div class="container-fluid">
       <hr>
         <!-- start page title -->
         <div class="row">
@@ -41,8 +44,7 @@
                   </select>
                 </form>
               </div>
-              <a href='{% url 'court-new' %}' type="submit" class="btn btn-success waves-effect waves-light mb-3">Создать
-                дело</a>
+
             </div>
             <div class="table-responsive mb-4">
               <table class="table table-centered datatable dt-responsive nowrap table-card-list"
@@ -73,10 +75,11 @@
                       {{ item.judge.name }}
                     </td>
                     <td>
-                      <div class="badge bg-pill bg-soft-success font-size-12">{{ item.status }}</div>
+                      <div class="badge bg-pill bg-soft-success font-size-12">{{ item.court_info.all}</div>
                     </td>
                     <td>
-                      {% if court_info. != None %}
+
+                      {% if court_info. !=  %}
 
 
                       {% endif %}
@@ -94,6 +97,8 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
 
 {% endblock content %}
 

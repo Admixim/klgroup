@@ -142,8 +142,36 @@ def accident_main1(request):
                   )
 
 
-def accident_list_doc(request):
+def accident_list_doc(request, pk):
     """ТЕСТОВЫЙ ВАРИАНТ С ШАБЛОНОМ  Документы"""
+
+    accident = get_object_or_404(Accident, pk=pk)
+    list_client = accident.partner_accident.all()
+
+    #Цикл заменить доля шаблона
+    # for item in list_client:
+    #     if item.car.files_auto.all():
+    #         for file in item.car.files_auto.all():
+    #             a = file.pk
+    #             b = file.description
+    #             c = file.scan_doc
+    #             e = file.types
+    #             print('Files Car:', a, b, c, e)
+    #     elif item.client.files_persons.all():
+    #         for file in item.client.files_persons.all():
+    #             a = file.pk
+    #             b = file.description
+    #             c = file.scan_doc
+    #             e = file.types
+    #             print('Files Person:', a, b, c, e)
+
+
+
+    #         print('files',item.car.files_auto.all())
+    #
+    #
+    # print('accident.partner_accident', accident.partner_accident.all())
+    # print('list_client', list_client)
 
     error = ''
     if request.method == 'POST':
@@ -157,9 +185,15 @@ def accident_list_doc(request):
             return redirect('/Accident/')
         else:
             error = ' Форма не верно заполнена'
-
+    list_client = accident.partner_accident.all()
+    list_car =accident.partner_accident.all()
+    list_expert =accident.expert_accident.all()
     form = AccidentForm()
     data = {
+        'list_client': list_client,
+        'list_car': list_car,
+        'list_expert': list_expert,
+        'accident_pk': pk,
         'form': form,
         'error': error
     }

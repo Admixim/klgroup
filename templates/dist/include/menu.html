@@ -27,11 +27,11 @@
                 {% endif %}
             </div>
             <div class="mb-3">
-                <a href="{% url 'accident_list_doc' %}" class="btn btn-success waves-effect waves-light">
+                <a href="{% url 'accident_list_doc' accident_pk %}" class="btn btn-success waves-effect waves-light">
                     </i> Документы</a>
             </div>
             <div class="mb-3">
-                <a href="{% url 'price-court-cash-accident' %}" class="btn btn-success waves-effect waves-light">
+                <a href="{% url 'price-court-cash-accident' accident_pk %}" class="btn btn-success waves-effect waves-light">
                     </i> Судебные расходы</a>
             </div>
         </div>

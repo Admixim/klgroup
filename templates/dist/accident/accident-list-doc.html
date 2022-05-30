@@ -14,35 +14,7 @@
   </style>
   <div class="main-content">
     <div class="page-content" align="center">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="page-title-box d-flex align-items-center justify-content-between">
-            <div class="btn-group me-1 mt-2">
-              <div class="mb-3">
-                <a href="{% url 'accident-new' %}" class="btn btn-success waves-effect waves-light">
-                  </i> Данные ДТП</a>
-              </div>
-            </div>
-            <div class="mb-3">
-              <a href="{% url 'expert-new' %}" class="btn btn-success waves-effect waves-light">
-                </i> Данные экспертизы</a>
-            </div>
-            <div class="mb-3">
-              <a href="{% url 'court-new' %}" class="btn btn-success waves-effect waves-light">
-                </i> Произвоство по делу</a>
-            </div>
-            <div class="mb-3">
-              <a href="{% url 'accident_list_doc' %}" class="btn btn-primary w-md">
-                </i> Документы</a>
-            </div>
-            <div class="mb-3">
-              <a href="{% url 'price-court-cash-accident' %}" class="btn btn-success waves-effect waves-light">
-                </i> Судебные расходы</a>
-            </div>
-          </div>
-        </div>
-        <hr>
-      </div>
+        {% include "dist/include/menu.html" %}
       <div class="page-title-box d-flex align-items-center justify-content-between">
         <div class="btn-group me-1 mt-2">
           <button
@@ -67,7 +39,7 @@
         </div>
         <div class="page-title-right">
           <ol class="breadcrumb m-0">
-            <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+
           </ol>
         </div>
       </div>
@@ -81,7 +53,7 @@
             <div data-repeater-list="group-a">
               <div data-repeater-item="" class="row">
                 <div class="mb-3 col-lg-2">
-                  <label class="form-label" for="subject">Документ</label>
+                  <label class="form-label" for="subject">Тип Документа</label>
                   <select class="form-select">
                     <option selected>Выбор</option>
                     <option value="1">Паспорт РФ</option>
@@ -100,8 +72,8 @@
                   </select>
                 </div>
                 <div class="mb-3 col-lg-2">
-                  <label class="form-label" for="name">Кол-во стр.</label>
-                  <input type="text" id="name" value="" name="group-a[0][untyped-input]" class="form-control">
+                  <label class="form-label" for="name">Пусто</label>
+                  <input type="text" id="name1" value="" name="group-a[0][untyped-input]" class="form-control">
                 </div>
                 <div class="mb-3 col-lg-2">
                   <label class="form-label" for="name">Комментарий</label>
@@ -112,11 +84,12 @@
                   <input type="file" class="form-control" id="resume">
                 </div>
               </div>
-            </div>
+            </div>  <button class="btn btn-primary w-md" type="submit">Сохранить</button>
           </form>
         </div>
-        <input data-repeater-delete="" type="button" class="btn btn-primary btn-block" value="Добавить">
+
       </div>
+
     </div>
     <hr>
     <div class="card">
@@ -127,11 +100,11 @@
             <thead class="table-light">
             <tr>
               <th>№</th>
+              <th>Родитель</th>
               <th>Тип файла</th>
               <th>Имя файла</th>
-              <th>Кем добавлен</th>
               <th>Дата добавления</th>
-              <th>Кол-во стр</th>
+              <th>Связь</th>
             </tr>
             </thead>
             <tbody>
@@ -164,6 +137,6 @@
         </div>
       </div>
     </div>
-    <input data-repeater-delete="" type="button" class="btn btn-primary btn-block" value="Добавить и Сохранить">
+
   </div>
 {% endblock content %}

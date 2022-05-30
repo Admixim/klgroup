@@ -182,9 +182,8 @@ class AutoFiles(models.Model):
     description = models.CharField(max_length=100, verbose_name='Описание')
     scan_doc = models.FileField(
         upload_to='media/auto/',
-
-
-
+        null=True,
+        default=None,
         verbose_name="Файл"
     )
     author = models.OneToOneField(User, db_column='user', on_delete=models.CASCADE, blank=True, null=True, )

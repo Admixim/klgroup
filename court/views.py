@@ -8,9 +8,27 @@ from accident.models import Accident
 
 def court_list(request):
     """Список клиентов общий"""
+    accident =Accident.objects.all()
+
     court_info = InfoCourt.objects.all()
-    return render(request, 'dist/court/list.html', {'court_info': court_info
-                                                    }
+    # for item in accident:
+    #     if item.court_info:
+    #         print('Инфокоурт', item.court_info.pk)
+    #         print('ДТП', item.pk)
+    #     else:
+    #         print('Нет ИнфоКоурт')
+
+    # for i in court_info:
+    #     if i.court_info.all():
+    #         print('ДТП строка', i.court_info.all())
+    #     else:
+    #
+    #         print('Пусто', i.pk, i.case_number, i.data_reg)
+    # print([items for items in court_info if court_info not in accident])
+    return render(request,
+                  'dist/court/list.html',
+                  {'court_info': court_info,
+                  }
                   )
 
 

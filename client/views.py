@@ -21,8 +21,9 @@ def client_new(request):
             person = performer.save()
             for form in formset:
                 instance = form.save(commit=False)
-                instance.files_person = person
-                instance.save()
+                if instance.scan_doc:
+                    instance.files_person = person
+                    instance.save()
             return redirect('/client/')
     else:
         template_name = 'dist/handbk/person/client-new.html'
@@ -47,9 +48,10 @@ def client_edit(request, pk):
             person = clientform.save()
             for form in formset:
                 instance = form.save(commit=False)
-                instance.files_person = person
-                print(instance)
-                instance.save()
+                if instance.scan_doc:
+                    instance.files_person = person
+                    print(instance)
+                    instance.save()
             return redirect('/client/')
     else:
         form = ClientForm(instance=person)

@@ -18,7 +18,7 @@ urlpatterns = [
     path('accident-add-partner/<int:pk>/', accident_add_partner, name='accident-edit'),
 
     # Список  документов о   ДТП в деле
-    path('accident-list-doc/', accident_list_doc, name='accident_list_doc'),
+    path('accident-list-doc/<int:pk>/', accident_list_doc, name='accident_list_doc'),
 
     path('test/', test),
 
