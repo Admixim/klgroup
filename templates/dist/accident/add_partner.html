@@ -185,46 +185,42 @@
         <h4 class="card-title">Список участников ДТП</h4>
         <hr>
         {% for list in list_partner %}
-        <div class="table-responsive">
-            <table class="table mb-2">
-                <thead>
-                <tr>
-                    <th>№</th>
-                    <th></th>
-                    <th>Статус</th>
-                    <th>Ф.И.О.</th>
-                    <th> ТС участника</th>
-                    <th>Конт.номер</th>
-                    <th>Коментарий</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-
-                  <td>aaaaaa {{ list.get_fullname }}</td>
-
-                  <th>{{ list.get_client.car.model}} {{ list.get_client.car.number}}{{ list.get_client.car.color}}11
-                    </th>
-
-                  <th>{{ list.get_expert_client.name }}</th>
-
-                  <th>{{ list.id }}</th>
-                    <td> {% if list.type %}<span class="colorclient">Клиент</span>{% else %} -----{% endif %}</td>
-                    <td>{{ list.status.name }}</td>
-                    <td>{{ list.client.name }}&nbsp;{{ list.client.surname }}&nbsp;{{ list.client.midlename }}</td>
-                    <td>{{ list.car.number }}&nbsp;{{ list.car.marka }}&nbsp;{{ list.car.model }}</td>
-                    <td>{{ list.client.phone }}</td>
-                    <td>{{ list.car.insurance_doc }}</td>
-                </tr>
-                </tbody>
-            </table>
-            {% endfor %}
-        </div>
+          <div class="table-responsive">
+          <table class="table mb-2">
+            <thead>
+            <tr>
+              <th>№</th>
+              <th></th>
+              <th>Статус</th>
+              <th>Ф.И.О.</th>
+              <th> ТС участника</th>
+              <th>Роль в ДТП</th>
+              <th>Конт.номер</th>
+              <th>Коментарий</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th>{{ list.id }}</th>
+              <th>
+              <td> {% if list.type %}<span class="colorclient">Клиент</span>{% else %} -----{% endif %}</td>
+              </th>
+              <td>{{ list.get_fullname }}</td>
+              <th>{{ list.get_client.car.model }} {{ list.get_client.car.number }}{{ list.get_client.car.color }}11
+              </th>
+              <td>{{ list.status.name }}</td>
+              <td>{{ list.client.phone }}</td>
+              <td>Вставить коментарий откуда?</td>
+            </tr>
+            </tbody>
+          </table>
+        {% endfor %}
+      </div>
     </div>
-    <hr>
+  <hr>
 </div>
-<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
-     aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+       aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
