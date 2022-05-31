@@ -39,6 +39,8 @@ def auto_new(request):
         })
 
 
+
+
 def auto_edit(request, pk):
     """Редактирования  данных ТС"""
 
@@ -68,6 +70,7 @@ def auto_edit(request, pk):
                 'auto': pk,
             }
         return render(request, template_name, data)
+
 
 
 def edit_auto_new(request, pk):

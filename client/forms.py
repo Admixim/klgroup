@@ -379,22 +379,22 @@ FilePersonFormset = modelformset_factory(
             }
         ),
         'types': Select(
-                                                 attrs={
-                                                     'class': 'form-control',
-                                                     'placeholder': 'Тип файла'
-                                                 }
-                                             ),
-                                             'description': TextInput(
-                                                 attrs={
-                                                     'class': 'form-control',
-                                                     'placeholder': 'Описание к файлу'
-                                                 }
-                                             ),
-                                             'scan_doc': FileInput(
-                                                 attrs={
-                                                     'class': 'form-control',
-                                                     'placeholder': 'Файл'
-                                                 }
-                                             ),
-                                         }
-                                         )
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Тип файла'
+            }
+        ),
+        'description': TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Описание к файлу'
+            }
+        ),
+        'scan_doc': FileInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Файл'
+            }
+        ),
+    }
+)
