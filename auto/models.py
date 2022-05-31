@@ -176,9 +176,13 @@ class AutoFiles(models.Model):
         Car,
         on_delete=models.CASCADE,
         related_name='files_auto',
+        blank=True,
+        null=True,
         verbose_name='Прикрепленные файлы (Car)'
     )
-    types = models.PositiveSmallIntegerField(choices=TYPES, )
+    types = models.PositiveSmallIntegerField(choices=TYPES, null=True,
+                                             default=None,
+                                             blank=True, )
     description = models.CharField(max_length=100, verbose_name='Описание')
     scan_doc = models.FileField(
         upload_to='media/auto/',

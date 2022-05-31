@@ -91,31 +91,31 @@ class worker(models.Model):
 
 
 class judge_help(models.Model):
-        """Список помошников судей """
+    """Список помошников судей """
 
-        name = models.CharField(
-            max_length=100,
-            blank=True,
-            null=True,
-            default=None,
-            verbose_name='Помошник судьи  ФИО')
-        message = models.CharField(
-            max_length=500,
-            blank=True,
-            null=True,
-            default=None,
-            verbose_name='Комментарий')
-        is_active = models.BooleanField(default=True)
-        created = models.DateTimeField(auto_now_add=True, auto_now=False)
-        updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+    name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        default=None,
+        verbose_name='Помошник судьи  ФИО')
+    message = models.CharField(
+        max_length=500,
+        blank=True,
+        null=True,
+        default=None,
+        verbose_name='Комментарий')
+    is_active = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-        def __str__(self):
-            return "%s" % self.name
+    def __str__(self):
+        return "%s" % self.name
 
-        class Meta:
-            verbose_name = "Помошник судьи "
-            verbose_name_plural = "Помошники судей"
-            ordering = ['-created']
+    class Meta:
+        verbose_name = "Помошник судьи "
+        verbose_name_plural = "Помошники судей"
+        ordering = ['-created']
 
 
 class judge(models.Model):
@@ -243,7 +243,7 @@ class InfoCourt(models.Model):
         default=None,
         blank=True,
         null=True
-                               )
+    )
     judge = models.ForeignKey(
         judge,
         on_delete=models.CASCADE,
@@ -252,7 +252,7 @@ class InfoCourt(models.Model):
         default=None,
         blank=True,
         null=True
-                               )
+    )
 
     case_number = models.CharField(
         max_length=24,
@@ -367,7 +367,7 @@ class Court(models.Model):
         blank=True,
         null=True,
         verbose_name='Список юр.оперций '
-            )
+    )
 
     procedure = models.ForeignKey(
         Procedure,
@@ -434,4 +434,3 @@ class Court(models.Model):
         verbose_name = "Оперция судопроизводства"
         verbose_name_plural = "Оперции судопроизводства"
         ordering = ['created']
-

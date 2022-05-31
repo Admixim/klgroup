@@ -45,18 +45,18 @@ def auto_edit(request, pk):
     auto = get_object_or_404(Car, pk=pk)
     formset = FileAutoFormset(queryset=AutoFiles.objects.none())
     if request.method == "POST":
-        autoform = AutoForm(request.POST, instance=auto, prefix=autoform)
-        formset = FileAutoFormset(request.POST, request.FILES, prefix=AutoFiles)
+        autoform = AutoForm(request.POST, instance=auto, )
+        formset = FileAutoFormset(request.POST, request.FILES, )
+        print(formset)
         if autoform.is_valid() and formset.is_valid():
-            print(formset)
             auto = autoform.save()
             for form in formset:
                 instance = form.save(commit=False)
-                if instance.scan_doc:
+                if instance:
                     instance.files = auto
                     print(instance)
                     instance.save()
-            return redirect('/auto/')
+            return redirect('auto-list')
     else:
         autoform = AutoForm(instance=auto)
         list_files = auto.files_auto.all()

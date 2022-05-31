@@ -480,9 +480,9 @@ class FilePerson(models.Model):
     files_person = models.ForeignKey(
         Client,
         blank=True,
+        null=True,
         on_delete=models.CASCADE,
         related_name='files_persons',
-        null=True,
         verbose_name='Прикрепленные файлы (Client)'
     )
     types = models.PositiveSmallIntegerField(
