@@ -150,20 +150,29 @@ def accident_list_doc(request, pk):
 
     #Цикл заменить доля шаблона
     # for item in list_client:
-    #     if item.car.files_auto.all():
-    #         for file in item.car.files_auto.all():
-    #             a = file.pk
-    #             b = file.description
-    #             c = file.scan_doc
-    #             e = file.types
-    #             print('Files Car:', a, b, c, e)
-    #     elif item.client.files_persons.all():
-    #         for file in item.client.files_persons.all():
-    #             a = file.pk
-    #             b = file.description
-    #             c = file.scan_doc
-    #             e = file.types
-    #             print('Files Person:', a, b, c, e)
+    #         if item.car.files_auto.all():
+    #             for file in item.car.files_auto.all():
+    #                 if file.scan_doc:
+    #                     a = file.pk
+    #                     b = file.description
+    #                     c = file.scan_doc
+    #                     e = file.types
+    #                     print('Files Car:', a, b, c, e)
+    #                 else:
+    #                     print('Файлов нет  у клиента2')
+    #         elif item.client.files_persons.all():
+    #             for file in item.client.files_persons.all():
+    #                 if file.scan_doc:
+    #                     a = file.pk
+    #                     b = file.description
+    #                     c = file.scan_doc
+    #                     e = file.types
+    #                     print('Files Person:', a, b, c, e)
+    #                 else:
+    #                     print('Файлов нет  у клиента2')
+    #         else:
+    #             print('Файлов нет  у клиента2')
+
 
 
 
@@ -186,8 +195,14 @@ def accident_list_doc(request, pk):
         else:
             error = ' Форма не верно заполнена'
     list_client = accident.partner_accident.all()
+    print(list_client)
     list_car =accident.partner_accident.all()
+    # for item in list_car:
+    #     print(item.client.files_persons.values_list())
+    #
+    # print(list_car)
     list_expert =accident.expert_accident.all()
+    print(list_expert)
     form = AccidentForm()
     data = {
         'list_client': list_client,

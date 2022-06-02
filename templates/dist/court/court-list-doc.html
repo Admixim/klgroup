@@ -122,13 +122,16 @@
     <hr>
     <div class="card">
       <div class="card-body">
+          {% for item in list_client %}
+              {% for file in item.car.files_auto.all %}
+                  {% for id  in file.car.files_auto.all %}
         <h4 class="card-title">Сводная таблица документов</h4>
         <div class="table-responsive">
           <table class="table mb-0">
             <thead class="table-light">
             <tr>
               <th>№</th>
-              <th>Тип файла</th>
+              <th>Тип файла1</th>
               <th>Имя файла</th>
               <th>Кем добавлен</th>
               <th>Дата добавления</th>
@@ -138,31 +141,19 @@
             <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>Паспорт РФ</td>
-              <td>пасторт01001.pdf</td>
-              <td>Матвеева Т.А.</td>
+              <td> {{id.pk}}</td>
+              <td>{{id.description}}</td>
+              <td>{{id.scan_doc}}</td>
               <td>20.11.2021</td>
               <td>6 стр</td>
             </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Водительское удостоверние</td>
-              <td>ВУ01001332.pdf</td>
-              <td>Матвеева Т.А.</td>
-              <td>20.11.2021</td>
-              <td>2 стр</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Экспертиза ТС</td>
-              <td>Expert_auto_01001332.pdf</td>
-              <td>Галичин И.А.</td>
-              <td>20.11.2021</td>
-              <td>17 стр</td>
-            </tr>
+
             </tbody>
           </table>
         </div>
+       {% endfor %}
+         {% endfor %}
+        {% endfor %}
       </div>
     </div>
     <input data-repeater-delete="" type="button" class="btn btn-primary btn-block" value="Добавить и Сохранить">
