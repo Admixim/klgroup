@@ -205,6 +205,7 @@ def accident_list_doc(request, pk):
     print(list_expert)
     form = AccidentForm()
     data = {
+        'accident': accident,
         'list_client': list_client,
         'list_car': list_car,
         'list_expert': list_expert,

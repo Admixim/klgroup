@@ -92,34 +92,13 @@
     <hr>
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Сводная таблица документов</h4>
+            <h4 class="card-title">Сводная таблица документов </h4>
             <div class="table-responsive">
-                <table class="table mb-0">
-                    <thead class="table-light">
-                    <tr>
-                        <th>№</th>
-                        <th>Тип файла1</th>
-                        <th>Описание</th>
-                        <th>Кем добавлен</th>
-                        <th>Дата добавления</th>
-                        <th>Кол-во стр</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for item in list_client %}
-                    {% for file in item.car.files_auto.all %}
-                    <tr>
-                        <th scope="row">{{ file.pk }}</th>
-                        <td> {{ file.types.value }}</td>
-                        <td>{{ file.description }}</td>
-                        <td>{{ file.scan_doc }}</td>
-                        <td>{{ file.created }}</td>
-                        <td>{{ file.name }}</td>
-                    </tr>
-                    {% endfor %}
-                    {% endfor %}
-                    </tbody>
-                </table>
+                {% include "dist/accident/list_files/list_car.html" %}
+                {% include "dist/accident/list_files/list_client.html" %}
+                 {% include "dist/accident/list_files/list_court.html" %}
+                 {% include "dist/accident/list_files/list_expert.html" %}
+                 {% include "dist/accident/list_files/list_contract.html" %}
             </div>
         </div>
     </div>
