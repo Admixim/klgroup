@@ -196,16 +196,21 @@ def accident_list_doc(request, pk):
             error = ' Форма не верно заполнена'
     list_client = accident.partner_accident.all()
     print(list_client)
-    list_car =accident.partner_accident.all()
+    list_car = accident.partner_accident.all()
     # for item in list_car:
     #     print(item.client.files_persons.values_list())
     #
     # print(list_car)
-    list_expert =accident.expert_accident.all()
+    list_expert = accident.expert_accident.all()
+    list_court = accident.court_info.info_courts.all()
     print(list_expert)
     form = AccidentForm()
+
+    # for item in bbb:
+    #     print(item.file_paste)
+    # print(' Файлы bbb ', bbb)
     data = {
-        'accident': accident,
+        'list_court': list_court,
         'list_client': list_client,
         'list_car': list_car,
         'list_expert': list_expert,

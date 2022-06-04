@@ -5,26 +5,25 @@
                     <thead class="table-light">
                     <tr>
                         <th>№</th>
-                        <th>Тип файла2</th>
-                        <th>Описание</th>
-                        <th>Кем добавлен</th>
-                        <th>Дата добавления</th>
-                        <th>Кол-во стр</th>
+                      <th>Тип файла2</th>
+                      <th>Описание</th>
+                      <th>Кем добавлен</th>
+                      <th>Дата добавления</th>
+                      <th>Кол-во стр</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    {% for item in list_client %}
-                    {% for file in item.car.files_auto.all %}
+                  <tbody>
+                  {% for item in list_court %}
                     <tr>
-                        <th scope="row">{{ file.pk }}</th>
-                        <td> {{ file.types }}</td>
-                        <td>{{ file.description }}</td>
-                        <td>{{ file.scan_doc }}</td>
-                        <td>{{ file.created }}</td>
-                        <td>{{ file.name }}</td>
+                      <th scope="row">{{ item.pk }}</th>
+                      <td> {{ item.procedure }}</td>
+                      <td>{{ item.file_paste }}</td>
+                      <td>{{ item.worker }}</td>
+                      <td>{{ item.created }}</td>
+                      <td>{{ item.message }}</td>
+
                     </tr>
-                    {% endfor %}
-                    {% endfor %}
-                    </tbody>
+                  {% endfor %}
+                  </tbody>
                 </table>
 {% endblock content %}
