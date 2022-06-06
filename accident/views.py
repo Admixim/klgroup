@@ -146,42 +146,6 @@ def accident_list_doc(request, pk):
     """ТЕСТОВЫЙ ВАРИАНТ С ШАБЛОНОМ  Документы"""
 
     accident = get_object_or_404(Accident, pk=pk)
-    list_client = accident.partner_accident.all()
-
-    #Цикл заменить доля шаблона
-    # for item in list_client:
-    #         if item.car.files_auto.all():
-    #             for file in item.car.files_auto.all():
-    #                 if file.scan_doc:
-    #                     a = file.pk
-    #                     b = file.description
-    #                     c = file.scan_doc
-    #                     e = file.types
-    #                     print('Files Car:', a, b, c, e)
-    #                 else:
-    #                     print('Файлов нет  у клиента2')
-    #         elif item.client.files_persons.all():
-    #             for file in item.client.files_persons.all():
-    #                 if file.scan_doc:
-    #                     a = file.pk
-    #                     b = file.description
-    #                     c = file.scan_doc
-    #                     e = file.types
-    #                     print('Files Person:', a, b, c, e)
-    #                 else:
-    #                     print('Файлов нет  у клиента2')
-    #         else:
-    #             print('Файлов нет  у клиента2')
-
-
-
-
-    #         print('files',item.car.files_auto.all())
-    #
-    #
-    # print('accident.partner_accident', accident.partner_accident.all())
-    # print('list_client', list_client)
-
     error = ''
     if request.method == 'POST':
         form = AccidentForm(request.POST)
@@ -194,21 +158,27 @@ def accident_list_doc(request, pk):
             return redirect('/Accident/')
         else:
             error = ' Форма не верно заполнена'
+    # try:
+    #     list_client = accident.partner_accident.all()
+    # except AttributeError:
+    #     list_client = None
+    # print('list_client', list_client)
     list_client = accident.partner_accident.all()
-    print(list_client)
-    list_car = accident.partner_accident.all()
-    # for item in list_car:
-    #     print(item.client.files_persons.values_list())
-    #
-    # print(list_car)
-    list_expert = accident.expert_accident.all()
-    list_court = accident.court_info.info_courts.all()
-    print(list_expert)
+    try:
+        list_car = accident.partner_accident.all()
+        print('list_car', list_car)
+    except AttributeError:
+        list_car = None
+    try:
+        list_expert = accident.expert_accident.all()
+        print('list_expert', list_expert)
+    except AttributeError:
+        list_expert = None
+    try:
+        list_court = accident.court_info.info_courts.all()
+    except AttributeError:
+        list_court = None
     form = AccidentForm()
-
-    # for item in bbb:
-    #     print(item.file_paste)
-    # print(' Файлы bbb ', bbb)
     data = {
         'list_court': list_court,
         'list_client': list_client,

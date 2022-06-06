@@ -76,9 +76,11 @@
                                     Номер ДТП:&nbsp {{ accident.number }}<br>Дата ДТП:&nbsp {{accident.data}}<br>
                                     Место ДТП: &nbsp{{ accident.location_accident }}<br>
                                     ТС
-                                    Клиента:&nbsp{{ client.car.marka }}&nbsp {{ client.car.model }}&nbsp {{client.car.number}}<br>
+                                    Клиента:&nbsp{{ client.car.marka }}&nbsp {{ client.car.model }}&nbsp
+                                    {{client.car.number}}<br>
                                     ФИО
-                                    :&nbsp{{ client.client.name }}&nbsp{{client.client.surname }}&nbsp {{client.client.midlename}}<br>
+                                    :&nbsp{{ client.client.name }}&nbsp{{client.client.surname }}&nbsp
+                                    {{client.client.midlename}}<br>
                                     Телефон клиента: &nbsp {{ client.client.phone }}
                                     <div class="col-md-6">
                                     </div>
@@ -149,12 +151,11 @@
                                                 <td>{{ expert.type }}</td>
                                                 <td>{{ expert.summa_exp|title|add:'руб' }}</td>
                                                 <td>{{ expert.price_summa |title|add:'руб' }}</td>
-
+                                                {% endfor %}
                                             </tr>
                                             </tbody>
 
 
-                                            {% endfor %}
                                         </table>
                                     </div>
                                 </div>
