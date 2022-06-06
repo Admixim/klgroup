@@ -5,11 +5,11 @@
     <thead class="table-light">
     <tr>
         <th>№</th>
-        <th>Тип файла2</th>
+        <th>Тип файла</th>
         <th>Описание</th>
-        <th>Кем добавлен</th>
+        <th>Файл</th>
         <th>Дата добавления</th>
-        <th>Кол-во стр</th>
+        <th>Автор</th>
     </tr>
     </thead>
     <tbody>
@@ -19,7 +19,7 @@
         <th scope="row">{{ file.pk }}</th>
         <td> {{ file.types }}</td>
         <td>{{ file.description }}</td>
-        <td>{{ file.scan_doc }}</td>
+        <td><a href="{{ file.scan_doc.url }}" target="_blank"  class="text-body">{{ file.scan_doc|make_list|slice:'13:'|join:''}}</a></td>
         <td>{{ file.created }}</td>
         <td>{{ file.name }}</td>
     </tr>

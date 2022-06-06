@@ -52,7 +52,6 @@ def accident_add_partner(request, pk):
     list_partner = accident.partner_accident.all()
     expert_list = accident.expert_accident.all()
     court = accident.court_info
-    print(court)
     if request.method == "POST":
         # form = AccidentAddPartnerForm(request.POST,request.FILES or None, prefix='accident',instance=accident)
         add_partner = PartnerForm(request.POST, request.FILES or None, prefix='partners')
@@ -146,10 +145,9 @@ def accident_list_doc(request, pk):
     """ТЕСТОВЫЙ ВАРИАНТ С ШАБЛОНОМ  Документы"""
 
     accident = get_object_or_404(Accident, pk=pk)
-    error = ''
+    court = accident.court_info
     if request.method == 'POST':
         form = AccidentForm(request.POST)
-
         if form.is_valid():
             print(form.cleaned_data)
             form = form.save(commit=False)
@@ -158,12 +156,10 @@ def accident_list_doc(request, pk):
             return redirect('/Accident/')
         else:
             error = ' Форма не верно заполнена'
-    # try:
-    #     list_client = accident.partner_accident.all()
-    # except AttributeError:
-    #     list_client = None
-    # print('list_client', list_client)
-    list_client = accident.partner_accident.all()
+    try:
+        list_client = accident.partner_accident.all()
+    except AttributeError:
+        list_client = None
     try:
         list_car = accident.partner_accident.all()
         print('list_car', list_car)
@@ -171,7 +167,6 @@ def accident_list_doc(request, pk):
         list_car = None
     try:
         list_expert = accident.expert_accident.all()
-        print('list_expert', list_expert)
     except AttributeError:
         list_expert = None
     try:
@@ -186,7 +181,8 @@ def accident_list_doc(request, pk):
         'list_expert': list_expert,
         'accident_pk': pk,
         'form': form,
-        'error': error
+        'court': court,
+        'expert_list': list_expert,
     }
     template_name = 'dist/accident/accident-list-doc.html'
     return render(request,

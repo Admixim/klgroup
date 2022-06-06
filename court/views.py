@@ -11,20 +11,6 @@ def court_list(request):
     accident =Accident.objects.all()
 
     court_info = InfoCourt.objects.all()
-    # for item in accident:
-    #     if item.court_info:
-    #         print('Инфокоурт', item.court_info.pk)
-    #         print('ДТП', item.pk)
-    #     else:
-    #         print('Нет ИнфоКоурт')
-
-    # for i in court_info:
-    #     if i.court_info.all():
-    #         print('ДТП строка', i.court_info.all())
-    #     else:
-    #
-    #         print('Пусто', i.pk, i.case_number, i.data_reg)
-    # print([items for items in court_info if court_info not in accident])
     return render(request,
                   'dist/court/list.html',
                   {'court_info': court_info,
@@ -33,7 +19,7 @@ def court_list(request):
 
 
 def court_new(request):
-    """Создание-добавление  новой судопроизводства"""
+    """Создание-добавление  нового судопроизводства"""
     error = ''
     if request.method == 'POST':
         court_info = CourtInfoForm(request.POST, request.FILES)
@@ -48,14 +34,11 @@ def court_new(request):
             'error': error,
 
             }
-
     return render(request, template_name, data)
 
 
-
-
 def court_event_add(request, pk):
-    """Создание-добавление  нового судебного события"""
+    """Создание-добавление  нового судебного события к судопроизводству"""
 
     accident = Accident.objects.get(id=pk)
     accident_pk = accident.pk
@@ -101,14 +84,11 @@ def court_info_edit(request, pk):
     accident = Accident.objects.get(id=pk)
     accident_pk = accident.pk
     court_info = InfoCourt.objects.get(id =accident.court_info.pk)
-
-
     if request.method == 'POST':
         form = CourtInfoForm(request.POST, request.FILES, instance=court_info)
         if form.is_valid():
             form.save()
             return redirect('/court/court-event-add/%d/' % pk)
-
     form =CourtInfoForm(instance=court_info)
     data = {
         'accident_pk': accident_pk,
@@ -174,21 +154,12 @@ def court_new_pk(request, pk):
     accident = Accident.objects.get(id=pk)
     accident_pk = accident.pk
     court_info = accident.court_info
-    # court_info1 = get_object_or_404(Court, id=accident.court_info.pk)
-    # print(court_info1)
-    court_list:list = []
-    # court:list = []
     if court_info is not None:
         court_list: list = court_info.info_courts.all()
-        # court_info = CourtInfoForm(prefix='court-info', instance=court_info)
-        # court = CourtForm(instance=Court, prefix='court')
         print('Случай нет информации о деле', )
     else:
         court_list:list = []
         court_info = CourtInfoForm(prefix='court-info', instance=court_info)
-        # court_info = CourtInfoForm(prefix='court-info', instance=court_info)
-        # court = CourtForm(instance=Court, prefix='court')
-        error = 'Операции по  судопроизводсту нет'
         print('Случай есть информация о деле, список операций  по делу пустой', )
     if request.method == 'POST':
         courtinfo = CourtInfoForm(request.POST, request.FILES, prefix='court-info')
@@ -201,12 +172,9 @@ def court_new_pk(request, pk):
             return redirect('/court/court-event-add/%d/' % pk)
         else:
             error = 'Форма не верно заполнена'
-
-    # court_info = CourtInfoForm(prefix='court-info', instance=court_info)
     court = CourtForm(prefix='court',)
     template_name = 'dist/court/new_pk.html'
     data = {
-            # 'error': error,
             'accident_pk': accident_pk,
             'court_info': court_info,
             'court_list': court_list,
@@ -221,6 +189,5 @@ def court_list_doc(request):
 
 
 def price_court_cash_new(request):
-    error = ''
     template_name = 'dist/price/price-court-cash-new.html'
     return render(request, template_name)
