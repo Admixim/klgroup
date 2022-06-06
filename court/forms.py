@@ -145,17 +145,25 @@ class CourtForm(ModelForm):
     class Meta:
         model = Court
 
-        exclude =["message"]
+        fields =["date_start",
+                 "message",
+                 "file_paste",
+                 "date_start",
+                 "data_finish",
+                 "procedure",
+                 "akt_end",
+                 "worker",
+                 "curt_hall",
+                 ]
 
         widgets = {
 
             "message": Textarea(attrs={
                 'class': 'form-control',
                 'name': "area",
-
+                'id': "elm1",
                 'placeholder': 'Результат,коментарий события '
-
-            }),
+                            }),
             "file_paste": FileInput(
                 attrs={
                     'class': 'form-control',
@@ -163,18 +171,23 @@ class CourtForm(ModelForm):
 
                 }),
 
-            "date_start": DateInput(attrs={
+            "date_start": DateInput(format='%d/%m/%Y', attrs={
                 'class': 'form-control',
-                'placeholder': 'Начало исполнения ',
-
+                'placeholder': 'Дата  начало исполения',
+                'data-date-container': '#datepicker2',
+                'data-provide': 'datepicker',
+                'data-date-autoclose': 'true',
                 'data-date-format': 'dd/mm/yyyy',
-            }),
+                           }),
 
-            "data_finish": DateInput(attrs={
+            "data_finish": DateInput(format='%d/%m/%Y', attrs={
                 'class': 'form-control',
-                'placeholder': 'Срок исполнения ',
-
+                'placeholder': 'Срок исполнения',
+                'data-date-container': '#datepicker2',
+                'data-provide': 'datepicker',
+                'data-date-autoclose': 'true',
                 'data-date-format': 'dd/mm/yyyy',
+
             }),
             "procedure": Select(attrs={
                 'class': 'form-control',
@@ -190,7 +203,12 @@ class CourtForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'Отв-ный'
 
-            })
+            }),
+            "curt_hall": Textarea(attrs={
+                'class': 'form-control',
+                'placeholder': 'Кабинет заседания '
+
+            }),
         }
 
 

@@ -80,54 +80,67 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
-            <form method="POST" action="" enctype="multipart/form-data">
+
+            <form method="POST" class="form-control" enctype="multipart/form-data">
                 {% csrf_token %}
-
-
-                <div class="row mb-4">
-    <label class="form-label" for="formrow-firstname-input"> Тип операции </label>
-    <div class="col-sm-12">
-            {{court.procedure}}
-    </div>
-</div>
-
-                <div class="row mb-4">
-    <label class="form-label" for="formrow-firstname-input">Ответственный</label>
-    <div class="col-sm-12">
-         {{court.worker}}
-    </div>
-</div>
-
-
-                <div class="row mb-4">
-    <label class="form-label" for="formrow-firstname-input">Факт исполняния</label>
-    <div class="col-sm-12">
-         {{court.akt_end}}
-    </div>
-</div>
-
-                <div class="row mb-4">
-    <label class="form-label" for="formrow-firstname-input">Место\кабинет</label>
-    <div class="col-sm-12">
-        {{court.curt_hall}}
-    </div>
-</div>
-    <div class="row mb-4">
-    <label class="form-label" for="formrow-firstname-input">Файл</label>
-    <div class="col-sm-12">
-         {{court.file_paste}}
-    </div>
-</div>
-             <div class="row mb-4">
-    <label class="form-label" for="formrow-firstname-input">Комментарий</label>
-    <div class="col-sm-12">
-          {{court.message}}
-    </div>
-</div>
-        </div>
-          </div><!-- /.modal-content -->
-              <input data-repeater-delete="" type="submit" class="btn btn-primary btn-block"
-                           value="Добавить и Сохранить">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label class="form-label" >Тип операции </label>
+                            {{ court.procedure }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label>Ответственный</label>
+                            {{ court.worker }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label class="form-label" id="datepicker2" >Начало исполнения  </label>
+                            {{ court.date_start }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label>Срок исполнения</label>
+                            {{ court.data_finish }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label >Факт исполнения</label>
+                            {{ court.akt_end }}
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <label>Кабинет заседания</label>
+                        <div class="mb-3">
+                            {{ court.curt_hall }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="mb-3">
+                            <label>Файл</label>
+                            {{ court.file_paste }}
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <label>Комментарий</label>
+                        <div class="mb-3">
+                            {{ court.message }}
+                        </div>
+                    </div>
+                </div><!-- /.modal-content -->
+                <input data-repeater-delete="" type="submit" class="btn btn-primary btn-block"
+                       value="Добавить и Сохранить">
             </form>
             >!-- /.modal-dialog -->
         </div>

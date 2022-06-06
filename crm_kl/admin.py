@@ -9,7 +9,7 @@ admin.site.site_header = "KL Group"
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name','slug','is_published')
+    list_display = ('id', 'name', 'slug', 'is_published')
     list_display_links = ('id', 'name')
     search_fields = ('name',)
     prepopulated_fields = {"slug": ("name",)}

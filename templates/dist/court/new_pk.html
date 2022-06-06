@@ -16,11 +16,7 @@
 <!-- ============================================================== -->
 <!-- Start right Content hre -->
 <!-- ============================================================== -->
-
-
-
         {% include "dist/include/menu.html" %}
-
 <!--        <p>ШАБЛОНЫ PDF ПРЕТЕНЗИИ,ФИН УПОЛНОМОЧЕНОМУ ПРИТЕНЗИЮ, ДОГОВОР ЮР УСЛУГ</p>-->
 <!--        <div class="page-title-box d-flex align-items-center justify-content-between">-->
 <!--            <div class="btn-group me-1 mt-2">-->
@@ -55,26 +51,20 @@
         <!-- Информация о судебном  деле-->
                 <div class="page-content">
         {% if court_info != None %}
-         {% include "dist/include/menu.html" %}
-        {% include "dist/court/info/new_form.html" %}22
+            {% include "dist/include/menu.html" %}
+            {% include "dist/court/info/new_form.html" %}
 
         <!-- События в судебном  деле-->
         {% elif court_info %}
                     {% include "dist/court/event/button_add.html" %}
         {% if court_list %}
-
             {% include "dist/court/event/list.html" %}
-
-        {% include "dist/court/event/button_add.html" %}
-
-
+            {% include "dist/court/event/button_add.html" %}
         {% endif %}
-
         {% else %}
-        {% include "dist/court/info/new_form.html" %} 11123245
-
+            {% include "dist/court/info/new_form.html" %}
         {% endif %}
-                     </div>
+         </div>
     </div>
 </div>
 
@@ -87,6 +77,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 </button>
             </div>
+
+
             <form method="POST" action="" enctype="multipart/form-data">
                 {% csrf_token %}
               <div>
