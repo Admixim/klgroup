@@ -8,8 +8,9 @@
         <th>Тип файла</th>
         <th>Описание</th>
         <th>Файл</th>
-        <th>Автор</th>
         <th>Дата добавления</th>
+        <th>Автор</th>
+
     </tr>
     </thead>
     <tbody>
@@ -25,8 +26,9 @@
         {% else %}
                 Без файла
         {% endif %}
-        <td>{{ item.worker }}</td>
         <td>{{ item.created }}</td>
+        <td>{{ item.worker }}</td>
+
     </tr>
     {% endfor %}
     </tbody>

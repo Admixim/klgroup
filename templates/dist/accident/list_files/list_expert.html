@@ -9,8 +9,8 @@
         <th>Описание</th>
         <th>Файл</th>
         <th>Чек</th>
-        <th>Автор</th>
         <th>Дата добавления</th>
+        <th>Автор</th>
     </tr>
     </thead>
     <tbody>
@@ -29,8 +29,9 @@
             {% else %}
                 <td>Без файла</td>
             {% endif %}
+         <td>{{ item.created }}</td>
         <td>Вставить модель пользователь!!!</td>
-        <td>{{ item.created }}</td>
+
     </tr>
 
     {% endfor %}
