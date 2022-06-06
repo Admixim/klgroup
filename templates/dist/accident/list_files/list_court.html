@@ -5,7 +5,7 @@
     <thead class="table-light">
     <tr>
         <th>№</th>
-        <th>Тип файла2</th>
+        <th>Тип файла</th>
         <th>Описание</th>
         <th>Файл</th>
         <th>Автор</th>
@@ -14,12 +14,17 @@
     </thead>
     <tbody>
     {% for item in list_court %}
+
     <tr>
         <th scope="row">{{ item.pk }}</th>
         <td> {{ item.procedure }}</td>
         <td>{{ item.message }}</td>
+        {% if item.file_paste %}
         <td><a href="{{ item.file_paste.url }}" target="_blank"  class="text-body">{{ item.file_paste|make_list|slice:'16:'|join:''}}</a>
         </td>
+        {% else %}
+                Без файла
+        {% endif %}
         <td>{{ item.worker }}</td>
         <td>{{ item.created }}</td>
     </tr>

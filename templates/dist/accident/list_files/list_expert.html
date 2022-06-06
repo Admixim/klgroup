@@ -8,26 +8,31 @@
         <th>Контрагент</th>
         <th>Описание</th>
         <th>Файл</th>
+        <th>Чек</th>
         <th>Автор</th>
         <th>Дата добавления</th>
     </tr>
     </thead>
     <tbody>
     {% for item in list_expert %}
-    {% if item.file_expert %}
     <tr>
         <th scope="row">{{ item.pk }}</th>
         <td>{{ item.contragent.name }}</td>
         <td>{{ item.comment|slice:":50"}}</td>
-        <td><a href="{{ item.file_expert.url }}" target="_blank"  class="text-body">{{ item.file_expert|make_list|slice:'23:'|join:''}}</a></td>
-        {% if item.file_invoce %}
-        <td><a href="{{ item.file_invoce.url }}" target="_blank"  class="text-body">{{ item.file_invoce|make_list|slice:'13:'|join:''}}</a>
-        </td>
-        {% endif %}
+            {% if item.file_expert %}
+                <td><a href="{{ item.file_expert.url }}" target="_blank" class="text-body">{{ item.file_expert|make_list|slice:'23:'|join:'' }}</a></td>
+            {% else %}
+                <td>Без файла</td>
+            {% endif %}
+            {% if item.file_invoce %}
+                <td><a href="{{ item.file_invoce.url }}" target="_blank" class="text-body">{{ item.file_invoce|make_list|slice:'13:'|join:'' }}</a></td>
+            {% else %}
+                <td>Без файла</td>
+            {% endif %}
         <td>Вставить модель пользователь!!!</td>
         <td>{{ item.created }}</td>
     </tr>
-    {% endif %}
+
     {% endfor %}
     </tbody>
 </table>

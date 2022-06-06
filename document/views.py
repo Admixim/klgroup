@@ -8,6 +8,7 @@ from io import BytesIO
 
 from xhtml2pdf import pisa
 
+import config
 from client.models import *
 from .models import Document, Body_doc
 # from xhtml2pdf import pisa
@@ -60,10 +61,10 @@ def pdf_contract(request, client_id):
     type_doc = 'contract_'
     name = uuid.uuid4()
     # создание pdf файла
-    _file = open(f'{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf', 'wb')
+    _file = open(f'{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf', 'wb')
     pisa_status = pisa.CreatePDF(html.encode('UTF-8'), encoding='UTF-8', dest=_file)
     _file.close()
-    return FileResponse(open(f'{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf', 'rb'),
+    return FileResponse(open(f'{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf', 'rb'),
                         as_attachment=True)
 
 
@@ -88,10 +89,10 @@ def pdf_contract_one(request, client_id):
     time_string = time.strftime("%m-%d-%Y_")
     name = uuid.uuid4()
     type_doc = 'contract_one_'
-    _file = open(f"{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf", 'wb')
+    _file = open(f"{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf", 'wb')
     pisa_status = pisa.CreatePDF(html.encode('UTF-8'), encoding='UTF-8', dest=_file)
     _file.close()
-    return FileResponse(open(f'{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf', 'rb'),
+    return FileResponse(open(f'{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf', 'rb'),
                         as_attachment=True)
 
 
@@ -115,10 +116,10 @@ def pdf_contract_one_add(request, client_id):
     time_string = time.strftime("%m-%d-%Y_")
     type_doc = 'contract_one_add_'
     name = uuid.uuid4()
-    _file = open(f"{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf", 'wb')
+    _file = open(f"{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf", 'wb')
     pisa_status = pisa.CreatePDF(html.encode('UTF-8'), encoding='UTF-8', dest=_file)
     _file.close()
-    return FileResponse(open(f'{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf', 'rb'),
+    return FileResponse(open(f'{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf', 'rb'),
                         as_attachment=True)
 
 
@@ -142,10 +143,10 @@ def pdf_assignment(request, client_id):
     type_doc = 'assignment_'
     name = uuid.uuid4()
     # создание pdf файла
-    _file = open(f"{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf", 'wb')
+    _file = open(f"{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf", 'wb')
     pisa_status = pisa.CreatePDF(html.encode('UTF-8'), encoding='UTF-8', dest=_file)
     _file.close()
-    return FileResponse(open(f'{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf',
+    return FileResponse(open(f'{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf',
                              'rb'),
                         as_attachment=True)
 
@@ -170,10 +171,10 @@ def pdf_assignment_add(request, client_id):
     time_string = time.strftime("%m-%d-%Y_")
     type_doc = 'assignment_add'
     name = uuid.uuid4()
-    _file = open(f"{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf", 'wb')
+    _file = open(f"{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf", 'wb')
     pisa_status = pisa.CreatePDF(html.encode('UTF-8'), encoding='UTF-8', dest=_file)
     _file.close()
-    return FileResponse(open(f'{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf', 'rb'),
+    return FileResponse(open(f'{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf', 'rb'),
                         as_attachment=True)
 
 
@@ -199,10 +200,10 @@ def pdf_contract_expert(request, client_id):
     type_doc = 'contract_expert'
     name = uuid.uuid4()
     # создание pdf файла
-    _file = open(f"{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf", 'wb')
+    _file = open(f"{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf", 'wb')
     pisa_status = pisa.CreatePDF(html.encode('UTF-8'), encoding='UTF-8', dest=_file)
     _file.close()
-    return FileResponse(open(f'{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf', 'rb'),
+    return FileResponse(open(f'{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf', 'rb'),
                         as_attachment=True)
 
 
@@ -227,8 +228,8 @@ def pdf_contract_arbit(request, client_id):
     time_string = time.strftime("%m-%d-%Y_")
     type_doc = 'contract_arbit'
     name = uuid.uuid4()
-    _file = open(f"{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf", 'wb')
+    _file = open(f"{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf", 'wb')
     pisa_status = pisa.CreatePDF(html.encode('UTF-8'), encoding='UTF-8', dest=_file)
     _file.close()
-    return FileResponse(open(f'{settings.MEDIA_ROOT}/pdf_doc/{type_doc}{time_string}{name}.pdf', 'rb'),
+    return FileResponse(open(f'{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf', 'rb'),
                         as_attachment=True)

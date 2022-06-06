@@ -15,32 +15,7 @@
   <div class="main-content">
     <div class="page-content" align="center">
       <div class="container-fluid">
-        <div class="row">
-          <div class="page-title-box d-flex align-items-center justify-content-between">
-            <div class="btn-group me-1 mt-2">
-              <div class="mb-3">
-                <a href="{% url 'accident-new' %}" class="btn btn-success waves-effect waves-light">
-                  </i> Данные ДТП</a>
-              </div>
-            </div>
-            <div class="mb-3">
-              <a href="{% url 'expert-new' %}" class="btn btn-success waves-effect waves-light">
-                </i> Данные экспертизы</a>
-            </div>
-            <div class="mb-3">
-              <a href="{% url 'court-new' %}" class="btn btn-success waves-effect waves-light">
-                </i> Произвоство по делу</a>
-            </div>
-            <div class="mb-3">
-              <a href="{% url 'accident_list_doc' %}" class="btn btn-primary w-md">
-                </i> Документы</a>
-            </div>
-            <div class="mb-3">
-              <a href="{% url 'price-court-cash' %}" class="btn btn-success waves-effect waves-light">
-                </i> Судебные расходы</a>
-            </div>
-          </div>
-        </div>
+        {% include "dist/include/menu.html" %}
         <hr>
       </div>
       <div class="page-title-box d-flex align-items-center justify-content-between">

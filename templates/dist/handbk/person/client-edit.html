@@ -16,6 +16,36 @@
         </div>
         <div class="col-lg-12">
             <h4 class="card-title mb-4">КАРТА КЛИЕНТА</h4>
+            <div class="page-title-box d-flex align-items-center justify-content-between">
+            <div class="btn-group me-1 mt-2">
+                <button
+                        class="btn btn-primary w-md" id="contract" type="button">ДОГОВОР
+                </button>
+                <button
+                        type="button" id="expert" href="#" class="btn btn-primary waves-effect waves-light">
+                    ЭКСПЕРТИЗА
+                </button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">ОСТАЛЬНОЕ<i class="mdi mdi-chevron-down"></i>
+                    <span class="sr-only">Другие</span>
+                </button>
+                <div class="dropdown-menu">
+                    <ul>
+                        <a id="contract1" class="dropdown-item" href="#">Договор</a>
+                        <a id="contract_one" class="dropdown-item" href="#">Договор первичн</a>
+                        <a id="assignment" class="dropdown-item" href="#">Увед. цессия</a>
+                        <div class="dropdown-divider"></div>
+                        <a id="pdf_contract_one_add" class="dropdown-item" href="#">Доп соглашение</a>
+                    </ul>
+                </div>
+            </div>
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+                    </li>
+                </ol>
+            </div>
+        </div>
             <form method="POST" action="" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="page-title-box d-flex align-items-center justify-content-between">
@@ -298,15 +328,12 @@
         console.log('Yahoo!');
         let form = document.getElementById('form-doc');
         let csrftoken = Cookies.get('csrftoken');
-        let res = fetch('http://127.0.0.1:8000{% url '
-        pdf_expert
-        ' client %}', {
+        let res = fetch('http://127.0.0.1:8000 {% url "pdf_expert" client %}', {
             method: 'POST',
             headers: {"X-CSRFToken": csrftoken},
             body: new FormData(form),
         }
-    ).
-        then(res => res.blob())
+    ).then(res => res.blob())
             .then(blob => {
                 var file = window.URL.createObjectURL(blob);
                 window.location.assign(file);

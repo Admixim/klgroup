@@ -15,15 +15,20 @@
     <tbody>
     {% for item in list_car %}
     {% for file in item.car.files_auto.all %}
-    <tr>
-        <th scope="row">{{ file.pk }}</th>
-        <td> {{ file.types }}</td>
-        <td>{{ file.description }}</td>
-        <td><a href="{{ file.scan_doc.url }}" target="_blank"  class="text-body">{{ file.scan_doc|make_list|slice:'11:'|join:''}}</a></td>
-        <td>{{ file.created }}</td>
-        <td>{{ file.name }}</td>
-    </tr>
-    {% endfor %}
+        <tr>
+            <th scope="row">{{ file.pk }}</th>
+            <td> {{ file.types }}</td>
+            <td>{{ file.description }}</td>
+            {% if file.scan_doc %}
+            <td><a href="{{ file.scan_doc.url }}" target="_blank"  class="text-body">{{ file.scan_doc|make_list|slice:'13:'|join:''}}</a></td>
+
+            {% else %}
+                <td>Без файла</td>
+            {% endif %}
+            <td>{{ file.created }}</td>
+            <td>{{ file.name }}</td>
+        </tr>
+     {% endfor %}
     {% endfor %}
     </tbody>
 </table>

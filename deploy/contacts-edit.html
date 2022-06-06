@@ -25,24 +25,24 @@
                                     {% csrf_token %}
                                     <div class="page-title-box d-flex align-items-center justify-content-between">
                                      <h4 class="mb-0">
-{#                                       посмотреть как правильно урл написать #}
-{#                                        <button class="btn btn-primary w-md"   href={% url 'contract' %} type="button">Договор</button>#}
-{#                                         <button class="btn btn-primary w-md" onclick="document.location =/document/contract/{{item.id}}/" >Договор</button>#}
+<!--{#                                       посмотреть как правильно урл написать #}-->
+<!--{#                                        <button class="btn btn-primary w-md"   href={% url 'contract' %} type="button">Договор</button>#}-->
+<!--{#                                         <button class="btn btn-primary w-md" onclick="document.location =/document/contract/{{item.id}}/" >Договор</button>#}-->
                                          <div class="dropdown">
                                                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                         Печать <i class="mdi mdi-chevron-down"></i>
                                                     </button>
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                         <a class="dropdown-item"  style="background-color: lightgrey" href="{% url 'pdf_contract' client %}">Договор</a>
-                                                        <a class="dropdown-item" style="background-color: lightgrey"href="{% url 'pdf_contract_one' client %}">Договор первичн</a>
+<!--                                                        <a class="dropdown-item" style="background-color: lightgrey"href="{% url 'pdf_contract_one' client %}">Договор первичн</a>-->
                                                         <a class="dropdown-item" style="background-color: lightgrey"href="{% url 'pdf_assignment' client %}">Увед. цессия</a>
                                                     </div>
                                                 </div>
 
-{#                                          <a href="{% url 'pdf_contract' client %}" class="btn btn-primary w-md" >Договор</a>#}
-{#                                         <a href="{% url 'pdf_contract_one' client %}" class="btn btn-primary w-md">Договор первичн</a>#}
-{#                                         <a href="{% url 'pdf_assignment' client %}" class="btn btn-primary w-md">Увед. цессия</a>#}
-{#                                         <a href="{% url 'pdf_assignment_add' client %}" class="btn btn-primary w-md">Претензия</a>#}
+<!--                                                <a href="{% url 'pdf_contract' client %}" class="btn btn-primary w-md" >Договор</a>-->
+<!--                                                <a href="{% url 'pdf_contract_one' client %}" class="btn btn-primary w-md">Договор первичн</a>-->
+<!--                                                <a href="{% url 'pdf_assignment' client %}" class="btn btn-primary w-md">Увед. цессия</a>-->
+<!--                                                   <a href="{% url 'pdf_assignment_add' client %}" class="btn btn-primary w-md">Претензия</a>-->
 
                                      </h4>
                                     <div class="page-title-right">
@@ -90,13 +90,13 @@
                                                         {{ form.phone }}
                                                     </div>
                                                 </div>
-                                                {#                                                <div class="mb-3 row">#}
-                                                {#                                                    <label for="example-tel-input" class="col-md-2 col-form-label">Telephone</label>#}
-                                                {#                                                    <div class="col-md-10">#}
-                                                {#                                                        <input class="form-control" type="tel" value="1-(555)-555-5555"#}
-                                                {#                                                               id="example-tel-input">#}
-                                                {#                                                    </div>#}
-                                                {#                                                </div>#}
+<!--                                                {#                                                <div class="mb-3 row">#}-->
+<!--                                                {#                                                    <label for="example-tel-input" class="col-md-2 col-form-label">Telephone</label>#}-->
+<!--                                                {#                                                    <div class="col-md-10">#}-->
+<!--                                                {#                                                        <input class="form-control" type="tel" value="1-(555)-555-5555"#}-->
+<!--                                                {#                                                               id="example-tel-input">#}-->
+<!--                                                {#                                                    </div>#}-->
+<!--                                                {#                                                </div>#}-->
                                                 <div class="col-lg-6">
                                                     <div class="mb-3">
                                                         {{ form.post_mail }}
