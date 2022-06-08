@@ -46,11 +46,12 @@ def pdf_contract(request, client_id):
         print(form.cleaned_data)
         client = form.save(commit=False)
         client.save()
+        print("Сохранилось без ошибок все)))")
     else:
         print("У меня куча ошибок, наверное)))")
 
     context = {
-        'client': Client.objects.get(id=client_id),
+        'client': client,
         'document': document
     }
     template = get_template(template_path)
@@ -64,6 +65,9 @@ def pdf_contract(request, client_id):
     _file = open(f'{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf', 'wb')
     pisa_status = pisa.CreatePDF(html.encode('UTF-8'), encoding='UTF-8', dest=_file)
     _file.close()
+    # Путь файла для сохранения
+    dir_file = f'{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf'
+
     return FileResponse(open(f'{settings.MEDIA_ROOT}/upload/pdf_doc/{type_doc}{time_string}{name}.pdf', 'rb'),
                         as_attachment=True)
 
