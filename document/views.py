@@ -5,9 +5,7 @@ import time
 from django.conf import settings
 from django.shortcuts import render, get_object_or_404
 from io import BytesIO
-
 from xhtml2pdf import pisa
-
 import config
 from client.models import *
 from .models import Document, Body_doc
@@ -25,11 +23,9 @@ def context(client_id, document_id):
     document = Document.objects.get(id=document_id)
     client = Client.objects.get(id=client_id)
     body_doc = Body_doc.objects.filter(document=document).order_by('id')
-
     data = {'document': document,
             'client': client,
             'body_doc': {k: block for k, block in enumerate(body_doc)}}
-
     return data
 
 
@@ -49,14 +45,12 @@ def pdf_contract(request, client_id):
         print("Сохранилось без ошибок все)))")
     else:
         print("У меня куча ошибок, наверное)))")
-
     context = {
         'client': client,
         'document': document
-    }
+            }
     template = get_template(template_path)
     html = template.render(context)
-
     # создание имени  для pdf файла
     time_string = time.strftime("%m-%d-%Y_")
     type_doc = 'contract_'
@@ -80,14 +74,13 @@ def pdf_contract_one(request, client_id):
     if form.is_valid():
         client = form.save(commit=False)
         client.save()
-
     document = Document.objects.get(id=1)
     template_path = 'doc_pdf/contract_one.html'
 
     context = {
         'client': client,
         'document': document
-    }
+                }
     template = get_template(template_path)
     html = template.render(context)
     time_string = time.strftime("%m-%d-%Y_")
@@ -110,11 +103,10 @@ def pdf_contract_one_add(request, client_id):
         client.save()
     document = Document.objects.get(id=1)
     template_path = 'doc_pdf/contract_one_add.html'
-
     context = {
         'client': client,
         'document': document
-    }
+                }
     template = get_template(template_path)
     html = template.render(context)
     time_string = time.strftime("%m-%d-%Y_")
@@ -140,7 +132,7 @@ def pdf_assignment(request, client_id):
     context = {
         'client': client,
         'document': document
-    }
+                }
     template = get_template(template_path)
     html = template.render(context)
     time_string = time.strftime("%m-%d-%Y_")
@@ -191,12 +183,10 @@ def pdf_contract_expert(request, client_id):
         client.save()
     document = Document.objects.get(id=2)
     template_path = 'doc_pdf/contract_expert.html'
-
     context = {
         'client': client,
         'document': document
-    }
-
+            }
     template = get_template(template_path)
     html = template.render(context)
     # создание имени  для pdf файла
@@ -218,15 +208,12 @@ def pdf_contract_arbit(request, client_id):
     if form.is_valid():
         client = form.save(commit=False)
         client.save()
-
     document = Document.objects.get(id=2)
     template_path = 'doc_pdf/contract_one_arbit.html'
-
     context = {
         'client': client,
         'document': document
     }
-
     template = get_template(template_path)
     html = template.render(context)
     time_string = time.strftime("%m-%d-%Y_")

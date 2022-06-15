@@ -417,6 +417,15 @@ class Partner(models.Model):
     def get_fullname(self):
         return self.client
 
+    def get_carfullname(self):
+        marka = self.car.marka
+        model = self.car.model
+        number = self.car.number
+        color = self.car.color
+        data =number +'/n' + (f'{marka}') + '/n' + (f'{model}') + color
+        return data
+
+
     def get_client(self):
         return self.accident.partner_accident.filter(type=True).first()
 
@@ -425,9 +434,6 @@ class Partner(models.Model):
         for item in files.all():
             print(item)
             return  item
-
-
-
 
 
 class FileCompany(models.Model):
