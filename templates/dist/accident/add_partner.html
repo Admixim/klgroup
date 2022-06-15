@@ -205,9 +205,10 @@
               <th>
               <td> {% if list.type %}<span class="colorclient">Клиент</span>{% else %} -----{% endif %}</td>
               </th>
-              <td>{{ list.get_fullname }}</td>
-              <th>{{ list.get_client.car.model }} {{ list.get_client.car.number }}{{ list.get_client.car.color }}11
-              </th>
+
+              <th>{{ list.car.marka }}&nbsp{{ list.car.model }} &nbsp{{ list.car.number }}&nbsp</th>
+
+
               <td>{{ list.status.name }}</td>
               <td>{{ list.client.phone }}</td>
               <td>Вставить коментарий откуда?</td>

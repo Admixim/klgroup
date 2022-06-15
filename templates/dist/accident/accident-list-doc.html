@@ -18,40 +18,36 @@
 <div class="main-content">
     <div class="page-content" align="center">
         {% include "dist/include/menu.html" %}
-        <div class="page-title-box d-flex align-items-center justify-content-between">
-            <div class="btn-group me-1 mt-2">
-                <button
-                        class="btn btn-primary w-md" id="contract" type="button">ДОГОВОР
-                </button>
-                <button
-                        type="button" id="expert" href="#" class="btn btn-primary waves-effect waves-light">ЭКСПЕРТИЗА
-                </button>
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">ОСТАЛЬНОЕ<i class="mdi mdi-chevron-down"></i>
-                    <span class="sr-only">Другие</span>
-                </button>
-                <div class="dropdown-menu">
-                    <ul>
-                        <a id="contract1" class="dropdown-item" href="#">Список </a>
-                        <a id="contract_one" class="dropdown-item" href="#">Договор первичн</a>
-                        <a id="assignment" class="dropdown-item" href="#">Увед. цессия</a>
-                        <div class="dropdown-divider"></div>
-                        <a id="pdf_contract_one_add" class="dropdown-item" href="#">Доп соглашение</a>
-                    </ul>
-                </div>
-            </div>
-            <div class="page-title-right">
-                <ol class="breadcrumb m-0">
-                </ol>
-            </div>
+      <div class="page-title-box d-flex align-items-center justify-content-between">
+        <div class="btn-group me-1 mt-2">
+          <button
+              class="btn btn-primary w-md" id="contract" type="button">ДОГОВОР
+          </button>
+
+          <button
+              type="button" id="contract_one" href="#" class="btn btn-primary waves-effect waves-light">ПЕРВИЧНЫЙ
+            ДОГОВОР
+          </button>
+          <button
+              type="button" id="assignment" href="#" class="btn btn-primary waves-effect waves-light">УВЕДОМЛЕНИЕ ЦЕССИИ
+          </button>
+          <button
+              type="button" id="pdf_contract_one_add" href="#" class="btn btn-primary waves-effect waves-light">
+            ДОПОЛНИТЕЛЬНОЕ СОГЛАШЕНИЕ
+          </button>
+          <button
+              type="button" id="expert" href="#" class="btn btn-primary waves-effect waves-light">ДОГОВОР ЭКСЕРТИЗЫ
+          </button>
         </div>
-        <hr>
+
+      </div>
+      <hr>
     </div>
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title mb-4">Форма прикрепления файлов к делу</h4>
-                <form class="repeater" enctype="multipart/form-data">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Форма прикрепления файлов к делу</h4>
+        <form class="repeater" enctype="multipart/form-data">
                     <div data-repeater-list="group-a">
                         <div data-repeater-item="" class="row">
                             <div class="mb-3 col-lg-2">
