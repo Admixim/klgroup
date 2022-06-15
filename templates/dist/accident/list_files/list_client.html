@@ -18,7 +18,7 @@
     {% for file in item.client.files_persons.all %}
     <tr>
         <th scope="row">{{ file.pk }}</th>
-        <td> {{ file.types }}</td>
+        <td> {{ file.get_types_display }}</td>
         <td>{{ file.description }}</td>
          {% if file.scan_doc %}
         <td><a href="{{ file.scan_doc.url }}" target="_blank"  class="text-body">{{ file.scan_doc|make_list|slice:'13:'|join:''}}</a></td>
