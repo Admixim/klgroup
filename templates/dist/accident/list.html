@@ -64,30 +64,36 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for item in accident %}
-                      <tr>
-                        <td>
-                          <a href="/accident/accident-add-partner/{{ item.id }}/">{{ item.id }}</a>
-                        </td>
-                        <td>{{ item.status }}</td>
-                        <td>{{ item.number }}</td>
-                        <td>{{ item.data |date:"d-m-Y" }}</td>
-                        <td>{{ item.court_info}} </td>
-                        <td>{{ item.court_info.status }}</td>
-                        <td>{{ item.partner_accidentя }}</td>
-                        <td>
-                          <ul class="list-inline mb-0">
-                            <li class="list-inline-item">
-                              <a href="/accident/accident-add-partner/{{ item.id }}/">
-                                <i class="uil uil-pen font-size-18"></i></a>
-                            </li>
-                          </ul>
-                        </td>
-                      </tr>
-                    {% endfor %}
+                    {% if accident %}
+                        {% for item in accident %}
+                          <tr>
+                            <td>
+                              <a href="/accident/accident-add-partner/{{ item.id }}/">{{ item.id }}</a>
+                            </td>
+                            <td>{{ item.status }}</td>
+                            <td>{{ item.number }}</td>
+                            <td>{{ item.data |date:"d-m-Y" }}</td>
+                            <td>{{ item.court_info}} </td>
+                            <td>{{ item.court_info.status }}</td>
+                            <td>{{ item.partner_accidentя }}</td>
+                            <td>
+                              <ul class="list-inline mb-0">
+                                <li class="list-inline-item">
+                                  <a href="/accident/accident-add-partner/{{ item.id }}/">
+                                    <i class="uil uil-pen font-size-18"></i></a>
+                                </li>
+                              </ul>
+                            </td>
+                          </tr>
+                        {% endfor %}
+                    {% else %}
                     </tbody>
                   </table>
+                  <center>
+                  <h5> Пока нет добавленных ДТП в список</h5>
+                    </center>
                  </div>
+                {% endif %}
               </div>
             </div>
           </div>

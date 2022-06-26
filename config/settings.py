@@ -39,11 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accident',
     'crm_kl',
     'client',
     'expert',
     'auto',
-    'accident',
+
     'court',
     'document',
     'price',

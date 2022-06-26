@@ -12,11 +12,9 @@ def accident_list(request):
 
     accident = Accident.objects.all()
 
-    print(accident)
     return render(request,
                   'dist/accident/list.html',
                   {'accident': accident,
-
                    }
                   )
 

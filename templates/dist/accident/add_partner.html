@@ -160,25 +160,33 @@
                             <input type="submit" class="btn btn-primary btn-block"
                                    value=" Прикрепить Участника">
                         </div>
-                        <div class="mb-3 col-lg-5">
-                            <a href="{% url 'auto-new' %}" type="button" class="btn btn-primary btn-block">Добавить
+
+
+                    </div>
+
+                </div>
+                <h4 class="card-title mb-2">Документы о ДТП</h4>
+                <div data-repeater-item="" class="row">
+
+                    <div class="mb-10 col-lg-5">
+                        <a href="{% url 'auto-new' %}" type="button" class="btn btn-primary btn-block">Добавить
                                 ТС</a>
+                        <div class="mb-10 col-lg-7">
+                                    <div class="mb-6 col-lg-9">
+
                         </div>
-                        <div class="mb-3 col-lg-5">
-                            <a href="{% url 'client-new' %}" type="button"
+                        </div>
+                    </div>
+                    <div class="mb-10 col-lg-5">
+                        <a href="{% url 'client-new' %}" type="button"
                                class="btn btn-primary waves-effect waves-light"
                                data-bs-toggle="modal" data-bs-target="#exampleModalScrollable">Добавить физ.лицо</a>
-                            <!-- Modal button  for window form create new object -->
-                            <button type="button" action="{% url 'client-new' %}"
-                                    class="btn btn-primary waves-effect waves-light"
-                                    data-bs-toggle="modal"
-                                    data-bs-target=".bs-example-modal-xl">Добавить ТС modal
-                            </button>
                         </div>
 
                     </div>
-                </div>
+                    <div>
             </form>
+
         </div>
     </div>
     <div class="row">
