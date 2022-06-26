@@ -16,6 +16,49 @@ class InFiles(admin.StackedInline):
         }
          ),)
 
+class InInsurance(admin.StackedInline):
+    model = Insurance
+    show_change_link = True
+    extra = 0
+    fieldsets = (
+        ('Страховые документы', {
+            'fields': (
+                ("types",
+                 "i_serial",
+                 "i_number",
+                 "start_date",
+                 "end_date",
+                 "description",
+                 ),
+            )
+        }
+         ),
+    )
+
+@admin.register(Insurance)
+class InsuranceAdmin(admin.ModelAdmin):
+    """Таблица данных страховых полисов ТС"""
+
+    # def formfield_for_foreignkey(self, db_field, request, **kwargs):
+    #     if db_field.name == "category":
+    #         kwargs["queryset"] = Brend.objects.filter(name__in=Model)
+    #     return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+    list_display = (
+        "id",
+        "car",
+        "types",
+        "i_serial",
+        "i_number",
+        "start_date",
+        "end_date",
+        "description",
+        "updated",
+        "created"
+    )
+    list_display_links = ("id",)
+    save_on_top = True
+
 
 @admin.register(Brend)
 class BrendAdmin(admin.ModelAdmin):
@@ -100,7 +143,7 @@ class CarAdmin(admin.ModelAdmin):
         "driver")
     save_on_top = True
     search_fields = ("id", "number", "driver")
-    inlines = [InFiles]
+    inlines = [InFiles, InInsurance]
     fieldsets = (
         ('ТС', {
             'fields': (("model",
@@ -118,37 +161,6 @@ class CarAdmin(admin.ModelAdmin):
         },
 
          ),
-        ('Водительское удостоверение', {
-            'fields': (
-                ("driver",
-                 ))
-        },
-
-         ),
 
     )
 
-
-@admin.register(Insurance)
-class InsuranceAdmin(admin.ModelAdmin):
-    """Таблица данных страховых полисов ТС"""
-
-    # def formfield_for_foreignkey(self, db_field, request, **kwargs):
-    #     if db_field.name == "category":
-    #         kwargs["queryset"] = Brend.objects.filter(name__in=Model)
-    #     return super().formfield_for_foreignkey(db_field, request, **kwargs)
-
-    list_display = (
-        "id",
-        "car",
-        "types",
-        "i_serial",
-        "i_number",
-        "start_date",
-        "end_date",
-        "description",
-        "updated",
-        "created"
-    )
-    list_display_links = ("id",)
-    save_on_top = True
