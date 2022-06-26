@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Car, Model, Brend, AutoFiles
+from .models import Car, Model, Brend, AutoFiles, Insurance
 from django.forms import modelformset_factory
 from django.forms import (
     NumberInput,
@@ -127,12 +127,68 @@ class FileForm(ModelForm):
         }
 
 
-# FileFormset = formset_factory(FileForm, extra=2)
+InsuranceAutoFormset = modelformset_factory(
+    Insurance,
+    fields=('types',
+            'i_serial',
+            'i_number',
+            'start_date',
+            'end_date',
+            'description',
+            ),
+    extra=1,
+    widgets={
+        'i_serial': TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Серия'
+            }
+        ),
+        'types': Select(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Тип страховки'
+            }
+        ),
+        'description': TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Описание к полису'
+            }
+        ),
+        'i_number': TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Номер',
+            }
+        ),
+        'start_date': DateInput(format='%d/%m/%Y', attrs={
+                'class': 'form-control',
+                'placeholder': 'Дата начала ',
+                'data-date-container': '#datepicker2',
+                'data-provide': 'datepicker',
+                'data-date-autoclose': 'true',
+                'data-date-format': 'dd/mm/yyyy',
+            }),
+        'end_date': DateInput(format='%d/%m/%Y', attrs={
+                'class': 'form-control',
+                'placeholder': 'Дата завершения',
+                'data-date-container': '#datepicker2',
+                'data-provide': 'datepicker',
+                'data-date-autoclose': 'true',
+                'data-date-format': 'dd/mm/yyyy',
+            }),
+    }
+)
 
 
 FileAutoFormset = modelformset_factory(
     AutoFiles,
-    fields=('files', 'types', 'description', 'scan_doc'),
+    fields=('files',
+            'types',
+            'description',
+            'scan_doc'
+            ),
     extra=1,
     widgets={
         'files': TextInput(

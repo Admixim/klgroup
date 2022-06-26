@@ -21,21 +21,28 @@ def auto_new(request):
     if request.method == 'POST':
         autoform = AutoForm(request.POST, prefix=Car)
         formset = FileAutoFormset(request.POST, request.FILES, prefix=AutoFiles)
-        if autoform.is_valid() and formset.is_valid():
+        insurance = InsuranceAutoFormset(request.POST, request.FILES, prefix=Insurance)
+        if autoform.is_valid() and formset.is_valid() and insurance.is_valid():
             auto = autoform.save()
             for form in formset:
                 file = form.save(commit=False)
                 if file.scan_doc:
                     file.files = auto
                     file.save()
-                    return redirect('/auto/')
+            for doc in insurance:
+                item = doc.save(commit=False)
+                item.car = auto
+                item.save
+                return redirect('/auto/')
 
     template_name = 'dist/handbk/auto/auto-new.html'
     autoform = AutoForm(prefix=Car)
     formset = FileAutoFormset(queryset=AutoFiles.objects.none(), prefix=AutoFiles)
+    insurance = InsuranceAutoFormset(queryset=Insurance.objects.none(), prefix=Insurance)
     return render(request, template_name, {
             'autoform': autoform,
             'formset': formset,
+            'insurance': insurance,
         })
 
 
