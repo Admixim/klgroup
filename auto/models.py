@@ -54,59 +54,6 @@ class Model(models.Model):
     verbose_name_plural = "Модель ТС"
 
 
-class Insurance(models.Model):
-    """Таблица данных страховых полисов ТС"""
-
-    TYPES = (
-        (1, 'ОСАГО'),
-        (2, 'Каско'),
-        (3, 'Доп.соглашение'),
-    )
-    types = models.PositiveSmallIntegerField(choices=TYPES, null=True,
-                                             default='1',
-                                             blank=True,
-                                             )
-    i_serial = models.CharField(max_length=10,
-                                verbose_name='Серия '
-                                )
-    i_number = models.CharField(max_length=15,
-                                verbose_name='Номер'
-                                )
-    start_date = models.DateField(
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Дата выдачи')
-    end_date = models.DateField(
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Дата окончания')
-
-    description = models.CharField(max_length=100,
-                                   verbose_name='Описание'
-                                   )
-    author = models.OneToOneField(
-        User,
-        db_column='user',
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True,
-    )
-    created = models.DateTimeField(
-        auto_now_add=True,
-        auto_now=False
-    )
-    updated = models.DateTimeField(
-        auto_now_add=False,
-        auto_now=True
-    )
-
-    class Meta:
-        verbose_name = 'Страховой документ ТС'
-        verbose_name_plural = 'Страховые  документы ТС'
-
-
 class Car(models.Model):
     """Таблица основных  данных ТС """
 
@@ -125,14 +72,7 @@ class Car(models.Model):
         null=True,
         verbose_name='Марка '
     )
-    insurance = models.ForeignKey(
-        Insurance,
-        blank=True,
-        on_delete=models.CASCADE,
-        related_name='insurances',
-        null=True,
-        verbose_name='Страховые дококументы '
-    )
+
     number = models.CharField(
         max_length=24,
         blank=True,
@@ -231,6 +171,65 @@ class Car(models.Model):
         verbose_name = "Транспортное средство  "
         verbose_name_plural = "Транспортные средства"
         ordering = ['-created']
+
+
+class Insurance(models.Model):
+    """Таблица данных страховых полисов ТС"""
+    car = models.ForeignKey(
+        Car,
+        on_delete=models.CASCADE,
+        related_name='insurance_auto',
+
+        verbose_name=' Полисы страхования ТС'
+    )
+    TYPES = (
+        (1, 'ОСАГО'),
+        (2, 'Каско'),
+        (3, 'Доп.соглашение'),
+    )
+    types = models.PositiveSmallIntegerField(choices=TYPES, null=True,
+
+                                             blank=True,
+                                             )
+    i_serial = models.CharField(max_length=10,
+                                verbose_name='Серия '
+                                )
+    i_number = models.CharField(max_length=15,
+                                verbose_name='Номер'
+                                )
+    start_date = models.DateField(
+        blank=True,
+        null=True,
+        default=None,
+        verbose_name='Дата выдачи')
+    end_date = models.DateField(
+        blank=True,
+        null=True,
+        default=None,
+        verbose_name='Дата окончания')
+
+    description = models.CharField(max_length=100,
+                                   verbose_name='Описание'
+                                   )
+    author = models.OneToOneField(
+        User,
+        db_column='user',
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+    )
+    created = models.DateTimeField(
+        auto_now_add=True,
+        auto_now=False
+    )
+    updated = models.DateTimeField(
+        auto_now_add=False,
+        auto_now=True
+    )
+
+    class Meta:
+        verbose_name = 'Страховой документ ТС'
+        verbose_name_plural = 'Страховые  документы ТС'
 
 
 class AutoFiles(models.Model):

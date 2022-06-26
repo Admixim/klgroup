@@ -71,31 +71,6 @@ class ModelAdmin(admin.ModelAdmin):
     search_fields = ("id", "name",)
 
 
-@admin.register(Insurance)
-class InsuranceAdmin(admin.ModelAdmin):
-    """Таблица данных страховых полисов ТС"""
-
-    # def formfield_for_foreignkey(self, db_field, request, **kwargs):
-    #     if db_field.name == "category":
-    #         kwargs["queryset"] = Brend.objects.filter(name__in=Model)
-    #     return super().formfield_for_foreignkey(db_field, request, **kwargs)
-
-    list_display = (
-        "id",
-        "types",
-        "i_serial",
-        "i_number",
-        "start_date",
-        "end_date",
-        "description",
-        "author",
-        "updated",
-        "created"
-    )
-    list_display_links = ("id",)
-    save_on_top = True
-    search_fields = ("id", "i_number",)
-
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
     """Таблица основных данных о клиенте в  админ панели """
@@ -152,3 +127,28 @@ class CarAdmin(admin.ModelAdmin):
          ),
 
     )
+
+
+@admin.register(Insurance)
+class InsuranceAdmin(admin.ModelAdmin):
+    """Таблица данных страховых полисов ТС"""
+
+    # def formfield_for_foreignkey(self, db_field, request, **kwargs):
+    #     if db_field.name == "category":
+    #         kwargs["queryset"] = Brend.objects.filter(name__in=Model)
+    #     return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+    list_display = (
+        "id",
+        "car",
+        "types",
+        "i_serial",
+        "i_number",
+        "start_date",
+        "end_date",
+        "description",
+        "updated",
+        "created"
+    )
+    list_display_links = ("id",)
+    save_on_top = True
