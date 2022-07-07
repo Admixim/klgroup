@@ -7,11 +7,12 @@ class Brend(models.Model):
     """Список марок ТС"""
 
     name = models.CharField(
-        max_length=30,
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Марка ТС ')
+                            max_length=30,
+                            blank=True,
+                            null=True,
+                            default=None,
+                            verbose_name='Марка ТС '
+                            )
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
@@ -28,17 +29,17 @@ class Model(models.Model):
     """Список моделей ТС"""
 
     name = models.CharField(
-        max_length=30,
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Модель ТС '
-    )
+                            max_length=30,
+                            blank=True,
+                            null=True,
+                            default=None,
+                            verbose_name='Модель ТС '
+                        )
     brand_auto = models.ForeignKey(
-        Brend,
-        on_delete=models.CASCADE,
-        verbose_name='Марка Авто'
-    )
+                                    Brend,
+                                    on_delete=models.CASCADE,
+                                    verbose_name='Марка Авто'
+                                )
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
@@ -58,111 +59,111 @@ class Car(models.Model):
     """Таблица основных  данных ТС """
 
     model = models.ForeignKey(
-        Model, blank=True,
-        on_delete=models.CASCADE,
-        related_name='model',
-        null=True,
-        verbose_name='Модель '
-    )
+                                Model, blank=True,
+                                on_delete=models.CASCADE,
+                                related_name='model',
+                                null=True,
+                                verbose_name='Модель '
+                            )
     marka = models.ForeignKey(
-        Brend,
-        blank=True,
-        on_delete=models.CASCADE,
-        related_name='marka',
-        null=True,
-        verbose_name='Марка '
-    )
+                                Brend,
+                                blank=True,
+                                on_delete=models.CASCADE,
+                                related_name='marka',
+                                null=True,
+                                verbose_name='Марка '
+                            )
 
     number = models.CharField(
-        max_length=24,
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Гос.номер '
-    )
+                                max_length=24,
+                                blank=True,
+                                null=True,
+                                default=None,
+                                verbose_name='Гос.номер '
+                            )
     color = models.CharField(
-        max_length=24,
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Цвет'
-    )
+                            max_length=24,
+                            blank=True,
+                            null=True,
+                            default=None,
+                            verbose_name='Цвет'
+                        )
     date_made = models.PositiveSmallIntegerField(
-        blank=True,
-        null=True,
-        verbose_name='Год выпуска'
-    )
+                                                blank=True,
+                                                null=True,
+                                                verbose_name='Год выпуска'
+                                            )
     sts_s = models.CharField(
-        max_length=4,
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Серия СТС'
-    )
+                            max_length=4,
+                            blank=True,
+                            null=True,
+                            default=None,
+                            verbose_name='Серия СТС'
+                        )
     sts_n = models.CharField(
-        max_length=11,
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Номер СТС'
-    )
+                                max_length=11,
+                                blank=True,
+                                null=True,
+                                default=None,
+                                verbose_name='Номер СТС'
+                            )
     sts_date = models.DateField(
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Дата выдачи СТС'
-    )
+                                blank=True,
+                                null=True,
+                                default=None,
+                                verbose_name='Дата выдачи СТС'
+                            )
     pts_s = models.CharField(
-        max_length=4,
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Серия ПТС'
-    )
+                                max_length=4,
+                                blank=True,
+                                null=True,
+                                default=None,
+                                verbose_name='Серия ПТС'
+                            )
     pts_n = models.CharField(
-        max_length=11,
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Номер ПТС'
-    )
+                                max_length=11,
+                                blank=True,
+                                null=True,
+                                default=None,
+                                verbose_name='Номер ПТС'
+                            )
     pts_date = models.DateField(
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Дата выдачи ПТС'
-    )
+                                blank=True,
+                                null=True,
+                                default=None,
+                                verbose_name='Дата выдачи ПТС'
+                            )
     vin = models.CharField(
-        max_length=24,
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='VIN номер'
-    )
+                            max_length=24,
+                            blank=True,
+                            null=True,
+                            default=None,
+                            verbose_name='VIN номер'
+                        )
 
     driver = models.CharField(
-        max_length=24,
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Сделать ссылку на клиента '
-    )
+                                max_length=24,
+                                blank=True,
+                                null=True,
+                                default=None,
+                                verbose_name='Сделать ссылку на клиента '
+                            )
 
     Comment = models.CharField(
-        max_length=500,
-        blank=True, null=True,
-        default=None,
-        verbose_name='Комментарий'
-    )
+                                max_length=500,
+                                blank=True, null=True,
+                                default=None,
+                                verbose_name='Комментарий'
+                            )
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(
-        auto_now_add=True,
-        auto_now=False
-    )
+                                    auto_now_add=True,
+                                    auto_now=False
+                                )
     updated = models.DateTimeField(
-        auto_now_add=False,
-        auto_now=True
-    )
+                                    auto_now_add=False,
+                                    auto_now=True
+                                )
 
     def __str__(self):
         return '{} {} {}'.format(self.number, self.model, self.marka)
@@ -176,12 +177,12 @@ class Car(models.Model):
 class Insurance(models.Model):
     """Таблица данных страховых полисов ТС"""
     car = models.ForeignKey(
-        Car,
-        on_delete=models.CASCADE,
-        related_name='insurance_auto',
+                            Car,
+                            on_delete=models.CASCADE,
+                            related_name='insurance_auto',
 
-        verbose_name=' Полисы страхования ТС'
-    )
+                            verbose_name=' Полисы страхования ТС'
+                        )
     TYPES = (
         (1, 'ОСАГО'),
         (2, 'Каско'),
@@ -198,34 +199,38 @@ class Insurance(models.Model):
                                 verbose_name='Номер'
                                 )
     start_date = models.DateField(
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Дата выдачи')
+                                    blank=True,
+                                    null=True,
+                                    default=None,
+                                    verbose_name='Дата выдачи'
+                                    )
     end_date = models.DateField(
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Дата окончания')
+                                blank=True,
+                                null=True,
+                                default=None,
+                                verbose_name='Дата окончания'
+                                )
 
     description = models.CharField(max_length=100,
+                                   blank=True,
+                                   null=True,
                                    verbose_name='Описание'
                                    )
     author = models.OneToOneField(
-        User,
-        db_column='user',
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True,
-    )
+                                    User,
+                                    db_column='user',
+                                    on_delete=models.CASCADE,
+                                    blank=True,
+                                    null=True,
+                                )
     created = models.DateTimeField(
-        auto_now_add=True,
-        auto_now=False
-    )
+                                    auto_now_add=True,
+                                    auto_now=False
+                                )
     updated = models.DateTimeField(
-        auto_now_add=False,
-        auto_now=True
-    )
+                                    auto_now_add=False,
+                                    auto_now=True
+                                )
 
     class Meta:
         verbose_name = 'Страховой документ ТС'
@@ -243,40 +248,40 @@ class AutoFiles(models.Model):
         (5, 'КАСКО'),
     )
     types = models.PositiveSmallIntegerField(
-        choices=TYPES,
-        null=True,
-        default=None,
-        blank=True,
-    )
+                                            choices=TYPES,
+                                            null=True,
+                                            default=None,
+                                            blank=True,
+                                        )
 
     files = models.ForeignKey(
-        Car,
-        on_delete=models.CASCADE,
-        related_name='files_auto',
-        blank=True,
-        null=True,
-        verbose_name='Прикрепленные файлы (Car)'
-    )
+                                Car,
+                                on_delete=models.CASCADE,
+                                related_name='files_auto',
+                                blank=True,
+                                null=True,
+                                verbose_name='Прикрепленные файлы (Car)'
+                            )
     types = models.PositiveSmallIntegerField(choices=TYPES, null=True,
                                              default=None,
                                              blank=True, )
     description = models.CharField(
-        max_length=100,
-        verbose_name='Описание'
-    )
+                                    max_length=100,
+                                    verbose_name='Описание'
+                                )
     scan_doc = models.FileField(
-        upload_to='media/auto/',
-        null=True,
-        default=None,
-        verbose_name="Файл"
-    )
+                                upload_to='media/auto/',
+                                null=True,
+                                default=None,
+                                verbose_name="Файл"
+                            )
     author = models.OneToOneField(
-        User,
-        db_column='user',
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True,
-    )
+                                    User,
+                                    db_column='user',
+                                    on_delete=models.CASCADE,
+                                    blank=True,
+                                    null=True,
+                                )
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
