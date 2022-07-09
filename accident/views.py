@@ -1,5 +1,5 @@
 # coding: utf-8
-
+print('Hello')
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import AccidentForm, AccidentAddPartnerForm
@@ -56,14 +56,12 @@ def accident_add_partner(request, pk):
         if add_partner.is_valid():
             form = add_partner.save(commit=False)
             # Сохранение связей ДТП
-
             form.accident = accident
             # pforms =pform.save(commit=False)
             form.save()
             # pform.save()
             # return redirect('/accident/edit/%d/accident-add-partner/' % (pk)+ str(form.id)+ '/')
             return redirect('/accident/accident-add-partner/%d/' % pk, '/')
-
     else:
         list_partner = accident.partner_accident.all()
     add_partner = PartnerForm(prefix='partners')
@@ -103,7 +101,6 @@ def accident_edit(request, pk):
         list_partner = accident.partner_accident.all()
         client = ClientForm(request.POST, request.FILES, prefix='client')
     template_name = 'dist/accident/edit.html'
-
     return render(request, template_name, {'form': form,
                                            'Accident': Accident,
                                            'add_partner': add_partner,
@@ -149,7 +146,6 @@ def accident_list_doc(request, pk):
         if form.is_valid():
             print(form.cleaned_data)
             form = form.save(commit=False)
-
             form.save()
             return redirect('/Accident/')
         else:
@@ -203,7 +199,6 @@ def accident_edit1(request, pk):
             client = form.save(commit=False)
             client.save()
             return redirect('/accident/')
-
     else:
         form = AccidentAddPartnerForm(instance=accident)
         template_name = 'dist/accident/edit.html'

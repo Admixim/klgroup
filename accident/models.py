@@ -205,8 +205,8 @@ class Accident(models.Model):
 
     def get_accident(self):
         b = self.partner_accident.filter(type='True').first()
-
         return HttpResponse(f'{b.car.model}')
+
     def get_acciden(self):
         info = Accident.court_info.pk
         name = self.name + self.surname

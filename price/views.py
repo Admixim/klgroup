@@ -13,7 +13,6 @@ def price_list(request):
 
 
 def price_court_cash(request):
-    error = ''
     template_name = 'dist/price/price-court-cash-accident.html'
     return render(request, template_name)
 

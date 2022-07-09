@@ -67,3 +67,38 @@ $(document).on('click', '.form-row', function (e) {
     deleteForm('form', $(this));
     return false;
 });
+
+
+var markaSelect = document.querySelector('#marka-select')
+var modelSelect = document.querySelector('#model-select')
+var data = {
+    markaSelect: [modelSelect]
+}
+var marka = Object.keys(data);
+AddOptions(modelSelect, marka);
+
+var defaultModel = data[marka[0]];
+addOptions(modelSelect, defaultModel);
+
+markaSelect.addEventListener('change', function () {
+    var model = data[this.value];
+    modelSelect.length = 0;
+
+    addOptions(modelSelect, model);
+
+});
+
+function addOptions(select, arr) {
+    for (var i = 0; i < arr.length;
+         i++) {
+        select.add(new Option(arr[i]));
+    }
+}
+
+
+
+
+
+
+
+

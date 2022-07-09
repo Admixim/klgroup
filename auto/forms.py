@@ -43,6 +43,7 @@ class AutoForm(ModelForm):
                 'placeholder': 'Марка'
             }),
             "model": Select(attrs={
+                'id': 'model-select',
                 'class': 'form-control',
                 'placeholder': 'Модель'
             }),

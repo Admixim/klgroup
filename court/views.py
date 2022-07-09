@@ -8,9 +8,9 @@ from accident.models import Accident
 
 def court_list(request):
     """Список клиентов общий"""
-    accident =Accident.objects.all()
 
     court_info = InfoCourt.objects.all()
+
     return render(request,
                   'dist/court/list.html',
                   {'court_info': court_info,
