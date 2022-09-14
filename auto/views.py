@@ -61,11 +61,12 @@ def auto_edit(request, pk):
             auto = autoform.save()
             for form in formset:
                 instance = form.save(commit=False)
-                if instance:
+                if instance.scan_doc:
                     instance.files = auto
-                    print(instance)
+                    print('Instance', instance)
+                    print('auto', auto)
                     instance.save()
-            return redirect('auto-list')
+        return redirect('auto-list')
     else:
         autoform = AutoForm(instance=auto)
         list_files = auto.files_auto.all()
