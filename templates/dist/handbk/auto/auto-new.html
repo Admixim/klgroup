@@ -28,23 +28,23 @@
                                 <!-- Auto Details -->
                                 <section>
                                     <div class="page-title-box d-flex align-items-center justify-content-between">
-                                      <h4 class="mb-0"></h4>
-                                      <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                          <button class="btn btn-primary w-md" type="submit">Сохранить</button>
-                                          </li>
-                                        </ol>
-                                      </div>
+                                        <h4 class="mb-0"></h4>
+                                        <div class="page-title-right">
+                                            <ol class="breadcrumb m-0">
+                                                <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+                                                </li>
+                                            </ol>
+                                        </div>
                                     </div>
-                                  <div class="row">
-                                    <div class="col-lg-6">
-                                      <div class="mb-3" id="marka-select">
-                                        {{ autoform.marka }}
-                                      </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                      <div class="mb-3" id="model-select">
-                                        {{ autoform.model }}
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-3" id="marka-select">
+                                                {{ autoform.marka }}
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-3" id="model-select">
+                                                {{ autoform.model }}
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -127,71 +127,73 @@
                                         <div class="row">
                                             <!-- SK Company Auto -->
                                             <h3>Документы Страховых компаний </h3>
-                                            {{ insurance.management_form }}
-                                            {% for item in insurance %}
-                                            <div class="mb-3 col-lg-2">
-                                                {{ item.types }}
-                                            </div>
-                                            <div class="mb-3 col-lg-5">
-                                                {{ item.i_serial }}
-                                            </div>
-                                            <div class="mb-3 col-lg-2">
-                                                {{ item.i_number }}
-                                            </div>
-                                            <div class="mb-3 col-lg-2">
-                                                {{ item.start_date }}
-                                            </div>
-                                            <div class="mb-3 col-lg-2">
-                                                {{ item.end_date }}
-                                            </div>
-                                            <div class="mb-3 col-lg-2">
-                                                {{ item.description }}
-                                            </div>
-                                            {% endfor %}
-
-                                            <h3>Документы ТС</h3>
                                             <div data-repeater-item class="row">
-                                                {{ formset.management_form }}
-                                                {% for form in formset %}
-                                                <div class="row form-row">
-                                                    <div>
-                                                    </div>
-                                                    <div class="mb-3 col-lg-2">
-                                                        {{ form.types }}
-                                                    </div>
-                                                    <div class="mb-3 col-lg-5">
-                                                        {{ form.description }}
-                                                    </div>
-                                                    <div class="mb-3 col-lg-2">
-                                                        {{ form.scan_doc }}
-                                                    </div>
-                                                    <div class="mb-3 col-lg-2">
-                                                        <button id="minus" type="button"
-                                                                class="btn btn-success remove-form-row">-
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <div class="input-group-append">
-                                                    <button id="plus" type="button"
-                                                            class="btn btn-success add-form-row">Добавить
-                                                    </button>
-                                                </div>
-                                                {% endfor %}
-                                                <div class="page-title-box d-flex align-items-center justify-content-between">
-                                                    <h4 class="mb-0"></h4>
-                                                    <div class="page-title-right">
-                                                        <ol class="breadcrumb m-0">
-                                                            <button class="btn btn-primary w-md" type="submit">
-                                                                Сохранить
+                                                {{ insurance.management_form }}
+                                                {% for item in insurance %}
+                                                        <div class="mb-3 col-lg-2">
+                                                            {{ item.types }}
+                                                        </div>
+                                                        <div class="mb-3 col-lg-5">
+                                                            {{ item.i_serial }}
+                                                        </div>
+                                                        <div class="mb-3 col-lg-2">
+                                                            {{ item.i_number }}
+                                                        </div>
+                                                        <div class="mb-3 col-lg-2">
+                                                            {{ item.start_date }}
+                                                        </div>
+                                                        <div class="mb-3 col-lg-2">
+                                                            {{ item.end_date }}
+                                                        </div>
+                                                        <div class="mb-3 col-lg-2">
+                                                            {{ item.description }}
+                                                        </div>
+
+                                                    {% endfor %}
+
+                                                    <h3>Документы ТС</h3>
+                                                    <div data-repeater-item class="row">
+                                                        {{ formset.management_form }}
+                                                        {% for form in formset %}
+                                                        <div class="row form-row">
+                                                            <div>
+                                                            </div>
+                                                            <div class="mb-3 col-lg-2">
+                                                                {{ form.types }}
+                                                            </div>
+                                                            <div class="mb-3 col-lg-5">
+                                                                {{ form.description }}
+                                                            </div>
+                                                            <div class="mb-3 col-lg-2">
+                                                                {{ form.scan_doc }}
+                                                            </div>
+                                                            <div class="mb-3 col-lg-2">
+                                                                <button id="minus" type="button"
+                                                                        class="btn btn-success remove-form-row">-
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="input-group-append">
+                                                            <button id="plus" type="button"
+                                                                    class="btn btn-success add-form-row">Добавить
                                                             </button>
-                                                            </li>
-                                                        </ol>
+                                                        </div>
+                                                        {% endfor %}
+                                                        <div class="page-title-box d-flex align-items-center justify-content-between">
+                                                            <h4 class="mb-0"></h4>
+                                                            <div class="page-title-right">
+                                                                <ol class="breadcrumb m-0">
+                                                                    <button class="btn btn-primary w-md" type="submit">
+                                                                        Сохранить
+                                                                    </button>
+                                                                    </li>
+                                                                </ol>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
                             </form>
                         </div>
                     </div>

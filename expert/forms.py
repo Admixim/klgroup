@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import *
-from django.forms import ModelForm, TextInput,NumberInput, Textarea, DateInput, Select, FileInput
+from django.forms import ModelForm, TextInput, NumberInput, Textarea, DateInput, Select, FileInput, modelformset_factory
 
 
 class ExpertForm(ModelForm):
@@ -21,8 +21,6 @@ class ExpertForm(ModelForm):
                   "price_summa",
                   "comment",
                   "contragent",
-                  "file_invoce",
-                  "file_expert",
                   "client",
                   "car"
                   ]
@@ -118,18 +116,7 @@ class ExpertForm(ModelForm):
                 'placeholder': 'Стоимость экспертизы'
 
             }),
-            "file_expert": FileInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Файл Экспертизы',
-            }),
-            "file_invoce": FileInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Файл Чека',
-                'type': "file",
-            })
-
-
-        }
+                  }
 
 
 class ExpertNewForm(ModelForm):
@@ -149,8 +136,6 @@ class ExpertNewForm(ModelForm):
                   "price_summa",
                   "comment",
                   "contragent",
-                  "file_invoce",
-                  "file_expert",
                   "client",
                   "car"
                   ]
@@ -236,15 +221,68 @@ class ExpertNewForm(ModelForm):
                 'placeholder': 'Стоимость экспертизы'
 
             }),
-            "file_expert": FileInput(attrs={
+                  }
+
+class FileForm(ModelForm):
+    class Meta:
+        model = ExpertFiles
+        fields = ["id",
+                  "files",
+                  "types",
+                  "description",
+                  "scan_doc",
+                  ]
+
+        widgets = {
+
+            "files": Select(attrs={
                 'class': 'form-control',
-                'placeholder': 'Файл Экспертизы',
+                'placeholder': 'Файл Expert'
             }),
-            "file_invoce": FileInput(attrs={
+            "description": TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Файл Чека',
-                'type': "file",
-            })
+                'type': 'text',
+                'placeholder': 'Описание',
 
-
+            }),
+            "scan_doc": FileInput(attrs={
+                'class': 'form-control'}),
+            'placeholder': 'Файл',
         }
+
+
+FileExpertFormset = modelformset_factory(
+    ExpertFiles,
+    fields=('files',
+            'types',
+            'description',
+            'scan_doc'
+            ),
+    extra=1,
+    widgets={
+        'files': TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Файлы Expert'
+            }
+        ),
+        'types': Select(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Тип файла'
+            }
+        ),
+        'description': TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Описание к файлу'
+            }
+        ),
+        'scan_doc': FileInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Файл',
+            }
+        ),
+    }
+)

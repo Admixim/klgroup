@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from client.models import Company,Client
 from accident.models import Accident
@@ -166,18 +167,7 @@ class Expert(models.Model):
         default=None,
         related_name='contragent',
         verbose_name='Контрагент')
-    file_expert = models.FileField(
-        upload_to='upload/doc_expert/file/',
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Файл Экспертизы')
-    file_invoce = models.FileField(
-        upload_to='upload/doc_expert/invoice/',
-        blank=True,
-        null=True,
-        default=None,
-        verbose_name='Файл скан чека')
+
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
@@ -192,10 +182,63 @@ class Expert(models.Model):
         ordering = ['-created']
 
     def get_expert_client(self):
-
-        return  self.accident.partner_accident.filter(type=True).first()
+        return self.accident.partner_accident.filter(type=True).first()
 
     def get_client_type(self) -> str:
         if self.is_type:
             return "Клиент"
         return "Не клиент"
+
+class ExpertFiles(models.Model):
+    """Таблица прикрепленных файлов Экспертизы """
+
+    TYPES = (
+        (1, 'Акт Осмотра'),
+        (2, 'Экспертиза'),
+        (3, 'Калькуляция'),
+        (3, 'Скан чека'),
+    )
+    types = models.PositiveSmallIntegerField(
+                                            choices=TYPES,
+                                            null=True,
+                                            default=None,
+                                            blank=True,
+                                        )
+
+    files = models.ForeignKey(
+                                Expert,
+                                on_delete=models.CASCADE,
+                                related_name='files_expert',
+                                blank=True,
+                                null=True,
+                                verbose_name='Прикрепленные файлы (Expert)'
+                            )
+    types = models.PositiveSmallIntegerField(choices=TYPES, null=True,
+                                             default=None,
+                                             blank=True, )
+    description = models.CharField(
+                                    max_length=100,
+                                    verbose_name='Описание '
+                                )
+    scan_doc = models.FileField(
+                                upload_to='media/doc_expert/',
+                                null=True,
+                                default=None,
+                                verbose_name="Файл "
+                            )
+    author = models.OneToOneField(
+                                    User,
+                                    db_column='user',
+                                    on_delete=models.CASCADE,
+                                    blank=True,
+                                    null=True,
+                                )
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return "%s" % self.name
+
+    class Meta:
+        verbose_name = 'Файл Экспертизы'
+        verbose_name_plural = 'Файлы Экспертизы'

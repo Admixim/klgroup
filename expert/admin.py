@@ -1,8 +1,19 @@
 from django.contrib import admin
-from expert.models import Expert,  ExpertComp,Type
+from expert.models import Expert, ExpertComp, Type, ExpertFiles
 
-
-
+class InFiles(admin.StackedInline):
+    model = ExpertFiles
+    show_change_link = True
+    extra = 0
+    fieldsets = (
+        ('Вложенные файлы', {
+            'fields': (
+                ("types", ("files"),
+                 ),
+                ("description", "scan_doc"),
+            )
+        }
+         ),)
 
 
 @admin.register(Type)
@@ -45,7 +56,6 @@ class ExpertAdmin(admin.ModelAdmin):
         "id",
         "num_doc",
         "summa_exp",
-        "file_invoce",
         "price_nwear",
         "price_wwear",
         "price_mmarket",
@@ -59,11 +69,11 @@ class ExpertAdmin(admin.ModelAdmin):
         "data_out",
         "comment",
         "price_uts",
-        "file_expert",
         "updated",
         "created",)
     list_display_links = ("id", "num_doc",)
     save_on_top = True
+    inlines = [InFiles]
     search_fields = ("id",)
     save_on_top = True
 
@@ -80,7 +90,6 @@ class InExpert(admin.StackedInline):
                 ("num_doc",
                  ("contragent"),
                  "summa_exp",
-                 "file_invoce",
                  ('type'),
                  ('accident')),
                 ("data_in",
@@ -94,7 +103,7 @@ class InExpert(admin.StackedInline):
         ('Комментарий', {
             "classes": ("collapse",),
             'fields': (("comment",
-                        "file_expert"))
+                        ))
 
         }
          ),
