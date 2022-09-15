@@ -222,33 +222,33 @@ class ExpertNewForm(ModelForm):
 
             }),
                   }
-
-class FileForm(ModelForm):
-    class Meta:
-        model = ExpertFiles
-        fields = ["id",
-                  "files",
-                  "types",
-                  "description",
-                  "scan_doc",
-                  ]
-
-        widgets = {
-
-            "files": Select(attrs={
-                'class': 'form-control',
-                'placeholder': 'Файл Expert'
-            }),
-            "description": TextInput(attrs={
-                'class': 'form-control',
-                'type': 'text',
-                'placeholder': 'Описание',
-
-            }),
-            "scan_doc": FileInput(attrs={
-                'class': 'form-control'}),
-            'placeholder': 'Файл',
-        }
+#
+# class FileForm(ModelForm):
+#     class Meta:
+#         model = ExpertFiles
+#         fields = ["id",
+#                   "files",
+#                   "types",
+#                   "description",
+#                   "scan_doc",
+#                   ]
+#
+#         widgets = {
+#
+#             "files": Select(attrs={
+#                 'class': 'form-control',
+#                 'placeholder': 'Файл Expert'
+#             }),
+#             "description": TextInput(attrs={
+#                 'class': 'form-control',
+#                 'type': 'text',
+#                 'placeholder': 'Описание',
+#
+#             }),
+#             "scan_doc": FileInput(attrs={
+#                 'class': 'form-control'}),
+#             'placeholder': 'Файл',
+#         }
 
 
 FileExpertFormset = modelformset_factory(
@@ -278,11 +278,10 @@ FileExpertFormset = modelformset_factory(
                 'placeholder': 'Описание к файлу'
             }
         ),
-        'scan_doc': FileInput(
-            attrs={
-                'class': 'form-control',
-                'placeholder': 'Файл',
-            }
+        'scan_doc': FileInput(attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Файл',
+        }
         ),
     }
 )

@@ -155,12 +155,10 @@
                                                     <div data-repeater-item class="row">
                                                         {{ formset.management_form }}
                                                         {% for form in formset %}
-                                                        <div class="row form-row">
-                                                            <div>
-                                                            </div>
-                                                            <div class="mb-3 col-lg-2">
+                                                             <div class="row form-row">
+                                                              <div class="mb-3 col-lg-2">
                                                                 {{ form.types }}
-                                                            </div>
+                                                              </div>
                                                             <div class="mb-3 col-lg-5">
                                                                 {{ form.description }}
                                                             </div>
@@ -169,7 +167,7 @@
                                                             </div>
                                                             <div class="mb-3 col-lg-2">
                                                                 <button id="minus" type="button"
-                                                                        class="btn btn-success remove-form-row">-
+                                                                        class="btn btn-success remove-form-row">Удалить
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -194,6 +192,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                </div>
                             </form>
                         </div>
                     </div>

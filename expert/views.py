@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from client.models import Partner
 from .models import *
 from accident.models import Accident
-from .forms import ExpertForm, ExpertNewForm
+from .forms import ExpertForm, ExpertNewForm, ExpertFiles,  FileExpertFormset
 from client.forms import PartnerForm
 
 
@@ -36,21 +36,29 @@ def expert_modal_new(request):
 def expert_new(request):
     """Создание-добавление  новой экспертизы без привязки к ДТП"""
 
-    template_name = 'dist/expert/new.html'
-    error = ''
     if request.method == 'POST':
-        expert = ExpertNewForm(request.POST, request.FILES or None, )
-        if expert.is_valid():
-            expert.save()
-            return redirect('/expert/')
+        expertform = ExpertNewForm(request.POST, prefix=Expert)
+        formset = FileExpertFormset(request.POST, request.FILES, prefix=ExpertFiles)
+        if expertform.is_valid() and formset.is_valid():
+            expert = expertform.save()
+            print('Expert', expert)
+            for form in formset:
+                file = form.save(commit=False)
+                print('files-1',file.files)
+                if file.scan_doc:
+                    print('scandoc1', file.scan_doc)
+                    print('files2', file)
+                    file.files = expert
+                    file.save()
+        return redirect('/expert/')
     else:
-        error = ' Форма не верно заполнена'
-        expert = ExpertNewForm()
-    data = {'expert': expert,
-            'error': error
+        expertform = ExpertNewForm(prefix=Expert)
+        formset = FileExpertFormset(queryset=ExpertFiles.objects.none(), prefix=ExpertFiles)
+        template_name = 'dist/expert/new.html'
+        data = {'expert': expertform,
+                'formset': formset,
            }
-
-    return render(request, template_name, data)
+        return render(request, template_name, data)
 
 
 def expert_new_pk(request, pk):
