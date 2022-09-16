@@ -189,6 +189,7 @@ class Expert(models.Model):
             return "Клиент"
         return "Не клиент"
 
+
 class ExpertFiles(models.Model):
     """Таблица прикрепленных файлов Экспертизы """
 
@@ -224,7 +225,7 @@ class ExpertFiles(models.Model):
                                 upload_to='media/doc_expert/',
                                 null=True,
                                 default=None,
-                                verbose_name="Файл "
+                                verbose_name="Файл"
                             )
     author = models.OneToOneField(
                                     User,

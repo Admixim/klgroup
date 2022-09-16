@@ -2,176 +2,263 @@
 {% load static %}
 
 
-
 {% block content %}
-  <style>
-      hr {
-          border: none; /* Убираем границу */
-          background-color: red; /* Цвет линии */
-          color: red; /* Цвет линии для IE6-7 */
-          height: 2px; /* Толщина линии */
-      }
-  </style>
-  <div class="main-content">
+<style>
+    hr {
+        border: none; /* Убираем границу */
+        background-color: red; /* Цвет линии */
+        color: red; /* Цвет линии для IE6-7 */
+        height: 2px; /* Толщина линии */
+    }
+</style>
+<div class="main-content">
     <div class="page-content" align="center">
-      <div class="container-fluid">
-        <hr>
-      </div>
-      <div class="page-title-box d-flex align-items-center justify-content-between">
-        <div class="btn-group me-1 mt-2">
-          <button
-              class="btn btn-primary w-md" id="contract" type="button">ДОГОВОР
-          </button>
-          <button
-              type="button" id="expert" href="#" class="btn btn-primary waves-effect waves-light">ЭКСПЕРТИЗА
-          </button>
-          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false">ОСТАЛЬНОЕ<i class="mdi mdi-chevron-down"></i>
-            <span class="sr-only">Другие</span>
-          </button>
-          <div class="dropdown-menu">
-            <ul>
-              <a id="contract1" class="dropdown-item" href="#">Список </a>
-              <a id="contract_one" class="dropdown-item" href="#">Договор первичн</a>
-              <a id="assignment" class="dropdown-item" href="#">Увед. цессия</a>
-              <div class="dropdown-divider"></div>
-              <a id="pdf_contract_one_add" class="dropdown-item" href="#">Доп соглашение</a>
-            </ul>
-          </div>
-        </div>
-        <div class="page-title-right">
-          <ol class="breadcrumb m-0">
-            <button class="btn btn-primary w-md" type="submit">Сохранить</button>
-            </li>
-          </ol>
-        </div>
-      </div>
-      <form method="POST" action="" class="form-control"
-            enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="row">
-          <div class="row">
+        <div class="container-fluid">
             <hr>
-            <div class="col-lg-5">
-              <label class="form-label" for="formrow-firstname-input">Выбор Заказчика</label>
-              {{ expert_edit.client }}
-            </div>
-            <div class="col-lg-5">
-              <label class="form-label" for="formrow-firstname-input">ТС Заказчика</label>
-              {{ expert_edit.car }}
-            </div>
-          </div>
         </div>
-        <hr>
-        <div class="row">
-          <div class="mt-6">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="mb-3">
-                  <label>Контрагент:</label>
-                  {{ expert_edit.contragent }}
+        <div class="page-title-box d-flex align-items-center justify-content-between">
+            <div class="btn-group me-1 mt-2">
+                <button
+                        class="btn btn-primary w-md" id="contract" type="button">ДОГОВОР
+                </button>
+                <button
+                        type="button" id="expert" href="#" class="btn btn-primary waves-effect waves-light">ЭКСПЕРТИЗА
+                </button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">ОСТАЛЬНОЕ<i class="mdi mdi-chevron-down"></i>
+                    <span class="sr-only">Другие</span>
+                </button>
+                <div class="dropdown-menu">
+                    <ul>
+                        <a id="contract1" class="dropdown-item" href="#">Список </a>
+                        <a id="contract_one" class="dropdown-item" href="#">Договор первичн</a>
+                        <a id="assignment" class="dropdown-item" href="#">Увед. цессия</a>
+                        <div class="dropdown-divider"></div>
+                        <a id="pdf_contract_one_add" class="dropdown-item" href="#">Доп соглашение</a>
+                    </ul>
                 </div>
-                <div class="mb-3">
-                  <label class="form-label">Стоимость</label>
-                  {{ expert_edit.summa_exp }}
-                </div>
-                <div class="mb-3">
-                  <label class="form-label" id="datepicker2" for="formrow-firstname-input">Дата завершение ЭО</label>
-                  {{ expert_edit.data_out }}
-                </div>
-              </div>
-              <div class="col-lg-6">
-                <div class="col-md-15">
-<!--                  <div class="col-lg-6">-->
-<!--                    <label>Прикрепить экспертизу</label>-->
-<!--                    {{ expert_edit.file_expert }}-->
-<!--                  </div>-->
-<!--                  <div class="col-lg-6">-->
-<!--                    <label>Прикрепить скан чека</label>-->
-<!--                    {{ expert.file_invoce }}-->
-<!--                  </div>-->
-                  <div class="col-lg-6">
-                    <label class="form-label" for="formrow-firstname-input">Вид оценки</label>
-                    {{ expert_edit.type }}
-                  </div>
-                </div>
-              </div>
             </div>
-            <div class="table-responsive">
-              <table class="table table-nowrap table-hover mb-0">
-                <thead>
-                <tr>
-                  <th scope="col">№</th>
-                  <th scope="col">Тип расчета</th>
-                  <th scope="col">Сумма</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <th scope="row">01</th>
-                  <td><a href="#" class="text-dark">Востановительный ремонт без износа</a>
-                  </td>
-                  <td>
-                    {{ expert_edit.price_nwear }}
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">02</th>
-                  <td><a href="#" class="text-dark">Востановительный ремонт с износом</a>
-                  </td>
-                  <td>
-                    {{ expert_edit.price_wwear }}
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">03</th>
-                  <td><a href="#" class="text-dark">Средняя цена по рынку</a></td>
-                  <td>
-                    {{ expert_edit.price_mmarket }}
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">04</th>
-                  <td><a href="#" class="text-dark">Годные остатки</a></td>
-                  <td>
-                    {{ expert_edit.price_uleftovers }}
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">05</th>
-                  <td><a href="#" class="text-dark">Сумма утраченной товарной
-                    стоимости</a>
-                  </td>
-                  <td>
-                    {{ expert_edit.price_uts }}
-                  </td>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">06</th>
-                  <td><a href="#" class="text-dark">Сумма ущерба</a></td>
-                  <td>
-                    {{ expert_edit.price_nwear }}
-                  </td>
-                </tr>
-                </tr>
-                </tbody>
-              </table>
-              <div class="row mb-4">
-                <label class="form-label" for="formrow-firstname-input">Комментарий к экспертному заключению</label>
-                {{ expert_edit.comment }}
-              </div>
-              <hr>
-              <div class="col-15">
+            <div class="page-title-right">
                 <ol class="breadcrumb m-0">
-                  <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+                    <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+                    </li>
                 </ol>
-              </div>
             </div>
-          </div>
         </div>
-      </form>
+        <form method="POST" action="" class="form-control"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row">
+                <div class="row">
+                    <hr>
+                    <div class="col-lg-5">
+                        <label class="form-label" for="formrow-firstname-input">Выбор Заказчика</label>
+                        {{ expert_edit.client }}
+                    </div>
+                    <div class="col-lg-5">
+                        <label class="form-label" for="formrow-firstname-input">ТС Заказчика</label>
+                        {{ expert_edit.car }}
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="mt-6">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="mb-3">
+                                <label>Контрагент:</label>
+                                {{ expert_edit.contragent }}
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Стоимость</label>
+                                {{ expert_edit.summa_exp }}
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" id="datepicker2" for="formrow-firstname-input">Дата завершение
+                                    ЭО</label>
+                                {{ expert_edit.data_out }}
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="col-md-15">
+                                <!--                  <div class="col-lg-6">-->
+                                <!--                    <label>Прикрепить экспертизу</label>-->
+                                <!--                    {{ expert_edit.file_expert }}-->
+                                <!--                  </div>-->
+                                <!--                  <div class="col-lg-6">-->
+                                <!--                    <label>Прикрепить скан чека</label>-->
+                                <!--                    {{ expert.file_invoce }}-->
+                                <!--                  </div>-->
+                                <div class="col-lg-6">
+                                    <label class="form-label" for="formrow-firstname-input">Вид оценки</label>
+                                    {{ expert_edit.type }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-nowrap table-hover mb-0">
+                            <thead>
+                            <tr>
+                                <th scope="col">№</th>
+                                <th scope="col">Тип расчета</th>
+                                <th scope="col">Сумма</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">01</th>
+                                <td><a href="#" class="text-dark">Востановительный ремонт без износа</a>
+                                </td>
+                                <td>
+                                    {{ expert_edit.price_nwear }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">02</th>
+                                <td><a href="#" class="text-dark">Востановительный ремонт с износом</a>
+                                </td>
+                                <td>
+                                    {{ expert_edit.price_wwear }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">03</th>
+                                <td><a href="#" class="text-dark">Средняя цена по рынку</a></td>
+                                <td>
+                                    {{ expert_edit.price_mmarket }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">04</th>
+                                <td><a href="#" class="text-dark">Годные остатки</a></td>
+                                <td>
+                                    {{ expert_edit.price_uleftovers }}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">05</th>
+                                <td><a href="#" class="text-dark">Сумма утраченной товарной
+                                    стоимости</a>
+                                </td>
+                                <td>
+                                    {{ expert_edit.price_uts }}
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">06</th>
+                                <td><a href="#" class="text-dark">Сумма ущерба</a></td>
+                                <td>
+                                    {{ expert_edit.price_nwear }}
+                                </td>
+                            </tr>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="row mb-4">
+                            <label class="form-label" for="formrow-firstname-input">Комментарий к экспертному
+                                заключению</label>
+                            {{ expert_edit.comment }}
+                        </div>
+                        <hr>
+                        <h3>Документы Экспертизы</h3>
+                        <div data-repeater-item class="row">
+                            {{ formset.management_form }}
+                                {% for form in formset %}
+                                <div class="row form-row">
+                                    <div>
+                                    </div>
+                                    <div class="mb-3 col-lg-2">
+                                        {{ form.types }}
+                                    </div>
+                                    <div class="mb-3 col-lg-5">
+                                        {{ form.description }}
+                                    </div>
+                                    <div class="mb-3 col-lg-2">
+                                        {{ form.scan_doc }}
+                                    </div>
+                                    <div class="mb-3 col-lg-2">
+                                        <button id="minus" type="button"
+                                                class="btn btn-success remove-form-row">-
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="input-group-append">
+                                    <button id="plus" type="button"
+                                            class="btn btn-success add-form-row">Добавить
+                                    </button>
+                                </div>
+                                {% endfor %}
+
+                        <div class="col-15">
+                            <ol class="breadcrumb m-0">
+                                <button class="btn btn-primary w-md" type="submit">Сохранить</button>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Файлы экспертизы</h3>
+            <div class="row">
+                <table class="table table-centered datatable dt-responsive nowrap table-card-list"
+                       style="border-collapse: collapse; border-spacing: 0 12px; width: 100%;">
+                    <thead>
+                    <tr class="bg-transparent">
+                        <th style="width: 24px;">
+                        </th>
+                        <th>ID файла</th>
+                        <th>Дата создание</th>
+                        <th>Тип файла</th>
+                        <th>Описание</th>
+                        <th>Владелец</th>
+                        <th>Скачать файл</th>
+                        <th style="width: 120px;">Действия</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in list_files %}
+                    <tr>
+                        <td>
+                            <div class="form-check text-center">
+                            </div>
+                        </td>
+                        <td><a href="javascript: void(0);" class="text-dark fw-bold">{{ item.pk }}</a></td>
+                        <td>
+                            {{ item.created|date:'d-m-Y г. H:i:s' }}
+                        </td>
+                        <td>{{ item.get_types_display }}</td>
+                        <td>
+                            {{ item.description }}
+                        </td>
+                        <td>
+                            <div class="badge bg-soft-success font-size-12">Кравцова А.А.</div>
+                        </td>
+                        <td>
+                            <div>
+                                <a class="btn btn-light btn-sm w-xs" href="{{ item.scan_doc.url }}" target="_blank">файл<i
+                                        class="uil uil-download-alt ms-2"></i></a>
+                            </div>
+                        </td>
+                        <td>
+                            <a href="{{ item.scan_doc.url }}" class="px-3 text-primary"><i
+                                    class="uil uil-pen font-size-18"></i></a>
+                            <a href="javascript:void(0);" class="px-3 text-danger"><i
+                                    class="uil uil-trash-alt font-size-18"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </form>
     </div>
-  </div>
+</div>
+</div>
+</div>
+  <script src="/static/js/formset.js"></script>
 {% endblock content %}

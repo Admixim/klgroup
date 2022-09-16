@@ -41,13 +41,9 @@ def expert_new(request):
         formset = FileExpertFormset(request.POST, request.FILES,)
         if expertform.is_valid() and formset.is_valid():
             expert = expertform.save()
-            print('Expert', expert)
             for form in formset:
                 file = form.save(commit=False)
-                print('files-1', file.files)
                 if file.scan_doc:
-                    print('scandoc1', file.scan_doc)
-                    print('files2', file)
                     file.files = expert
                     file.save()
             return redirect('/expert/')
@@ -99,22 +95,29 @@ def expert_edit(request, pk):
     """Редактирования  данных экспертизы"""
 
     expert = get_object_or_404(Expert, pk=pk)
+    formset = FileExpertFormset(queryset=ExpertFiles.objects.none())
     if request.method == "POST":
-        expert_edit_form = ExpertNewForm(request.POST, request.FILES, instance=expert)
-        if expert_edit_form.is_valid():
-            inst = expert_edit_form.save(commit=False)
-            inst.id = pk
-            inst.save()
-            print(pk)
-            return redirect('/expert/edit/%d/' % (inst.id) )
-
-        else:
-            error = ' Форма не верно заполнена'
-    expert_edit_form = ExpertNewForm(instance=expert)
-    template_name = 'dist/expert/edit.html'
-    return render(request, template_name, {'expert_edit': expert_edit_form,
-                                           'pk': pk
-                                           }
-                  )
+        expert_form = ExpertNewForm(request.POST,  instance=expert)
+        formset = FileExpertFormset(request.POST, request.FILES, prefix=ExpertFiles)
+        if expert_form.is_valid() and formset.is_valid():
+            expert = expert_form.save()
+            for form in formset:
+                inst = form.save(commit=False)
+                if inst.scan_doc:
+                    inst.files = expert
+                    inst.save
+            return redirect('/expert/')
+    else:
+        error = ' Форма не верно заполнена'
+        expert_form = ExpertNewForm(instance=expert)
+        list_files = expert.files_expert.all()
+        template_name = 'dist/expert/edit.html'
+        data = {'expert_edit': expert_form,
+                'list_files': list_files,
+                'pk': pk,
+                'formset': formset,
+                'error': error
+                 }
+        return render(request, template_name, data)
 
 
