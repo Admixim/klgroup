@@ -38,22 +38,22 @@ def expert_new(request):
 
     if request.method == 'POST':
         expertform = ExpertNewForm(request.POST, prefix=Expert)
-        formset = FileExpertFormset(request.POST, request.FILES, prefix=ExpertFiles)
+        formset = FileExpertFormset(request.POST, request.FILES,)
         if expertform.is_valid() and formset.is_valid():
             expert = expertform.save()
             print('Expert', expert)
             for form in formset:
                 file = form.save(commit=False)
-                print('files-1',file.files)
+                print('files-1', file.files)
                 if file.scan_doc:
                     print('scandoc1', file.scan_doc)
                     print('files2', file)
                     file.files = expert
                     file.save()
-        return redirect('/expert/')
+            return redirect('/expert/')
     else:
         expertform = ExpertNewForm(prefix=Expert)
-        formset = FileExpertFormset(queryset=ExpertFiles.objects.none(), prefix=ExpertFiles)
+        formset = FileExpertFormset(queryset=ExpertFiles.objects.none(),)
         template_name = 'dist/expert/new.html'
         data = {'expert': expertform,
                 'formset': formset,
