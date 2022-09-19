@@ -214,9 +214,7 @@ class ExpertFiles(models.Model):
                                 null=True,
                                 verbose_name='Прикрепленные файлы (Expert)'
                             )
-    types = models.PositiveSmallIntegerField(choices=TYPES, null=True,
-                                             default=None,
-                                             blank=True, )
+
     description = models.CharField(
                                     max_length=100,
                                     verbose_name='Описание '

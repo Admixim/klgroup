@@ -98,10 +98,12 @@ def expert_edit(request, pk):
     formset = FileExpertFormset(queryset=ExpertFiles.objects.none())
     if request.method == "POST":
         expert_form = ExpertNewForm(request.POST,  instance=expert)
-        formset = FileExpertFormset(request.POST, request.FILES, prefix=ExpertFiles)
+        formset = FileExpertFormset(request.POST, request.FILES)
         if expert_form.is_valid() and formset.is_valid():
             expert = expert_form.save()
             for form in formset:
+                print(form.as_table())
+                print(form.instance)
                 inst = form.save(commit=False)
                 if inst.scan_doc:
                     inst.files = expert
