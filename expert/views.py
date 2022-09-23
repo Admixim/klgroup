@@ -100,9 +100,9 @@ def expert_edit(request, pk):
     expert = get_object_or_404(Expert, pk=pk)
     formset = FileExpertFormset(queryset=ExpertFiles.objects.none())
     if request.method == "POST":
-        expert_form = ExpertNewForm(request.POST,  instance=expert, prefix=expert)
-        formset = FileExpertFormset(request.POST, request.FILES, prefix=formset)
-        if expert_form.is_valid():
+        expert_form = ExpertNewForm(request.POST,  instance=expert,)
+        formset = FileExpertFormset(request.POST, request.FILES,)
+        if expert_form.is_valid() and formset.is_valid():
             expert = expert_form.save()
             print('000expert ', expert)
             for form in formset:
@@ -113,12 +113,7 @@ def expert_edit(request, pk):
                     print('inst.scan_doc', inst.scan_doc)
                     inst.files = expert
                     inst.save()
-                else:
-                    raise MyException('is not inst.scan_doc')
                 return redirect('/expert/')
-        else:
-            raise MyException(f'expert_form or formset is not valid: {expert_form.errors};{formset.errors}')
-            return redirect('/expert/')
     else:
         error = ' Форма не верно заполнена'
         expert_form = ExpertNewForm(instance=expert)
