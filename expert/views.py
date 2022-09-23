@@ -90,6 +90,9 @@ def expert_new_pk(request, pk):
             }
     return render(request, template_name, data)
 
+class MyException(Exception):
+   pass
+
 
 def expert_edit(request, pk):
     """Редактирования  данных экспертизы"""
@@ -97,17 +100,24 @@ def expert_edit(request, pk):
     expert = get_object_or_404(Expert, pk=pk)
     formset = FileExpertFormset(queryset=ExpertFiles.objects.none())
     if request.method == "POST":
-        expert_form = ExpertNewForm(request.POST,  instance=expert)
-        formset = FileExpertFormset(request.POST, request.FILES)
-        if expert_form.is_valid() and formset.is_valid():
+        expert_form = ExpertNewForm(request.POST,  instance=expert, prefix=expert)
+        formset = FileExpertFormset(request.POST, request.FILES, prefix=formset)
+        if expert_form.is_valid():
             expert = expert_form.save()
+            print('000expert ', expert)
             for form in formset:
-                print(form.as_table())
-                print(form.instance)
+                print('111form.as_table()', form.as_table())
+                print('222form.instance', form.instance)
                 inst = form.save(commit=False)
                 if inst.scan_doc:
+                    print('inst.scan_doc', inst.scan_doc)
                     inst.files = expert
-                    inst.save
+                    inst.save()
+                else:
+                    raise MyException('is not inst.scan_doc')
+                return redirect('/expert/')
+        else:
+            raise MyException(f'expert_form or formset is not valid: {expert_form.errors};{formset.errors}')
             return redirect('/expert/')
     else:
         error = ' Форма не верно заполнена'
@@ -115,11 +125,11 @@ def expert_edit(request, pk):
         list_files = expert.files_expert.all()
         template_name = 'dist/expert/edit.html'
         data = {'expert_edit': expert_form,
-                'list_files': list_files,
-                'pk': pk,
-                'formset': formset,
-                'error': error
-                 }
-        return render(request, template_name, data)
+                    'list_files': list_files,
+                    'pk': pk,
+                    'formset': formset,
+                    'error': error
+                     }
+    return render(request, template_name, data)
 
 

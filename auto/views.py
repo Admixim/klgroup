@@ -32,7 +32,7 @@ def auto_new(request):
             for doc in insurance:
                 item = doc.save(commit=False)
                 item.car = auto
-                item.save
+                item.save()
                 return redirect('/auto/')
 
     template_name = 'dist/handbk/auto/auto-new.html'
