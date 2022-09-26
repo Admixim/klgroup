@@ -90,6 +90,7 @@ def expert_new_pk(request, pk):
             }
     return render(request, template_name, data)
 
+
 class MyException(Exception):
    pass
 
@@ -98,25 +99,21 @@ def expert_edit(request, pk):
     """Редактирования  данных экспертизы"""
 
     expert = get_object_or_404(Expert, pk=pk)
-    formset = FileExpertFormset(queryset=ExpertFiles.objects.none())
+    formset = FileExpertFormset(queryset=ExpertFiles.objects.none(), prefix=ExpertFiles)
     if request.method == "POST":
-        expert_form = ExpertNewForm(request.POST,  instance=expert,)
-        formset = FileExpertFormset(request.POST, request.FILES,)
+        expert_form = ExpertNewForm(request.POST,  instance=expert, prefix=Expert)
+        formset = FileExpertFormset(request.POST, request.FILES, prefix=ExpertFiles)
         if expert_form.is_valid() and formset.is_valid():
             expert = expert_form.save()
-            print('000expert ', expert)
             for form in formset:
-                print('111form.as_table()', form.as_table())
-                print('222form.instance', form.instance)
                 inst = form.save(commit=False)
                 if inst.scan_doc:
-                    print('inst.scan_doc', inst.scan_doc)
                     inst.files = expert
                     inst.save()
                 return redirect('/expert/')
     else:
         error = ' Форма не верно заполнена'
-        expert_form = ExpertNewForm(instance=expert)
+        expert_form = ExpertNewForm(instance=expert, prefix=Expert)
         list_files = expert.files_expert.all()
         template_name = 'dist/expert/edit.html'
         data = {'expert_edit': expert_form,
@@ -125,6 +122,6 @@ def expert_edit(request, pk):
                     'formset': formset,
                     'error': error
                      }
-    return render(request, template_name, data)
+        return render(request, template_name, data)
 
 

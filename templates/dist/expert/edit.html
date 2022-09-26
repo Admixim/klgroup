@@ -38,7 +38,6 @@
                     </ul>
                 </div>
             </div>
-
         </div>
         <form method="POST" action="" class="form-control"
               enctype="multipart/form-data">
@@ -46,9 +45,6 @@
             <div class="row">
                 <div class="row">
                     <hr>
-                    {% if expert_edit.errors %}
-                        {{ expert_edit.errors }}
-                    {% endif %}
                     <div class="col-lg-5">
                         <label class="form-label" for="formrow-firstname-input">Выбор Заказчика</label>
                         {{ expert_edit.client }}
@@ -157,34 +153,31 @@
                         <h3>Документы Экспертизы</h3>
                         <div data-repeater-item class="row">
                             {{ formset.management_form }}
-                            {% if formset.errors %}
-                                    {{ formset.errors }}
-                    {       {% endif %}
-                            {% for form in formset %}
-                            <div class="row form-row">
-                                <div>
+                                {% for form in formset %}
+                                <div class="row form-row">
+                                    <div>
+                                    </div>
+                                    <div class="mb-3 col-lg-2">
+                                        {{ form.types }}
+                                    </div>
+                                    <div class="mb-3 col-lg-5">
+                                        {{ form.description }}
+                                    </div>
+                                    <div class="mb-3 col-lg-2">
+                                        {{ form.scan_doc }}
+                                    </div>
+                                    <div class="mb-3 col-lg-2">
+                                        <button id="minus" type="button"
+                                                class="btn btn-success remove-form-row">-
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="mb-3 col-lg-2">
-                                    {{ form.types }}
-                                </div>
-                                <div class="mb-3 col-lg-5">
-                                    {{ form.description }}
-                                </div>
-                                <div class="mb-3 col-lg-2">
-                                    {{ form.scan_doc }}
-                                </div>
-                                <div class="mb-3 col-lg-2">
-                                    <button id="minus" type="button"
-                                            class="btn btn-success remove-form-row">-
+                                <div class="input-group-append">
+                                    <button id="plus" type="button"
+                                            class="btn btn-success add-form-row">Добавить
                                     </button>
                                 </div>
-                            </div>
-                            <div class="input-group-append">
-                                <button id="plus" type="button"
-                                        class="btn btn-success add-form-row">Добавить
-                                </button>
-                            </div>
-                            {% endfor %}
+                                {% endfor %}
                             <div class="col-15">
                                 <ol class="breadcrumb m-0">
                                     <button class="btn btn-primary w-md" type="submit">Сохранить</button>
@@ -195,8 +188,6 @@
                 </div>
             </div>
         </form>
-
-
         <h3>Файлы экспертизы</h3>
         <div class="row">
             <table class="table table-centered datatable dt-responsive nowrap table-card-list"
@@ -250,10 +241,6 @@
             </table>
         </div>
     </div>
-
-</div>
-</div>
-</div>
 </div>
 <script src="/static/js/formset.js"></script>
 {% endblock content %}
