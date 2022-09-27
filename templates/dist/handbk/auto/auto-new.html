@@ -130,68 +130,78 @@
                                             <div data-repeater-item class="row">
                                                 {{ insurance.management_form }}
                                                 {% for item in insurance %}
+                                                <div class="mb-3 col-lg-2">
+                                                    {{ item.types }}
+                                                </div>
+                                                <div class="mb-3 col-lg-5">
+                                                    {{ item.i_serial }}
+                                                </div>
+                                                <div class="mb-3 col-lg-2">
+                                                    {{ item.i_number }}
+                                                </div>
+                                                <div class="mb-3 col-lg-2">
+                                                    {{ item.start_date }}
+                                                </div>
+                                                <div class="mb-3 col-lg-2">
+                                                    {{ item.end_date }}
+                                                </div>
+                                                <div class="mb-3 col-lg-2">
+                                                    {{ item.description }}
+                                                </div>
+                                                <div class="mb-3 col-lg-2">
+                                                    <button id="minus_ins" type="button"
+                                                            class="btn btn-success remove-form-row1">Удалить
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="input-group-append1">
+                                                <button id="plus_ins" type="button"
+                                                        class="btn btn-success add-form-row1">Добавить
+                                                </button>
+
+                                                {% endfor %}
+
+                                                <h3>Документы ТС</h3>
+                                                <div data-repeater-item class="row">
+                                                    {{ formset.management_form }}
+                                                    {% for forms in formset %}
+                                                    <div class="row form-row">
                                                         <div class="mb-3 col-lg-2">
-                                                            {{ item.types }}
+                                                            {{ forms.types }}
                                                         </div>
                                                         <div class="mb-3 col-lg-5">
-                                                            {{ item.i_serial }}
+                                                            {{ forms.description }}
                                                         </div>
                                                         <div class="mb-3 col-lg-2">
-                                                            {{ item.i_number }}
+                                                            {{ forms.scan_doc }}
                                                         </div>
                                                         <div class="mb-3 col-lg-2">
-                                                            {{ item.start_date }}
-                                                        </div>
-                                                        <div class="mb-3 col-lg-2">
-                                                            {{ item.end_date }}
-                                                        </div>
-                                                        <div class="mb-3 col-lg-2">
-                                                            {{ item.description }}
-                                                        </div>
-
-                                                    {% endfor %}
-
-                                                    <h3>Документы ТС</h3>
-                                                    <div data-repeater-item class="row">
-                                                        {{ formset.management_form }}
-                                                        {% for form in formset %}
-                                                             <div class="row form-row">
-                                                              <div class="mb-3 col-lg-2">
-                                                                {{ form.types }}
-                                                              </div>
-                                                            <div class="mb-3 col-lg-5">
-                                                                {{ form.description }}
-                                                            </div>
-                                                            <div class="mb-3 col-lg-2">
-                                                                {{ form.scan_doc }}
-                                                            </div>
-                                                            <div class="mb-3 col-lg-2">
-                                                                <button id="minus" type="button"
-                                                                        class="btn btn-success remove-form-row">Удалить
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <div class="input-group-append">
-                                                            <button id="plus" type="button"
-                                                                    class="btn btn-success add-form-row">Добавить
+                                                            <button id="minus" type="button"
+                                                                    class="btn btn-success remove-form-row">Удалить
                                                             </button>
                                                         </div>
-                                                        {% endfor %}
-                                                        <div class="page-title-box d-flex align-items-center justify-content-between">
-                                                            <h4 class="mb-0"></h4>
-                                                            <div class="page-title-right">
-                                                                <ol class="breadcrumb m-0">
-                                                                    <button class="btn btn-primary w-md" type="submit">
-                                                                        Сохранить
-                                                                    </button>
-                                                                    </li>
-                                                                </ol>
-                                                            </div>
+                                                    </div>
+                                                    <div class="input-group-append">
+                                                        <button id="plus" type="button"
+                                                                class="btn btn-success add-form-row">Добавить
+                                                        </button>
+                                                    </div>
+                                                    {% endfor %}
+                                                    <div class="page-title-box d-flex align-items-center justify-content-between">
+                                                        <h4 class="mb-0"></h4>
+                                                        <div class="page-title-right">
+                                                            <ol class="breadcrumb m-0">
+                                                                <button class="btn btn-primary w-md" type="submit">
+                                                                    Сохранить
+                                                                </button>
+                                                                </li>
+                                                            </ol>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
 
                                 </div>
                             </form>
