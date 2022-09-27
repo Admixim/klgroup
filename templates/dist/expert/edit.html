@@ -57,7 +57,7 @@
             </div>
             <hr>
             <div class="row">
-                <div class="mt-6">
+                    <div class="mt-6">
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="mb-3">
@@ -68,11 +68,7 @@
                                 <label class="form-label">Стоимость</label>
                                 {{ expert_edit.summa_exp }}
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label" id="datepicker2" for="formrow-firstname-input">Дата завершение
-                                    ЭО</label>
-                                {{ expert_edit.data_out }}
-                            </div>
+
                         </div>
                         <div class="col-lg-6">
                             <div class="col-md-15">
@@ -80,9 +76,15 @@
                                     <label class="form-label" for="formrow-firstname-input">Вид оценки</label>
                                     {{ expert_edit.type }}
                                 </div>
+
                             </div>
+                            <div class="col-lg-6">
+                                    <label  id="datepicker2" for="basicpill-namecard-input">Дата завершение</label>
+                                        {{ expert_edit.data_out }}
+                                </div>
+
                         </div>
-                    </div>
+
                     <div class="table-responsive">
                         <table class="table table-nowrap table-hover mb-0">
                             <thead>
@@ -150,6 +152,7 @@
                             {{ expert_edit.comment }}
                         </div>
                         <hr>
+                        <div class="row">
                         <h3>Документы Экспертизы</h3>
                         <div data-repeater-item class="row">
                             {{ formset.management_form }}

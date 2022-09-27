@@ -99,18 +99,19 @@ def expert_edit(request, pk):
     """Редактирования  данных экспертизы"""
 
     expert = get_object_or_404(Expert, pk=pk)
-    formset = FileExpertFormset(queryset=ExpertFiles.objects.none(), prefix=ExpertFiles)
+    formset = FileExpertFormset(queryset=ExpertFiles.objects.none(), )
     if request.method == "POST":
         expert_form = ExpertNewForm(request.POST,  instance=expert, prefix=Expert)
-        formset = FileExpertFormset(request.POST, request.FILES, prefix=ExpertFiles)
+        formset = FileExpertFormset(request.POST, request.FILES, prefix=None)
         if expert_form.is_valid() and formset.is_valid():
             expert = expert_form.save()
             for form in formset:
                 inst = form.save(commit=False)
                 if inst.scan_doc:
                     inst.files = expert
+                    print(inst)
                     inst.save()
-                return redirect('/expert/')
+        return redirect('/expert/')
     else:
         error = ' Форма не верно заполнена'
         expert_form = ExpertNewForm(instance=expert, prefix=Expert)
@@ -121,7 +122,7 @@ def expert_edit(request, pk):
                     'pk': pk,
                     'formset': formset,
                     'error': error
-                     }
+                }
         return render(request, template_name, data)
 
 

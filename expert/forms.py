@@ -165,21 +165,22 @@ class ExpertNewForm(ModelForm):
                 'align': "left",
                 'placeholder': 'Номер экспертизы'
             }),
-            "data_in": DateInput(attrs={
+            "data_in": DateInput(format='%d/%m/%Y', attrs={
                 'class': 'form-control',
                 'placeholder': 'Дата отправления эксперту',
-                 'data-date-container':'#datepicker2',
-                 'data-provide': 'datepicker',
-                 'data-date-autoclose': 'true',
-            }),
-            "data_out": DateInput(attrs={
+                'data-date-container': '#datepicker2',
+                'data-provide': 'datepicker',
+                'data-date-autoclose': 'true',
+                'data-date-format': 'dd/mm/yyyy',
+                           }),
+            "data_out": DateInput(format='%d/%m/%Y', attrs={
                 'class': 'form-control',
                 'placeholder': 'Дата завершение ЭО',
-                'data-date-container':'#datepicker2',
+                'data-date-container': '#datepicker2',
                 'data-provide': 'datepicker',
-                'data - date - autoclose': 'true',
-
-            }),
+                'data-date-autoclose': 'true',
+                'data-date-format': 'dd/mm/yyyy',
+                            }),
             "price_nwear": NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'ВР без износа'

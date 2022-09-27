@@ -80,27 +80,24 @@
                                 <label class="form-label">Стоимость</label>
                                 {{ expert.summa_exp }}
                             </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="formrow-firstname-input">Дата завершение ЭО</label>
-                                {{ expert.data_out }}
-                            </div>
+
                         </div>
                         <div class="col-lg-6">
                             <div class="col-md-15">
-                                <!--                  <div class="col-lg-6">-->
-                                <!--                    <label>Прикрепить экспертизу</label>-->
-                                <!--                    {{ expert.file_expert }}-->
-                                <!--                  </div>-->
-                                <!--                  <div class="col-lg-6">-->
-                                <!--                    <label>Прикрепить скан чека</label>-->
-                                <!--                    {{ expert.file_invoce }}-->
-                                <!--                  </div>-->
                                 <div class="col-lg-6">
                                     <label class="form-label" for="formrow-firstname-input">Вид оценки</label>
                                     {{ expert.type }}
                                 </div>
+                                </div>
+
+                            <div class="col-md-15">
+                                <div class="col-lg-6">
+                                <label class="form-label" id="datepicker2" for="basicpill-namecard-input">Дата завершение ЭО</label>
+                                {{ expert.data_out }}
                             </div>
+
                         </div>
+
                     </div>
                     <div class="table-responsive">
                         <table class="table table-nowrap table-hover mb-0">
