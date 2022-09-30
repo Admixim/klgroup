@@ -195,6 +195,7 @@ class CompanyForm(ModelForm):
             "nalog_main",
             "nalog_registr",
             "company_adress",
+            "StatusCompany",
             "site_url",
             "number_phone",
             "mail_adress",
@@ -220,6 +221,9 @@ class CompanyForm(ModelForm):
                 'class': 'form-control',
                 'placeholder': 'ИНН'
             }),
+            "StatusCompany":TextInput(attrs={
+                'class':'form-control',
+                'placeholder':'Статус контрагента'}),
             "nalog_main": NumberInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'ОГРН'

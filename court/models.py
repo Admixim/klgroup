@@ -203,7 +203,9 @@ class ListCourt(models.Model):
         judge,
         on_delete=models.CASCADE,
         related_name='judge',
-        blank=True, default=None,
+        blank=True,
+        null=True,
+        default=None,
         verbose_name='Судья Ф.И.О. ')
     judge_help = models.ForeignKey(
         judge_help,

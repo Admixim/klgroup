@@ -24,7 +24,8 @@
         <td><a href="{{ item.file_paste.url }}" target="_blank"  class="text-body">{{ item.file_paste|make_list|slice:'16:'|join:''}}</a>
         </td>
         {% else %}
-                ФАЙЛ НЕ ПРИКРЕПЛЕН
+                <td><a class="text-body">Файл отсутствует</a>
+        </td>
         {% endif %}
         <td>{{ item.created }}</td>
         <td>{{ item.worker }}</td>

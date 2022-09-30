@@ -204,7 +204,7 @@ class CourtForm(ModelForm):
                 'placeholder': 'Отв-ный'
 
             }),
-            "curt_hall": Textarea(attrs={
+            "curt_hall": TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Кабинет заседания '
 

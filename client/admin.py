@@ -201,6 +201,7 @@ class CompanyAdmin(admin.ModelAdmin):
                 "full_name",
                 "nalog_number",
                 "nalog_main",
+                "StatusCompany",
                 "nalog_registr",
                 "company_adress",
                 "number_phone",
@@ -218,9 +219,8 @@ class CompanyAdmin(admin.ModelAdmin):
                 "bank_edit_invoice",
                 "created",
                 "is_active",
-
                 "updated")
-    list_display_links = ("id", "name", "full_name", "nalog_number")
+    list_display_links = ("id", "name", "full_name", "StatusCompany", "nalog_number")
     search_fields = ("id", "name", "full_name", "nalog_number",)
     save_on_top = True
     inlines = [InFilesComp]

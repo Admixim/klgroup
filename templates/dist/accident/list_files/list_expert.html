@@ -22,7 +22,7 @@
             {% if item.file_expert %}
                 <td><a href="{{ item.file_expert.url }}" target="_blank" class="text-body">{{ item.file_expert|make_list|slice:'23:'|join:'' }}</a></td>
             {% else %}
-                <td>Без файла</td>
+                <td>Файл отстуствует</td>
             {% endif %}
             {% if item.file_invoce %}
                 <td><a href="{{ item.file_invoce.url }}" target="_blank" class="text-body">{{ item.file_invoce|make_list|slice:'13:'|join:'' }}</a></td>

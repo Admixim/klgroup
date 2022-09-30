@@ -33,6 +33,33 @@ class Status(models.Model):
         verbose_name_plural = 'Статусы ДТП'
 
 
+class StatusCompany(models.Model):
+    """Таблица статусов Контрагента"""
+
+    name = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        default=None,
+        verbose_name='Наименование')
+    comment = models.CharField(
+        max_length=100,
+        blank=True,
+        null=True,
+        default=None,
+        verbose_name='Комментарий')
+
+    is_active = models.BooleanField(default=True)
+    created = models.DateTimeField(auto_now_add=True, auto_now=False)
+    updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+    def __str__(self):
+        return "%s" % self.name
+
+    class Meta:
+        verbose_name = 'Статус  контрагента'
+        verbose_name_plural = 'Статусы контрагента'
+
 class Phone(models.Model):
     """Таблица телефонов клиентов"""
 
@@ -256,6 +283,14 @@ class Company(models.Model):
         null=True,
         default=None,
         verbose_name='Полное наименование компании')
+    StatusCompany = models.ForeignKey(
+        StatusCompany,
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True,
+        default=None,
+        related_name='status_company',
+        verbose_name='Статус контрагента  ')
     nalog_number = models.CharField(
         max_length=24,
         blank=True,
