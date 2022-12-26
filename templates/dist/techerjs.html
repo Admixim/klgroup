@@ -21,7 +21,12 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3" id="model-select">
-                                                {{ autoform.model }}
+                                                {% for item in autoform.model %}
+                                                {% for  id, name, in item %}
+                                                        {{id}} and {{name}} <br>
+                                                {% endfor %}}
+                                                {% endfor %}
+                                                 {{ autoform.model}}
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
