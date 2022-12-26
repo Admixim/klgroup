@@ -35,10 +35,12 @@ class AutoForm(ModelForm):
 
         widgets = {
             "number": TextInput(attrs={
+                'id': 'numer-input',
                 'class': 'form-control',
                 'placeholder': 'Номер ТС'
             }),
             "marka": Select(attrs={
+                'id': 'marka - select',
                 'class': 'form-control',
                 'placeholder': 'Марка'
             }),
@@ -48,10 +50,12 @@ class AutoForm(ModelForm):
                 'placeholder': 'Модель'
             }),
             "color": TextInput(attrs={
+                'id': 'color-select',
                 'class': 'form-control',
                 'placeholder': 'Цвет ТС'
             }),
             "date_made": DateInput(format='%Y', attrs={
+                'id': 'date-select',
                 'data-date-format': 'yyyy',
                 'class': 'form-control',
                 'placeholder': 'Дата выпуска',
@@ -61,14 +65,17 @@ class AutoForm(ModelForm):
 
             }),
             "sts_n": TextInput(attrs={
+                'id': 'stsn-select',
                 'class': 'form-control',
                 'placeholder': 'Номер СТС'
             }),
             "sts_s": TextInput(attrs={
+                'id': 'stss-select',
                 'class': 'form-control',
                 'placeholder': 'Серия СТС'
             }),
             "sts_date": DateInput(format='%d/%m/%Y', attrs={
+                'id': 'sts-date',
                 'data-date-format': 'dd/mm/yyyy',
                 'class': 'form-control',
                 'placeholder': 'Дата выдачи СТС',
@@ -85,6 +92,7 @@ class AutoForm(ModelForm):
                 'placeholder': 'Серия ПТС'
             }),
             "pts_date": DateInput(format='%d/%m/%Y', attrs={
+                'id': 'ptsdate-select',
                 'class': 'form-control',
                 'placeholder': 'Дата выдачи ПТС',
                 'data-date-container': '#datepicker2',
@@ -94,6 +102,7 @@ class AutoForm(ModelForm):
             }),
 
             "vin": TextInput(attrs={
+                'id': 'vin-select',
                 'class': 'form-control',
                 'placeholder': 'VIN/Кузов Номер'
             }),

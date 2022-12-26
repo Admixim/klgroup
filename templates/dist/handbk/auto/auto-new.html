@@ -23,7 +23,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title mb-4">КАРТА ТРАНСПОРТА</h4>
-                            <form class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+                            <form class="form-horizontal" method="POST" action="" id="form-car" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <!-- Auto Details -->
                                 <section>
@@ -53,7 +53,7 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
-                                            <div class="mb-3">
+                                            <div  type="text" class="mb-3">
                                                 {{ autoform.color }}
                                             </div>
                                         </div>
@@ -65,14 +65,14 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-6" id="datepicker2">
-                                            <div class="mb-3">
+                                            <div type="date" class="mb-3">
                                                 {{ autoform.date_made }}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <div class="mb-3">
+                                            <div type="text" class="mb-3">
                                                 {{ autoform.Comment }}
                                             </div>
                                         </div>
@@ -93,11 +93,11 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div type="number" class="col-lg-6">
                                         {{ autoform.pts_n }}
                                     </div>
                                     <div class="col-lg-6">
-                                        <div class="mb-3">
+                                        <div type="number"  class="mb-3">
                                             {{ autoform.sts_n }}
                                         </div>
                                     </div>
@@ -213,5 +213,10 @@
     </div>
 </div>
 
-<script src="/static/js/formset.js"></script>
+<script src="/static/js/formset.js">
+</script>
+
+
+
+
 {% endblock content %}

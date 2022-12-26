@@ -1,10 +1,38 @@
 # coding: utf-8
+# тесст модули
+from auto.forms import AutoForm, FileAutoFormset, InsuranceAutoFormset
+from auto.models import *
+
 print('Hello')
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from .forms import AccidentForm, AccidentAddPartnerForm
 from client.models import Client, Partner
 from client.forms import PartnerForm, ClientForm
+
+
+
+
+
+
+
+def techerjs(request):
+    # Учебная страница по JS
+
+        if request.method == 'POST':
+            autoform = AutoForm(request.POST, prefix=Car)
+
+            if autoform.is_valid():
+                auto = autoform.save()
+                return redirect('/auto/')
+
+        template_name = 'dist/techerjs.html'
+        autoform = AutoForm(prefix=Car)
+        return render(request, template_name, {
+            'autoform': autoform,
+
+
+        })
 
 
 def accident_list(request):
@@ -17,6 +45,8 @@ def accident_list(request):
                   {'accident': accident,
                    }
                   )
+
+
 
 
 def accident_new(request):

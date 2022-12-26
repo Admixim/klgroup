@@ -1,3 +1,13 @@
+
+const  formCarNew = document.getElementById('form-car');
+console.log('Элементы:',formCarNew)
+let marka = document.querySelector('#marka-select');
+marka.onchange=function (event) {
+    console.log('Марка ТС', marka.innerHTML);
+}
+
+
+
 function updateElementIndex(el, prefix, ndx) {
     var id_regex = new RegExp('(' + prefix + '-\\d+)');
     var replacement = prefix + '-' + ndx;
@@ -5,6 +15,8 @@ function updateElementIndex(el, prefix, ndx) {
     if (el.id) el.id = el.id.replace(id_regex, replacement);
     if (el.name) el.name = el.name.replace(id_regex, replacement);
 }
+
+
 
 function cloneMore(selector, prefix) {
     var newElement = $(selector).clone(true);
@@ -69,31 +81,32 @@ $(document).on('click', '.form-row', function (e) {
 });
 
 
-var markaSelect = document.querySelector('#marka-select')
-var modelSelect = document.querySelector('#model-select')
-var data = {
-    markaSelect: [modelSelect]
-}
-var marka = Object.keys(data);
-AddOptions(modelSelect, marka);
 
-var defaultModel = data[marka[0]];
-addOptions(modelSelect, defaultModel);
-
-markaSelect.addEventListener('change', function () {
-    var model = data[this.value];
-    modelSelect.length = 0;
-
-    addOptions(modelSelect, model);
-
-});
-
-function addOptions(select, arr) {
-    for (var i = 0; i < arr.length;
-         i++) {
-        select.add(new Option(arr[i]));
-    }
-}
+// var markaSelect = document.querySelector('#marka-select')
+// var modelSelect = document.querySelector('#model-select')
+// var data = {
+//     markaSelect: [modelSelect]
+// }
+// var marka = Object.keys(data);
+// AddOptions(modelSelect, marka);
+//
+// var defaultModel = data[marka[0]];
+// addOptions(modelSelect, defaultModel);
+//
+// markaSelect.addEventListener('change', function () {
+//     var model = data[this.value];
+//     modelSelect.length = 0;
+//
+//     addOptions(modelSelect, model);
+//
+// });
+//
+// function addOptions(select, arr) {
+//     for (var i = 0; i < arr.length;
+//          i++) {
+//         select.add(new Option(arr[i]));
+//     }
+// }
 
 
 

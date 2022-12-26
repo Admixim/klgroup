@@ -15,6 +15,8 @@ function my_click(e) {
 btn.addEventListener('click', my_click)
 
 
+let divElm = document.getElementById('marka-select');
+console.log(divElm);
 // let age = 44;
 //
 // function fun(age) {

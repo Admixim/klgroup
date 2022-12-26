@@ -22,4 +22,9 @@ urlpatterns = [
 
     path('test/', test),
 
+    # Учебная страница по JS
+    path('techerjs/', techerjs, name='techerjs'),
+
+
+
 ]

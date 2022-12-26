@@ -23,7 +23,7 @@
             <td><a href="{{ file.scan_doc.url }}" target="_blank"  class="text-body">{{ file.scan_doc|make_list|slice:'13:'|join:''}}</a></td>
 
             {% else %}
-                <td>Без файла</td>
+                <td><a color="red">Без файла</a></td>
             {% endif %}
             <td>{{ file.created }}</td>
             <td>Вставить модель пользователь!!!<td>
