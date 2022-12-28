@@ -19,15 +19,11 @@
                                                 {{ autoform.marka }}
                                             </div>
                                         </div>
+
                                         <div class="col-lg-6">
                                             <div class="mb-3" id="model-select">
-                                                {% for item in autoform.model %}
-                                                {% for  id, name, in item %}
-                                                        {{id}} and {{name}} <br>
-                                                {% endfor %}}
-                                                {% endfor %}
-                                                 {{ autoform.model}}
-                                            </div>
+                                             {{ autoform.model}}
+                                              </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
@@ -65,21 +61,16 @@
                                 <!-- Auto Document -->
 
 <script>
+
 document.getElementById("marka-select").onchange = function(evt){
     var marka = evt.target.value;
     console.log('Марка ТС ',marka)
-    var model =[];
-    if (marka >0)
-        modelW = document.getElementById("model-select")
-        console.log('Модель   список ',modelW )
-        var bmw = model[marka];
-         console.log('Модель  ТС ',bmw )
+     };
+async function getResponse(){
+    let response = await fetch('http://127.0.0.1:8000/accident/model/')
+    let content = await response.json()
+    console.log(response)
 
-
-
-
-
- };
-
-
+}
+getResponse()
 </script>

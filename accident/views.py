@@ -18,20 +18,27 @@ from client.forms import PartnerForm, ClientForm
 
 def techerjs(request):
     # Учебная страница по JS
+    Carmodels = Car.objects.all()
+    print(Carmodels)
+    for item in Carmodels:
+        print(item)
+        print(item)
+    brand = Brend.objects.all()
+    print(brand)
+    modelall = Model.objects.all()
+    for item in modelall:
+        print('id Модели:', item.pk, ';', 'Имя модели ТС: ', item.name, ';', 'id Марки ТС', item.brand_auto.pk,  ';', 'Имя ТС:', item.brand_auto.name)
+    if request.method == 'POST':
+        autoform = AutoForm(request.POST, prefix=Car)
+        if autoform.is_valid():
+            auto = autoform.save()
+        return redirect('/auto/')
 
-        if request.method == 'POST':
-            autoform = AutoForm(request.POST, prefix=Car)
+    template_name = 'dist/techerjs.html'
+    autoform = AutoForm(prefix=Car)
 
-            if autoform.is_valid():
-                auto = autoform.save()
-                return redirect('/auto/')
-
-        template_name = 'dist/techerjs.html'
-        autoform = AutoForm(prefix=Car)
-        return render(request, template_name, {
+    return render(request, template_name, {
             'autoform': autoform,
-
-
         })
 
 

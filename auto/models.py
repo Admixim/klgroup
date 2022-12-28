@@ -168,6 +168,9 @@ class Car(models.Model):
     def __str__(self):
         return '{} {} {}'.format(self.number, self.model, self.marka)
 
+    def get_model(self):
+        return '{} {}'.format(self.model.pk, self.model.name)
+
     class Meta:
         verbose_name = "Транспортное средство  "
         verbose_name_plural = "Транспортные средства"
