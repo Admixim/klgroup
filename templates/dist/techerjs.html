@@ -61,16 +61,30 @@
                                 <!-- Auto Document -->
 
 <script>
+ // Получаем Value id ТС
+// document.getElementById("marka-select").onchange = function(evt){
+//     var marka = evt.target.value;
+//     console.log('Марка ТС ',marka)
+//      };
 
-document.getElementById("marka-select").onchange = function(evt){
-    var marka = evt.target.value;
-    console.log('Марка ТС ',marka)
-     };
+ // Получаем Name бренда ТС
 async function getResponse(){
-    let response = await fetch('http://127.0.0.1:8000/accident/model/')
-    let content = await response.json()
-    console.log(response)
+    let response = await fetch('http://127.0.0.1:8000/auto/edit/model/')
+    let content = await response.text()
+    console.log(response.json())
 
 }
-getResponse()
+document.getElementById("marka-select").onchange = function(evt) {
+  const o = evt.target
+  var marka = o.options[o.selectedIndex].textContent;
+  if (marka == "---------"){
+      console.log('Не заполено');
+  }
+  else {
+      console.log('Выбрана марка',marka);
+      get_model =
+  }
+}
+
+
 </script>

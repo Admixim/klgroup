@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from auto.forms import *
 from auto.models import *
@@ -12,7 +13,18 @@ def auto_list(request):
     #     auto = models.Car.objects.filter(number=q)
     return render(request, 'dist/handbk/auto/auto-list.html', {'results': auto})
 
+def auto_model(request):
 
+    get_brend = get_object_or_404(Brend, pk=2)
+
+    print('Нужные модель', get_brend.id, get_brend)
+    get_model = get_brend.brand_model.all()
+    for q in get_brend.brand_model.all():
+        print(q)
+    print(get_model)
+    context_data = {'get_model': get_model}
+    print(context_data)
+    return  JsonResponse(context_data)
 
 
 def auto_new(request):

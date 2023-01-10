@@ -38,7 +38,8 @@ class Model(models.Model):
     brand_auto = models.ForeignKey(
                                     Brend,
                                     on_delete=models.CASCADE,
-                                    verbose_name='Марка Авто'
+                                    verbose_name='Марка Авто',
+                                    related_name='brand_model'
                                 )
     is_active = models.BooleanField(default=True)
     created = models.DateTimeField(auto_now_add=True, auto_now=False)
